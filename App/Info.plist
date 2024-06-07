@@ -17,11 +17,15 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.1.1</string>
 	<key>CFBundleVersion</key>
-	<string>726</string>
+	<string>238</string>
+	<key>NSCameraUsageDescription</key>
+	<string>testing 🧑‍💻</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>testing 🧑‍💻</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>testing 🧑‍💻</string>
 	<key>UILaunchStoryboardName</key>
 	<string></string>
-	<key>LSApplicationCategoryType</key>
-	<string>public.app-category.developer-tools</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

@@ -1,8 +1,8 @@
 {
   "configurations" : [
     {
-      "id" : "63B646C1-A26B-4FC6-88F7-327B2E6F5B5D",
-      "name" : "Configuration 1",
+      "id" : "114DE82F-DC01-42DA-9FAB-990527935304",
+      "name" : "Test Scheme Action",
       "options" : {
 
       }
@@ -13,14 +13,18 @@
       "identifier" : "Tokyo, Japan",
       "referenceType" : "built-in"
     },
-    "testTimeoutsEnabled" : true
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Wand-Tools.xcodeproj",
+      "identifier" : "6162624B28BC8E2B00D63EA5",
+      "name" : "Play"
+    }
   },
   "testTargets" : [
     {
       "target" : {
-        "containerPath" : "container:Wand.xcodeproj",
-        "identifier" : "pipe::PipeTests",
-        "name" : "WandTests"
+        "containerPath" : "container:WandURL.xcodeproj",
+        "identifier" : "618D53D02BE3C5120098DB6F",
+        "name" : "wandTests"
       }
     }
   ],
