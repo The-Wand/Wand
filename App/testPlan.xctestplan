@@ -22,7 +22,7 @@
   "testTargets" : [
     {
       "target" : {
-        "containerPath" : "container:WandURL.xcodeproj",
+        "containerPath" : "container:Wand_URL.xcodeproj",
         "identifier" : "618D53D02BE3C5120098DB6F",
         "name" : "wandTests"
       }

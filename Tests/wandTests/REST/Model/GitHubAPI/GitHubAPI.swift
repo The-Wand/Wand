@@ -18,7 +18,7 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
-import WandURL
+import Wand_URL
 
 public 
 struct GitHubAPI {

@@ -20,7 +20,7 @@
 
 import XCTest
 
-import WandURL
+import Wand_URL
 import Wand
 
 class REST_PUT_Tests: XCTestCase {

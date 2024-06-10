@@ -20,7 +20,7 @@
 
 import XCTest
 
-import WandURL
+import Wand_URL
 import Wand
 
 class REST_GET_Tests: XCTestCase {
@@ -34,7 +34,7 @@ class REST_GET_Tests: XCTestCase {
 
             if
                 repo.id == id,
-                repo.name == "WandFoundation"
+                repo.name == "Wand_Foundation"
             {
                 e.fulfill()
             }

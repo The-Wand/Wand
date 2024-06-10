@@ -23,7 +23,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "WandURL",
+    name: "Wand_URL",
     defaultLocalization: "ru",
 
     platforms: [
@@ -34,7 +34,7 @@ let package = Package(
     ],
 
     products: [
-        .library(name: "WandURL", targets: ["WandURL"])
+        .library(name: "Wand_URL", targets: ["Wand_URL"])
     ],
 
     dependencies: [
@@ -44,10 +44,10 @@ let package = Package(
 
     targets: [
 
-        .target(name: "WandURL", dependencies: ["Wand"]),
+        .target(name: "Wand_URL", dependencies: ["Wand"]),
         .testTarget(name: "wandTests", dependencies:
                         [
-                            "WandURL",
+                            "Wand_URL",
                             .product(name: "Any_", package: "Any")
                         ]
                    )
