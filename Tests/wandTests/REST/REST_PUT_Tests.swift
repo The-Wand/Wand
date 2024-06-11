@@ -20,7 +20,7 @@
 
 import XCTest
 
-import Wand_URL
+import WandURL
 import Wand
 
 @available(visionOS, unavailable)
