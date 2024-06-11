@@ -15,9 +15,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "Wand_Foundation"
-               BuildableName = "Wand_Foundation"
-               BlueprintName = "Wand_Foundation"
+               BlueprintIdentifier = "Wand_URL"
+               BuildableName = "Wand_URL"
+               BlueprintName = "Wand_URL"
                ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
@@ -27,13 +27,8 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
-      <TestPlans>
-         <TestPlanReference
-            reference = "container:../Wand/Tests/Package.xctestplan"
-            default = "YES">
-         </TestPlanReference>
-      </TestPlans>
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      shouldAutocreateTestPlan = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -42,16 +37,6 @@
                BlueprintIdentifier = "wandTests"
                BuildableName = "wandTests"
                BlueprintName = "wandTests"
-               ReferencedContainer = "container:">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "WandTests"
-               BuildableName = "WandTests"
-               BlueprintName = "WandTests"
                ReferencedContainer = "container:">
             </BuildableReference>
          </TestableReference>
@@ -77,9 +62,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "Wand_Foundation"
-            BuildableName = "Wand_Foundation"
-            BlueprintName = "Wand_Foundation"
+            BlueprintIdentifier = "Wand_URL"
+            BuildableName = "Wand_URL"
+            BlueprintName = "Wand_URL"
             ReferencedContainer = "container:">
          </BuildableReference>
       </MacroExpansion>
