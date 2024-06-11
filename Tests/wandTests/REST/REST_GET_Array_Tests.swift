@@ -23,6 +23,7 @@ import XCTest
 import Wand_URL
 import Wand
 
+@available(visionOS, unavailable)
 class Codable_Array_GET_Tests: XCTestCase {
 
     @available(iOS 16.0, *)
@@ -71,7 +72,7 @@ class Codable_Array_GET_Tests: XCTestCase {
         waitForExpectations()
     }
 
-    @available(iOS 16, watchOS 9.0, *)
+    @available(iOS 16, macOS 13, tvOS 16, watchOS 9, *)
     func test_URL_to_Codable_Array() {
         let e = expectation()
 

@@ -23,6 +23,7 @@ import XCTest
 import Wand_URL
 import Wand
 
+@available(visionOS, unavailable)
 class REST_POST_Tests: XCTestCase {
 
     @available(iOS 16.0, *)
