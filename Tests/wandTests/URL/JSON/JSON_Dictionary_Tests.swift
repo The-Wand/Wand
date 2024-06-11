@@ -25,6 +25,7 @@ import XCTest
 import Wand_URL
 import Wand
 
+@available(visionOS, unavailable)
 class JSON_Dictionary_Tests: XCTestCase {
 
     func test_Path_to_Dictionary() {
