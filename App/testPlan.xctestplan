@@ -10,7 +10,7 @@
   ],
   "defaultOptions" : {
     "locationScenario" : {
-      "identifier" : "Tokyo, Japan",
+      "identifier" : "San Francisco, CA, USA",
       "referenceType" : "built-in"
     },
     "targetForVariableExpansion" : {

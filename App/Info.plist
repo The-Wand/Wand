@@ -17,13 +17,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.1.1</string>
 	<key>CFBundleVersion</key>
-	<string>234</string>
-	<key>NSCameraUsageDescription</key>
-	<string>testing 🧑‍💻</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>testing 🧑‍💻</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>testing 🧑‍💻</string>
+	<string>382</string>
 	<key>UILaunchStoryboardName</key>
 	<string></string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
