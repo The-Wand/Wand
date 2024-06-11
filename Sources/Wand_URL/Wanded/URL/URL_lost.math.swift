@@ -19,7 +19,7 @@
 #if canImport(Foundation)
 import Foundation.NSURL
 
-@available(iOS 16, *)
+@available(iOS 16, watchOS 9.0, *)
 @inline(__always)
 public
 func + (url: URL, q: URLQueryItem) -> URL {

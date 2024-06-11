@@ -44,7 +44,7 @@ let package = Package(
 
     targets: [
 
-        .target(name: "Wand_URL", dependencies: ["Wand"]),
+        .target(name: "Wand_URL", dependencies: ["Wand"] ),
         .testTarget(name: "wandTests", dependencies:
                         [
                             .product(name: "Any_", package: "Any"),

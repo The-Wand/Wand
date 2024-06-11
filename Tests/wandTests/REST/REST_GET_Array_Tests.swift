@@ -71,7 +71,7 @@ class Codable_Array_GET_Tests: XCTestCase {
         waitForExpectations()
     }
 
-    @available(iOS 16.0, *)
+    @available(iOS 16, watchOS 9.0, *)
     func test_URL_to_Codable_Array() {
         let e = expectation()
 

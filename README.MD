@@ -4,67 +4,13 @@
 ### Usage
 ```bash
 
-#Path to Data
+#Ask Data
 "https://api.github.com/gists" | { (data: Data) in
 
 }
 
-#Path to [String: Any]
-"https://api.github.com/gists" | { (dictionary: [String: Any]) in
-
-}
-
-#URL to [String: Any]
-URL(string: "https://api.github.com/gists") | { (array: [Any]) in
-
-}
-
-#Path to [Any]
-"https://api.github.com/gists" | { (array: [Any]) in
-
-}
-
-#URL to [Any]
-URL(string: "https://api.github.com/gists") | { (array: [Any]) in
-
-}
-
-#REST
-#Get
-
-#Path to Dto
-|.get { (model: Rest.Model) in
-
-}
-
-#Ask [Dto]
-|{ (array: [Rest.Model]) in
-
-}
-
-#URL to [Dto]
-url | .get { (array: [Rest.Model]) in
-
-}
-
-#Post
-
-#Dto to REST.Post
-dto | .post { (done: DTO) in
-
-}
-
-#Put
-
-#Dto to REST.Put
-dto | .put { (done: DTO) in
-
-}
-
-#Delete
-
-#Dto to REST.Delete
-dto | .delete { (done: DTO) in
+#Wait for Notification
+UIApplication.didBecomeActiveNotification | { (n: Notification) in
 
 }
 
@@ -83,11 +29,13 @@ You ideas, comments, contribution are welcome |
 
 Tasks
 
+- [x] Notification
 - [x] Data
-- [x] JsonObject
-- [x] REST
 - [x] URL
-- [ ] Image
+- [x] JsonObject
+- [ ] REST
+
+- [x] Data
 
 [Alex Kozin](mailto:al@el-machine.com)  
 [El Machine 🤖](https://el-machine.com) 2024
