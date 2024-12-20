@@ -44,7 +44,8 @@ ls -l | grep key | less
 ```
 
 
-### ⚙️ Usage
+### 🕹️ How to
+[![How to add REST API support to Swift project](https://img.youtube.com/vi/I81GEbc1ES8/0.jpg)](https://www.youtube.com/watch?v=I81GEbc1ES8)
 
 ```bash
 
