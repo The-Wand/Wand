@@ -14,7 +14,7 @@
 
 ### ⚙️ Usage
 
-```bash
+```bash looks great in the Markdown file
 
 #Request current Location
 |{ (location: CLLocation) in 
@@ -28,8 +28,7 @@ CLAuthorizationStatus.authorizedAlways | .one { status in
 ```
 
 **📦 An ideal API acts as the [black box](https://wikipedia.org/wiki/Blackbox)**  
-**⚡️ It’s possible to incapsulate whole data receiving and memory managment duty to one symbol**  
-**?**   
+**⚡️ It’s possible to incapsulate whole data receiving and memory managment duty to one symbol?**   
 
 [Medium.com](https://medium.com/@al.kozin/universal-api-7ddc67bb0aa5)
 [YouTube.com](https://www.youtube.com/playlist?list=PLvprpeoOl6IoZ67BcD-t0rS1L5c5J4lPh)
@@ -43,12 +42,10 @@ command1 | command2 | command3
 ls -l | grep key | less
 ```
 
-
 ### 🕹️ How to
 [![How to add REST API support to Swift project](https://img.youtube.com/vi/I81GEbc1ES8/0.jpg)](https://www.youtube.com/watch?v=I81GEbc1ES8)
 
 ```bash
-
 #Request current Location
 |{ (location: CLLocation) in 
 
@@ -118,9 +115,25 @@ view.layer.addSublayer(preview!)
 
 ### 💡 Idea
   Imagine that you have the black box that can give you an ```Any``` object.   
-  You don't know what's already in the box or what will happen inside   
+  You don't know what's already in the box or what will happen inside.   
       
   Ask for object that you need |
+
+```bash
+ingredients | { (result: Model) in
+            
+}
+```
+
+```bash
+ingredients | .one { (t: T) in
+            
+} | .every { (u: U) in
+
+} | .while { (v: V) in
+  true
+}
+```
 
 ### 🪄 Сoncept
 
@@ -218,9 +231,9 @@ ex [API](https://github.com/El-Machine/iOS-API-Wrapper)
 - [x] CoreLocation
 - [x] CoreMotion
 - [x] NSNotification
-- [ ] CoreNFC
-- [ ] Vision
-- [ ] Rest
+- [x] CoreNFC
+- [x] Vision
+- [x] Rest
 - [ ] MultipeerConnectivity
 
 [Alex Kozin](mailto:al.kozin@gmail.com)   
