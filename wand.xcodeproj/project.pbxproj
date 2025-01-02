@@ -50,6 +50,9 @@
 		618CB4612C584FD2007B5DC9 /* Wanded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618CB44C2C584FD2007B5DC9 /* Wanded.swift */; };
 		618CB4622C584FD2007B5DC9 /* |.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618CB44E2C584FD2007B5DC9 /* |.swift */; };
 		618CB4632C584FD2007B5DC9 /* Wand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618CB44F2C584FD2007B5DC9 /* Wand.swift */; };
+		618D8EB72D26DF2E00C05692 /* Numbers+Wand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618D8EB62D26DF2E00C05692 /* Numbers+Wand.swift */; };
+		618D8EB82D26DF2E00C05692 /* CoreGraphicsMath+Wand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618D8EB52D26DF2E00C05692 /* CoreGraphicsMath+Wand.swift */; };
+		618D8EBA2D26DFA700C05692 /* String+Wand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618D8EB92D26DFA700C05692 /* String+Wand.swift */; };
 		61BE3CFA2CA3034C0041B58F /* Describing_Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BE3CF92CA3034C0041B58F /* Describing_Character.swift */; };
 		61E04A1E2C44A03900EDF606 /* Describing_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B218A2C4488BD00EB9DEE /* Describing_Tests.swift */; };
 		61E04A1F2C44A03A00EDF606 /* Describing_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B218A2C4488BD00EB9DEE /* Describing_Tests.swift */; };
@@ -173,6 +176,9 @@
 		618CB44C2C584FD2007B5DC9 /* Wanded.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wanded.swift; sourceTree = "<group>"; };
 		618CB44E2C584FD2007B5DC9 /* |.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "|.swift"; sourceTree = "<group>"; };
 		618CB44F2C584FD2007B5DC9 /* Wand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wand.swift; sourceTree = "<group>"; };
+		618D8EB52D26DF2E00C05692 /* CoreGraphicsMath+Wand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreGraphicsMath+Wand.swift"; sourceTree = "<group>"; };
+		618D8EB62D26DF2E00C05692 /* Numbers+Wand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Numbers+Wand.swift"; sourceTree = "<group>"; };
+		618D8EB92D26DFA700C05692 /* String+Wand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Wand.swift"; sourceTree = "<group>"; };
 		61ACC8832BFDF90700BF58A8 /* list.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = list.json; sourceTree = "<group>"; };
 		61BE3CF92CA3034C0041B58F /* Describing_Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Describing_Character.swift; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
@@ -307,6 +313,7 @@
 		618CB43E2C584FD2007B5DC9 /* |tools */ = {
 			isa = PBXGroup;
 			children = (
+				618D8EB42D26DF1E00C05692 /* Convertible */,
 				618CB4392C584FD2007B5DC9 /* Describing */,
 				618CB43A2C584FD2007B5DC9 /* Expressible.swift */,
 				618CB43B2C584FD2007B5DC9 /* log.swift */,
@@ -367,6 +374,16 @@
 				618CB44F2C584FD2007B5DC9 /* Wand.swift */,
 			);
 			path = wand;
+			sourceTree = "<group>";
+		};
+		618D8EB42D26DF1E00C05692 /* Convertible */ = {
+			isa = PBXGroup;
+			children = (
+				618D8EB52D26DF2E00C05692 /* CoreGraphicsMath+Wand.swift */,
+				618D8EB62D26DF2E00C05692 /* Numbers+Wand.swift */,
+				618D8EB92D26DFA700C05692 /* String+Wand.swift */,
+			);
+			path = Convertible;
 			sourceTree = "<group>";
 		};
 		OBJ_138 /* Products */ = {
@@ -619,6 +636,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				618D8EBA2D26DFA700C05692 /* String+Wand.swift in Sources */,
 				618CB4602C584FD2007B5DC9 /* Error.swift in Sources */,
 				618CB4512C584FD2007B5DC9 /* Describing.swift in Sources */,
 				618CB45F2C584FD2007B5DC9 /* Error?.swift in Sources */,
@@ -628,6 +646,8 @@
 				618CB4542C584FD2007B5DC9 /* log.swift in Sources */,
 				618CB45C2C584FD2007B5DC9 /* Asking.swift in Sources */,
 				618CB45D2C584FD2007B5DC9 /* AskingNil.swift in Sources */,
+				618D8EB72D26DF2E00C05692 /* Numbers+Wand.swift in Sources */,
+				618D8EB82D26DF2E00C05692 /* CoreGraphicsMath+Wand.swift in Sources */,
 				61BE3CFA2CA3034C0041B58F /* Describing_Character.swift in Sources */,
 				618CB45E2C584FD2007B5DC9 /* Obtain.swift in Sources */,
 				618CB4592C584FD2007B5DC9 /* Counting.swift in Sources */,
@@ -706,7 +726,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 875;
+				CURRENT_PROJECT_VERSION = 888;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_PREVIEWS = YES;
@@ -767,7 +787,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 875;
+				CURRENT_PROJECT_VERSION = 888;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -820,7 +840,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 875;
+				CURRENT_PROJECT_VERSION = 888;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -868,7 +888,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 875;
+				CURRENT_PROJECT_VERSION = 888;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -933,7 +953,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 875;
+				CURRENT_PROJECT_VERSION = 888;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
@@ -1022,7 +1042,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 875;
+				CURRENT_PROJECT_VERSION = 888;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1073,7 +1093,7 @@
 				ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
-				CURRENT_PROJECT_VERSION = 875;
+				CURRENT_PROJECT_VERSION = 888;
 				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
@@ -1120,7 +1140,7 @@
 				ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
-				CURRENT_PROJECT_VERSION = 875;
+				CURRENT_PROJECT_VERSION = 888;
 				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
@@ -1167,7 +1187,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 875;
+				CURRENT_PROJECT_VERSION = 888;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				DRIVERKIT_DEPLOYMENT_TARGET = 20.0;
@@ -1216,7 +1236,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 875;
+				CURRENT_PROJECT_VERSION = 888;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				DRIVERKIT_DEPLOYMENT_TARGET = 20.0;
