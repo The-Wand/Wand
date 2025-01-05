@@ -282,7 +282,7 @@ extension Wand {
         //Call handler if object exist
         if 
             check,
-            let object: T = get(),
+            let object: T = get(for: key),
             !ask.handler(object)
         {
             return stored != nil
