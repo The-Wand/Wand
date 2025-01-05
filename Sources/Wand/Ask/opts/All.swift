@@ -45,7 +45,7 @@ extension Ask {
     /// .all
     @inline(__always)
     static
-    func all(handler: @escaping (Wand)->() ) -> Ask<Wand> {
+    func all(handler: @escaping (Wand)->() ) -> Ask<Wand>.All {
         .All(once: true) {
             handler($0)
         }
@@ -57,7 +57,7 @@ extension Ask {
 @discardableResult
 @inline(__always)
 public
-func | (wand: Wand, all: Ask<Wand>) -> Wand {
+func | (wand: Wand, all: Ask<Wand>.All) -> Wand {
     _ = wand.answer(the: all)
     return wand
 }
