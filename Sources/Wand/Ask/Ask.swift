@@ -118,8 +118,11 @@ extension Ask {
     ///
     @inline(__always)
     static 
-    func one(_ key: String? = nil, handler: ( (T)->() )? = nil ) -> One {
-        .init(once: true, for: key, handler: handler)
+    func one(_ key: String? = nil, handler: ( (T)->() )? = nil ) -> Self {
+        .init(once: true, for: key) {
+            handler?($0)
+            return false
+        }
     }
 
     /// Ask
