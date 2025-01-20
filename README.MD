@@ -161,7 +161,7 @@ ex [API](https://github.com/El-Machine/iOS-API-Wrapper)
 
 - 😜  The Inmates Are Running the Asylum:   
       Why High Tech Products Drive Us Crazy and How to Restore the Sanity (2019)   
-      Alan Cooper (Author)  
+      Alan Cooper 
 
 - ⊶  Origin (2017)   
       Dan Brown
