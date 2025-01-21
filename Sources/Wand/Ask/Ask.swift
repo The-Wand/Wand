@@ -183,15 +183,16 @@ extension Ask {
     func handle(_ object: T) -> Ask? {
         
         //Store ask while true
-        if handler(object) 
-        {
+        if handler(object) {
+
             let tail = next?.handle(object) ?? self
             tail.next = self
             return tail
-        } 
-        else
-        {
+
+        } else {
+
             return next?.handle(object)
+
         }
 
     }

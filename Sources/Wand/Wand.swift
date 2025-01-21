@@ -155,20 +155,15 @@ extension Wand {
         let key = store(object, key: raw)
 
         //Answer questions
-        guard
-            let stored = asking[key]
-        else {
+        guard let stored = asking[key] else {
             return object
         }
 
         //From head
-        if let tail = (stored.last as? Ask<T>)?.head(object)
-        {
+        if let tail = (stored.last as? Ask<T>)?.head(object) {
             //Save
             asking[key] = (tail, stored.cleaner)
-        } 
-        else
-        {
+        } else {
             //Clean
             stored.cleaner?()
             asking[key] = nil
