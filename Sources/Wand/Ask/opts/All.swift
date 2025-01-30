@@ -28,25 +28,12 @@ import Foundation
 ///
 extension Ask {
 
-    public
-    class All: Option {
-
-        /// Ask.all
-        @inline(__always)
-        public
-        required
-        init(once: Bool, for key: String? = nil, handler: @escaping (T) -> (Bool) ) {
-            super.init(once: true, for: "All", handler: handler)
-        }
-
-    }
-
     /// .all
     @inline(__always)
     public
     static
-    func all(handler: @escaping (Wand)->() ) -> Ask<Wand>.All {
-        .All(once: true) {
+    func all(handler: @escaping (Wand)->() ) -> Ask<Wand> {
+        .Option(once: true, for: "All") {
             handler($0)
         }
     }
@@ -57,7 +44,7 @@ extension Ask {
 @discardableResult
 @inline(__always)
 public
-func | (wand: Wand, all: Ask<Wand>.All) -> Wand {
+func | (wand: Wand, all: Ask<Wand>) -> Wand {
     _ = wand.answer(the: all)
     return wand
 }
