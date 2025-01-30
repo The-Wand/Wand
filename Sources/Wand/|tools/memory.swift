@@ -39,6 +39,7 @@ struct Memory {
         withUnsafePointer(to: &mutable) { pointer in
             address = String(format: "%p", pointer)
         }
+
         return Int(address!)!
     }
 

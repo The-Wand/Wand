@@ -25,12 +25,12 @@ import Foundation
 /// wand | .any { any in
 ///
 /// }
-/// 
-public
+///
 extension Ask {
     
     /// .any
     @inline(__always)
+    public
     static
     func any(handler: @escaping (Any)->() ) -> Ask<Any> {
         .Option(once: false) {

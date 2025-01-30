@@ -30,7 +30,6 @@ import Foundation
 @inline(__always)
 public
 func | (wand: Wand, handler: @escaping (Error?)->() ) -> Wand {
-
     //Handle Succeed completion
     let all = Ask<Wand>.all { _ in
         handler(nil)
@@ -55,7 +54,6 @@ func | (wand: Wand, handler: @escaping (Error?)->() ) -> Wand {
 @inline(__always)
 public
 func | (wand: Wand, ask: Ask<Error?>) -> Wand {
-    
     //Handle Succeed completion
     let all = Ask<Wand>.all { _ in
         _ = ask.handler(nil)
@@ -66,5 +64,4 @@ func | (wand: Wand, ask: Ask<Error?>) -> Wand {
         all.cancel()
         _ = ask.handler($0)
     }
-
 }

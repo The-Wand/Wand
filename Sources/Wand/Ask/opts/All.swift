@@ -25,15 +25,14 @@ import Foundation
 /// wand | .all {
 ///
 /// }
-/// 
-public
+///
 extension Ask {
 
+    public
     class All: Option {
 
         /// Ask.all
         @inline(__always)
-        
         public
         required
         init(once: Bool, for key: String? = nil, handler: @escaping (T) -> (Bool) ) {
@@ -44,6 +43,7 @@ extension Ask {
 
     /// .all
     @inline(__always)
+    public
     static
     func all(handler: @escaping (Wand)->() ) -> Ask<Wand>.All {
         .All(once: true) {

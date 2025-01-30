@@ -97,10 +97,10 @@ class Wand {
 }
 
 /// Attach to Any?
-public
 extension Wand {
 
     @inline(__always)
+    public
     static
     func to<C>(_ context: C? = nil) -> Wand {
 
@@ -127,15 +127,16 @@ extension Wand {
 
 /// Get
 /// From context
-public
 extension Wand {
 
     @inline(__always)
+    public
     func get<T>(for key: String? = nil) -> T? {
         context[key ?? T.self|] as? T
     }
 
     @inline(__always)
+    public
     func get<T>(for key: String? = nil, or create: @autoclosure ()->(T) ) -> T {
         get(for: key) ?? save(create(), key: key)
     }
@@ -144,11 +145,11 @@ extension Wand {
 
 /// Add object
 /// Satisfy action
-public
 extension Wand {
 
     @discardableResult
     @inlinable
+    public
     func add<T>(_ object: T, for raw: String? = nil) -> T {
 
         //Retreive key for saved
@@ -177,6 +178,7 @@ extension Wand {
 
     @discardableResult
     @inline(__always)
+    public
     func addIf<T>(exist object: T?, for key: String? = nil) -> T? {
         
         guard let object = object else {
@@ -190,11 +192,11 @@ extension Wand {
 
 /// Check object availability
 /// Context contains
-public
 extension Wand {
 
     @discardableResult
     @inline(__always)
+    public
     func contains(_ key: String) -> Bool {
         context.keys.contains(key)
     }
@@ -203,11 +205,11 @@ extension Wand {
 
 /// Remove
 /// Without triggering
-public
 extension Wand {
 
     @discardableResult
     @inline(__always)
+    public
     func extract<T>(_ key: String? = nil) -> T? {
         context.removeValue(forKey: key ?? T.self|) as? T
     }
@@ -216,11 +218,11 @@ extension Wand {
 
 /// Save
 /// Without triggering Asks
-public
 extension Wand {
 
     @discardableResult
     @inline(__always)
+    public
     func save<T: Sequence>(sequence: T) -> T {
 
         sequence.forEach { object in
@@ -235,12 +237,14 @@ extension Wand {
 
     @discardableResult
     @inline(__always)
+    public
     func save<T>(_ object: T, key: String? = nil) -> T {
         store(object, key: key)
         return object
     }
 
     @inline(__always)
+    public
     func addDefault<T>(_ object: T, key: String? = nil) {
 
         let result = key ?? T.self|
@@ -251,6 +255,7 @@ extension Wand {
 
     @discardableResult
     @inline(__always)
+    public
     func store<T>(_ object: T, key: String? = nil) -> String {
 
         let result = key ?? T.self|
@@ -264,10 +269,10 @@ extension Wand {
 
 /// Ask
 /// For objects
-public
 extension Wand {
 
     @inlinable
+    public
     func answer<T>(the ask: Ask<T>,
                    check: Bool = false) -> Bool {
 

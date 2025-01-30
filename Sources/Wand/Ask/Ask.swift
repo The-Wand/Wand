@@ -33,10 +33,10 @@ class Ask<T> {
     public
     let once: Bool
 
-    ///@synthesize `key`
     internal
     var _key: String?
 
+    ///@synthesize `key`
     @inline(__always)
     public
     var key: String {
@@ -48,12 +48,12 @@ class Ask<T> {
         }
     }
 
-    ///@synthesize `wand`
     private
     var wand: Wand?
 
+    ///@synthesize `wand`
     @inline(__always)
-    open
+    public
     func set(wand: Wand) {
         self.wand = wand
     }
@@ -63,7 +63,6 @@ class Ask<T> {
     public
     convenience
     init(once: Bool, for key: String? = nil, handler: ( (T) -> () )? = nil ) {
-
         self.init(once: once, for: key) {
             handler?($0)
             return !once
@@ -95,7 +94,6 @@ class Ask<T> {
 /// - `every`
 /// - `one`
 /// - `while`
-public
 extension Ask {
 
     /// Ask
@@ -105,6 +103,7 @@ extension Ask {
     /// }
     ///
     @inline(__always)
+    public
     static
     func every(_ key: String? = nil, handler: ( (T)->() )? = nil ) -> Every {
         .init(once: false, for: key, handler: handler)
@@ -117,7 +116,8 @@ extension Ask {
     /// }
     ///
     @inline(__always)
-    static 
+    public
+    static
     func one(_ key: String? = nil, handler: ( (T)->() )? = nil ) -> Self {
         .init(once: true, for: key) {
             handler?($0)
@@ -132,7 +132,8 @@ extension Ask {
     /// }
     ///
     @inline(__always)
-    static 
+    public
+    static
     func `while`(_ key: String? = nil, handler: @escaping (T)->(Bool) ) -> Self {
         .init(once: false, for: key, handler: handler)
     }
@@ -181,7 +182,6 @@ extension Ask {
     @inlinable
     internal
     func handle(_ object: T) -> Ask? {
-        
         //Store ask while true
         if handler(object) {
 
@@ -194,7 +194,6 @@ extension Ask {
             return next?.handle(object)
 
         }
-
     }
 
 }

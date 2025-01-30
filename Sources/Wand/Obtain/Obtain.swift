@@ -60,10 +60,10 @@ func |<T: Obtain>(wand: Wand?) -> T {
 ///
 /// let object: T = wand.obtain()
 ///
-public
 extension Wand {
 
     @inline(__always)
+    public
     func obtain <T: Obtain> (for key: String? = nil) -> T {
         get(for: key, or: T.obtain(by: self))
     }

@@ -21,7 +21,6 @@
 import Foundation
 
 /// While counting
-public
 extension Ask {
 
     /// Ask .while
@@ -31,6 +30,7 @@ extension Ask {
     /// }
     ///
     @inline(__always)
+    public
     static
     func `while`(key: String? = nil,
                  handler: @escaping (T, Int)->(Bool) ) -> Ask {

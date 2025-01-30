@@ -32,15 +32,16 @@ protocol Wanded {
 
 }
 
-public
 extension Wanded {
 
     @inline(__always)
+    public
     var wand: Wand {
         isWanded ?? Wand(for: self)
     }
 
     @inline(__always)
+    public
     var isWanded: Wand? {
         Wand[self]
     }
@@ -48,15 +49,16 @@ extension Wanded {
 }
 
 ///Any?
-public
 extension Optional {
 
     @inline(__always)
+    public
     var wend: Wand {
         isWend ?? .to(self)
     }
 
     @inline(__always)
+    public
     var isWend: Wand? {
         Wand[self]
     }
