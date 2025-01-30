@@ -4,8 +4,25 @@
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
-      buildImplicitDependencies = "YES"
-      buildArchitectures = "Automatic">
+      buildImplicitDependencies = "YES">
+      <PostActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Run Script"
+               scriptText = "cd $PROJECT_DIR&#10;xcrun agvtool next-version -all&#10;">
+               <EnvironmentBuildable>
+                  <BuildableReference
+                     BuildableIdentifier = "primary"
+                     BlueprintIdentifier = "6162624B28BC8E2B00D63EA5"
+                     BuildableName = "Play.app"
+                     BlueprintName = "Play"
+                     ReferencedContainer = "container:Wand.xcodeproj">
+                  </BuildableReference>
+               </EnvironmentBuildable>
+            </ActionContent>
+         </ExecutionAction>
+      </PostActions>
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "YES"
@@ -15,10 +32,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "613966142BE0F4EF004C18A3"
-               BuildableName = "watchPlay.app"
-               BlueprintName = "watchPlay"
-               ReferencedContainer = "container:wand.xcodeproj">
+               BlueprintIdentifier = "6162624B28BC8E2B00D63EA5"
+               BuildableName = "Play.app"
+               BlueprintName = "Play"
+               ReferencedContainer = "container:Wand.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,12 +45,8 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
-      <TestPlans>
-         <TestPlanReference
-            reference = "container:App/watchTestPlan.xctestplan"
-            default = "YES">
-         </TestPlanReference>
-      </TestPlans>
+      <Testables>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -44,19 +57,19 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
-      allowLocationSimulation = "NO">
+      allowLocationSimulation = "YES">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "613966142BE0F4EF004C18A3"
-            BuildableName = "watchPlay.app"
-            BlueprintName = "watchPlay"
-            ReferencedContainer = "container:wand.xcodeproj">
+            BlueprintIdentifier = "6162624B28BC8E2B00D63EA5"
+            BuildableName = "Play.app"
+            BlueprintName = "Play"
+            ReferencedContainer = "container:Wand.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <LocationScenarioReference
-         identifier = "Tokyo, Japan"
+         identifier = "Mexico City, Mexico"
          referenceType = "1">
       </LocationScenarioReference>
    </LaunchAction>
@@ -70,10 +83,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "613966142BE0F4EF004C18A3"
-            BuildableName = "watchPlay.app"
-            BlueprintName = "watchPlay"
-            ReferencedContainer = "container:wand.xcodeproj">
+            BlueprintIdentifier = "6162624B28BC8E2B00D63EA5"
+            BuildableName = "Play.app"
+            BlueprintName = "Play"
+            ReferencedContainer = "container:Wand.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

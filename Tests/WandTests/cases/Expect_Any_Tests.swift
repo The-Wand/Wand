@@ -48,6 +48,7 @@ class Expect_Any_Tests: XCTestCase {
 
 }
 
+//Example of conforming to Asking
 extension String: @retroactive Asking
 {
     @inline(__always)

@@ -23,7 +23,7 @@ import Wand
 
 @available(iOS 14, macOS 12, tvOS 14, watchOS 7, *)
 @main
-struct playApp: App {
+struct PlayApp: App {
 
     var body: some Scene {
         WindowGroup {
@@ -35,14 +35,14 @@ struct playApp: App {
 
 @available(iOS 14, macOS 12, tvOS 14, watchOS 7, *)
 struct ContentView: View {
-    var body: some View {
 
+    var body: some View {
         VStack {
             Image(systemName: "wand.and.stars")
             Text("Hello, world!")
         }
-
     }
+
 }
 
 @available(iOS 14, macOS 12, tvOS 14, watchOS 7, *)
