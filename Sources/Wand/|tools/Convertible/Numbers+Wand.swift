@@ -27,7 +27,7 @@ func |<T: Numeric> (value: Bool) -> T {
     value ? 1 : 0
 }
 
-//TODO:
+//TODO: Make it works
 //@inline(__always)
 //postfix
 //public
