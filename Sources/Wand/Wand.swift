@@ -273,18 +273,13 @@ extension Wand {
 
     @inlinable
     public
-    func answer<T>(the ask: Ask<T>,
-                   check: Bool = false) -> Bool {
+    func answer<T>(the ask: Ask<T>, check: Bool = false) -> Bool {
 
         let key = ask.key
         let stored = asking[key]
 
         //Call handler if object exist
-        if 
-            check,
-            let object: T = get(for: key),
-            !ask.handler(object)
-        {
+        if check, let object: T = get(for: key), !ask.handler(object) {
             return stored != nil
         }
 
@@ -342,7 +337,6 @@ extension Wand {
     @inline(__always)
     public
     func close() {
-
         //Handle Ask.all
         (asking["All"]?.last as? Ask<Wand>)?.head(self)
 
@@ -360,7 +354,6 @@ extension Wand {
         Wand.all = Wand.all.filter {
             $0.value.item != nil
         }
-
     }
 
 }

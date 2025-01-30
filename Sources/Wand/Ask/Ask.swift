@@ -159,17 +159,15 @@ extension Ask {
     @inlinable
     internal
     func handle(_ object: T) -> Ask? {
-        //Store ask while true
-        if handler(object) {
 
+        if handler(object) {
+            //Store ask while true
             let tail = next?.handle(object) ?? self
             tail.next = self
             return tail
-
         } else {
-
+            //Otherwise use next node
             return next?.handle(object)
-
         }
     }
 
