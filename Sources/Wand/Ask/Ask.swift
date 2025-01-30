@@ -105,8 +105,11 @@ extension Ask {
     @inline(__always)
     public
     static
-    func every(_ key: String? = nil, handler: ( (T)->() )? = nil ) -> Every {
-        .init(once: false, for: key, handler: handler)
+    func every(_ key: String? = nil, handler: ( (T)->() )? = nil ) -> Self {
+        .init(once: false, for: key) {
+            handler?($0)
+            return true
+        }
     }
 
     /// Ask
@@ -142,32 +145,6 @@ extension Ask {
 
 /// Handle answer
 extension Ask {
-
-    open
-    class One: Ask {
-
-        @inline(__always)
-        public
-        convenience
-        init(for key: String? = nil, handler: @escaping (T) -> () ) {
-            self.init(once: true, for: key, handler: handler)
-        }
-
-    }
-
-    open
-    class Every: Ask {
-
-        @inline(__always)
-        public
-        convenience
-        init(for key: String? = nil,
-             handler: @escaping (T) -> () ) {
-
-            self.init(once: false, for: key, handler: handler)
-        }
-
-    }
 
     @discardableResult
     @inline(__always)

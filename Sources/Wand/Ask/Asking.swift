@@ -85,14 +85,14 @@ extension Asking {
     @inline(__always)
     public
     static
-    var every: Ask<Self>.Every {
+    var every: Ask<Self> {
         .every()
     }
 
     @inline(__always)
     public
     static
-    var one: Ask<Self>.One {
+    var one: Ask<Self> {
         .one()
     }
     
