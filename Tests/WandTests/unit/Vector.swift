@@ -25,7 +25,7 @@ import Wand
 
 struct Vector: Equatable, Any_ {
 
-    let x, y, z, t: Double
+    let x, y, z, t: UInt64
 
     public
     static
