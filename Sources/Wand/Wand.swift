@@ -27,6 +27,20 @@ final
 class Wand {
 
     public
+    struct Weak {
+
+        weak
+        var item: Wand?
+
+        @inline(__always)
+        init(item: Wand) {
+            self.item = item
+        }
+
+    }
+
+    internal(set)
+    public
     static
     var all = [Int: Weak]()
 
