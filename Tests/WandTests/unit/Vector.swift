@@ -16,7 +16,7 @@
 /// limitations under the License.
 ///
 /// Created by Alex Kozin
-/// 2020 El Machine
+/// El Machine
 
 import Foundation
 
