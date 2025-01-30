@@ -113,7 +113,7 @@ let preview: AVCaptureVideoPreviewLayer = wand.obtain()
 view.layer.addSublayer(preview!)
 ```
 
-### ‼ Error handling
+### ❗ Error handling
   Attach Ask<Error> to the context.
 
 ```bash
