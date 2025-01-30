@@ -113,6 +113,15 @@ let preview: AVCaptureVideoPreviewLayer = wand.obtain()
 view.layer.addSublayer(preview!)
 ```
 
+### ‼ Error handling
+  Attach Ask<Error> to the context.
+
+```bash
+Any | { (error: Error) in
+    
+}
+```
+
 ### 💡 Idea
   Imagine that you have the black box that can give you an ```Any``` object.   
   You don't know what's already in the box or what will happen inside.   
@@ -200,9 +209,9 @@ ex [API](https://github.com/El-Machine/iOS-API-Wrapper)
       Freepik - Flaticon   
       https://flaticon.com/free-icons/wand
 
-- 🤖  Upscaled by AI   
-      Augmented Intelligence   
-      https://www.google.com?q=ai+upscale+image
+- 🤖  Enchanced by AI   
+      Augmented Intelligence / Artificial Intelligence    
+      https://www.google.com?q=ai
     
 - ⚡️  Macromedia® Flash   
       600 Townsend Street, San Francisco, CA 94103 1997   

@@ -37,7 +37,6 @@ func | (wand: Wand, handler: @escaping (Error?)->() ) -> Wand {
     }
 
     //Handle Error completion
-
     let everyError = { (e: Error) in
         all.cancel()
         handler(e)
