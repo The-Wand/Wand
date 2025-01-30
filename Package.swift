@@ -43,7 +43,7 @@ let package = Package(
 
     targets: [
         .target(name: "Wand"),
-        .testTarget(name: "wandTests", dependencies:
+        .testTarget(name: "WandTests", dependencies:
                         [
                             "Wand",
                             .product(name: "Any_", package: "Any")

@@ -9,17 +9,13 @@
     }
   ],
   "defaultOptions" : {
-    "locationScenario" : {
-      "identifier" : "Tokyo, Japan",
-      "referenceType" : "built-in"
-    }
   },
   "testTargets" : [
     {
       "target" : {
         "containerPath" : "container:",
-        "identifier" : "wandTests",
-        "name" : "wandTests"
+        "identifier" : "WandTests",
+        "name" : "WandTests"
       }
     }
   ],
