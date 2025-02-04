@@ -28,7 +28,7 @@ extension Ask {
         @inline(__always)
         override
         public
-        func set(wand: Wand) {
+        func set(wand: Wand?) {
         }
 
         @inline(__always)

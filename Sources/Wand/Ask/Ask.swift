@@ -54,7 +54,7 @@ class Ask<T> {
     ///@synthesize `wand`
     @inline(__always)
     public
-    func set(wand: Wand) {
+    func set(wand: Wand?) {
         self.wand = wand
     }
 
