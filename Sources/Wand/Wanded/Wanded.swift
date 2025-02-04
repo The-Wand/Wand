@@ -64,3 +64,13 @@ extension Optional {
     }
 
 }
+
+@discardableResult
+@inline(__always)
+postfix
+public
+func | (wanded: Wanded?) -> Wand? {
+    let wand = wanded?.isWanded
+    wand?.close()
+    return wand
+}

@@ -35,7 +35,8 @@ class Expect_T_Tests: XCTestCase {
         var last: Vector?
 
         //Wait for 'count' Points
-        weak var wand: Wand!
+        weak
+        var wand: Wand!
         wand = |.every { (point: Vector) in
             //Is equal?
             if point == last {
@@ -45,26 +46,28 @@ class Expect_T_Tests: XCTestCase {
 
         //Put for 'count' Vector
         var i = 0
-        (0..<count).forEach { _ in
+        (0..<count).forEach { [weak wand] _ in
             let point = Vector.any
             last = point
 
-            wand.add(point)
+            wand?.add(point)
 
             i = i+1
         }
 
         waitForExpectations(timeout: .default)
 
+        //TODO: add is closed test
         wand.close()
     }
-
+ 
     func test_One() throws {
         let e = expectation()
 
         let point = Vector.any
 
-        weak var wand: Wand!
+        weak
+        var wand: Wand!
         wand = |.one { (point: Vector) in
             e.fulfill()
         }
@@ -85,7 +88,8 @@ class Expect_T_Tests: XCTestCase {
 
         let e = expectation()
 
-        weak var wand: Wand!
+        weak
+        var wand: Wand!
         wand = |.while { (point: Vector) in
 
             if point.t > 2 {

@@ -29,7 +29,8 @@ class Expect_All_Tests: XCTestCase {
         let e = expectation(description: "event.all")
         e.assertForOverFulfill = false
 
-        weak var wand: Wand!
+        weak
+        var wand: Wand!
         wand = Vector.one | String.one | .all { _ in
             e.fulfill()
         }

@@ -30,7 +30,7 @@ class Wand_Tests: XCTestCase {
     var wand: Wand?
 
     func test_put() throws {
-        let wand = Wand()
+        var wand: Wand! = Wand()
         self.wand = wand
 
         let struct_ = CLLocationCoordinate2D.any
@@ -58,11 +58,17 @@ class Wand_Tests: XCTestCase {
         let wanded_custom_class: CustomClass = try XCTUnwrap(wand.get())
         XCTAssertIdentical(custom_class, wanded_custom_class)
 
-        wand.close()
+        //Close wand
+        weak
+        var closed = wand|
+        wand = nil
+
+        XCTAssertNil(closed)
+        XCTAssertNil(self.wand)
     }
 
     func test_putWanded() throws {
-        let wand = Wand()
+        var wand: Wand! = Wand()
         self.wand = wand
 
         let original: CLLocation = CLLocation.any
@@ -77,7 +83,13 @@ class Wand_Tests: XCTestCase {
         XCTAssertTrue((original as Optional).wend === 
                       (wanded as Optional).wend)
 
-        wand.close()
+        //Close wand
+        weak
+        var closed = wand|
+        wand = nil
+
+        XCTAssertNil(closed)
+        XCTAssertNil(self.wand)
     }
 
     func test_closed() throws {
