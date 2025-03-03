@@ -1,16 +1,29 @@
 
-## ![Wand 🪄](https://github.com/El-Machine/Wand/raw/main/App/Assets.xcassets/AppIcon.appiconset/magic-wand-transformed-20.png) API for Any (thing) |
+## **[Declarative Programming Language](https://github.com/The-Wand/Wand)**
 
-### Swift Package Collection
-[📦 |Packages](https://raw.githubusercontent.com/El-Machine/wand/main/collection.json)  
+|wand created to support all platfroms   
+Prototype implemented on Swift
+
+```bash looks great in the Markdown file
+Location.one | MotionEvent.one | .all {
+
+}
+```
+
+### Package Collection
+[📦 |Packages](https://raw.githubusercontent.com/The-Wand/Wand/main/collection.json)   
 
 ### Packages
-[🔖 |CoreLocation](https://github.com/El-Machine/Wand_CoreLocation)   
-[🏃 |CoreMotion](https://github.com/El-Machine/Wand_CoreMotion)   
-[📡 |CoreNFC](https://github.com/El-Machine/Wand_CoreNFC)   
-[🏛️ |Foundation](https://github.com/El-Machine/Wand_Foundation)   
-[🌤️ |Weather](https://github.com/El-Machine/Wand_Weather)   
-[🖥️ |URL](https://github.com/El-Machine/WandURL)    
+[🔖 |Location](https://github.com/The-Wand/Location)   
+[🏃 |Motion](https://github.com/The-Wand/Motion)   
+[📡 |NFC](https://github.com/The-Wand/NFC)   
+[🏛️ |Foundation](https://github.com/The-Wand/Foundation)   
+[🌤️ |Weather](https://github.com/The-Wand/Weather)   
+[🖥️ |URL](https://github.com/The-Wand/URL)   
+
+Add one sign and wait for the result 📦   
+ex [Pipe](https://github.com/The-Wand/Pipe)   
+ex [API](https://github.com/The-Wand/iOS-API-Wrapper)       
 
 ### ⚙️ Usage
 
@@ -146,11 +159,8 @@ ingredients | .one { (t: T) in
 
 ### 🪄 Сoncept
 
-Wand started from the idea about receiving anything in most efficient way. 
-  
-Add one sign to completion handler and retreive the result 📦   
-ex [Pipe](https://github.com/El-Machine/Pipe)   
-ex [API](https://github.com/El-Machine/iOS-API-Wrapper)   
+Wand started from the idea about receiving anything in most efficient way.   
+Add one sign to anything and retreive the result 📦
 
 [Feel free to contribute. You are welcome 🔬](https://github.com/El-Machine/Wand/graphs/contributors)
 
