@@ -10,7 +10,7 @@ Location.one | MotionEvent.one | .all {
 }
 ```
 
-### Package Collection
+### [Package Collection ℹ️](https://swiftpackageindex.com/package-collections)
 [📦 |Packages](https://raw.githubusercontent.com/The-Wand/Wand/main/collection.json)   
 
 ### Packages
@@ -21,7 +21,7 @@ Location.one | MotionEvent.one | .all {
 [🌤️ |Weather](https://github.com/The-Wand/Weather)   
 [🖥️ |URL](https://github.com/The-Wand/URL)   
 
-Add one sign and wait for the result 📦   
+Add one sign and wait for the result 🪄   
 ex [Pipe](https://github.com/The-Wand/Pipe)   
 ex [API](https://github.com/The-Wand/iOS-API-Wrapper)       
 
