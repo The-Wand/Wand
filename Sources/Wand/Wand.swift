@@ -79,7 +79,7 @@ class Wand {
     }
 
     public
-    var asking = [String: (last: Any, cleaner: ( ()->() )? )]()
+    var asking = [String: (first: Any, last: Any, cleaner: ( ()->() )? )]()
 
     public
     var context = [String: Any]()
