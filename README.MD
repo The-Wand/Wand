@@ -293,6 +293,8 @@ $\hspace{17pt}$ https://flipperzero.one
 - [x] Vision
 - [ ] MultipeerConnectivity
 
+The Wand may collect usage data   
+You must attribute the author   
 [Alex Kozin](mailto:al.kozin@gmail.com)   
 [El Machine 🤖](https://el-machine.com)  
 Apps since 2008
