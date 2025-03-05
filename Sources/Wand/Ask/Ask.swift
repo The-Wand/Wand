@@ -56,7 +56,6 @@ class Ask<T> {
         self.wand = wand
     }
 
-    ///init
     @inline(__always)
     public
     convenience
@@ -67,7 +66,6 @@ class Ask<T> {
         }
     }
 
-    ///init
     @inline(__always)
     public
     required

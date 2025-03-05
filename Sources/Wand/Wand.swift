@@ -156,7 +156,7 @@ extension Wand {
 }
 
 /// Add object
-/// Satisfy action
+/// Call handlers
 extension Wand {
 
     @discardableResult
