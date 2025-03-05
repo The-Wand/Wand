@@ -1,0 +1,17 @@
+The Wand
+Copyright 2020 Alexander Kozin
+
+This product includes software developed by
+Alexander Kozin (al.kozin@gmail.com).
+
+The Wand icon in 
+Assets
+was downloaded from Flaticon. (https://flaticon.com/free-icons/wand)
+
+The Wand icon in 
+Assets
+was increased in size by AI.
+
+Error handling section in
+README.md
+was inspired by ChatGPT. (https://chatgpt.com)

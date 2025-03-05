@@ -182,6 +182,7 @@
 		618D8EB52D26DF2E00C05692 /* CoreGraphicsMath+Wand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreGraphicsMath+Wand.swift"; sourceTree = "<group>"; };
 		618D8EB62D26DF2E00C05692 /* Numbers+Wand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Numbers+Wand.swift"; sourceTree = "<group>"; };
 		618D8EB92D26DFA700C05692 /* String+Wand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Wand.swift"; sourceTree = "<group>"; };
+		61AA24C02D787669005550F4 /* NOTICE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = NOTICE.txt; sourceTree = "<group>"; };
 		61ACC8832BFDF90700BF58A8 /* list.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = list.json; sourceTree = "<group>"; };
 		61BE3CF92CA3034C0041B58F /* Describing_Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Describing_Character.swift; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
@@ -357,8 +358,8 @@
 		618CB44D2C584FD2007B5DC9 /* Wanded */ = {
 			isa = PBXGroup;
 			children = (
-				618CB44A2C584FD2007B5DC9 /* Error?.swift */,
 				618CB44B2C584FD2007B5DC9 /* Error.swift */,
+				618CB44A2C584FD2007B5DC9 /* Error?.swift */,
 				618CB44C2C584FD2007B5DC9 /* Wanded.swift */,
 			);
 			path = Wanded;
@@ -413,6 +414,7 @@
 				615A968B2BF39E88003875F5 /* CONTRIB.TXT */,
 				6172A0EE2C109EB400AF925F /* INSPIRATION.TXT */,
 				615A968A2BF39E88003875F5 /* LICENSE */,
+				61AA24C02D787669005550F4 /* NOTICE.txt */,
 				615A968F2BF39E88003875F5 /* README.MD */,
 				614B218B2C4489B700EB9DEE /* Frameworks */,
 			);
