@@ -111,7 +111,7 @@ class Wand {
 /// Attach to Any?
 extension Wand {
 
-    @inline(__always)
+    @inlinable
     public
     static
     func to<C>(_ context: C? = nil) -> Wand {
@@ -346,7 +346,6 @@ extension Wand: Wanded {
 /// Close
 extension Wand {
 
-    @inline(__always)
     public
     func close() {
         //Handle Ask.all
