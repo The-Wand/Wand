@@ -16,7 +16,6 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-/// log
 @inline(__always)
 public
 func log(_ message: String) {
