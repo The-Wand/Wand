@@ -137,7 +137,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		612EA78E2C007DB600F193DC /* Package.resolved */ = {isa = PBXFileReference; lastKnownFileType = text; name = Package.resolved; path = Wand.xcodeproj/xcuserdata/swiftpm/Package.resolved; sourceTree = "<group>"; };
 		613966152BE0F4EF004C18A3 /* WatchPlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchPlay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		613966482BE0F87A004C18A3 /* WatchPlayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WatchPlayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		615158912BF74A4C001646EA /* TestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestPlan.xctestplan; sourceTree = "<group>"; };
@@ -408,7 +407,6 @@
 				615158E72BF75EEC001646EA /* info.plist */,
 				61ACC8832BFDF90700BF58A8 /* list.json */,
 				OBJ_6 /* Package.swift */,
-				612EA78E2C007DB600F193DC /* Package.resolved */,
 				OBJ_138 /* Products */,
 				618056362BCB90D60013EC56 /* Tests */,
 				615A968B2BF39E88003875F5 /* CONTRIB.TXT */,
