@@ -31,13 +31,13 @@ class Wand {
         var item: Wand?
 
         @inline(__always)
+        public
         init(item: Wand) {
             self.item = item
         }
 
     }
 
-    internal(set)
     public
     static
     var all = [Int: Weak]()
