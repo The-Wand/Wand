@@ -100,7 +100,6 @@ class Wand {
         context[T.self|] = object
     }
 
-    @inlinable
     deinit {
         close()
         log("|✅ #bonsua\n\(self)\n")
