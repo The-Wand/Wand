@@ -19,6 +19,7 @@
 import Foundation
 
 /// Ask from Context
+///
 /// TODO: func | (wand: Wand, asks: Ask<Self>)
 public
 protocol Asking {
