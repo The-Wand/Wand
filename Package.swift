@@ -38,9 +38,12 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/The-Wand/Any.git", from: "1.0.1")
     ],
-
     targets: [
-        .target(name: "Wand"),
+        .binaryTarget(
+            name: "Wand",
+            url: "https://github.com/The-Wand/Binary/blob/main/Wand-1.5.6.xcframework.zip?raw=1",
+            checksum: "29a5a3d116afe898d4b30e710f5082f5b5c91c22d75d3bf52bb575f1866c878a"
+        ),
         .testTarget(name: "WandTests", dependencies:
                         [
                             "Wand",
