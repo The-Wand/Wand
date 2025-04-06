@@ -18,16 +18,16 @@
 
 import Foundation
 
-/// Get Object from Wand 
+/// Get Object from Core 
 /// or create in Context
 /// 
-/// TODO: func |(wand: Wand?) -> Self
+/// TODO: func |(wand: Core?) -> Self
 public
 protocol Obtainable: Wanded {
 
     @inline(__always)
     static 
-    func obtain(by wand: Wand?) -> Self
+    func obtain(by wand: Core?) -> Self
 
 }
 
@@ -49,7 +49,7 @@ func |<T: Obtainable>(type: T.Type) -> T {
 @inline(__always)
 postfix
 public
-func |<T: Obtainable>(wand: Wand?) -> T {
+func |<T: Obtainable>(wand: Core?) -> T {
     wand?.get() ?? {
         let object = T.obtain(by: wand)
         return wand?.add(object) ?? object
@@ -60,7 +60,7 @@ func |<T: Obtainable>(wand: Wand?) -> T {
 ///
 /// let object: T = wand.obtain()
 ///
-extension Wand {
+extension Core {
 
     @inline(__always)
     public
@@ -78,7 +78,7 @@ extension Wand {
 postfix
 public
 func |<C, T: Obtainable>(context: C) -> T {
-    context as? T ?? Wand.to(context).get()
+    context as? T ?? Core.to(context).get()
 }
 
 /// Obtainable unwrap

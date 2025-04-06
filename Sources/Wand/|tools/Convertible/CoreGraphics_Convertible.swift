@@ -16,28 +16,21 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-#if canImport(Foundation)
-import Foundation
+#if canImport(CoreGraphics)
+import CoreGraphics
 
 @inline(__always)
-postfix
 public
-func |(self: String) -> Int? {
-    Int(self) ?? Int(String(self.unicodeScalars.filter(CharacterSet.decimalDigits.inverted.contains)))
+postfix
+func |(value: CGFloat) -> Float {
+    Float(value)
 }
 
 @inline(__always)
 postfix
 public
-func |(self: String) -> Int {
-    (self|)!
-}
-
-@inline(__always)
-postfix
-public
-func |(piped: String?) -> Double? {
-    Double(piped ?? "")
+func |(value: any BinaryInteger) -> CGFloat {
+    CGFloat(value)
 }
 
 #endif

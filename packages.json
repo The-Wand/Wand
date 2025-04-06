@@ -1,0 +1,36 @@
+{
+  "name": "The Wand",
+  "overview": "The Wand Swift plugins",
+  "author": {
+    "name": "Alex Kozin"
+  },
+  "keywords": [
+    "wand",
+    "tdd",
+    "factory-method",
+    "oracle-machine",
+    "modules",
+    "plugins",
+    "swift"
+  ],
+  "packages": [
+    {
+      "url": "https://github.com/The-Wand/Foundation.git"
+    },
+    {
+      "url": "https://github.com/The-Wand/Location.git"
+    },
+    {
+      "url": "https://github.com/The-Wand/Motion.git"
+    },
+    {
+      "url": "https://github.com/The-Wand/NFC.git"
+    },
+    {
+      "url": "https://github.com/The-Wand/Weather.git"
+    },
+    {
+      "url": "https://github.com/The-Wand/URL.git"
+    }
+  ]
+}

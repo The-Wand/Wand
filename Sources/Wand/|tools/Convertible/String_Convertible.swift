@@ -16,34 +16,54 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-///Data
 #if canImport(Foundation)
-import Foundation.NSData
+import Foundation
 
 @inline(__always)
 postfix
 public
-func |(data: Data) -> String {
-    (data | nil)!
+func |(string: String) -> Int? {
+    Int(string) ?? Int(String(string.unicodeScalars.filter(CharacterSet.decimalDigits.inverted.contains)))
 }
 
 @inline(__always)
 postfix
 public
-func |(data: Data) -> String? {
-    data | nil
+func |(self: String) -> Int {
+    (self|)!
+}
+
+@inline(__always)
+postfix
+public
+func |(string: String?) -> Double? {
+    Double(string ?? "")
+}
+
+@inline(__always)
+postfix
+public
+func |(string: String?) -> Data? {
+    string | nil
+}
+
+@inline(__always)
+postfix
+public
+func |(string: String?) -> Data {
+    string | nil
 }
 
 @inline(__always)
 public
-func |(data: Data, encoding: String.Encoding) -> String {
-    (data | encoding)!
+func |(string: String?, encoding: String.Encoding?) -> Data {
+    (string! | nil)!
 }
 
 @inline(__always)
 public
-func |(data: Data, encoding: String.Encoding?) -> String? {
-    String(data: data, encoding: encoding ?? .utf8)
+func |(string: String?, encoding: String.Encoding?) -> Data? {
+    string?.data(using: encoding ?? .utf8)
 }
 
 #endif

@@ -28,7 +28,7 @@ class Expect_All_Tests: XCTestCase {
         e.assertForOverFulfill = false
 
         weak
-        var wand: Wand!
+        var wand: Core!
         wand = Vector.one | String.one | .all { _ in
             e.fulfill()
         }

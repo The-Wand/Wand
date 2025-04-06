@@ -22,7 +22,6 @@ import PackageDescription
 
 let package = Package(
     name: "Wand",
-    defaultLocalization: "ru",
 
     platforms: [
         .iOS(.v14),
@@ -41,8 +40,8 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "Wand",
-            url: "https://github.com/The-Wand/Binary/blob/main/Wand-1.5.6.xcframework.zip?raw=1",
-            checksum: "29a5a3d116afe898d4b30e710f5082f5b5c91c22d75d3bf52bb575f1866c878a"
+            url: "https://github.com/The-Wand/Binary/blob/main/Wand-2.0.0.xcframework.zip?raw=1",
+            checksum: "7d2754df310de17aa179e84a32ae858c7be7e23ab3616d852d0e05b42059e478"
         ),
         .testTarget(name: "WandTests", dependencies:
                         [

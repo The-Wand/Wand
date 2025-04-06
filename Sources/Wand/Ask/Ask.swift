@@ -47,12 +47,12 @@ class Ask<T> {
     }
 
     private
-    var wand: Wand?
+    var wand: Core?
 
     ///@synthesize `wand`
     @inline(__always)
     public
-    func set(wand: Wand?) {
+    func set(wand: Core?) {
         self.wand = wand
     }
 

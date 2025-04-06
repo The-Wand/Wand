@@ -19,13 +19,13 @@
 @inline(__always)
 postfix
 public
-func | (value: Int) -> Character {
+func |(value: Int) -> Character {
     Character(UnicodeScalar(value)!)
 }
 
 @inline(__always)
 postfix
 public
-func | (char: Character) -> UInt32 {
+func |(char: Character) -> UInt32 {
     char.unicodeScalars.first!.value
 }

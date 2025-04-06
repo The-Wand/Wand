@@ -25,10 +25,10 @@ import XCTest
 class Wand_Tests: XCTestCase {
 
     weak
-    var wand: Wand?
+    var wand: Core?
 
     func test_put() throws {
-        var wand: Wand! = Wand()
+        var wand: Core! = Core()
         self.wand = wand
 
         let struct_ = CLLocationCoordinate2D.any
@@ -65,8 +65,8 @@ class Wand_Tests: XCTestCase {
         XCTAssertNil(self.wand)
     }
 
-    func test_putWanded() throws {
-        var wand: Wand! = Wand()
+    func test_putCoreed() throws {
+        var wand: Core! = Core()
         self.wand = wand
 
         let original: CLLocation = CLLocation.any

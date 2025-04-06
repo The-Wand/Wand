@@ -42,7 +42,7 @@ extension Ask {
 @inline(__always)
 @discardableResult
 public
-func | (wand: Wand, any: Ask<Any>) -> Wand {
+func |(wand: Core, any: Ask<Any>) -> Core {
     _ = wand.answer(the: any)
     return wand
 }

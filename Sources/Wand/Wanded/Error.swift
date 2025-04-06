@@ -27,7 +27,7 @@ import Foundation
 @discardableResult
 @inline(__always)
 public
-func | (wand: Wand, handler: @escaping (Error)->() ) -> Wand {
+func |(wand: Core, handler: @escaping (Error)->() ) -> Core {
     wand | Ask.Option(once: false, handler: handler)
 }
 
@@ -40,13 +40,13 @@ func | (wand: Wand, handler: @escaping (Error)->() ) -> Wand {
 @discardableResult
 @inline(__always)
 public
-func | (wand: Wand, ask: Ask<Error>) -> Wand {
+func |(wand: Core, ask: Ask<Error>) -> Core {
     _ = wand.answer(the: ask.optional())
     return wand
 }
 
 ///Error codes and reasons
-extension Wand {
+extension Core {
 
     public
     struct Error: Swift.Error {

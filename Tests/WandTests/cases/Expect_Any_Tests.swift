@@ -52,7 +52,7 @@ extension String: @retroactive Asking
     @inline(__always)
     public
     static
-    func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
+    func wand<T>(_ wand: Core, asks ask: Ask<T>) {
         _ = wand.answer(the: ask)
     }
 

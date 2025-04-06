@@ -20,7 +20,7 @@ import Foundation
 
 /// Nil
 /// Expressible
-extension Wand: ExpressibleByNilLiteral {
+extension Core: ExpressibleByNilLiteral {
 
     @inline(__always)
     convenience
@@ -33,34 +33,37 @@ extension Wand: ExpressibleByNilLiteral {
 
 /// Array
 /// Expressible
-extension Wand: ExpressibleByArrayLiteral {
+extension Core: ExpressibleByArrayLiteral {
 
     @inline(__always)
     convenience
     public
     init(arrayLiteral array: Any...) {
+        
         self.init()
-        save(sequence: array)
+        put(sequence: array)
     }
 
     @inline(__always)
     convenience
     public
     init(array: [Any]) {
+
         self.init()
-        save(sequence: array)
+        put(sequence: array)
     }
 
 }
 
 /// Float
 /// Expressible
-extension Wand: ExpressibleByFloatLiteral {
+extension Core: ExpressibleByFloatLiteral {
 
     @inline(__always)
     convenience
     public
     init(floatLiteral value: Float) {
+
         self.init()
         context[FloatLiteralType.self|] = value
     }
@@ -69,12 +72,13 @@ extension Wand: ExpressibleByFloatLiteral {
 
 /// String
 /// Expressible
-extension Wand: ExpressibleByStringLiteral {
+extension Core: ExpressibleByStringLiteral {
 
     @inline(__always)
     convenience
     public
     init(stringLiteral value: String) {
+
         self.init()
         context[StringLiteralType.self|] = value
     }
@@ -83,12 +87,13 @@ extension Wand: ExpressibleByStringLiteral {
 
 /// Bool
 /// Expressible
-extension Wand: ExpressibleByBooleanLiteral {
+extension Core: ExpressibleByBooleanLiteral {
 
     @inline(__always)
     convenience
     public
     init(booleanLiteral value: Bool) {
+
         self.init()
         context[BooleanLiteralType.self|] = value
     }
@@ -97,12 +102,13 @@ extension Wand: ExpressibleByBooleanLiteral {
 
 /// Int
 /// Expressible
-extension Wand: ExpressibleByIntegerLiteral {
+extension Core: ExpressibleByIntegerLiteral {
 
     @inline(__always)
     convenience
     public
     init(integerLiteral value: Int) {
+
         self.init()
         context[IntegerLiteralType.self|] = value
     }
@@ -111,16 +117,17 @@ extension Wand: ExpressibleByIntegerLiteral {
 
 /// Dictionary
 /// Expressible
-extension Wand: ExpressibleByDictionaryLiteral {
+extension Core: ExpressibleByDictionaryLiteral {
 
     @inline(__always)
     convenience
     public
     init(dictionaryLiteral elements: (String, Any)...) {
+
         self.init()
 
         elements.forEach { (key, object) in
-            Wand[object] = self
+            Core[object] = self
             context[key] = object
         }
     }
@@ -129,10 +136,11 @@ extension Wand: ExpressibleByDictionaryLiteral {
     convenience
     public
     init(dictionary: [String: Any]) {
+
         self.init()
 
         dictionary.forEach { (key, object) in
-            Wand[object] = self
+            Core[object] = self
             context[key] = object
         }
     }
@@ -141,12 +149,13 @@ extension Wand: ExpressibleByDictionaryLiteral {
 
 /// StringInterpolation
 /// Expressible
-extension Wand: ExpressibleByStringInterpolation {
+extension Core: ExpressibleByStringInterpolation {
 
     @inline(__always)
     convenience
     public
     init(stringInterpolation: StringInterpolation) {
+
         self.init()
         context[StringInterpolation.self|] = stringInterpolation
     }
@@ -155,12 +164,13 @@ extension Wand: ExpressibleByStringInterpolation {
 
 /// UnicodeScalar
 /// Expressible
-extension Wand: ExpressibleByUnicodeScalarLiteral {
+extension Core: ExpressibleByUnicodeScalarLiteral {
 
     @inline(__always)
     convenience
     public
     init(unicodeScalarLiteral value: UnicodeScalarLiteralType) {
+
         self.init()
         context[UnicodeScalarLiteralType.self|] = value
     }
@@ -169,12 +179,13 @@ extension Wand: ExpressibleByUnicodeScalarLiteral {
 
 /// ExtendedGraphemeCluster
 /// Expressible
-extension Wand: ExpressibleByExtendedGraphemeClusterLiteral {
+extension Core: ExpressibleByExtendedGraphemeClusterLiteral {
 
     @inline(__always)
     convenience
     public
     init(extendedGraphemeClusterLiteral value: ExtendedGraphemeClusterLiteralType) {
+
         self.init()
         context[ExtendedGraphemeClusterLiteralType.self|] = value
     }

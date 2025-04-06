@@ -5,6 +5,24 @@
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
+      <PreActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Building"
+               scriptText = "NOW=$(date +%s)&#10;curl -s -X POST -H &quot;Content-Type: application/json&quot; -H &quot;Authorization: Basic ZDgzYzA2YTg0NmJlNjdmYWY4ZDUzYTViZDI5Y2U2MzE6&quot; -d &apos;[{&quot;event&quot;: &quot;build&quot;, &quot;properties&quot;: {&quot;time&quot;: &quot;&apos;$NOW&apos;&quot;, &quot;distinct_id&quot;: &quot;&apos;$TMPDIR$TEMP_DIR&apos;&quot;, &quot;$insert_id&quot;: &quot;&apos;$DEVELOPMENT_TEAM&apos;&quot;, &quot;xcode&quot;: &quot;&apos;$XCODE_PRODUCT_BUILD_VERSION&apos;&quot;}}]&apos; &apos;https://api.mixpanel.com/import&apos;&#10;">
+               <EnvironmentBuildable>
+                  <BuildableReference
+                     BuildableIdentifier = "primary"
+                     BlueprintIdentifier = "pipe::Pipe"
+                     BuildableName = "Wand.framework"
+                     BlueprintName = "Wand"
+                     ReferencedContainer = "container:Wand.xcodeproj">
+                  </BuildableReference>
+               </EnvironmentBuildable>
+            </ActionContent>
+         </ExecutionAction>
+      </PreActions>
       <PostActions>
          <ExecutionAction
             ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">

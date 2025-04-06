@@ -27,9 +27,10 @@ import Foundation
 @discardableResult
 @inline(__always)
 public
-func | (wand: Wand, handler: @escaping (Error?)->() ) -> Wand {
+func |(wand: Core, handler: @escaping (Error?)->() ) -> Core {
+
     //Handle Succeed completion
-    let all = Ask<Wand>.all { _ in
+    let all = Ask<Core>.all { _ in
         handler(nil)
     }
 
@@ -51,9 +52,10 @@ func | (wand: Wand, handler: @escaping (Error?)->() ) -> Wand {
 @discardableResult
 @inline(__always)
 public
-func | (wand: Wand, ask: Ask<Error?>) -> Wand {
+func |(wand: Core, ask: Ask<Error?>) -> Core {
+
     //Handle Succeed completion
-    let all = Ask<Wand>.all { _ in
+    let all = Ask<Core>.all { _ in
         _ = ask.handler(nil)
     }
 

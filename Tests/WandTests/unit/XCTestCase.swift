@@ -29,7 +29,7 @@ extension XCTestCase {
     }
 
     func auto<C, T: Asking>(test context: C,
-                               api:   ( (C, (T)->() ) )->(Wand) ,
+                               api:   ( (C, (T)->() ) )->(Core) ,
                                completion:  @escaping (T)->() ) {
 
         let e = expectation()
@@ -52,7 +52,7 @@ extension XCTestCase {
         auto_test(|, completion: completion)
     }
 
-    func auto_test<T: AskingNil>(_ api:   ( @escaping (T)->() )->(Wand) ,
+    func auto_test<T: AskingNil>(_ api:   ( @escaping (T)->() )->(Core) ,
                                completion:  @escaping (T)->() ) {
 
         let e = expectation()

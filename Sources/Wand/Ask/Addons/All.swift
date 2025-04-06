@@ -30,7 +30,7 @@ extension Ask {
     @inline(__always)
     public
     static
-    func all(handler: @escaping (Wand)->() ) -> Ask<Wand> {
+    func all(handler: @escaping (Core)->() ) -> Ask<Core> {
         .Option(once: true, for: "All") {
             handler($0)
         }
@@ -42,7 +42,7 @@ extension Ask {
 @discardableResult
 @inline(__always)
 public
-func | (wand: Wand, all: Ask<Wand>) -> Wand {
+func |(wand: Core, all: Ask<Core>) -> Core {
     _ = wand.answer(the: all)
     return wand
 }

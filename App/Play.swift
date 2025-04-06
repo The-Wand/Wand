@@ -38,6 +38,8 @@ struct ContentView: View {
         VStack {
             Image(systemName: "wand.and.stars")
             Text("Hello, world!")
+        }.onAppear() {
+
         }
     }
 

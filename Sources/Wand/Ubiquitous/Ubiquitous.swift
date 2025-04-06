@@ -16,9 +16,9 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-/// Get Ubiquitous object from Wand
+/// Get Ubiquitous object from Core
 /// 
-/// TODO: func |(wand: Wand?) -> Self
+/// TODO: func |(wand: Core?) -> Self
 public
 protocol Ubiquitous: Wanded {
 
@@ -46,7 +46,7 @@ func |<T: Ubiquitous>(type: T.Type) -> T {
 @inline(__always)
 postfix
 public
-func |<T: Ubiquitous>(wand: Wand?) -> T {
+func |<T: Ubiquitous>(wand: Core?) -> T {
     T.access()
 }
 
@@ -54,7 +54,7 @@ func |<T: Ubiquitous>(wand: Wand?) -> T {
 ///
 /// let object: T = wand.get()
 ///
-extension Wand {
+extension Core {
 
     @inline(__always)
     public

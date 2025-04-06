@@ -18,21 +18,21 @@
 
 import Foundation
 
-/// Wand
+/// Wand.Core
 /// Bus for <#Any#> Factory + Cache
 public
 final
-class Wand {
+class Core {
 
     public
     struct Weak {
 
         weak
-        var item: Wand?
+        var item: Core?
 
         @inline(__always)
         public
-        init(item: Wand) {
+        init(item: Core) {
             self.item = item
         }
 
@@ -45,16 +45,16 @@ class Wand {
     @inline(__always)
     public
     static
-    subscript <T> (_ object: T?) -> Wand? {
+    subscript <T> (_ object: T?) -> Core? {
 
         get { if let object {
-            return Wand[object]
+            return Core[object]
         } else {
             return nil
         }}
 
         set { if let object {
-            Wand[object] = newValue
+            Core[object] = newValue
         }}
 
     }
@@ -62,7 +62,7 @@ class Wand {
     @inline(__always)
     public
     static
-    subscript <T> (_ object: T) -> Wand? {
+    subscript <T> (_ object: T) -> Core? {
 
         get { if T.self is AnyClass {
             let key = unsafeBitCast(object, to: Int.self)
@@ -75,7 +75,6 @@ class Wand {
             let key = unsafeBitCast(object, to: Int.self)
             all[key] = Weak(item: wand)
         }}
-
     }
 
     public
@@ -96,7 +95,7 @@ class Wand {
     init<T>(for object: T) {
         self.init()
 
-        Wand[object] = self
+        Core[object] = self
         context[T.self|] = object
     }
 
@@ -108,15 +107,15 @@ class Wand {
 }
 
 /// Attach to Any?
-extension Wand {
+extension Core {
 
     @inlinable
     public
     static
-    func to<C>(_ context: C? = nil) -> Wand {
+    func to<C>(_ context: C? = nil) -> Core {
 
         guard let context else {
-            return Wand()
+            return Core()
         }
 
         if let wanded = context as? Wanded {
@@ -124,21 +123,21 @@ extension Wand {
         }
 
         if let array = context as? [Any] {
-            return Wand(array: array)
+            return Core(array: array)
         }
 
         if let dictionary = context as? [String: Any] {
-            return Wand(dictionary: dictionary)
+            return Core(dictionary: dictionary)
         }
 
-        return Wand(for: context)
+        return Core(for: context)
     }
 
 }
 
 /// Get
 /// From context
-extension Wand {
+extension Core {
 
     @inline(__always)
     public
@@ -149,14 +148,14 @@ extension Wand {
     @inline(__always)
     public
     func get<T>(for key: String? = nil, or create: @autoclosure ()->(T) ) -> T {
-        get(for: key) ?? save(create(), key: key)
+        get(for: key) ?? put(create(), key: key)
     }
 
 }
 
 /// Add object
 /// Call handlers
-extension Wand {
+extension Core {
 
     @discardableResult
     @inlinable
@@ -203,7 +202,7 @@ extension Wand {
 
 /// Check object availability
 /// Context contains
-extension Wand {
+extension Core {
 
     @discardableResult
     @inline(__always)
@@ -216,7 +215,7 @@ extension Wand {
 
 /// Remove
 /// Without triggering
-extension Wand {
+extension Core {
 
     @discardableResult
     @inline(__always)
@@ -229,17 +228,17 @@ extension Wand {
 
 /// Save
 /// Without triggering Asks
-extension Wand {
+extension Core {
 
     @discardableResult
     @inline(__always)
     public
-    func save<T: Sequence>(sequence: T) -> T {
+    func put<T: Sequence>(sequence: T) -> T {
 
         sequence.forEach { object in
             let key = type(of: object)|
 
-            Wand[object] = self
+            Core[object] = self
             context[key] = object
         }
 
@@ -249,14 +248,14 @@ extension Wand {
     @discardableResult
     @inline(__always)
     public
-    func save<T>(_ object: T, key: String? = nil) -> T {
+    func put<T>(_ object: T, key: String? = nil) -> T {
         store(object, key: key)
         return object
     }
 
     @inline(__always)
     public
-    func addDefault<T>(_ object: T, key: String? = nil) {
+    func putDefault<T>(_ object: T, key: String? = nil) {
 
         let result = key ?? T.self|
         if !contains(result) {
@@ -270,7 +269,7 @@ extension Wand {
     func store<T>(_ object: T, key: String? = nil) -> String {
 
         let result = key ?? T.self|
-        Wand[object] = self
+        Core[object] = self
         context[result] = object
 
         return result
@@ -280,7 +279,7 @@ extension Wand {
 
 /// Ask
 /// For objects
-extension Wand {
+extension Core {
 
     @inlinable
     public
@@ -327,29 +326,30 @@ extension Wand {
 }
 
 /// Wanded
-extension Wand: Wanded {
+extension Core: Wanded {
 
     @inline(__always)
     public
-    var wand: Wand {
+    var wand: Core {
         self
     }
 
     @inline(__always)
     public
-    var isWanded: Wand? {
+    var isWanded: Core? {
         self
     }
 
 }
 
 /// Close
-extension Wand {
+extension Core {
 
     public
     func close() {
+
         //Handle Ask.all
-        (asking["All"]?.last as? Ask<Wand>)?.head(self)
+        (asking["All"]?.last as? Ask<Core>)?.head(self)
 
         //Remove questions
         asking.forEach {
@@ -361,8 +361,8 @@ extension Wand {
         //Release context
         context.removeAll()
 
-        //Clean Wands shelf
-        Wand.all = Wand.all.filter {
+        //Clean Cores shelf
+        Core.all = Core.all.filter {
             $0.value.item != nil
         }
     }

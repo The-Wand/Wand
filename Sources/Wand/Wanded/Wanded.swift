@@ -23,10 +23,10 @@ public
 protocol Wanded {
 
     @inline(__always)
-    var wand: Wand {get}
+    var wand: Core {get}
 
     @inline(__always)
-    var isWanded: Wand? {get}
+    var isWanded: Core? {get}
 
 }
 
@@ -34,40 +34,41 @@ extension Wanded {
 
     @inline(__always)
     public
-    var wand: Wand {
-        isWanded ?? Wand(for: self)
+    var wand: Core {
+        isWanded ?? Core(for: self)
     }
 
     @inline(__always)
     public
-    var isWanded: Wand? {
-        Wand[self]
+    var isWanded: Core? {
+        Core[self]
     }
 
 }
 
-///Any?
+/// Any?
 extension Optional {
 
     @inline(__always)
     public
-    var wend: Wand {
-        isWend ?? .to(self)
+    var wend: Core {
+        isWanded ?? .to(self)
     }
 
     @inline(__always)
     public
-    var isWend: Wand? {
-        Wand[self]
+    var isWanded: Core? {
+        Core[self]
     }
 
 }
 
+/// Close Wand
 @discardableResult
 @inline(__always)
 postfix
 public
-func | (wanded: Wanded?) -> Wand? {
+func |(wanded: Wanded?) -> Core? {
     let wand = wanded?.isWanded
     wand?.close()
     return wand

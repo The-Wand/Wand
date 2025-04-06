@@ -16,6 +16,7 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
+#if canImport(Foundation)
 import Foundation
 
 public
@@ -32,6 +33,7 @@ struct Memory {
     static
     public
     func address<T>(for model: T) -> Int {
+        
         var address: String?
         var mutable = model
         withUnsafePointer(to: &mutable) { pointer in
@@ -42,3 +44,5 @@ struct Memory {
     }
 
 }
+
+#endif

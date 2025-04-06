@@ -20,13 +20,13 @@ import Foundation
 
 /// Ask from Context
 ///
-/// TODO: func | (wand: Wand, asks: Ask<Self>)
+/// TODO: func |(wand: Core, asks: Ask<Self>)
 public
 protocol Asking {
 
     @inline(__always)
     static 
-    func wand<T>(_ wand: Wand, asks: Ask<T>)
+    func wand<T>(_ wand: Core, asks: Ask<T>)
 
 }
 
@@ -39,7 +39,7 @@ protocol Asking {
 @inline(__always)
 @discardableResult
 public
-func |<C, T: Asking> (context: C?, handler: @escaping (T)->() ) -> Wand {
+func |<C, T: Asking> (context: C?, handler: @escaping (T)->() ) -> Core {
     .to(context) | Ask.every(handler: handler)
 }
 
@@ -55,7 +55,7 @@ func |<C, T: Asking> (context: C?, handler: @escaping (T)->() ) -> Wand {
 @inline(__always)
 @discardableResult
 public
-func |<C, T: Asking> (context: C?, ask: Ask<T>) -> Wand {
+func |<C, T: Asking> (context: C?, ask: Ask<T>) -> Core {
     .to(context) | ask
 }
 
@@ -68,7 +68,7 @@ func |<C, T: Asking> (context: C?, ask: Ask<T>) -> Wand {
 @inline(__always)
 @discardableResult
 public
-func |<T: Asking> (wand: Wand, ask: Ask<T>) -> Wand {
+func |<T: Asking> (wand: Core, ask: Ask<T>) -> Core {
     T.wand(wand, asks: ask)
     return wand
 }

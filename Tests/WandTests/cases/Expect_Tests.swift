@@ -34,7 +34,7 @@ class Expect_T_Tests: XCTestCase {
 
         //Wait for 'count' Points
         weak
-        var wand: Wand!
+        var wand: Core!
         wand = |.every { (point: Vector) in
             //Is equal?
             if point == last {
@@ -65,7 +65,7 @@ class Expect_T_Tests: XCTestCase {
         let point = Vector.any
 
         weak
-        var wand: Wand!
+        var wand: Core!
         wand = |.one { (point: Vector) in
             e.fulfill()
         }
@@ -87,7 +87,7 @@ class Expect_T_Tests: XCTestCase {
         let e = expectation()
 
         weak
-        var wand: Wand!
+        var wand: Core!
         wand = |.while { (point: Vector) in
 
             if point.t > 2 {

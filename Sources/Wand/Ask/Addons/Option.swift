@@ -19,14 +19,14 @@
 extension Ask {
 
     /// Ask?
-    /// .Option Ask won't retain Wand
+    /// .Option Ask don't retain Wand.Core
     public
     class Option: Ask {
 
         @inline(__always)
         override
         public
-        func set(wand: Wand?) {
+        func set(wand: Core?) {
         }
 
         @inline(__always)

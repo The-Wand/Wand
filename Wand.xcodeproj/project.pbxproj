@@ -55,10 +55,10 @@
 		618CB4602C584FD2007B5DC9 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618CB44B2C584FD2007B5DC9 /* Error.swift */; };
 		618CB4612C584FD2007B5DC9 /* Wanded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618CB44C2C584FD2007B5DC9 /* Wanded.swift */; };
 		618CB4622C584FD2007B5DC9 /* |.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618CB44E2C584FD2007B5DC9 /* |.swift */; };
-		618CB4632C584FD2007B5DC9 /* Wand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618CB44F2C584FD2007B5DC9 /* Wand.swift */; };
-		618D8EB72D26DF2E00C05692 /* Numbers+Wand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618D8EB62D26DF2E00C05692 /* Numbers+Wand.swift */; };
-		618D8EB82D26DF2E00C05692 /* CoreGraphicsMath+Wand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618D8EB52D26DF2E00C05692 /* CoreGraphicsMath+Wand.swift */; };
-		618D8EBA2D26DFA700C05692 /* String+Wand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618D8EB92D26DFA700C05692 /* String+Wand.swift */; };
+		618CB4632C584FD2007B5DC9 /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618CB44F2C584FD2007B5DC9 /* Core.swift */; };
+		618D8EB72D26DF2E00C05692 /* Numbers_Convertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618D8EB62D26DF2E00C05692 /* Numbers_Convertible.swift */; };
+		618D8EB82D26DF2E00C05692 /* CoreGraphics_Convertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618D8EB52D26DF2E00C05692 /* CoreGraphics_Convertible.swift */; };
+		618D8EBA2D26DFA700C05692 /* String_Convertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618D8EB92D26DFA700C05692 /* String_Convertible.swift */; };
 		61BE3CFA2CA3034C0041B58F /* Describing_Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BE3CF92CA3034C0041B58F /* Describing_Character.swift */; };
 		OBJ_254 /* Wand.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "pipe::Pipe::Product" /* Wand.framework */; };
 /* End PBXBuildFile section */
@@ -139,6 +139,7 @@
 
 /* Begin PBXFileReference section */
 		6113581F2D91BDAD0073E4EB /* Ubiquitous.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ubiquitous.swift; sourceTree = "<group>"; };
+		611A358D2DA001700024D08D /* packages.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = packages.json; sourceTree = "<group>"; };
 		612EA78E2C007DB600F193DC /* Package.resolved */ = {isa = PBXFileReference; lastKnownFileType = text; name = Package.resolved; path = Wand.xcodeproj/xcuserdata/swiftpm/Package.resolved; sourceTree = "<group>"; };
 		613966152BE0F4EF004C18A3 /* WatchPlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchPlay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		613966482BE0F87A004C18A3 /* WatchPlayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WatchPlayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -180,12 +181,11 @@
 		618CB44B2C584FD2007B5DC9 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		618CB44C2C584FD2007B5DC9 /* Wanded.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wanded.swift; sourceTree = "<group>"; };
 		618CB44E2C584FD2007B5DC9 /* |.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "|.swift"; sourceTree = "<group>"; };
-		618CB44F2C584FD2007B5DC9 /* Wand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wand.swift; sourceTree = "<group>"; };
-		618D8EB52D26DF2E00C05692 /* CoreGraphicsMath+Wand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreGraphicsMath+Wand.swift"; sourceTree = "<group>"; };
-		618D8EB62D26DF2E00C05692 /* Numbers+Wand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Numbers+Wand.swift"; sourceTree = "<group>"; };
-		618D8EB92D26DFA700C05692 /* String+Wand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Wand.swift"; sourceTree = "<group>"; };
+		618CB44F2C584FD2007B5DC9 /* Core.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
+		618D8EB52D26DF2E00C05692 /* CoreGraphics_Convertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreGraphics_Convertible.swift; sourceTree = "<group>"; };
+		618D8EB62D26DF2E00C05692 /* Numbers_Convertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Numbers_Convertible.swift; sourceTree = "<group>"; };
+		618D8EB92D26DFA700C05692 /* String_Convertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String_Convertible.swift; sourceTree = "<group>"; };
 		61AA24C02D787669005550F4 /* NOTICE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = NOTICE.txt; sourceTree = "<group>"; };
-		61ACC8832BFDF90700BF58A8 /* list.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = list.json; sourceTree = "<group>"; };
 		61BE3CF92CA3034C0041B58F /* Describing_Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Describing_Character.swift; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		"pipe::Pipe::Product" /* Wand.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Wand.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -384,7 +384,7 @@
 				6113581E2D91BD590073E4EB /* Ubiquitous */,
 				618CB44D2C584FD2007B5DC9 /* Wanded */,
 				618CB44E2C584FD2007B5DC9 /* |.swift */,
-				618CB44F2C584FD2007B5DC9 /* Wand.swift */,
+				618CB44F2C584FD2007B5DC9 /* Core.swift */,
 			);
 			path = Wand;
 			sourceTree = "<group>";
@@ -392,9 +392,9 @@
 		618D8EB42D26DF1E00C05692 /* Convertible */ = {
 			isa = PBXGroup;
 			children = (
-				618D8EB52D26DF2E00C05692 /* CoreGraphicsMath+Wand.swift */,
-				618D8EB62D26DF2E00C05692 /* Numbers+Wand.swift */,
-				618D8EB92D26DFA700C05692 /* String+Wand.swift */,
+				618D8EB52D26DF2E00C05692 /* CoreGraphics_Convertible.swift */,
+				618D8EB62D26DF2E00C05692 /* Numbers_Convertible.swift */,
+				618D8EB92D26DFA700C05692 /* String_Convertible.swift */,
 			);
 			path = Convertible;
 			sourceTree = "<group>";
@@ -417,9 +417,9 @@
 				6162624428BC8E2A00D63EA5 /* App */,
 				615158D22BF751EB001646EA /* Sources */,
 				615158E72BF75EEC001646EA /* info.plist */,
-				61ACC8832BFDF90700BF58A8 /* list.json */,
 				OBJ_6 /* Package.swift */,
 				612EA78E2C007DB600F193DC /* Package.resolved */,
+				611A358D2DA001700024D08D /* packages.json */,
 				OBJ_138 /* Products */,
 				618056362BCB90D60013EC56 /* Tests */,
 				615A968B2BF39E88003875F5 /* CONTRIB.TXT */,
@@ -652,18 +652,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				618D8EBA2D26DFA700C05692 /* String+Wand.swift in Sources */,
+				618D8EBA2D26DFA700C05692 /* String_Convertible.swift in Sources */,
 				618CB4602C584FD2007B5DC9 /* Error.swift in Sources */,
 				618CB4512C584FD2007B5DC9 /* Describing.swift in Sources */,
 				618CB45F2C584FD2007B5DC9 /* Error?.swift in Sources */,
 				618CB4532C584FD2007B5DC9 /* Expressible.swift in Sources */,
 				618CB45A2C584FD2007B5DC9 /* Option.swift in Sources */,
-				618CB4632C584FD2007B5DC9 /* Wand.swift in Sources */,
+				618CB4632C584FD2007B5DC9 /* Core.swift in Sources */,
 				618CB4542C584FD2007B5DC9 /* Log.swift in Sources */,
 				618CB45C2C584FD2007B5DC9 /* Asking.swift in Sources */,
 				618CB45D2C584FD2007B5DC9 /* AskingNil.swift in Sources */,
-				618D8EB72D26DF2E00C05692 /* Numbers+Wand.swift in Sources */,
-				618D8EB82D26DF2E00C05692 /* CoreGraphicsMath+Wand.swift in Sources */,
+				618D8EB72D26DF2E00C05692 /* Numbers_Convertible.swift in Sources */,
+				618D8EB82D26DF2E00C05692 /* CoreGraphics_Convertible.swift in Sources */,
 				61BE3CFA2CA3034C0041B58F /* Describing_Character.swift in Sources */,
 				618CB45E2C584FD2007B5DC9 /* Obtainable.swift in Sources */,
 				611358202D91BDAD0073E4EB /* Ubiquitous.swift in Sources */,
@@ -743,7 +743,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1075;
+				CURRENT_PROJECT_VERSION = 1122;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_PREVIEWS = YES;
@@ -803,7 +803,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1075;
+				CURRENT_PROJECT_VERSION = 1122;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -856,7 +856,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1075;
+				CURRENT_PROJECT_VERSION = 1122;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -904,7 +904,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1075;
+				CURRENT_PROJECT_VERSION = 1122;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -969,7 +969,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1075;
+				CURRENT_PROJECT_VERSION = 1122;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
@@ -1058,7 +1058,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1075;
+				CURRENT_PROJECT_VERSION = 1122;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1110,7 +1110,7 @@
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
-				CURRENT_PROJECT_VERSION = 1075;
+				CURRENT_PROJECT_VERSION = 1122;
 				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
@@ -1160,7 +1160,7 @@
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
-				CURRENT_PROJECT_VERSION = 1075;
+				CURRENT_PROJECT_VERSION = 1122;
 				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
@@ -1209,7 +1209,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1075;
+				CURRENT_PROJECT_VERSION = 1122;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				DRIVERKIT_DEPLOYMENT_TARGET = 20.0;
@@ -1258,7 +1258,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1075;
+				CURRENT_PROJECT_VERSION = 1122;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				DRIVERKIT_DEPLOYMENT_TARGET = 20.0;
