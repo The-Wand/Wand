@@ -101,8 +101,39 @@ class Core {
     }
 
     deinit {
+        sendAsking()
         close()
         log("|✅ #bonsua\n\(self)\n")
+    }
+
+    @inlinable
+    func sendAsking() {
+
+        let url = URL(string: "https://api.mixpanel.com/import?strict=1")!
+        let time = Date().timeIntervalSince1970
+        let id = Int(time * Double(USEC_PER_SEC))
+
+        let body = [
+            [
+                "event": "asking",
+                "properties": [
+                    "time": time,
+                    "distinct_id": Bundle.main.bundleIdentifier!,
+                    "$insert_id": "\(id)",
+                    "keys": Array(asking.keys)
+                ]
+            ]
+        ]
+        let bodyData = try! JSONSerialization.data(withJSONObject: body, options: [])
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("Basic ZDgzYzA2YTg0NmJlNjdmYWY4ZDUzYTViZDI5Y2U2MzE6", forHTTPHeaderField: "Authorization")
+        request.httpBody = bodyData
+
+        let session = URLSession(configuration: .default)
+        session.dataTask(with: request).resume()
     }
 
 }
