@@ -41,7 +41,7 @@ let package = Package(
         .binaryTarget(
             name: "Wand",
             url: "https://github.com/The-Wand/Binary/blob/main/Wand-2.0.0.xcframework.zip?raw=1",
-            checksum: "7d2754df310de17aa179e84a32ae858c7be7e23ab3616d852d0e05b42059e478"
+            checksum: "525724e5ef07dfad6f5002734a4ea22353a48d991182d04718bf9e6c54141e7b"
         ),
         .testTarget(name: "WandTests", dependencies:
                         [
