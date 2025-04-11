@@ -22,7 +22,7 @@ import CoreLocation.CLLocation
 import Wand
 import XCTest
 
-class Wand_Tests: XCTestCase {
+class Wand_Put_Tests: XCTestCase {
 
     weak
     var wand: Core?
@@ -31,13 +31,13 @@ class Wand_Tests: XCTestCase {
         var wand: Core! = Core()
         self.wand = wand
 
-        let struct_ = CLLocationCoordinate2D.any
-        wand.add(struct_)
+        let `struct` = CLLocationCoordinate2D.any
+        wand.add(`struct`)
 
         let custom_struct = Custom(bar: .any)
         wand.add(custom_struct)
 
-        let class_ = wand.add(CLLocation.any)
+        let `class` = wand.add(CLLocation.any)
 
         let custom_class = CustomClass()
         custom_class.bar = .any
@@ -45,13 +45,13 @@ class Wand_Tests: XCTestCase {
 
         // wanded equals original
         let wanded_struct: CLLocationCoordinate2D = try XCTUnwrap(wand.get() )
-        XCTAssertTrue(struct_.latitude == wanded_struct.latitude &&
-                      struct_.longitude == wanded_struct.longitude)
+        XCTAssertTrue(`struct`.latitude == wanded_struct.latitude &&
+                      `struct`.longitude == wanded_struct.longitude)
 
         let wanded_custom_struct: Custom = try XCTUnwrap(wand.get())
         XCTAssertTrue(custom_struct.bar == wanded_custom_struct.bar)
 
-        XCTAssertEqual(class_, wand.get())
+        XCTAssertEqual(`class`, wand.get())
 
         let wanded_custom_class: CustomClass = try XCTUnwrap(wand.get())
         XCTAssertIdentical(custom_class, wanded_custom_class)
