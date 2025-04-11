@@ -43,6 +43,7 @@ extension Ask {
 @discardableResult
 public
 func |(wand: Core, any: Ask<Any>) -> Core {
+    
     _ = wand.answer(the: any)
     return wand
 }

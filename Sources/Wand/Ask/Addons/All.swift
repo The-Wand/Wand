@@ -43,6 +43,7 @@ extension Ask {
 @inline(__always)
 public
 func |(wand: Core, all: Ask<Core>) -> Core {
+    
     _ = wand.answer(the: all)
     return wand
 }

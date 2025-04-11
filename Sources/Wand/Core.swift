@@ -48,9 +48,9 @@ class Core {
     subscript <T> (_ object: T?) -> Core? {
 
         get { if let object {
-            return Core[object]
+            Core[object]
         } else {
-            return nil
+            nil
         }}
 
         set { if let object {
@@ -75,6 +75,7 @@ class Core {
             let key = unsafeBitCast(object, to: Int.self)
             all[key] = Weak(item: wand)
         }}
+
     }
 
     public
@@ -113,24 +114,22 @@ extension Core {
     public
     static
     func to<C>(_ context: C? = nil) -> Core {
+        switch context {
+            case let context as Wanded:
+                context.wand
 
-        guard let context else {
-            return Core()
+            case let context as [Any]:
+                Core(array: context)
+
+            case let context as [String: Any]:
+                Core(dictionary: context)
+
+            case  nil:
+                Core()
+
+            default:
+                Core(for: context)
         }
-
-        if let wanded = context as? Wanded {
-            return wanded.wand
-        }
-
-        if let array = context as? [Any] {
-            return Core(array: array)
-        }
-
-        if let dictionary = context as? [String: Any] {
-            return Core(dictionary: dictionary)
-        }
-
-        return Core(for: context)
     }
 
 }

@@ -39,7 +39,6 @@ extension Ask {
             }
             return handler($0, i)
         }
-
     }
 
 }
