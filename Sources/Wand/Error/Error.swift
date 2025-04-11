@@ -41,6 +41,7 @@ func |(wand: Core, handler: @escaping (Error)->() ) -> Core {
 @inline(__always)
 public
 func |(wand: Core, ask: Ask<Error>) -> Core {
+    
     _ = wand.answer(the: ask.optional())
     return wand
 }

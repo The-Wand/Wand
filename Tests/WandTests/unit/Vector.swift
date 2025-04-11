@@ -37,8 +37,10 @@ extension Vector: AskingNil, Wanded {
 
     public
     static
-    func wand<T>(_ wand: Core, asks ask: Ask<T>) {
+    func ask<C, T>(with context: C, ask: Wand.Ask<T>) -> Core {
+        let wand = Wand.Core.to(context)
         _ = wand.answer(the: ask)
+        return wand
     }
 
 }

@@ -26,7 +26,7 @@ protocol Asking {
 
     @inline(__always)
     static 
-    func wand<T>(_ wand: Core, asks: Ask<T>)
+    func ask<C, T>(with context: C, ask: Ask<T>) -> Core
 
 }
 
@@ -40,7 +40,7 @@ protocol Asking {
 @discardableResult
 public
 func |<C, T: Asking> (context: C?, handler: @escaping (T)->() ) -> Core {
-    .to(context) | Ask.every(handler: handler)
+    context | Ask.every(handler: handler)
 }
 
 /// Ask
@@ -56,21 +56,7 @@ func |<C, T: Asking> (context: C?, handler: @escaping (T)->() ) -> Core {
 @discardableResult
 public
 func |<C, T: Asking> (context: C?, ask: Ask<T>) -> Core {
-    .to(context) | ask
-}
-
-/// Ask
-///
-/// wand | .every { T in
-///
-/// }
-///
-@inline(__always)
-@discardableResult
-public
-func |<T: Asking> (wand: Core, ask: Ask<T>) -> Core {
-    T.wand(wand, asks: ask)
-    return wand
+    T.ask(with: context, ask: ask)
 }
 
 /// Ask without handler

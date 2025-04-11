@@ -36,7 +36,7 @@ protocol AskingNil: Asking {
 prefix
 public
 func |<T: Asking>(handler: @escaping (T)->() ) -> Core {
-    nil | Ask.every(handler: handler)
+    nil as Core? | Ask.every(handler: handler)
 }
 
 /// Ask
@@ -53,7 +53,7 @@ func |<T: Asking>(handler: @escaping (T)->() ) -> Core {
 prefix
 public
 func |<T: Asking>(ask: Ask<T>) -> Core {
-    nil | ask
+    nil as Core? | ask
 }
 
 /// Make the chain
@@ -65,10 +65,7 @@ func |<T: Asking>(ask: Ask<T>) -> Core {
 @discardableResult
 @inline(__always)
 public
-func |<T: AskingNil, E: Asking>(l: Ask<T>, r: Ask<E>) -> Core {
-    let wand = Core()
-    T.wand(wand, asks: l)
-    E.wand(wand, asks: r)
-
-    return wand
+func |<T: AskingNil, U: Asking>(l: Ask<T>, r: Ask<U>) -> Core {
+    U.ask(with: T.ask(with: nil as Core?, ask: l),
+          ask: r)
 }
