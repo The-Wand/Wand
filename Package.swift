@@ -1,5 +1,4 @@
 // swift-tools-version: 5.6
-
 ///
 /// Copyright 2020 Alexander Kozin
 ///
@@ -41,7 +40,7 @@ let package = Package(
         .binaryTarget(
             name: "Wand",
             url: "https://github.com/The-Wand/Binary/blob/main/Wand-2.0.0.xcframework.zip?raw=1",
-            checksum: "525724e5ef07dfad6f5002734a4ea22353a48d991182d04718bf9e6c54141e7b"
+            checksum: "f782a48187d0e8d70337be7f66345693adefdccdbe16c776e37c9ebd5750005a"
         ),
         .testTarget(name: "WandTests", dependencies:
                         [
