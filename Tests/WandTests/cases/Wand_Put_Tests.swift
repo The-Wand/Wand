@@ -77,9 +77,9 @@ class Wand_Put_Tests: XCTestCase {
         XCTAssertEqual(original, wanded)
 
         // wand is the same
-        XCTAssertTrue(wand === (wanded as Optional).wend)
-        XCTAssertTrue((original as Optional).wend === 
-                      (wanded as Optional).wend)
+        XCTAssertTrue(wand === (wanded as Optional).wand)
+        XCTAssertTrue((original as Optional).wand ===
+                      (wanded as Optional).wand)
 
         //Close wand
         weak

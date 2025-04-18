@@ -51,7 +51,7 @@ extension Optional {
 
     @inline(__always)
     public
-    var wend: Core {
+    var wand: Core {
         isWanded ?? .to(self)
     }
 
