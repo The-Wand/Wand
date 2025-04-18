@@ -165,24 +165,6 @@ extension Core {
 
 }
 
-/// Get
-/// From context
-extension Core {
-
-    @inline(__always)
-    public
-    func get<T>(for key: String? = nil) -> T? {
-        context[key ?? T.self|] as? T
-    }
-
-    @inline(__always)
-    public
-    func get<T>(for key: String? = nil, or create: @autoclosure ()->(T) ) -> T {
-        get(for: key) ?? put(create(), key: key)
-    }
-
-}
-
 /// Add object
 /// Call handlers
 extension Core {
@@ -192,7 +174,7 @@ extension Core {
     public
     func add<T>(_ object: T, for raw: String? = nil) -> T {
 
-        //Retreive key for saved
+        //Store object and retreive the key
         let key = store(object, key: raw)
 
         //Answer questions
@@ -230,6 +212,53 @@ extension Core {
 
 }
 
+/// Ask
+/// For objects
+extension Core {
+
+    @inlinable
+    public
+    func answer<T>(the ask: Ask<T>, check: Bool = false) -> Bool {
+
+        let key = ask.key
+        let stored = asking[key]
+
+        //Call handler if object exist
+        if check, let object: T = get(for: key), !ask.handler(object) {
+            return stored != nil
+        }
+
+        //Attach wand
+        ask.set(wand: self)
+
+        //Add ask to chain
+        let cleaner: ( ()->() )?
+        if let stored {
+            let last = (stored.last as! Ask<T>)
+
+            ask.next = last.next
+            last.next = ask
+
+            cleaner = stored.cleaner
+        } else {
+            ask.next = ask
+            cleaner = nil
+        }
+
+        asking.updateValue((last: ask, cleaner: cleaner), forKey: key)
+
+        return stored == nil
+    }
+
+    @inline(__always)
+    public
+    func setCleaner<T>(for ask: Ask<T>, cleaner: @escaping ()->() ) {
+        let key = ask.key
+        asking[key] = (asking[key]!.last, cleaner)
+    }
+
+}
+
 /// Check object availability
 /// Context contains
 extension Core {
@@ -252,6 +281,24 @@ extension Core {
     public
     func extract<T>(_ key: String? = nil) -> T? {
         context.removeValue(forKey: key ?? T.self|) as? T
+    }
+
+}
+
+/// Get
+/// From context
+extension Core {
+
+    @inline(__always)
+    public
+    func get<T>(for key: String? = nil) -> T? {
+        context[key ?? T.self|] as? T
+    }
+
+    @inline(__always)
+    public
+    func get<T>(for key: String? = nil, or create: @autoclosure ()->(T) ) -> T {
+        get(for: key) ?? put(create(), key: key)
     }
 
 }
@@ -303,54 +350,6 @@ extension Core {
         context[result] = object
 
         return result
-    }
-
-}
-
-/// Ask
-/// For objects
-extension Core {
-
-    @inlinable
-    public
-    func answer<T>(the ask: Ask<T>, check: Bool = false) -> Bool {
-
-        let key = ask.key
-        let stored = asking[key]
-
-        //Call handler if object exist
-        if check, let object: T = get(for: key), !ask.handler(object) {
-            return stored != nil
-        }
-
-        //Attach wand
-        ask.set(wand: self)
-
-        //Add ask to chain
-        let cleaner: ( ()->() )?
-        if let stored {
-            let last = (stored.last as! Ask<T>)
-
-            ask.next = last.next
-            last.next = ask
-
-            cleaner = stored.cleaner
-        } else {
-            ask.next = ask
-            cleaner = nil
-        }
-
-        asking.updateValue((last: ask, cleaner: cleaner),
-                           forKey: key)
-
-        return stored == nil
-    }
-
-    @inline(__always)
-    public
-    func setCleaner<T>(for ask: Ask<T>, cleaner: @escaping ()->() ) {
-        let key = ask.key
-        asking[key] = (asking[key]!.last, cleaner)
     }
 
 }
