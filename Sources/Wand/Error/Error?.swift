@@ -60,7 +60,7 @@ func |(wand: Core, ask: Ask<Error?>) -> Core {
     }
 
     //Handle Error completion
-    return wand | all | ask.option {
+    return wand | all | ask.dependency {
         all.cancel()
         _ = ask.handler($0)
     }

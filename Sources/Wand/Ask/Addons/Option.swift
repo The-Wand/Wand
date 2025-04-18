@@ -40,14 +40,14 @@ extension Ask {
 
     @inline(__always)
     public
-    func option<U>(for key: String? = nil, handler: ( (U) -> () )? = nil ) -> Ask<U>.Option {
+    func dependency<U>(for key: String? = nil, on handler: ( (U) -> () )? = nil ) -> Ask<U>.Option {
         .init(once: self.once, for: key, handler: handler)
     }
 
     @inline(__always)
     public
-    func optionWhile<U>(for key: String? = nil, handler: @escaping (U) -> (Bool) ) -> Ask<U>.Option {
-        .init(once: false, for: key, handler: handler)
+    func depends<U>(for key: String? = nil, while handler: @escaping (U) -> (Bool) ) -> Ask<U>.Option {
+        .init(for: key, handler: handler)
     }
 
 }
