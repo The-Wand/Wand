@@ -29,7 +29,7 @@ struct Performance {
     let start = Date().timeIntervalSince1970
 
     public
-    init(label: String) {
+    init(of label: String = #function) {
         self.label = label
     }
 

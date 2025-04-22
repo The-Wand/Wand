@@ -71,7 +71,7 @@ class Expect_Any_Tests: XCTestCase {
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak wand] in
 
-            handlePerformance = Performance(label: "Ask<Any> handle")
+            handlePerformance = Performance(of: "Ask<Any> handle")
 
             //TODO: Update Any_
             if .random() {
