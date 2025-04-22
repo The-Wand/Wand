@@ -82,6 +82,9 @@ class Core {
     var asking = [String: (last: Any, cleaner: ( ()->() )? )]()
 
     public
+    var askingAny: Ask<Any>?
+
+    public
     var context = [String: Any]()
 
     @inline(__always)
@@ -193,7 +196,22 @@ extension Core {
         }
 
         //Handle Ask.any
-        (asking["Any"]?.last as? Ask<Any>)?.head(object)
+//        (asking["Any"]?.last as? Ask<Any>)?.head(object)
+
+//        askingAny?.head(object)
+
+        if let tail = askingAny {
+
+            let head = tail.next
+            tail.next = nil
+
+            var ask = head
+            while ask?.handler(object) == true {
+                ask = ask?.next
+            }
+
+            tail.next = head
+        }
 
         return object
     }
