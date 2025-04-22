@@ -42,8 +42,29 @@ extension Ask {
 @inline(__always)
 @discardableResult
 public
-func |(wand: Core, any: Ask<Any>) -> Core {
-    
-    _ = wand.answer(the: any)
+func |(wand: Core, ask: Ask<Any>) -> Core {
+
+//    _ = wand.answer(the: ask)
+
+//    //0
+//    tail.next = tail
+//    wand.askAny = tail
+//
+//    //1
+//    let head = wand.askAny
+//    tail.next = head
+//    wand.askAny = tail
+//
+//    //1+
+//    let head = wand.askAny?.next
+//    tail.next = head
+//    wand.askAny = tail
+
+
+    let head = wand.askingAny?.next ?? ask
+    ask.next = head
+    wand.askingAny = ask
+
+
     return wand
 }
