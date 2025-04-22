@@ -18,59 +18,37 @@
 
 import Foundation
 
-/// Object that supports Wand
+/// Use it when Xcode lost your diamonds
 public
-protocol Wanded {
+struct Performance {
 
-    @inline(__always)
-    var wand: Core {get}
+    private
+    let label: String
 
-    @inline(__always)
-    var isWanded: Core? {get}
+    private
+    let start = Date().timeIntervalSince1970
 
-}
-
-extension Wanded {
-
-    @inline(__always)
     public
-    var wand: Core {
-        isWanded ?? Core(for: self)
+    init(label: String) {
+        self.label = label
     }
 
-    @inline(__always)
     public
-    var isWanded: Core? {
-        Core[self]
+    static
+    func measurePerformance(of label: String, block: () -> ()) {
+
+        let start = Date().timeIntervalSince1970
+
+        block()
+
+        let delta = Date().timeIntervalSince1970 - start
+        print("🏎️ \(label) : " + String(format: "%.7f", delta))
     }
 
-}
-
-/// Any?
-/// All Optional object supports Wand
-extension Optional {
-
-    @inline(__always)
     public
-    var wand: Core {
-        isWanded ?? .to(self)
+    func measure() {
+        let delta = Date().timeIntervalSince1970 - start
+        print("🏎️ \(label) : " + String(format: "%.7f", delta))
     }
 
-    @inline(__always)
-    public
-    var isWanded: Core? {
-        Core[self]
-    }
-
-}
-
-/// Close Wand
-@discardableResult
-@inline(__always)
-postfix
-public
-func |(wanded: Wanded?) -> Core? {
-    let wand = wanded?.isWanded
-    wand?.close()
-    return wand
 }

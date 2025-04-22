@@ -27,12 +27,53 @@ class Expect_Any_Tests: XCTestCase {
         let e = expectation(description: "event.any")
         e.assertForOverFulfill = false
 
-        let wand = Vector.every | String.every | .any { _ in
-            e.fulfill()
+        var wand: Wand.Core!
+
+        measure(metrics: .default) {
+
+            wand = Vector.every | String.every | .any { _ in
+                e.fulfill()
+            }
+
         }
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak wand] in
 
+            //TODO: Update Any_
+            if .random() {
+                wand?.add(Vector.any)
+            } else {
+                wand?.add(String.any)
+            }
+
+        }
+
+        waitForExpectations()
+    }
+
+    func test_Any_Performance() throws {
+        let e = expectation(description: "event.any")
+        e.assertForOverFulfill = false
+
+        let wand = Vector.every | String.every
+
+        var handlePerformance: Performance!
+        Performance.measurePerformance(of: "Ask<Any> add") {
+
+            wand | .any { _ in
+
+                handlePerformance.measure()
+
+                e.fulfill()
+            }
+
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak wand] in
+
+            handlePerformance = Performance(label: "Ask<Any> handle")
+
+            //TODO: Update Any_
             if .random() {
                 wand?.add(Vector.any)
             } else {
