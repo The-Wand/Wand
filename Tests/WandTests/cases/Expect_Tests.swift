@@ -66,10 +66,16 @@ class Expect_T_Tests: XCTestCase {
 
         weak
         var wand: Core!
+
+        var handlePerformance: Performance!
+
         wand = |.one { (point: Vector) in
+
+            handlePerformance.measure()
             e.fulfill()
         }
 
+        handlePerformance = Performance(of: "AskingNil answer")
         wand.add(point)
 
         waitForExpectations()

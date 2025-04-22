@@ -232,18 +232,24 @@ extension Core {
         ask.set(wand: self)
 
         //Add ask to chain
-        let cleaner: ( ()->() )?
-        if let stored {
-            let last = (stored.last as! Ask<T>)
+//        let cleaner: ( ()->() )?
+//        if let stored {
+//            let last = (stored.last as! Ask<T>)
+//
+//            ask.next = last.next
+//            last.next = ask
+//
+//            cleaner = stored.cleaner
+//        } else {
+//            ask.next = ask
+//            cleaner = nil
+//        }
 
-            ask.next = last.next
-            last.next = ask
+        let cleaner = stored?.cleaner
+        let last = (stored?.last as? Ask<T>)
 
-            cleaner = stored.cleaner
-        } else {
-            ask.next = ask
-            cleaner = nil
-        }
+        ask.next = last?.next ?? ask
+        last?.next = ask
 
         asking.updateValue((last: ask, cleaner: cleaner), forKey: key)
 
