@@ -55,49 +55,6 @@ class Expect_Any_Tests: XCTestCase {
 
     func test_Any_Performance() throws {
 
-        //1
-        //        🏎️ Ask<Any> add : 0.0007029
-        //        🏎️ Ask<Any> handle : 0.0000870
-
-        //        🏎️ Ask<Any> add : 0.0006747
-        //        🏎️ Ask<Any> handle : 0.0004880
-
-        //        🏎️ Ask<Any> add : 0.0007439
-        //        🏎️ Ask<Any> handle : 0.0004399
-
-        //        🏎️ Ask<Any> add : 0.0007453
-        //        🏎️ Ask<Any> handle : 0.0001409
-
-        //average add: 0,0007
-        //average handle: 0,0003
-
-//2
-
-
-//        🏎️ Ask<Any> add : 0.0000079
-//        🏎️ Ask<Any> handle : 0.0001211
-
-//        🏎️ Ask<Any> add : 0.0000079
-//        🏎️ Ask<Any> handle : 0.0002398
-
-//        🏎️ Ask<Any> add : 0.0000079
-//        🏎️ Ask<Any> handle : 0.0002649
-
-        //average add: 0.000 008
-        //average handle: 0,0002
-
-//3
-//        🏎️ Ask<Any> handle : 0.0001049
-//        🏎️ Ask<Any> handle : 0.0003870
-//        🏎️ Ask<Any> handle : 0.0001681
-
-//        🏎️ Ask<Any> handle : 0.0003161
-//        🏎️ Ask<Any> handle : 0.0000730
-//        🏎️ Ask<Any> handle : 0.0002451
-//        🏎️ Ask<Any> handle : 0.0003579
-
-        //average handle: 0,0002360142857
-
         let e = expectation(description: "event.any")
         e.assertForOverFulfill = false
 

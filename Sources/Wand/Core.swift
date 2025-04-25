@@ -88,9 +88,6 @@ class Core {
     var asking = [String: (last: Any, cleaner: ( ()->() )? )]()
 
     public
-    var askingAny: Ask<Any>?
-
-    public
     var context = [String: Any]()
 
     @inline(__always)
@@ -208,11 +205,7 @@ extension Core {
         }
 
         //Handle Ask.any
-//        (asking["Any"]?.last as? Ask<Any>)?.head(object)
-
-//        askingAny?.head(object)
-
-        if let tail = askingAny {
+        if let tail = asking["Any"]?.last as? Ask<Any> {
 
             let head = tail.next
             tail.next = nil
@@ -263,26 +256,11 @@ extension Core {
         ask.set(wand: self)
 
         //Add ask to chain
-//        let cleaner: ( ()->() )?
-//        if let stored {
-//            let last = (stored.last as! Ask<T>)
-//
-//            ask.next = last.next
-//            last.next = ask
-//
-//            cleaner = stored.cleaner
-//        } else {
-//            ask.next = ask
-//            cleaner = nil
-//        }
-
-        let cleaner = stored?.cleaner
-        let last = (stored?.last as? Ask<T>)
-
+        let last = stored?.last as? Ask<T>
         ask.next = last?.next ?? ask
         last?.next = ask
 
-        asking.updateValue((last: ask, cleaner: cleaner), forKey: key)
+        asking.updateValue((last: ask, cleaner: stored?.cleaner), forKey: key)
 
         return stored == nil
 

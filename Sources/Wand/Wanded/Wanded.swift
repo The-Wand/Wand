@@ -70,7 +70,9 @@ extension Optional {
 postfix
 public
 func |(wanded: Wanded?) -> Core? {
+    
     let wand = wanded?.isWanded
     wand?.close()
     return wand
+
 }
