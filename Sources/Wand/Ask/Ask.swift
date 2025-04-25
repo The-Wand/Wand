@@ -38,12 +38,14 @@ class Ask<T> {
     @inline(__always)
     public
     var key: String {
+
         get {
             _key ?? T.self|
         }
         set {
             _key = newValue
         }
+
     }
 
     private
@@ -61,8 +63,10 @@ class Ask<T> {
     convenience
     init(once: Bool, for key: String? = nil, handler: ( (T) -> () )? = nil ) {
         self.init(once: once, for: key) {
+
             handler?($0)
             return !once
+
         }
     }
 
@@ -74,6 +78,7 @@ class Ask<T> {
         self._key = key
         self.once = once
         self.handler = handler
+
     }
 
     //TODO: Move to `Option`
@@ -103,8 +108,10 @@ extension Ask {
     static
     func every(_ key: String? = nil, handler: ( (T)->() )? = nil ) -> Self {
         .init(once: false, for: key) {
+
             handler?($0)
             return true
+
         }
     }
 
@@ -119,8 +126,10 @@ extension Ask {
     static
     func one(_ key: String? = nil, handler: ( (T)->() )? = nil ) -> Self {
         .init(once: true, for: key) {
+
             handler?($0)
             return false
+
         }
     }
 
@@ -146,10 +155,12 @@ extension Ask {
     @inline(__always)
     public
     func head(_ object: T) -> Ask? {
+
         let head = next
         self.next = nil
 
         return head?.handle(object)
+
     }
 
     @inlinable
@@ -157,14 +168,19 @@ extension Ask {
     func handle(_ object: T) -> Ask? {
 
         if handler(object) {
+
             //Store ask while true
             let tail = next?.handle(object) ?? self
             tail.next = self
             return tail
+
         } else {
+
             //Otherwise use next node
             return next?.handle(object)
+
         }
+
     }
 
 }

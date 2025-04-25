@@ -24,6 +24,7 @@ import XCTest
 class Expect_All_Tests: XCTestCase {
 
     func test_All() throws {
+
         let e = expectation(description: "event.all")
         e.assertForOverFulfill = false
 
@@ -42,6 +43,7 @@ class Expect_All_Tests: XCTestCase {
         }
 
         waitForExpectations()
+        
     }
 
 }

@@ -46,4 +46,5 @@ func |(wand: Core, all: Ask<Core>) -> Core {
     
     _ = wand.answer(the: all)
     return wand
+    
 }

@@ -41,6 +41,7 @@ func |(wand: Core, handler: @escaping (Error?)->() ) -> Core {
     }
 
     return wand | all | Ask.Option(once: false, handler: everyError)
+    
 }
 
 /// Handle Error and Success
@@ -64,4 +65,5 @@ func |(wand: Core, ask: Ask<Error?>) -> Core {
         all.cancel()
         _ = ask.handler($0)
     }
+
 }

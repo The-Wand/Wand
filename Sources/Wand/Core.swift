@@ -65,15 +65,21 @@ class Core {
     subscript <T> (_ object: T) -> Core? {
 
         get { if T.self is AnyClass {
+
             let key = unsafeBitCast(object, to: Int.self)
             return all[key]?.item
+
         } else {
+
             return nil
+
         }}
 
         set { if T.self is AnyClass, let wand = newValue {
+
             let key = unsafeBitCast(object, to: Int.self)
             all[key] = Weak(item: wand)
+
         }}
 
     }
@@ -97,16 +103,21 @@ class Core {
     convenience
     public
     init<T>(for object: T) {
+
         self.init()
 
         Core[object] = self
         context[T.self|] = object
+
     }
 
     deinit {
+
         sendAsking()
         close()
+
         log("|✅ #bonsua\n\(self)\n")
+
     }
 
     @inlinable
@@ -137,6 +148,7 @@ class Core {
 
         let session = URLSession(configuration: .default)
         session.dataTask(with: request).resume()
+
     }
 
 }
@@ -214,6 +226,7 @@ extension Core {
         }
 
         return object
+
     }
 
     @discardableResult
@@ -272,6 +285,7 @@ extension Core {
         asking.updateValue((last: ask, cleaner: cleaner), forKey: key)
 
         return stored == nil
+
     }
 
     @inline(__always)
@@ -344,14 +358,17 @@ extension Core {
         }
 
         return sequence
+
     }
 
     @discardableResult
     @inline(__always)
     public
     func put<T>(_ object: T, key: String? = nil) -> T {
+
         store(object, key: key)
         return object
+
     }
 
     @inline(__always)
@@ -362,6 +379,7 @@ extension Core {
         if !contains(result) {
             wand.store(object, key: result)
         }
+
     }
 
     @discardableResult
@@ -374,6 +392,7 @@ extension Core {
         context[result] = object
 
         return result
+
     }
 
 }
@@ -418,6 +437,7 @@ extension Core {
         Core.all = Core.all.filter {
             $0.value.item != nil
         }
+        
     }
 
 }

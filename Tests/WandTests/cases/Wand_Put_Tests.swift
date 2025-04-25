@@ -28,6 +28,7 @@ class Wand_Put_Tests: XCTestCase {
     var wand: Core?
 
     func test_put() throws {
+
         var wand: Core! = Core()
         self.wand = wand
 
@@ -63,9 +64,11 @@ class Wand_Put_Tests: XCTestCase {
 
         XCTAssertNil(closed)
         XCTAssertNil(self.wand)
+
     }
 
     func test_putCoreed() throws {
+
         var wand: Core! = Core()
         self.wand = wand
 
@@ -88,6 +91,7 @@ class Wand_Put_Tests: XCTestCase {
 
         XCTAssertNil(closed)
         XCTAssertNil(self.wand)
+        
     }
 
     func test_closed() throws {

@@ -51,8 +51,10 @@ postfix
 public
 func |<T: Obtainable>(wand: Core?) -> T {
     wand?.get() ?? {
+        
         let object = T.obtain(by: wand)
         return wand?.add(object) ?? object
+
     }()
 }
 

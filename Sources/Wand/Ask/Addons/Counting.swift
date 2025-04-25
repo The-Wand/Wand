@@ -32,13 +32,17 @@ extension Ask {
     static
     func `while`(key: String? = nil,
                  handler: @escaping (T, Int)->(Bool) ) -> Ask {
+
         var i = 0
         return Ask(for: key) {
+
             defer {
                 i += 1
             }
             return handler($0, i)
+
         }
+
     }
 
 }

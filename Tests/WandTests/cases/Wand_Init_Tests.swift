@@ -32,12 +32,14 @@ class Wand_Init_Tests: XCTestCase {
 
         let wand: Wand.Core = .to(value)
         XCTAssertNotNil(wand)
+
     }
 
     func test_init_NilLiteral() throws {
 
         let wand: Wand.Core = nil
         XCTAssertNotNil(wand)
+        
     }
 
 //    func test_init_Array() throws {

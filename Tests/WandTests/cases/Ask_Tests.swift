@@ -24,6 +24,7 @@ import XCTest
 class Expect_T_Tests: XCTestCase {
 
     func test_Every() throws {
+        
         //Insert 'count' times
         let count: Int = .any(in: 1...22)
 
@@ -57,9 +58,11 @@ class Expect_T_Tests: XCTestCase {
 
         //TODO: add is closed test
         wand.close()
+
     }
  
     func test_One() throws {
+
         let e = expectation()
 
         let point = Vector.any
@@ -80,6 +83,7 @@ class Expect_T_Tests: XCTestCase {
 
         waitForExpectations()
         XCTAssertNil(wand)
+
     }
 
     func test_While() throws {
@@ -110,6 +114,7 @@ class Expect_T_Tests: XCTestCase {
 
         waitForExpectations()
         XCTAssertNil(wand)
+
     }
 
 }

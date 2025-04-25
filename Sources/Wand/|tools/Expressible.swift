@@ -42,6 +42,7 @@ extension Core: ExpressibleByArrayLiteral {
         
         self.init()
         put(sequence: array)
+
     }
 
     @inline(__always)
@@ -51,6 +52,7 @@ extension Core: ExpressibleByArrayLiteral {
 
         self.init()
         put(sequence: array)
+
     }
 
 }
@@ -66,6 +68,7 @@ extension Core: ExpressibleByFloatLiteral {
 
         self.init()
         context[FloatLiteralType.self|] = value
+
     }
 
 }
@@ -81,6 +84,7 @@ extension Core: ExpressibleByStringLiteral {
 
         self.init()
         context[StringLiteralType.self|] = value
+
     }
 
 }
@@ -96,6 +100,7 @@ extension Core: ExpressibleByBooleanLiteral {
 
         self.init()
         context[BooleanLiteralType.self|] = value
+
     }
 
 }
@@ -111,6 +116,7 @@ extension Core: ExpressibleByIntegerLiteral {
 
         self.init()
         context[IntegerLiteralType.self|] = value
+
     }
 
 }
@@ -130,6 +136,7 @@ extension Core: ExpressibleByDictionaryLiteral {
             Core[object] = self
             context[key] = object
         }
+
     }
 
     @inline(__always)
@@ -143,6 +150,7 @@ extension Core: ExpressibleByDictionaryLiteral {
             Core[object] = self
             context[key] = object
         }
+
     }
 
 }
@@ -158,6 +166,7 @@ extension Core: ExpressibleByStringInterpolation {
 
         self.init()
         context[StringInterpolation.self|] = stringInterpolation
+
     }
 
 }
@@ -173,6 +182,7 @@ extension Core: ExpressibleByUnicodeScalarLiteral {
 
         self.init()
         context[UnicodeScalarLiteralType.self|] = value
+
     }
 
 }
@@ -188,6 +198,7 @@ extension Core: ExpressibleByExtendedGraphemeClusterLiteral {
 
         self.init()
         context[ExtendedGraphemeClusterLiteralType.self|] = value
+
     }
 
 }

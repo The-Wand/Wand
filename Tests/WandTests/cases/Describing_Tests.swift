@@ -24,27 +24,35 @@ import XCTest
 class Describing_Tests: XCTestCase {
 
     func test_wand() throws {
+        
         let char: Character = 0x7C|
         XCTAssertEqual("|", char)
+
     }
 
     func test_Any() throws {
+
         let char: Character = 0x5F|
         XCTAssertEqual("_", char)
+
     }
 
     func test_Data_to_String() throws {
+
         let sample = Data([72, 101, 108, 108, 111, 44, 32, 119, 97, 110, 100, 33])
         let string: String = sample|
 
         XCTAssertEqual("Hello, wand!", string)
+
     }
 
     func test_String_to_Data() throws {
+
         let sample = Data([72, 101, 108, 108, 111, 44, 32, 119, 97, 110, 100, 33])
         let data: Data? = "Hello, wand!"|
 
         XCTAssertEqual(data!, sample)
+
     }
 
 }
