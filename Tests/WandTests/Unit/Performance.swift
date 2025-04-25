@@ -18,7 +18,7 @@
 
 import Foundation
 
-/// Use it when Xcode lost your diamonds
+/// Use it when Xcode lost your status diamonds
 public
 struct Performance {
 
@@ -35,20 +35,27 @@ struct Performance {
 
     public
     static
-    func measurePerformance(of label: String, block: () -> ()) {
+    func measure(of label: String = #function, block: () -> ()) {
 
-        let start = Date().timeIntervalSince1970
+        #if DEBUG
+            let start = Date().timeIntervalSince1970
 
-        block()
+            block()
 
-        let delta = Date().timeIntervalSince1970 - start
-        print("🏎️ \(label) : " + String(format: "%.7f", delta))
+            let delta = Date().timeIntervalSince1970 - start
+            print("🏎️ \(label) : " + String(format: "%.7f", delta))
+        #endif
+
     }
 
     public
     func measure() {
-        let delta = Date().timeIntervalSince1970 - start
-        print("🏎️ \(label) : " + String(format: "%.7f", delta))
+
+        #if DEBUG
+            let delta = Date().timeIntervalSince1970 - start
+            print("🏎️ \(label) : " + String(format: "%.7f", delta))
+        #endif
+
     }
 
 }

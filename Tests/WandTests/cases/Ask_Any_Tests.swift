@@ -104,7 +104,7 @@ class Expect_Any_Tests: XCTestCase {
         let wand = Vector.every | String.every
 
         var handlePerformance: Performance!
-        Performance.measurePerformance(of: "Ask<Any> add") {
+        Performance.measure(of: "Ask<Any> add") {
 
             wand | .any { _ in
 
