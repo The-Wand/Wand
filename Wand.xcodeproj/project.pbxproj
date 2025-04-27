@@ -264,6 +264,16 @@
 			path = Sources;
 			sourceTree = "<group>";
 		};
+		615DA0DF2DBED72D005A245C /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				618CB44F2C584FD2007B5DC9 /* Core.swift */,
+				6146C6DA2DBEAE420055A5DE /* Key.swift */,
+				6146C6D82DBEAE120055A5DE /* Weak.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
 		6162624428BC8E2A00D63EA5 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -381,11 +391,9 @@
 			children = (
 				618CB43E2C584FD2007B5DC9 /* |tools */,
 				618CB4472C584FD2007B5DC9 /* Ask */,
+				615DA0DF2DBED72D005A245C /* Core */,
 				616666672DA93193005FF43D /* Wanded */,
 				618CB44E2C584FD2007B5DC9 /* |.swift */,
-				618CB44F2C584FD2007B5DC9 /* Core.swift */,
-				6146C6DA2DBEAE420055A5DE /* Key.swift */,
-				6146C6D82DBEAE120055A5DE /* Weak.swift */,
 			);
 			path = Wand;
 			sourceTree = "<group>";
