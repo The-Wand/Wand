@@ -42,6 +42,7 @@ class Ask<T> {
         get {
             _key ?? T.self|
         }
+        
         set {
             _key = newValue
         }
@@ -61,7 +62,7 @@ class Ask<T> {
     @inline(__always)
     public
     convenience
-    init(once: Bool, for key: String? = nil, handler: ( (T) -> () )? = nil ) {
+    init(once: Bool, for key: String? = nil, handler: ( (T)->() )? = nil ) {
         self.init(once: once, for: key) {
 
             handler?($0)
@@ -73,7 +74,7 @@ class Ask<T> {
     @inline(__always)
     public
     required
-    init(once: Bool = false, for key: String? = nil, handler: @escaping (T) -> (Bool) ) {
+    init(once: Bool = false, for key: String? = nil, handler: @escaping (T)->(Bool) ) {
 
         self._key = key
         self.once = once
@@ -185,14 +186,13 @@ extension Ask {
 
 }
 
-/// Nulify handler
 extension Ask {
 
     @inline(__always)
     public
     func cancel() {
-        handler = { [weak self] _ in
-            self?.once == false
+        handler = { _ in
+            false
         }
     }
 

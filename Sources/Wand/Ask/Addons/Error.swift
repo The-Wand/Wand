@@ -18,52 +18,51 @@
 
 import Foundation
 
-/// Handle Error and Success
+/// Handle Error
 ///
-/// wand | { (error: Error?) in
+/// wand | { (error: Error) in
 ///
 /// }
 ///
 @discardableResult
 @inline(__always)
 public
-func |(wand: Core, handler: @escaping (Error?)->() ) -> Core {
-
-    //Handle Succeed completion
-    let all = Ask<Core>.all { _ in
-        handler(nil)
-    }
-
-    //Handle Error completion
-    let everyError = { (e: Error) in
-        all.cancel()
-        handler(e)
-    }
-
-    return wand | all | Ask.Option(once: false, handler: everyError)
-    
+func |(wand: Core, handler: @escaping (Error)->() ) -> Core {
+    wand | Ask.Option(once: false, handler: handler)
 }
 
-/// Handle Error and Success
+/// Handle Error
 ///
-/// wand | .one { (error: Error?) in
+/// wand | .one { (error: Error) in
 ///
 /// }
 ///
 @discardableResult
 @inline(__always)
 public
-func |(wand: Core, ask: Ask<Error?>) -> Core {
+func |(wand: Core, ask: Ask<Error>) -> Core {
+    wand.store(addon: ask.optional())
+}
 
-    //Handle Succeed completion
-    let all = Ask<Core>.all { _ in
-        _ = ask.handler(nil)
-    }
+///Error codes and reasons
+extension Core {
 
-    //Handle Error completion
-    return wand | all | ask.dependency {
-        all.cancel()
-        _ = ask.handler($0)
+    public
+    struct Error: Swift.Error {
+
+        public
+        let code: Int
+
+        public
+        let reason: String
+
+        @inline(__always)
+        public
+        init(code: Int = .zero, reason: String, function: String = #function) {
+            self.code = code
+            self.reason = function + reason
+        }
+
     }
 
 }

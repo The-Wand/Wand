@@ -18,9 +18,9 @@
 
 import Foundation
 
-/// Ask from Context
+/// Ask from context
 ///
-/// TODO: func |(wand: Core, asks: Ask<Self>)
+/// TODO: func |(wand: Core, ask: Ask<Self>)
 public
 protocol Asking {
 
@@ -39,7 +39,7 @@ protocol Asking {
 @inline(__always)
 @discardableResult
 public
-func |<C, T: Asking> (context: C?, handler: @escaping (T)->() ) -> Core {
+func |<C, T: Asking>(context: C?, handler: @escaping (T)->() ) -> Core {
     context | Ask.every(handler: handler)
 }
 
@@ -55,7 +55,7 @@ func |<C, T: Asking> (context: C?, handler: @escaping (T)->() ) -> Core {
 @inline(__always)
 @discardableResult
 public
-func |<C, T: Asking> (context: C?, ask: Ask<T>) -> Core {
+func |<C, T: Asking>(context: C?, ask: Ask<T>) -> Core {
     T.ask(with: context, ask: ask)
 }
 

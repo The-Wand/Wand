@@ -18,9 +18,9 @@
 
 import Foundation
 
-/// Get Object from Core 
-/// or create in Context
-/// 
+/// Get object from Core
+/// Or create in context
+///
 /// TODO: func |(wand: Core?) -> Self
 public
 protocol Obtainable: Wanded {
@@ -31,7 +31,7 @@ protocol Obtainable: Wanded {
 
 }
 
-/// Obtainable
+/// Obtain
 ///
 /// let object = T|
 ///
@@ -42,7 +42,7 @@ func |<T: Obtainable>(type: T.Type) -> T {
     T.obtain(by: nil)
 }
 
-/// Obtainable
+/// Obtain from wand
 ///
 /// let object: T = wand|
 ///
@@ -58,21 +58,7 @@ func |<T: Obtainable>(wand: Core?) -> T {
     }()
 }
 
-/// Obtainable
-///
-/// let object: T = wand.obtain()
-///
-extension Core {
-
-    @inline(__always)
-    public
-    func get<T: Obtainable> (for key: String? = nil) -> T {
-        get(for: key, or: T.obtain(by: self))
-    }
-    
-}
-
-/// Obtainable
+/// Obtain from context
 ///
 /// let object: T = context|
 ///
@@ -91,6 +77,20 @@ func |<C, T: Obtainable>(context: C) -> T {
 @inline(__always)
 postfix
 public
-func |<T: Obtainable> (object: T?) -> T {
+func |<T: Obtainable>(object: T?) -> T {
     object ?? T.self|
+}
+
+/// Obtain from wand
+///
+/// let object: T = wand.get()
+///
+extension Core {
+    
+    @inline(__always)
+    public
+    func get<T: Obtainable>(for key: String? = nil) -> T {
+        get(for: key, or: T.obtain(by: self))
+    }
+    
 }

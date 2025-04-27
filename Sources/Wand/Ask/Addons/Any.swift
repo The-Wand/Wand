@@ -16,17 +16,14 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-import Foundation
-
-/// Notify about <#Any#> object
-///
-/// wand | .any { any in
-///
-/// }
-///
-extension Ask {
-
-    /// .any
+extension Ask<Any> {
+    
+    /// Notify about <#Any#> object
+    ///
+    /// wand | .any { any in
+    ///
+    /// }
+    ///
     @inline(__always)
     public
     static
@@ -43,11 +40,13 @@ extension Ask {
 @discardableResult
 public
 func |(wand: Core, ask: Ask<Any>) -> Core {
+    wand.store(addon: ask)
+}
 
-    let head = (wand.asking["Any"]?.last as? Ask<Any>)?.next ?? ask
-    ask.next = head
-    wand.asking["Any"] = (ask, nil)
-
-    return wand
-
+extension Core.Key {
+    
+    public
+    static
+    let any = "Any"
+    
 }

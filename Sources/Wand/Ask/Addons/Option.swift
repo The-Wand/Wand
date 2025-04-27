@@ -18,7 +18,6 @@
 
 extension Ask {
 
-    /// Ask?
     /// .Option Ask don't retain Wand.Core
     public
     class Option: Ask {
@@ -26,8 +25,7 @@ extension Ask {
         @inline(__always)
         override
         public
-        func set(wand: Core?) {
-        }
+        func set(wand: Core?) {}
 
         @inline(__always)
         override
@@ -40,13 +38,13 @@ extension Ask {
 
     @inline(__always)
     public
-    func dependency<U>(for key: String? = nil, on handler: ( (U) -> () )? = nil ) -> Ask<U>.Option {
+    func dependency<U>(for key: String? = nil, on handler: ( (U)->() )? = nil ) -> Ask<U>.Option {
         .init(once: self.once, for: key, handler: handler)
     }
 
     @inline(__always)
     public
-    func depends<U>(for key: String? = nil, while handler: @escaping (U) -> (Bool) ) -> Ask<U>.Option {
+    func depends<U>(for key: String? = nil, while handler: @escaping (U)->(Bool) ) -> Ask<U>.Option {
         .init(for: key, handler: handler)
     }
 

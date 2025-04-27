@@ -19,7 +19,7 @@
 @inline(__always)
 postfix
 public
-func |<T: Numeric> (value: Bool) -> T {
+func |<T: Numeric>(value: Bool) -> T {
     value ? 1 : 0
 }
 
@@ -27,7 +27,7 @@ func |<T: Numeric> (value: Bool) -> T {
 //@inline(__always)
 //postfix
 //public
-//func |<T: Numeric> (value: T) -> Bool {
+//func |<T: Numeric>(value: T) -> Bool {
 //    Bool(value)
 //}
 

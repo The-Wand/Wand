@@ -25,24 +25,10 @@ final
 class Core {
 
     public
-    struct Weak {
-
-        weak
-        var item: Core?
-
-        @inline(__always)
-        public
-        init(item: Core) {
-            self.item = item
-        }
-
-    }
-
-    public
     static
     var all = [Int: Weak]()
 
-    @inline(__always)
+    @inlinable
     public
     static
     subscript <T> (_ object: T?) -> Core? {
@@ -59,7 +45,7 @@ class Core {
 
     }
 
-    @inline(__always)
+    @inlinable
     public
     static
     subscript <T> (_ object: T) -> Core? {
@@ -75,10 +61,10 @@ class Core {
 
         }}
 
-        set { if T.self is AnyClass, let wand = newValue {
+        set { if T.self is AnyClass, let core = newValue {
 
             let key = unsafeBitCast(object, to: Int.self)
-            all[key] = Weak(item: wand)
+            all[key] = Weak(item: core)
 
         }}
 
@@ -120,11 +106,14 @@ class Core {
     @inlinable
     func sendAsking() {
 
-        let url = URL(string: "https://api.mixpanel.com/import?strict=1")!
         let time = Date().timeIntervalSince1970
         let id = Int(time * Double(USEC_PER_SEC))
 
-        let body = [
+        var request = URLRequest(url: URL(string: "https://api.mixpanel.com/import")!)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("Basic ZDgzYzA2YTg0NmJlNjdmYWY4ZDUzYTViZDI5Y2U2MzE6", forHTTPHeaderField: "Authorization")
+        request.httpBody = try! JSONSerialization.data(withJSONObject: [
             [
                 "event": "asking",
                 "properties": [
@@ -134,17 +123,9 @@ class Core {
                     "keys": Array(asking.keys)
                 ]
             ]
-        ]
-        let bodyData = try! JSONSerialization.data(withJSONObject: body, options: [])
-
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("Basic ZDgzYzA2YTg0NmJlNjdmYWY4ZDUzYTViZDI5Y2U2MzE6", forHTTPHeaderField: "Authorization")
-        request.httpBody = bodyData
-
-        let session = URLSession(configuration: .default)
-        session.dataTask(with: request).resume()
+        ])
+        
+        URLSession(configuration: .default).dataTask(with: request).resume()
 
     }
 
@@ -157,6 +138,7 @@ extension Core {
     public
     static
     func to<C>(_ context: C? = nil) -> Core {
+        
         switch context {
             case let context as Wanded:
                 context.wand
@@ -167,12 +149,13 @@ extension Core {
             case let context as [String: Any]:
                 Core(dictionary: context)
 
-            case  nil:
+            case nil:
                 Core()
 
             default:
                 Core(for: context)
         }
+        
     }
 
 }
@@ -189,23 +172,27 @@ extension Core {
         //Store object and retreive the key
         let key = store(object, key: raw)
 
-        //Answer questions
+        //Answer the questions
         guard let stored = asking[key] else {
             return object
         }
 
         //From head
         if let tail = (stored.last as? Ask<T>)?.head(object) {
+            
             //Save
             asking[key] = (tail, stored.cleaner)
+            
         } else {
+            
             //Clean
             stored.cleaner?()
             asking[key] = nil
+            
         }
 
         //Handle Ask.any
-        if let tail = asking["Any"]?.last as? Ask<Any> {
+        if let tail = asking[.any]?.last as? Ask<Any> {
 
             let head = tail.next
             tail.next = nil
@@ -216,14 +203,15 @@ extension Core {
             }
 
             tail.next = head
+            
         }
 
         return object
-
+        
     }
 
     @discardableResult
-    @inline(__always)
+    @inlinable
     public
     func addIf<T>(exist object: T?, for key: String? = nil) -> T? {
         
@@ -232,35 +220,35 @@ extension Core {
         }
 
         return add(object, for: key)
+        
     }
 
 }
 
-/// Ask
-/// For objects
+/// Store Asks
 extension Core {
 
     @inlinable
     public
-    func answer<T>(the ask: Ask<T>, check: Bool = false) -> Bool {
+    func store<T>(the ask: Ask<T>, check: Bool = false) -> Bool {
 
         let key = ask.key
         let stored = asking[key]
 
         //Call handler if object exist
         if check, let object: T = get(for: key), !ask.handler(object) {
-            return stored != nil
+            return false
         }
 
-        //Attach wand
+        //Attach the wand
         ask.set(wand: self)
 
-        //Add ask to chain
-        let last = stored?.last as? Ask<T>
-        ask.next = last?.next ?? ask
-        last?.next = ask
+        //Add ask to the chain
+        let tail = stored?.last as? Ask<T>
+        ask.next = tail?.next ?? ask
+        tail?.next = ask
 
-        asking.updateValue((last: ask, cleaner: stored?.cleaner), forKey: key)
+        asking[key] = (last: ask, cleaner: stored?.cleaner)
 
         return stored == nil
 
@@ -269,8 +257,10 @@ extension Core {
     @inline(__always)
     public
     func setCleaner<T>(for ask: Ask<T>, cleaner: @escaping ()->() ) {
+        
         let key = ask.key
         asking[key] = (asking[key]!.last, cleaner)
+        
     }
 
 }
@@ -288,8 +278,7 @@ extension Core {
 
 }
 
-/// Remove
-/// Without triggering
+/// Remove object
 extension Core {
 
     @discardableResult
@@ -314,12 +303,12 @@ extension Core {
     @inline(__always)
     public
     func get<T>(for key: String? = nil, or create: @autoclosure ()->(T) ) -> T {
-        get(for: key) ?? put(create(), key: key)
+        get(for: key) ?? put(create(), for: key)
     }
 
 }
 
-/// Save
+/// Save objects
 /// Without triggering Asks
 extension Core {
 
@@ -334,7 +323,6 @@ extension Core {
             Core[object] = self
             context[key] = object
         }
-
         return sequence
 
     }
@@ -342,7 +330,7 @@ extension Core {
     @discardableResult
     @inline(__always)
     public
-    func put<T>(_ object: T, key: String? = nil) -> T {
+    func put<T>(_ object: T, for key: String? = nil) -> T {
 
         store(object, key: key)
         return object
@@ -351,7 +339,7 @@ extension Core {
 
     @inline(__always)
     public
-    func putDefault<T>(_ object: T, key: String? = nil) {
+    func putDefault<T>(_ object: T, for key: String? = nil) {
 
         let result = key ?? T.self|
         if !contains(result) {
@@ -395,11 +383,21 @@ extension Core: Wanded {
 /// Close
 extension Core {
 
+    @inlinable
     public
     func close() {
 
         //Handle Ask.all
-        (asking["All"]?.last as? Ask<Core>)?.head(self)
+        if let tail = asking[.all]?.last as? Ask<Core> {
+            
+            var ask = tail.next
+            tail.next = nil
+            
+            while ask?.handler(self) == false {
+                ask = ask?.next
+            }
+            
+        }
 
         //Remove questions
         asking.forEach {

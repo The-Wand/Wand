@@ -16,37 +16,44 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-extension Ask<Core> {
+import Foundation
 
-    /// Ask for the completion
-    ///
-    /// wand | .all {
-    ///
-    /// }
-    ///
-    @inline(__always)
-    public
-    static
-    func all(handler: @escaping (Core)->() ) -> Ask<Core> {
-        .Option(once: true, for: .all) {
-            handler($0)
-        }
-    }
-
-}
-
-/// Add completion to wand
+/// Handle Error and Success
+///
+/// wand | { (error: Error?) in
+///
+/// }
+///
 @discardableResult
 @inline(__always)
 public
-func |(wand: Core, ask: Ask<Core>) -> Core {
-    wand.store(addon: ask)
+func |(wand: Core, handler: @escaping (Error?)->() ) -> Core {
+    wand | .every(handler: handler)
 }
 
-extension Core.Key {
+/// Handle Error and Success
+///
+/// wand | .one { (error: Error?) in
+///
+/// }
+///
+@discardableResult
+@inline(__always)
+public
+func |(wand: Core, ask: Ask<Error?>) -> Core {
+
+    //Handle Succeed completion
+    let all = Ask.all { _ in
+        _ = ask.handler(nil)
+    }
     
-    public
-    static
-    let all = "All"
-    
+    //Handle Error completion
+    let error = Ask<Error>.Option(once: ask.once) {
+        all.cancel()
+        return ask.handler($0)
+    }
+
+    //Handle Error completion
+    return wand | all | error
+
 }

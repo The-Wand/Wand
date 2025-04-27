@@ -16,37 +16,22 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-extension Ask<Core> {
-
-    /// Ask for the completion
-    ///
-    /// wand | .all {
-    ///
-    /// }
-    ///
-    @inline(__always)
-    public
-    static
-    func all(handler: @escaping (Core)->() ) -> Ask<Core> {
-        .Option(once: true, for: .all) {
-            handler($0)
-        }
-    }
-
-}
-
-/// Add completion to wand
-@discardableResult
-@inline(__always)
-public
-func |(wand: Core, ask: Ask<Core>) -> Core {
-    wand.store(addon: ask)
-}
-
-extension Core.Key {
+extension Core {
     
+    @inlinable
     public
-    static
-    let all = "All"
+    func store<T>(addon ask: Ask<T>) -> Core {
+        
+        let key = ask.key
+        
+        let tail = wand.asking[key]?.last as? Ask<T>
+        ask.next = tail?.next ?? ask
+        tail?.next = ask
+        
+        wand.asking[key] = (ask, nil)
+        
+        return wand
+        
+    }
     
 }

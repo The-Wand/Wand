@@ -58,7 +58,7 @@ func |<T: Asking>(ask: Ask<T>) -> Core {
 
 /// Make the chain
 ///
-/// T.one | E.one | { (error: Error) in
+/// T.one | E.one | { (error: Error?) in
 ///
 /// }
 ///

@@ -16,7 +16,8 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
+///
 /// e|| ♟️
-prefix operator |
+prefix  operator |
 postfix operator |
-infix operator | : AdditionPrecedence
+infix   operator | : AdditionPrecedence

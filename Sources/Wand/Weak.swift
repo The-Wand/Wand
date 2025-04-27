@@ -18,53 +18,21 @@
 
 import Foundation
 
-/// Handle Error
-///
-/// wand | { (error: Error) in
-///
-/// }
-///
-@discardableResult
-@inline(__always)
-public
-func |(wand: Core, handler: @escaping (Error)->() ) -> Core {
-    wand | Ask.Option(once: false, handler: handler)
-}
-
-/// Handle Error
-///
-/// wand | .one { (error: Error) in
-///
-/// }
-///
-@discardableResult
-@inline(__always)
-public
-func |(wand: Core, ask: Ask<Error>) -> Core {
-    
-    _ = wand.answer(the: ask.optional())
-    return wand
-}
-
-///Error codes and reasons
 extension Core {
-
+    
     public
-    struct Error: Swift.Error {
-
+    struct Weak {
+        
         public
-        let code: Int
-
-        public
-        let reason: String
-
+        weak
+        var item: Core?
+        
         @inline(__always)
         public
-        init(code: Int = .zero, reason: String, function: String = #function) {
-            self.code = code
-            self.reason = function + reason
+        init(item: Core) {
+            self.item = item
         }
-
+        
     }
-
+    
 }

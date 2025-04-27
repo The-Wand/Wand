@@ -22,10 +22,7 @@ import Foundation
 public
 protocol Wanded {
 
-    @inline(__always)
     var wand: Core {get}
-
-    @inline(__always)
     var isWanded: Core? {get}
 
 }

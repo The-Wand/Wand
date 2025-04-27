@@ -28,7 +28,7 @@ protocol Ubiquitous: Wanded {
 
 }
 
-/// Ubiquitous
+/// Ubiquitous object
 ///
 /// let object = T|
 ///
@@ -39,7 +39,7 @@ func |<T: Ubiquitous>(type: T.Type) -> T {
     T.access()
 }
 
-/// Ubiquitous
+/// Ubiquitous object from wand
 ///
 /// let object: T = wand|
 ///
@@ -50,21 +50,7 @@ func |<T: Ubiquitous>(wand: Core?) -> T {
     T.access()
 }
 
-/// Ubiquitous
-///
-/// let object: T = wand.get()
-///
-extension Core {
-
-    @inline(__always)
-    public
-    func get<T: Ubiquitous>(for key: String? = nil) -> T {
-        T.access()
-    }
-
-}
-
-/// Ubiquitous
+/// Ubiquitous object from context
 ///
 /// let object: T = context|
 ///
@@ -83,6 +69,20 @@ func |<C, T: Ubiquitous>(context: C) -> T {
 @inline(__always)
 postfix
 public
-func |<T: Ubiquitous> (object: T?) -> T {
+func |<T: Ubiquitous>(object: T?) -> T {
     object ?? T.self|
+}
+
+/// Ubiquitous object from wand
+///
+/// let object: T = wand.get()
+///
+extension Core {
+    
+    @inline(__always)
+    public
+    func get<T: Ubiquitous>(for key: String? = nil) -> T {
+        T.access()
+    }
+    
 }

@@ -18,10 +18,9 @@
 
 import Foundation
 
-/// While counting
 extension Ask {
 
-    /// Ask .while
+    /// Ask while counting
     ///
     /// |.while { (object, i) in
     ///
