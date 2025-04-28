@@ -170,7 +170,7 @@ extension Core {
     func add<T>(_ object: T, for raw: String? = nil) -> T {
 
         //Store object and retreive the key
-        let key = store(object, key: raw)
+        let key = save(object, key: raw)
 
         //Answer the questions
         guard let stored = asking[key] else {
@@ -332,7 +332,7 @@ extension Core {
     public
     func put<T>(_ object: T, for key: String? = nil) -> T {
 
-        store(object, key: key)
+        save(object, key: key)
         return object
 
     }
@@ -343,7 +343,7 @@ extension Core {
 
         let result = key ?? T.self|
         if !contains(result) {
-            wand.store(object, key: result)
+            wand.save(object, key: result)
         }
 
     }
@@ -351,7 +351,7 @@ extension Core {
     @discardableResult
     @inline(__always)
     public
-    func store<T>(_ object: T, key: String? = nil) -> String {
+    func save<T>(_ object: T, key: String? = nil) -> String {
 
         let result = key ?? T.self|
         Core[object] = self
