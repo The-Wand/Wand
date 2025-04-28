@@ -191,9 +191,13 @@ extension Ask {
     @inline(__always)
     public
     func cancel() {
+        
+        set(wand: nil)
+        
         handler = { _ in
             false
         }
+        
     }
 
 }
