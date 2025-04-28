@@ -20,7 +20,7 @@ extension Core {
     
     @inlinable
     public
-    func store<T>(addon ask: Ask<T>) -> Core {
+    func store<T>(handler ask: Ask<T>) -> Core {
         
         let key = ask.key
         

@@ -99,7 +99,7 @@ extension String: @retroactive Asking
     static
     func ask<C, T>(with context: C, ask: Ask<T>) -> Core {
         let wand = Wand.Core.to(context)
-        _ = wand.answer(the: ask)
+        _ = wand.store(the: ask)
         return wand
     }
 
