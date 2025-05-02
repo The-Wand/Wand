@@ -124,7 +124,7 @@ class Core {
                 ]
             ]
         ])
-        
+
         URLSession(configuration: .default).dataTask(with: request).resume()
 
     }
@@ -138,13 +138,13 @@ extension Core {
     public
     static
     func to<C>(_ context: C? = nil) -> Core {
-        
+
         switch context {
             case let context as Wanded:
                 context.wand
 
-            case let context as [Any]:
-                Core(array: context)
+//            case let context as [Any]:
+//                Core(array: context)
 
             case let context as [String: Any]:
                 Core(dictionary: context)
@@ -155,7 +155,7 @@ extension Core {
             default:
                 Core(for: context)
         }
-        
+
     }
 
 }
@@ -179,16 +179,16 @@ extension Core {
 
         //From head
         if let tail = (stored.last as? Ask<T>)?.head(object) {
-            
+
             //Save
             asking[key] = (tail, stored.cleaner)
-            
+
         } else {
-            
+
             //Clean
             stored.cleaner?()
             asking[key] = nil
-            
+
         }
 
         //Handle Ask.any
@@ -203,24 +203,24 @@ extension Core {
             }
 
             tail.next = head
-            
+
         }
 
         return object
-        
+
     }
 
     @discardableResult
     @inlinable
     public
     func addIf<T>(exist object: T?, for key: String? = nil) -> T? {
-        
+
         guard let object = object else {
             return nil
         }
 
         return add(object, for: key)
-        
+
     }
 
 }
@@ -257,10 +257,10 @@ extension Core {
     @inline(__always)
     public
     func setCleaner<T>(for ask: Ask<T>, cleaner: @escaping ()->() ) {
-        
+
         let key = ask.key
         asking[key] = (asking[key]!.last, cleaner)
-        
+
     }
 
 }
@@ -395,14 +395,14 @@ extension Core {
 
         //Handle Ask.all
         if let tail = asking[.all]?.last as? Ask<Core> {
-            
+
             var ask = tail.next
             tail.next = nil
-            
+
             while ask?.handler(self) == false {
                 ask = ask?.next
             }
-            
+
         }
 
         //Remove questions
@@ -419,7 +419,7 @@ extension Core {
         Core.all = Core.all.filter {
             $0.value.item != nil
         }
-        
+
     }
 
 }

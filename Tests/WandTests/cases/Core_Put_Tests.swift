@@ -103,24 +103,24 @@ class Core_Put_Tests: XCTestCase {
         
         var wand: Core! = Core()
         self.wand = wand
-
+        
         let original: CLLocation = CLLocation.any
         wand.add(original)
-
+        
         // wanded equals original
         let wanded: CLLocation = try XCTUnwrap(wand.get())
         XCTAssertEqual(original, wanded)
-
+        
         // wand is the same
         XCTAssertTrue(wand === (wanded as Optional).wand)
         XCTAssertTrue((original as Optional).wand ===
                       (wanded as Optional).wand)
-
+        
         //Close wand
         weak
         var closed = wand|
         wand = nil
-
+        
         XCTAssertNil(closed)
         XCTAssertNil(self.wand)
         
