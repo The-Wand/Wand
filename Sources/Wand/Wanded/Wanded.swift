@@ -16,8 +16,6 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-import Foundation
-
 /// Object that supports Wand
 public
 protocol Wanded {

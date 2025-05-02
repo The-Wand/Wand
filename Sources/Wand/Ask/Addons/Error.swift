@@ -16,8 +16,6 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-import Foundation
-
 /// Handle Error
 ///
 /// wand | { (error: Error) in

@@ -16,8 +16,6 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-import Foundation
-
 /// Ask from context
 ///
 /// TODO: func |(wand: Core, ask: Ask<Self>)

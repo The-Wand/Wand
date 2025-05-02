@@ -16,10 +16,8 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-import Foundation
-import XCTest
-
 import Wand
+import XCTest
 
 /// Asking
 extension XCTestCase {

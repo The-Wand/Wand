@@ -16,8 +16,6 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-import Foundation
-
 /// Ask from Context
 /// func |(context: C?, asks: Ask<Self>)
 public
