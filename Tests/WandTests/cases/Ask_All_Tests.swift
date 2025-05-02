@@ -23,7 +23,7 @@ class Expect_All_Tests: XCTestCase {
 
     func test_All() throws {
 
-        let e = expectation(description: "event.all")
+        let e = expectation()
         e.assertForOverFulfill = false
 
         weak

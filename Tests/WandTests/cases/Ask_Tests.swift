@@ -24,7 +24,7 @@ class Expect_T_Tests: XCTestCase {
     func test_Every() throws {
         
         //Insert 'count' times
-        let count: Int = .any(in: 1...22)
+        let count: Int = .any(in: 1...42)
 
         let e = expectation()
         e.expectedFulfillmentCount = count
@@ -35,21 +35,21 @@ class Expect_T_Tests: XCTestCase {
         weak
         var wand: Core!
         wand = |.every { (point: Vector) in
-            //Is equal?
+
             if point == last {
                 e.fulfill()
             }
+
         }
 
         //Put for 'count' Vector
-        var i = 0
         (0..<count).forEach { [weak wand] _ in
+
             let point = Vector.any
             last = point
 
             wand?.add(point)
-
-            i = i+1
+            
         }
 
         waitForExpectations(timeout: .default)
@@ -74,6 +74,7 @@ class Expect_T_Tests: XCTestCase {
 
             handlePerformance.measure()
             e.fulfill()
+
         }
 
         handlePerformance = Performance(of: "AskingNil answer")

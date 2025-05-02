@@ -16,8 +16,6 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-import Foundation
-
 import Wand
 import XCTest
 
@@ -25,8 +23,11 @@ class Expect_Any_Tests: XCTestCase {
 
     func test_Any() throws {
 
-        let e = expectation(description: "event.any")
-        e.assertForOverFulfill = false
+        //Insert 'count' times
+        let count: Int = .any(in: 1...42)
+
+        let e = expectation()
+        e.expectedFulfillmentCount = count
 
         var wand: Wand.Core!
 
@@ -38,13 +39,17 @@ class Expect_Any_Tests: XCTestCase {
 
         }
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak wand] in
+        (0..<count).forEach { _ in
 
-            //TODO: Update Any_
-            if .random() {
-                wand?.add(Vector.any)
-            } else {
-                wand?.add(String.any)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak wand] in
+
+                //TODO: Update Any_
+                if .random() {
+                    wand?.add(Vector.any)
+                } else {
+                    wand?.add(String.any)
+                }
+
             }
 
         }
@@ -55,8 +60,7 @@ class Expect_Any_Tests: XCTestCase {
 
     func test_Any_Performance() throws {
 
-        let e = expectation(description: "event.any")
-        e.assertForOverFulfill = false
+        let e = expectation()
 
         let wand = Vector.every | String.every
 
@@ -66,8 +70,8 @@ class Expect_Any_Tests: XCTestCase {
             wand | .any { _ in
 
                 handlePerformance.measure()
-
                 e.fulfill()
+                
             }
 
         }
