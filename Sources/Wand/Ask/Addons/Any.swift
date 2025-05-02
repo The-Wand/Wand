@@ -40,7 +40,7 @@ extension Ask<Any> {
 @discardableResult
 public
 func |(wand: Core, ask: Ask<Any>) -> Core {
-    wand.store(handler: ask)
+    wand.append(handler: ask)
 }
 
 extension Core.Key {

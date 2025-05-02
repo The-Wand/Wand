@@ -40,7 +40,7 @@ extension Ask<Core> {
 @inline(__always)
 public
 func |(wand: Core, ask: Ask<Core>) -> Core {
-    wand.store(handler: ask)
+    wand.append(handler: ask)
 }
 
 extension Core.Key {

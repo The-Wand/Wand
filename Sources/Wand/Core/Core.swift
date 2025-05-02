@@ -230,7 +230,7 @@ extension Core {
 
     @inlinable
     public
-    func store<T>(the ask: Ask<T>, check: Bool = false) -> Bool {
+    func append<T>(the ask: Ask<T>, check: Bool = false) -> Bool {
 
         let key = ask.key
         let stored = asking[key]
