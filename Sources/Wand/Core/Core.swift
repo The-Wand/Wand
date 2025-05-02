@@ -195,13 +195,7 @@ extension Core {
         if let tail = asking[.any]?.last as? Ask<Any> {
 
             let head = tail.next
-            tail.next = nil
-
-            var ask = head
-            while ask?.handler(object) == true {
-                ask = ask?.next
-            }
-
+            handle(object, head: head, tail: tail)
             tail.next = head
 
         }
@@ -230,7 +224,7 @@ extension Core {
 
     @inlinable
     public
-    func append<T>(the ask: Ask<T>, check: Bool = false) -> Bool {
+    func append<T>(ask: Ask<T>, check: Bool = false) -> Bool {
 
         let key = ask.key
         let stored = asking[key]
@@ -395,14 +389,7 @@ extension Core {
 
         //Handle Ask.all
         if let tail = asking[.all]?.last as? Ask<Core> {
-
-            var ask = tail.next
-            tail.next = nil
-
-            while ask?.handler(self) == false {
-                ask = ask?.next
-            }
-
+            handle(self, head: tail.next, tail: tail)
         }
 
         //Remove questions

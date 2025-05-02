@@ -33,5 +33,18 @@ extension Core {
         return wand
         
     }
-    
+
+    @inlinable
+    public
+    func handle<T>(_ object: T, head: Ask<T>?, tail: Ask<T>) {
+
+        var ask = head
+        tail.next = nil
+
+        while ask?.handler(object) != nil {
+            ask = ask?.next
+        }
+        
+    }
+
 }
