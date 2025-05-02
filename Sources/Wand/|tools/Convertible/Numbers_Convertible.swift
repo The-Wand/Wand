@@ -34,6 +34,13 @@ func |<T: Numeric>(value: Bool) -> T {
 @inline(__always)
 postfix
 public
+func |(value: any BinaryFloatingPoint) -> Int {
+    Int(value)
+}
+
+@inline(__always)
+postfix
+public
 func |(value: any BinaryInteger) -> Double {
     Double(value)
 }
@@ -43,11 +50,4 @@ postfix
 public
 func |(value: Double) -> Float {
     Float(value)
-}
-
-@inline(__always)
-postfix
-public
-func |(value: any BinaryFloatingPoint) -> Int {
-    Int(value)
 }

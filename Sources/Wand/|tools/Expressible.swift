@@ -18,21 +18,7 @@
 
 import Foundation
 
-/// Nil
-/// Expressible
-extension Core: ExpressibleByNilLiteral {
-
-    @inline(__always)
-    convenience
-    public
-    init(nilLiteral: ()) {
-        self.init()
-    }
-
-}
-
-/// Array
-/// Expressible
+/// Init with Array
 //extension Core: ExpressibleByArrayLiteral {
 //
 //    @inline(__always)
@@ -57,40 +43,7 @@ extension Core: ExpressibleByNilLiteral {
 //
 //}
 
-/// Float
-/// Expressible
-extension Core: ExpressibleByFloatLiteral {
-
-    @inline(__always)
-    convenience
-    public
-    init(floatLiteral value: Float) {
-
-        self.init()
-        context[FloatLiteralType.self|] = value
-
-    }
-
-}
-
-/// String
-/// Expressible
-extension Core: ExpressibleByStringLiteral {
-
-    @inline(__always)
-    convenience
-    public
-    init(stringLiteral value: String) {
-
-        self.init()
-        context[StringLiteralType.self|] = value
-
-    }
-
-}
-
-/// Bool
-/// Expressible
+/// Init with Bool
 extension Core: ExpressibleByBooleanLiteral {
 
     @inline(__always)
@@ -105,24 +58,7 @@ extension Core: ExpressibleByBooleanLiteral {
 
 }
 
-/// Int
-/// Expressible
-extension Core: ExpressibleByIntegerLiteral {
-
-    @inline(__always)
-    convenience
-    public
-    init(integerLiteral value: Int) {
-
-        self.init()
-        context[IntegerLiteralType.self|] = value
-
-    }
-
-}
-
-/// Dictionary
-/// Expressible
+/// Init with Dictionary
 extension Core: ExpressibleByDictionaryLiteral {
 
     @inline(__always)
@@ -155,40 +91,7 @@ extension Core: ExpressibleByDictionaryLiteral {
 
 }
 
-/// StringInterpolation
-/// Expressible
-extension Core: ExpressibleByStringInterpolation {
-
-    @inline(__always)
-    convenience
-    public
-    init(stringInterpolation: StringInterpolation) {
-
-        self.init()
-        context[StringInterpolation.self|] = stringInterpolation
-
-    }
-
-}
-
-/// UnicodeScalar
-/// Expressible
-extension Core: ExpressibleByUnicodeScalarLiteral {
-
-    @inline(__always)
-    convenience
-    public
-    init(unicodeScalarLiteral value: UnicodeScalarLiteralType) {
-
-        self.init()
-        context[UnicodeScalarLiteralType.self|] = value
-
-    }
-
-}
-
-/// ExtendedGraphemeCluster
-/// Expressible
+/// Init with extended grapheme cluster
 extension Core: ExpressibleByExtendedGraphemeClusterLiteral {
 
     @inline(__always)
@@ -198,6 +101,78 @@ extension Core: ExpressibleByExtendedGraphemeClusterLiteral {
 
         self.init()
         context[ExtendedGraphemeClusterLiteralType.self|] = value
+
+    }
+
+}
+
+/// Init with Float
+extension Core: ExpressibleByFloatLiteral {
+
+    @inline(__always)
+    convenience
+    public
+    init(floatLiteral value: Float) {
+
+        self.init()
+        context[FloatLiteralType.self|] = value
+
+    }
+
+}
+
+/// Init with Int
+extension Core: ExpressibleByIntegerLiteral {
+
+    @inline(__always)
+    convenience
+    public
+    init(integerLiteral value: Int) {
+
+        self.init()
+        context[IntegerLiteralType.self|] = value
+
+    }
+
+}
+
+/// Init from nothing
+extension Core: ExpressibleByNilLiteral {
+
+    @inline(__always)
+    convenience
+    public
+    init(nilLiteral: ()) {
+        self.init()
+    }
+
+}
+
+/// Init with String
+extension Core: ExpressibleByStringLiteral {
+
+    @inline(__always)
+    convenience
+    public
+    init(stringLiteral value: String) {
+
+        self.init()
+        context[StringLiteralType.self|] = value
+
+    }
+
+}
+
+/// Init with Unicode.Scalar
+extension Core: ExpressibleByUnicodeScalarLiteral {
+
+    @inline(__always)
+    convenience
+    public
+    init(unicodeScalarLiteral value: UnicodeScalarLiteralType) {
+
+        self.init()
+        context[UnicodeScalarLiteralType.self|] = value
 
     }
 
