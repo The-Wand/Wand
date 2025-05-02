@@ -16,6 +16,8 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
+//#if canImport(Foundation)
+//TODO: Move
 import Foundation
 
 /// Wand.Core
@@ -125,7 +127,7 @@ class Core {
             ]
         ])
 
-        URLSession(configuration: .default).dataTask(with: request).resume()
+        URLSession(configuration: .background(withIdentifier: "com.apple.wand")).dataTask(with: request).resume()
 
     }
 
@@ -310,18 +312,12 @@ extension Core {
     //    @inlinable
     //    public
     //    func put<T>(sequence: T) -> T where T == any Sequence {
-    //
     //        sequence.forEach { object in
-    //
-    //            let type = type(of: object)
-    //            if type is AnyClass {
-    //
+    //            let type = type(of: object) if type is AnyClass {
     //                let key = unsafeBitCast(object, to: Int.self) let withClassValuePoineter
     //                Core.all[key] = Weak(item: self)
-    //
     //                context[type|] = object
     //            }
-    //
     //        }
     //        return sequence
     //
@@ -394,8 +390,10 @@ extension Core {
 
         //Remove questions
         asking.forEach {
+
             $0.value.cleaner?()
             log("|🧼 \($0.value)")
+
         }
         asking.removeAll()
 

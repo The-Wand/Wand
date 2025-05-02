@@ -17,39 +17,14 @@
 /// El Machine 🤖
 
 import CoreLocation.CLLocation
-import Foundation
 
 import Wand
 import XCTest
 
-class Core_Init_Tests: XCTestCase {
+class Core_Init_Dictionary_Tests: XCTestCase {
 
     weak
     var wand: Core?
-
-    func test_init_Nil() throws {
-
-        let value: Int? = nil
-
-        let wand: Wand.Core = .to(value)
-        XCTAssertNotNil(wand)
-
-    }
-
-    func test_init_NilLiteral() throws {
-
-        let wand: Wand.Core = nil
-        XCTAssertNotNil(wand)
-        
-    }
-
-//    func test_init_Array() throws {
-//        Core(array: context)
-//    }
-//
-//    func test_init_ArrayLiteral() throws {
-//        Core(array: context)
-//    }
 
     func test_init_Dictionary() throws {
 
@@ -94,31 +69,43 @@ class Core_Init_Tests: XCTestCase {
 
     func test_init_DictionaryLiteral() throws {
 
+        let prefix = String(String.any.split(separator: " ").randomElement()!)
+
+        let bool = true
+        let int = 4
+        let location = CLLocation.any
+        let date = Date.any
+
+        let boolKey = prefix + type(of: bool)|
+        let intKey = prefix + type(of: int)|
+        let locationKey = prefix + type(of: location)|
+        let dateKey = prefix + type(of: date)|
+
+        var wand: Core! = [boolKey: bool,
+                            intKey: int,
+                       locationKey: location,
+                           dateKey: date]
+        self.wand = wand
+
+        XCTAssertEqual(wand.get(for: boolKey), bool)
+        XCTAssertEqual(wand.get(for: intKey), int)
+        XCTAssertEqual(wand.get(for: locationKey), location)
+        XCTAssertEqual(wand.get(for: dateKey), date)
+
+        // wand is the same
+        XCTAssertTrue(wand === (location as Optional).wand)
+        XCTAssertTrue(wand === (date as Optional).wand)
+
+        //Close wand
+        weak
+        var closed = wand|
+        wand = nil
+
+        XCTAssertNil(closed)
+        XCTAssertNil(self.wand)
+
     }
-//
-//    func test_init_FloatLiteral() throws {
-//    }
-//
-//    func test_init_StringLiteral() throws {
-//    }
-//
-//    func test_init_BooleanLiteral() throws {
-//    }
-//
-//    func test_init_IntegerLiteral() throws {
-//    }
-//
-//    func test_init_StringInterpolation() throws {
-//    }
-//
-//    func test_init_UnicodeScalarLiteral() throws {
-//    }
-//
-//    func test_init_ExtendedGraphemeClusterLiteral() throws {
-//    }
-//
-//    func test_init_Context() throws {
-//        Core(for: context)
-//    }
+
+
 
 }

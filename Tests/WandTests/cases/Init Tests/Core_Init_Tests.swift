@@ -17,7 +17,6 @@
 /// El Machine 🤖
 
 import CoreLocation.CLLocation
-import Foundation
 
 import Wand
 import XCTest
@@ -27,11 +26,56 @@ class Core_Init_Tests: XCTestCase {
     weak
     var wand: Core?
 
+    //    func test_init_Array() throws {
+    //        Core(array: context)
+    //    }
+    //
+    //    func test_init_ArrayLiteral() throws {
+    //        Core(array: context)
+    //    }
+    //
+    
+    func test_init_BooleanLiteral() throws {
+
+        let wand: Wand.Core = true
+
+        XCTAssertEqual(wand.get(), true)
+        XCTAssertNotNil(wand)
+
+    }
+
+    func test_init_ExtendedGraphemeClusterLiteral() throws {
+
+        let wand: Wand.Core = "🫱🏿‍🫲🏻"
+
+        XCTAssertEqual(wand.get(), "🫱🏿‍🫲🏻")
+        XCTAssertNotNil(wand)
+
+    }
+
+    func test_init_FloatLiteral() throws {
+
+        let wand: Wand.Core = 2.0
+
+        XCTAssertEqual(wand.get(), 2.0)
+        XCTAssertNotNil(wand)
+
+    }
+
+    func test_init_IntegerLiteral() throws {
+
+        let wand: Wand.Core = 4
+
+        XCTAssertEqual(wand.get(), 4)
+        XCTAssertNotNil(wand)
+
+    }
+
+
     func test_init_Nil() throws {
 
-        let value: Int? = nil
+        let wand: Wand.Core = .to(nil as Int?)
 
-        let wand: Wand.Core = .to(value)
         XCTAssertNotNil(wand)
 
     }
@@ -39,87 +83,42 @@ class Core_Init_Tests: XCTestCase {
     func test_init_NilLiteral() throws {
 
         let wand: Wand.Core = nil
+
         XCTAssertNotNil(wand)
-        
-    }
-
-//    func test_init_Array() throws {
-//        Core(array: context)
-//    }
-//
-//    func test_init_ArrayLiteral() throws {
-//        Core(array: context)
-//    }
-
-    func test_init_Dictionary() throws {
-
-        let prefix = String(String.any.split(separator: " ").randomElement()!)
-
-        let bool = true
-        let int = 4
-        let location = CLLocation.any
-        let date = Date.any
-
-        let boolKey = prefix + type(of: bool)|
-        let intKey = prefix + type(of: int)|
-        let locationKey = prefix + type(of: location)|
-        let dateKey = prefix + type(of: date)|
-
-        let dictionary: [String: Any] = [boolKey: bool,
-                                          intKey: int,
-                                     locationKey: location,
-                                         dateKey: date]
-
-        var wand: Core! = Core(dictionary: dictionary)
-        self.wand = wand
-
-        XCTAssertEqual(wand.get(for: <#T##String?#>), bool)
-        XCTAssertEqual(wand.get(), int)
-        XCTAssertEqual(wand.get(), location)
-        XCTAssertEqual(wand.get(), date)
-
-        // wand is the same
-        XCTAssertTrue(wand === (location as Optional).wand)
-        XCTAssertTrue(wand === (date as Optional).wand)
-
-        //Close wand
-        weak
-        var closed = wand|
-        wand = nil
-
-        XCTAssertNil(closed)
-        XCTAssertNil(self.wand)
-
 
     }
 
-    func test_init_DictionaryLiteral() throws {
-        Core(dictionary: context)
+    func test_init_StringLiteral() throws {
+
+        let wand: Wand.Core = "one"
+
+        XCTAssertEqual(wand.get(), "one")
+        XCTAssertNotNil(wand)
+
     }
-//
-//    func test_init_FloatLiteral() throws {
-//    }
-//
-//    func test_init_StringLiteral() throws {
-//    }
-//
-//    func test_init_BooleanLiteral() throws {
-//    }
-//
-//    func test_init_IntegerLiteral() throws {
-//    }
-//
-//    func test_init_StringInterpolation() throws {
-//    }
-//
-//    func test_init_UnicodeScalarLiteral() throws {
-//    }
-//
-//    func test_init_ExtendedGraphemeClusterLiteral() throws {
-//    }
-//
-//    func test_init_Context() throws {
-//        Core(for: context)
-//    }
+
+    func test_init_StringInterpolation() throws {
+    }
+
+    func test_init_UnicodeScalarLiteral() throws {
+
+        let wand: Wand.Core = "🌚"
+
+        XCTAssertEqual(wand.get(), "🌚")
+        XCTAssertNotNil(wand)
+
+    }
+
+    func test_init_Context() throws {
+
+        //TODO: Add URL.any
+        let context = URLRequest(url: Bundle.main.bundleURL)
+
+        let wand = Core(for: context)
+
+        XCTAssertEqual(wand.get(), context)
+        XCTAssertNotNil(wand)
+
+    }
 
 }
