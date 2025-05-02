@@ -23,14 +23,6 @@ func |<T: Numeric>(value: Bool) -> T {
     value ? 1 : 0
 }
 
-//TODO: Make it works
-//@inline(__always)
-//postfix
-//public
-//func |<T: Numeric>(value: T) -> Bool {
-//    Bool(value)
-//}
-
 @inline(__always)
 postfix
 public
