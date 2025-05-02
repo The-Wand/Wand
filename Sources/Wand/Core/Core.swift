@@ -312,20 +312,26 @@ extension Core {
 /// Without triggering Asks
 extension Core {
 
-    @discardableResult
-    @inline(__always)
-    public
-    func put<T: Sequence>(sequence: T) -> T {
-
-        sequence.forEach { object in
-            let key = type(of: object)|
-
-            Core[object] = self
-            context[key] = object
-        }
-        return sequence
-
-    }
+    //    @discardableResult
+    //    @inlinable
+    //    public
+    //    func put<T>(sequence: T) -> T where T == any Sequence {
+    //
+    //        sequence.forEach { object in
+    //
+    //            let type = type(of: object)
+    //            if type is AnyClass {
+    //
+    //                let key = unsafeBitCast(object, to: Int.self) let withClassValuePoineter
+    //                Core.all[key] = Weak(item: self)
+    //
+    //                context[type|] = object
+    //            }
+    //
+    //        }
+    //        return sequence
+    //
+    //    }
 
     @discardableResult
     @inline(__always)

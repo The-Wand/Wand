@@ -66,9 +66,41 @@ class Wand_Put_Tests: XCTestCase {
         XCTAssertNil(self.wand)
 
     }
-
-    func test_putCoreed() throws {
-
+    
+//    func test_put_Sequense() throws {
+//        
+//        var wand: Core! = Core()
+//        self.wand = wand
+//        
+//        let bool = true
+//        let int = 4
+//        let location = CLLocation.any
+//        let date = Date.any
+//        
+//        let sequence: [Any] = [bool, int, location, date]
+//        wand.put(sequence: sequence)
+//        
+//        XCTAssertEqual(wand.get(), bool)
+//        XCTAssertEqual(wand.get(), int)
+//        XCTAssertEqual(wand.get(), location)
+//        XCTAssertEqual(wand.get(), date)
+//        
+//        // wand is the same
+//        XCTAssertTrue(wand === (location as Optional).wand)
+//        XCTAssertTrue(wand === (date as Optional).wand)
+//        
+//        //Close wand
+//        weak
+//        var closed = wand|
+//        wand = nil
+//        
+//        XCTAssertNil(closed)
+//        XCTAssertNil(self.wand)
+//        
+//    }
+    
+    func test_put_Wanded() throws {
+        
         var wand: Core! = Core()
         self.wand = wand
 
