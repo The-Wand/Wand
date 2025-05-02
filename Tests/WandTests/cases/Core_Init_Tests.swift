@@ -21,7 +21,7 @@ import Foundation
 import Wand
 import XCTest
 
-class Wand_Init_Tests: XCTestCase {
+class Core_Init_Tests: XCTestCase {
 
     weak
     var wand: Core?
