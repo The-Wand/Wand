@@ -54,7 +54,7 @@ extension XCTestCase {
     func auto_test<T: AskingNil>(_ api:   ( @escaping (T)->() )->(Core) ,
                                completion:  @escaping (T)->() ) {
 
-        let e = expectation()
+        let e = expectation()
         e.assertForOverFulfill = true
 
         _ = api({ (t: T) in
