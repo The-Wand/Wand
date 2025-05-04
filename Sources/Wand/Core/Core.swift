@@ -79,7 +79,7 @@ class Core {
     var context = [String: Any]()
 
     @inline(__always)
-    private
+    internal
     init() {
         log("|💪🏽 #init\n\(self)\n")
     }
