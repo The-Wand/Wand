@@ -16,12 +16,13 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-/// Get Ubiquitous object from Core
-/// 
-/// TODO: func |(wand: Core?) -> Self
+/// Get <#Ubiquitous#>
+///
+/// let object = U.self|
+///
 public
 protocol Ubiquitous: Wanded {
-
+    
     @inline(__always)
     static
     func access() -> Self
@@ -78,7 +79,6 @@ func |<T: Ubiquitous>(object: T?) -> T {
     object ?? T.self|
 }
 
-/// Ubiquitous object from wand
 ///
 /// Set <#Ubiquitous#>
 ///
@@ -96,6 +96,7 @@ extension Ubiquitous {
     
 }
 
+/// <#Ubiquitous#> from the Core
 ///
 /// let object: T = wand.get()
 ///
