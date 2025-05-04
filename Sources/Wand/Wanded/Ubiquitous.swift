@@ -25,7 +25,12 @@ protocol Ubiquitous: Wanded {
     @inline(__always)
     static
     func access() -> Self
-
+    
+    @inline(__always)
+    prefix
+    static
+    func | (the: Self) -> Self
+    
 }
 
 /// Ubiquitous object
@@ -74,6 +79,23 @@ func |<T: Ubiquitous>(object: T?) -> T {
 }
 
 /// Ubiquitous object from wand
+///
+/// Set <#Ubiquitous#>
+///
+/// |object
+///
+extension Ubiquitous {
+    
+    @inline(__always)
+    @discardableResult
+    prefix
+    static
+    func | (the: Self) -> Self {
+        the
+    }
+    
+}
+
 ///
 /// let object: T = wand.get()
 ///
