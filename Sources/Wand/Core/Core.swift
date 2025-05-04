@@ -79,15 +79,15 @@ class Core {
     var context = [String: Any]()
 
     @inline(__always)
-    public
+    private
     init() {
         log("|💪🏽 #init\n\(self)\n")
     }
 
-    @inlinable
+    @inline(__always)
     convenience
-    public
-    init<T>(for object: T) {
+    fileprivate
+    init<T>(_ object: T) {
 
         self.init()
 
@@ -136,7 +136,7 @@ class Core {
 /// Attach to Any?
 extension Core {
 
-    @inlinable
+    @inline(__always)
     public
     static
     func to<C>(_ context: C? = nil) -> Core {
@@ -155,7 +155,7 @@ extension Core {
                 Core()
 
             default:
-                Core(for: context)
+                Core(context)
         }
 
     }

@@ -114,7 +114,7 @@ class Core_Init_Tests: XCTestCase {
         //TODO: Add URL.any
         let context = URLRequest(url: Bundle.main.bundleURL)
 
-        let wand = Core(for: context)
+        let wand = Core.to(context)
 
         XCTAssertEqual(wand.get(), context)
         XCTAssertNotNil(wand)

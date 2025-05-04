@@ -30,7 +30,7 @@ extension Wanded {
     @inline(__always)
     public
     var wand: Core {
-        isWanded ?? Core(for: self)
+        isWanded ?? .to(self)
     }
 
     @inline(__always)
