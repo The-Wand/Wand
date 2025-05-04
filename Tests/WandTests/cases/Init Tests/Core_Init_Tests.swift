@@ -74,7 +74,7 @@ class Core_Init_Tests: XCTestCase {
 
     func test_init_Nil() throws {
 
-        let wand: Wand.Core = .to(nil as Int?)
+        let wand = Core.to(nil as Int?)
 
         XCTAssertNotNil(wand)
 
