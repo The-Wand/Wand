@@ -163,17 +163,18 @@ extension Core: ExpressibleByStringLiteral {
 
 }
 
+//TODO: Fix and enable
 /// Init with Unicode.Scalar
-extension Core: ExpressibleByUnicodeScalarLiteral {
-
-    @inline(__always)
-    convenience
-    public
-    init(unicodeScalarLiteral value: UnicodeScalarLiteralType) {
-
-        self.init()
-        context[UnicodeScalarLiteralType.self|] = value
-
-    }
-
-}
+//extension Core: ExpressibleByUnicodeScalarLiteral {
+//
+//    @inline(__always)
+//    convenience
+//    public
+//    init(unicodeScalarLiteral value: UnicodeScalarLiteralType) {
+//
+//        self.init()
+//        context[UnicodeScalarLiteralType.self|] = value
+//
+//    }
+//
+//}
