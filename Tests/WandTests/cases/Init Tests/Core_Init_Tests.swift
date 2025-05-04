@@ -57,7 +57,7 @@ class Core_Init_Tests: XCTestCase {
 
         let wand: Wand.Core = 2.0
 
-        XCTAssertEqual(wand.get(), 2.0)
+        XCTAssertEqual(wand.get(), Float(2.0))
         XCTAssertNotNil(wand)
 
     }
