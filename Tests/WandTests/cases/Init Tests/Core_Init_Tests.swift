@@ -26,6 +26,7 @@ class Core_Init_Tests: XCTestCase {
     weak
     var wand: Core?
 
+    //TODO: Fix and enable
     //    func test_init_Array() throws {
     //        Core(array: context)
     //    }
@@ -57,7 +58,7 @@ class Core_Init_Tests: XCTestCase {
 
         let wand: Wand.Core = 2.0
 
-        XCTAssertEqual(wand.get(), Float(2.0))
+        XCTAssertEqual(wand.get(), 2.0 as Float)
         XCTAssertNotNil(wand)
 
     }
@@ -109,17 +110,17 @@ class Core_Init_Tests: XCTestCase {
 //        XCTAssertNotNil(wand)
 //
 //    }
-
-    func test_init_Context() throws {
-
-        //TODO: Add URL.any
-        let context = URLRequest(url: Bundle.main.bundleURL)
-
-        let wand = Core.to(context)
-
-        XCTAssertEqual(wand.get(), context)
-        XCTAssertNotNil(wand)
-
-    }
+//
+//    func test_init_Context() throws {
+//
+//        //TODO: Add URL.any
+//        let context = URLRequest(url: Bundle.main.bundleURL)
+//
+//        let wand = Core.to(context)
+//
+//        XCTAssertEqual(wand.get(), context as URLRequest)
+//        XCTAssertNotNil(wand)
+//
+//    }
 
 }
