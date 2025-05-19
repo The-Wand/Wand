@@ -86,7 +86,7 @@ class Core {
 
     @inline(__always)
     convenience
-    fileprivate
+    public
     init<T>(_ object: T) {
 
         self.init()
