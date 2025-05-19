@@ -142,20 +142,20 @@ extension Core {
     func to<C>(_ context: C? = nil) -> Core {
 
         switch context {
-            case let context as Wanded:
-                context.wand
-
-//            case let context as [Any]:
-//                Core(array: context)
-
-            case let context as [String: Any]:
-                Core(dictionary: context)
-
-            case nil:
-                Core()
-
-            default:
-                Core(context)
+        case let context as Wanded:
+            context.wand
+            
+            //            case let context as [Any]:
+            //                Core(array: context)
+            
+        case let context as [String: Any]:
+            Core(dictionary: context)
+            
+        case .some(let value):
+            Core(value)
+            
+        default:
+            Core()
         }
 
     }
