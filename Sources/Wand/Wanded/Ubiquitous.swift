@@ -89,6 +89,7 @@ extension Ubiquitous {
     @inline(__always)
     @discardableResult
     prefix
+    public
     static
     func | (the: Self) -> Self {
         the
