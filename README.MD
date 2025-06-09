@@ -22,6 +22,7 @@ Location.one | MotionEvent.one | .all {
 [🌤️ |Weather](https://github.com/The-Wand/Weather)   
 
 [👓 |Vision Demo](https://github.com/The-Wand/Vision-Demo)   
+[📤 |Integrations](https://github.com/The-Wand/Solutions)   
 
 Add one sign and wait for the result |   
 ex [Pipe](https://github.com/The-Wand/Pipe)   
