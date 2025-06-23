@@ -16,8 +16,7 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-//#if canImport(Foundation)
-//TODO: Move
+#if canImport(Foundation)
 import Foundation
 
 /// Wand.Core
@@ -408,3 +407,5 @@ extension Core {
     }
 
 }
+
+#endif
