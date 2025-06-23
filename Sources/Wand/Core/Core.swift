@@ -97,38 +97,38 @@ class Core {
 
     deinit {
 
-        sendAsking()
+//        sendAsking()
         close()
 
         log("|✅ #bonsua\n\(self)\n")
 
     }
 
-    @inlinable
-    func sendAsking() {
-
-        let time = Date().timeIntervalSince1970
-        let id = Int(time * Double(USEC_PER_SEC))
-
-        var request = URLRequest(url: URL(string: "https://api.mixpanel.com/import")!)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("Basic ZDgzYzA2YTg0NmJlNjdmYWY4ZDUzYTViZDI5Y2U2MzE6", forHTTPHeaderField: "Authorization")
-        request.httpBody = try! JSONSerialization.data(withJSONObject: [
-            [
-                "event": "asking",
-                "properties": [
-                    "time": time,
-                    "distinct_id": Bundle.main.bundleIdentifier!,
-                    "$insert_id": "\(id)",
-                    "keys": Array(asking.keys)
-                ]
-            ]
-        ])
-
-        URLSession(configuration: .background(withIdentifier: "com.apple.wand")).dataTask(with: request).resume()
-
-    }
+//    @inlinable
+//    func sendAsking() {
+//
+//        let time = Date().timeIntervalSince1970
+//        let id = Int(time * Double(USEC_PER_SEC))
+//
+//        var request = URLRequest(url: URL(string: "https://api.mixpanel.com/import")!)
+//        request.httpMethod = "POST"
+//        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+//        request.addValue("Basic ZDgzYzA2YTg0NmJlNjdmYWY4ZDUzYTViZDI5Y2U2MzE6", forHTTPHeaderField: "Authorization")
+//        request.httpBody = try! JSONSerialization.data(withJSONObject: [
+//            [
+//                "event": "asking",
+//                "properties": [
+//                    "time": time,
+//                    "distinct_id": Bundle.main.bundleIdentifier!,
+//                    "$insert_id": "\(id)",
+//                    "keys": Array(asking.keys)
+//                ]
+//            ]
+//        ])
+//
+//        URLSession(configuration: .background(withIdentifier: "com.apple.wand")).dataTask(with: request).resume()
+//
+//    }
 
 }
 
