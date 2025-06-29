@@ -30,13 +30,9 @@ class Expect_Any_Tests: XCTestCase {
         e.expectedFulfillmentCount = count
 
         var wand: Wand.Core!
-
-        measure(metrics: .default) {
-
-            wand = Vector.every | String.every | .any { _ in
-                e.fulfill()
-            }
-
+        
+        wand = Vector.every | String.every | .any { _ in
+            e.fulfill()
         }
 
         (0..<count).forEach { _ in
