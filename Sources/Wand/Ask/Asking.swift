@@ -53,7 +53,7 @@ func |<C, T: Asking>(context: C?, handler: @escaping (T)->() ) -> Core {
 @inline(__always)
 @discardableResult
 public
-func |<C, T: Asking>(context: C?, ask: Ask<T>) -> Core {
+func |<C, T: Asking>(context: C, ask: Ask<T>) -> Core {
     T.ask(with: context, ask: ask)
 }
 
