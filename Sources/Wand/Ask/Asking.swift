@@ -80,3 +80,34 @@ extension Asking {
     }
     
 }
+    
+/// Ask from Type
+///
+/// Foo.one {
+///
+/// }
+///
+extension Asking {
+    
+    @inline(__always)
+    public
+    static
+    func every(handler: ( (Self)->() )? = nil) -> Ask<Self> {
+        .every(handler: handler)
+    }
+    
+    @inline(__always)
+    public
+    static
+    func one(handler: ( (Self)->() )? = nil) -> Ask<Self> {
+        .one(handler: handler)
+    }
+    
+    @inline(__always)
+    public
+    static
+    func `while`(handler: @escaping (Self)->(Bool) ) -> Ask<Self> {
+        .while(handler: handler)
+    }
+    
+}
