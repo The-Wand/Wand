@@ -10,6 +10,35 @@ Location.one | MotionEvent.one | .all {
 }
 ```
 
+### 💡 Idea
+  Wand started from the idea about receiving anything in most efficient way.   
+  Add one sign to anything and retreive the result 📦   
+            
+  Imagine that you have the black box that can give you an ```Any``` object.   
+  You don't know what's already in the box and [what happens inside.](https://wikipedia.org/wiki/Encapsulation_(computer_programming))   
+      
+  Ask for an object that you need with a microservice:
+
+```bash
+|{ (result: Object) in
+            
+}
+```
+```bash
+ingredients | { (result: Object) in
+            
+}
+```
+```bash
+ingredients | .one { (t: T) in
+            
+} | .every { (u: U) in
+
+} | .while { (v: V) in
+  true
+}
+```
+
 ### [Package Collection ℹ️](https://swiftpackageindex.com/package-collections)
 [📦 |Packages](https://raw.githubusercontent.com/The-Wand/Wand/main/collection.json)   
 
@@ -165,39 +194,6 @@ any | { (error: Error?) in
     
 }
 ```
-
-### 💡 Idea
-  Imagine that you have the black box that can give you an ```Any``` object.   
-  You don't know what's already in the box and [what happens inside.](https://wikipedia.org/wiki/Encapsulation_(computer_programming))   
-      
-  Ask for object that you need with |
-
-```bash
-|{ (result: Object) in
-            
-}
-```
-```bash
-ingredients | { (result: Object) in
-            
-}
-```
-```bash
-ingredients | .one { (t: T) in
-            
-} | .every { (u: U) in
-
-} | .while { (v: V) in
-  true
-}
-```
-
-### 🪄 Сoncept
-
-Wand started from the idea about receiving anything in most efficient way.   
-Add one sign to anything and retreive the result 📦
-
-You ideas, comments and contributions are welcome |
 
 ### 📚 Books
 
