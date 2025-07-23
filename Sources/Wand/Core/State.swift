@@ -22,19 +22,11 @@ public
 extension Core {
     
     enum State {
-        case ready, active, done
+        case ready, active
     }
     
     var state: State {
-        
-        if asking.isEmpty {
-            return .ready
-        } else if (asking.keys.first(where: { asking[$0] != nil }) != nil) {
-            return .active
-        } else {
-            return .done
-        }
-        
+        asking.isEmpty ? .ready : .active
     }
     
 }
