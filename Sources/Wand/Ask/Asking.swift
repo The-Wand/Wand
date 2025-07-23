@@ -37,7 +37,7 @@ protocol Asking {
 @inline(__always)
 @discardableResult
 public
-func |<C, T: Asking>(context: C?, handler: @escaping (T)->() ) -> Core {
+func |<C, T: Asking>(context: C, handler: @escaping (T)->() ) -> Core {
     context | Ask.every(handler: handler)
 }
 
