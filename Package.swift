@@ -38,11 +38,6 @@ let package = Package(
         .package(url: "https://github.com/swiftlang/swift-docc-plugin", .upToNextMajor(from: "1.1.0") ),
     ],
     targets: [
-//        .binaryTarget(
-//            name: "Wand",
-//            url: "https://github.com/The-Wand/Binary/blob/main/Wand-2.0.0.xcframework.zip?raw=1",
-//            checksum: "83361f173e44011e753a27a9419f233cdcff6d8d30dcad0fdbb99d5d6a4af1a1"
-//        ),
         .target(name: "Wand"),
         .testTarget(name: "WandTests", dependencies:
                         [
