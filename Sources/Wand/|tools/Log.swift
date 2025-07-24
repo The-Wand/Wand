@@ -16,12 +16,48 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
+#if DEBUG
+    enum Log: Int {
+        
+        case none
+        case verbose
+        case warning
+        case info
+        
+        static
+        var level = Log.default
+        
+        static
+        let `default` = Log.none
+        
+        func print(_ message: String) {
+            
+            let level = Log.level
+            if level > .none && .verbose...level ~= self {
+                Swift.print(message)
+            }
+            
+        }
+        
+    }
+
+    extension Log: Comparable {
+        
+        public
+        static
+        func < (lhs: Log, rhs: Log) -> Bool {
+            lhs.rawValue < rhs.rawValue
+        }
+        
+    }
+#endif
+
 @inline(__always)
 public
 func log(_ message: String) {
     
     #if DEBUG
-        print(message)
+        Log.verbose.print(message)
     #endif
 
 }
