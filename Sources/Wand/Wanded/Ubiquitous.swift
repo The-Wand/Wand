@@ -16,7 +16,7 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-/// Get <#Ubiquitous#>
+/// Get <#Ubiquitous#> object
 ///
 /// let object = U.self|
 ///

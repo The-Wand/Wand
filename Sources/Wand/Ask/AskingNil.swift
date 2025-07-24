@@ -16,8 +16,9 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-/// Ask from Context
-/// func |(context: C?, asks: Ask<Self>)
+/// Ask object with default settings
+///
+/// TODO: func |(context: C, asks: Ask<Self>)
 public
 protocol AskingNil: Asking {
 

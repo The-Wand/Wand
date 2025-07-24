@@ -16,19 +16,26 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-/// Ask the question
+/// The question with answer `handler`.
+/// Will wait for new objects til handler returns `true`
 open
 class Ask<T> {
 
+    /// Handler of T
+    /// - Parameter object: Answer for the question
+    /// - Returns: Need wait for next object?
     public
     var handler: (T)->(Bool)
 
+    /// Next question
     public
     var next: Ask?
-
+    
+    /// Need only one
     public
     let once: Bool
-
+    
+    /// Question label
     internal
     var _key: String?
 

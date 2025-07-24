@@ -17,7 +17,7 @@
 /// El Machine 🤖
 
 /// Get object from Core
-/// Or create in context
+/// or create in context
 ///
 /// TODO: func |(wand: Core?) -> Self
 public

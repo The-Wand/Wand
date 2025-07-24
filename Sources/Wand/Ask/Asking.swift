@@ -18,7 +18,7 @@
 
 /// Ask from context
 ///
-/// TODO: func |(wand: Core, ask: Ask<Self>)
+/// TODO: func |(context: C, asks: Ask<Self>)
 public
 protocol Asking {
 

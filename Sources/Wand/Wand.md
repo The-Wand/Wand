@@ -1,7 +1,7 @@
 
 # ``Wand``
 
-The app displays a list of available gifts. Select a gift, then enter shipping information. Finally, write a gift message along with the recipient's email addressesWand started from the idea about receiving anything in most efficient way..
+The app displays a list of available gifts. Select a gift, then enter shipping information. Finally, write a gift message along with the recipient's email addressesWand started from the idea about receiving anything in most efficient way. Bus for <#Any#> Factory + Cache.
 
 ## Overview
 

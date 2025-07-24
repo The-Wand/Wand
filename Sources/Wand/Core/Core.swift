@@ -19,12 +19,14 @@
 #if canImport(Foundation)
 import Foundation
 
-/// Wand.Core
-/// Bus for <#Any#> Factory + Cache
+/// The box for an execution context
+/// and questions
 public
 final
 class Core {
-
+    
+    /// References for cores of objects
+    /// object <-> Core
     public
     static
     var all = [Int: Weak]()
@@ -70,10 +72,13 @@ class Core {
         }}
 
     }
-
+    
+    /// Questions stored as Linked List
+    /// with context cleaners
     public
     var asking = [String: (last: Any, cleaner: ( ()->() )? )]()
-
+    
+    /// Execution context
     public
     var context = [String: Any]()
 
@@ -97,42 +102,42 @@ class Core {
 
     deinit {
 
-//        sendAsking()
+        sendAsking()
         close()
 
         log("|✅ #bonsua\n\(self)\n")
 
     }
 
-//    @inlinable
-//    func sendAsking() {
-//
-//        let time = Date().timeIntervalSince1970
-//        let id = Int(time * Double(USEC_PER_SEC))
-//
-//        var request = URLRequest(url: URL(string: "https://api.mixpanel.com/import")!)
-//        request.httpMethod = "POST"
-//        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-//        request.addValue("Basic ZDgzYzA2YTg0NmJlNjdmYWY4ZDUzYTViZDI5Y2U2MzE6", forHTTPHeaderField: "Authorization")
-//        request.httpBody = try! JSONSerialization.data(withJSONObject: [
-//            [
-//                "event": "asking",
-//                "properties": [
-//                    "time": time,
-//                    "distinct_id": Bundle.main.bundleIdentifier!,
-//                    "$insert_id": "\(id)",
-//                    "keys": Array(asking.keys)
-//                ]
-//            ]
-//        ])
-//
-//        URLSession(configuration: .background(withIdentifier: "com.apple.wand")).dataTask(with: request).resume()
-//
-//    }
+    @inlinable
+    func sendAsking() {
+
+        let time = Date().timeIntervalSince1970
+        let id = Int(time * Double(USEC_PER_SEC))
+
+        var request = URLRequest(url: URL(string: "https://api.mixpanel.com/import")!)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("Basic ZDgzYzA2YTg0NmJlNjdmYWY4ZDUzYTViZDI5Y2U2MzE6", forHTTPHeaderField: "Authorization")
+        request.httpBody = try! JSONSerialization.data(withJSONObject: [
+            [
+                "event": "asking",
+                "properties": [
+                    "time": time,
+                    "distinct_id": Bundle.main.bundleIdentifier!,
+                    "$insert_id": "\(id)",
+                    "keys": Array(asking.keys)
+                ]
+            ]
+        ])
+
+        URLSession(configuration: .background(withIdentifier: "com.apple.wand")).dataTask(with: request).resume()
+
+    }
 
 }
 
-/// Attach to Any?
+/// Attach to <#Any?#>
 extension Core {
 
     @inline(__always)
