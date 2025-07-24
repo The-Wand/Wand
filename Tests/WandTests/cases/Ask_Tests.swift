@@ -67,17 +67,10 @@ class Expect_T_Tests: XCTestCase {
 
         weak
         var wand: Core!
-
-        var handlePerformance: Performance!
-
         wand = |.one { (point: Vector) in
-
-            handlePerformance.measure()
             e.fulfill()
-
         }
 
-        handlePerformance = Performance(of: "AskingNil answer")
         wand.add(point)
 
         waitForExpectations()
@@ -110,6 +103,32 @@ class Expect_T_Tests: XCTestCase {
         }
 
         put()
+
+        waitForExpectations()
+        XCTAssertNil(wand)
+
+    }
+    
+    func test_One_Performance() throws {
+
+        let e = expectation()
+
+        let point = Vector.any
+
+        weak
+        var wand: Core!
+
+        var handlePerformance: Performance!
+
+        wand = |.one { (point: Vector) in
+
+            handlePerformance.measure()
+            e.fulfill()
+
+        }
+
+        handlePerformance = Performance(of: "AskingNil answer")
+        wand.add(point)
 
         waitForExpectations()
         XCTAssertNil(wand)
