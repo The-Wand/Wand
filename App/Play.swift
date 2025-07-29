@@ -37,7 +37,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Image(systemName: "wand.and.stars")
-            Text("Hello, Wand!")
+            Text("Hello, Wand|")
         }.onAppear() {
 
         }

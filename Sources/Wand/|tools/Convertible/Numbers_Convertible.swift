@@ -43,3 +43,14 @@ public
 func |(value: Double) -> Float {
     Float(value)
 }
+
+@inline(__always)
+postfix
+public
+func |(value: (any BinaryInteger)?) -> String? {
+    guard let value else {
+        return ""
+    }
+    
+    return String(describing: value)
+}
