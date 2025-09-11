@@ -16,8 +16,6 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-import Foundation
-
 //TODO: Fix and enable
 /// Init with Array
 //extension Core: ExpressibleByArrayLiteral {
@@ -43,36 +41,3 @@ import Foundation
 //    }
 //
 //}
-
-/// Init with Dictionary
-extension Core: ExpressibleByDictionaryLiteral {
-
-    @inline(__always)
-    convenience
-    public
-    init(dictionaryLiteral elements: (String, Any)...) {
-
-        self.init()
-
-        elements.forEach { (key, object) in
-            Core[object] = self
-            context[key] = object
-        }
-
-    }
-
-    @inline(__always)
-    convenience
-    public
-    init(dictionary: [String: Any]) {
-
-        self.init()
-
-        dictionary.forEach { (key, object) in
-            Core[object] = self
-            context[key] = object
-        }
-
-    }
-
-}

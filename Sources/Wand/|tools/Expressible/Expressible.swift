@@ -18,32 +18,6 @@
 
 import Foundation
 
-//TODO: Fix and enable
-/// Init with Array
-//extension Core: ExpressibleByArrayLiteral {
-//
-//    @inline(__always)
-//    convenience
-//    public
-//    init(arrayLiteral array: Any...) {
-//        
-//        self.init()
-//        put(sequence: array)
-//
-//    }
-//
-//    @inline(__always)
-//    convenience
-//    public
-//    init(array: [Any]) {
-//
-//        self.init()
-//        put(sequence: array)
-//
-//    }
-//
-//}
-
 /// Init with Bool
 extension Core: ExpressibleByBooleanLiteral {
 
@@ -54,39 +28,6 @@ extension Core: ExpressibleByBooleanLiteral {
 
         self.init()
         context[BooleanLiteralType.self|] = value
-
-    }
-
-}
-
-/// Init with Dictionary
-extension Core: ExpressibleByDictionaryLiteral {
-
-    @inline(__always)
-    convenience
-    public
-    init(dictionaryLiteral elements: (String, Any)...) {
-
-        self.init()
-
-        elements.forEach { (key, object) in
-            Core[object] = self
-            context[key] = object
-        }
-
-    }
-
-    @inline(__always)
-    convenience
-    public
-    init(dictionary: [String: Any]) {
-
-        self.init()
-
-        dictionary.forEach { (key, object) in
-            Core[object] = self
-            context[key] = object
-        }
 
     }
 

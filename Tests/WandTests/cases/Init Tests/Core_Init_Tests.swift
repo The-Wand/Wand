@@ -25,16 +25,6 @@ class Core_Init_Tests: XCTestCase {
 
     weak
     var wand: Core?
-
-    //TODO: Fix and enable
-    //    func test_init_Array() throws {
-    //        Core(array: context)
-    //    }
-    //
-    //    func test_init_ArrayLiteral() throws {
-    //        Core(array: context)
-    //    }
-    //
     
     func test_init_BooleanLiteral() throws {
 
