@@ -66,6 +66,8 @@
 		618D8EB72D26DF2E00C05692 /* Numbers_Convertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618D8EB62D26DF2E00C05692 /* Numbers_Convertible.swift */; };
 		618D8EB82D26DF2E00C05692 /* CoreGraphics_Convertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618D8EB52D26DF2E00C05692 /* CoreGraphics_Convertible.swift */; };
 		618D8EBA2D26DFA700C05692 /* String_Convertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618D8EB92D26DFA700C05692 /* String_Convertible.swift */; };
+		61924A602E72B0280030DA87 /* ExpressibleByArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61924A5F2E72B0280030DA87 /* ExpressibleByArray.swift */; };
+		61924A622E72B0560030DA87 /* ExpressibleByDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61924A612E72B0560030DA87 /* ExpressibleByDictionary.swift */; };
 		61B740042DC4FC6300F80993 /* Core_Init_Dictionary_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B740032DC4FC6300F80993 /* Core_Init_Dictionary_Tests.swift */; };
 		61B740052DC4FC6300F80993 /* Core_Init_Dictionary_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B740032DC4FC6300F80993 /* Core_Init_Dictionary_Tests.swift */; };
 		61BE3CFA2CA3034C0041B58F /* Describing_Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BE3CF92CA3034C0041B58F /* Describing_Character.swift */; };
@@ -201,6 +203,8 @@
 		618D8EB52D26DF2E00C05692 /* CoreGraphics_Convertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreGraphics_Convertible.swift; sourceTree = "<group>"; };
 		618D8EB62D26DF2E00C05692 /* Numbers_Convertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Numbers_Convertible.swift; sourceTree = "<group>"; };
 		618D8EB92D26DFA700C05692 /* String_Convertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String_Convertible.swift; sourceTree = "<group>"; };
+		61924A5F2E72B0280030DA87 /* ExpressibleByArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressibleByArray.swift; sourceTree = "<group>"; };
+		61924A612E72B0560030DA87 /* ExpressibleByDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressibleByDictionary.swift; sourceTree = "<group>"; };
 		61AA24C02D787669005550F4 /* NOTICE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = NOTICE.txt; sourceTree = "<group>"; };
 		61B740032DC4FC6300F80993 /* Core_Init_Dictionary_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core_Init_Dictionary_Tests.swift; sourceTree = "<group>"; };
 		61BE3CF92CA3034C0041B58F /* Describing_Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Describing_Character.swift; sourceTree = "<group>"; };
@@ -315,10 +319,10 @@
 		6181C9272D4BFC7D007EBDF6 /* Cases */ = {
 			isa = PBXGroup;
 			children = (
+				61B740022DC4FC5C00F80993 /* Init Tests */,
 				6181C9232D4BFC7D007EBDF6 /* Ask_All_Tests.swift */,
 				6181C9242D4BFC7D007EBDF6 /* Ask_Any_Tests.swift */,
 				6181C9252D4BFC7D007EBDF6 /* Ask_Tests.swift */,
-				61B740022DC4FC5C00F80993 /* Init Tests */,
 				616666682DA935D6005FF43D /* Core_Put_Tests.swift */,
 				6181C9222D4BFC7D007EBDF6 /* Describing_Tests.swift */,
 			);
@@ -361,7 +365,7 @@
 			children = (
 				618D8EB42D26DF1E00C05692 /* Convertible */,
 				618CB4392C584FD2007B5DC9 /* Describing */,
-				618CB43A2C584FD2007B5DC9 /* Expressible.swift */,
+				61924A5E2E72B0220030DA87 /* Expressible */,
 				618CB43B2C584FD2007B5DC9 /* Log.swift */,
 				618CB43C2C584FD2007B5DC9 /* Memory.swift */,
 			);
@@ -414,6 +418,16 @@
 				618D8EB92D26DFA700C05692 /* String_Convertible.swift */,
 			);
 			path = Convertible;
+			sourceTree = "<group>";
+		};
+		61924A5E2E72B0220030DA87 /* Expressible */ = {
+			isa = PBXGroup;
+			children = (
+				618CB43A2C584FD2007B5DC9 /* Expressible.swift */,
+				61924A5F2E72B0280030DA87 /* ExpressibleByArray.swift */,
+				61924A612E72B0560030DA87 /* ExpressibleByDictionary.swift */,
+			);
+			path = Expressible;
 			sourceTree = "<group>";
 		};
 		61B740022DC4FC5C00F80993 /* Init Tests */ = {
@@ -579,7 +593,6 @@
 						ProvisioningStyle = Automatic;
 					};
 					"pipe::Pipe" = {
-						DevelopmentTeam = LZSP4Z4B6A;
 						LastSwiftMigration = 1540;
 					};
 					"pipe::PipeTests" = {
@@ -683,6 +696,7 @@
 			files = (
 				6146C6DB2DBEAE420055A5DE /* Key.swift in Sources */,
 				618D8EBA2D26DFA700C05692 /* String_Convertible.swift in Sources */,
+				61924A602E72B0280030DA87 /* ExpressibleByArray.swift in Sources */,
 				618CB4602C584FD2007B5DC9 /* Error.swift in Sources */,
 				618CB4512C584FD2007B5DC9 /* Describing.swift in Sources */,
 				618CB45F2C584FD2007B5DC9 /* Error?.swift in Sources */,
@@ -696,6 +710,7 @@
 				6146C6D92DBEAE120055A5DE /* Weak.swift in Sources */,
 				618D8EB72D26DF2E00C05692 /* Numbers_Convertible.swift in Sources */,
 				618D8EB82D26DF2E00C05692 /* CoreGraphics_Convertible.swift in Sources */,
+				61924A622E72B0560030DA87 /* ExpressibleByDictionary.swift in Sources */,
 				615DA0DE2DBED491005A245C /* Addons.swift in Sources */,
 				61BE3CFA2CA3034C0041B58F /* Describing_Character.swift in Sources */,
 				618CB45E2C584FD2007B5DC9 /* Obtainable.swift in Sources */,
@@ -779,7 +794,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1663;
+				CURRENT_PROJECT_VERSION = 1670;
 				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -838,7 +853,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1663;
+				CURRENT_PROJECT_VERSION = 1670;
 				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_PREVIEWS = YES;
@@ -890,7 +905,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1663;
+				CURRENT_PROJECT_VERSION = 1670;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -937,7 +952,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1663;
+				CURRENT_PROJECT_VERSION = 1670;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -1001,7 +1016,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1663;
+				CURRENT_PROJECT_VERSION = 1670;
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1089,7 +1104,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1663;
+				CURRENT_PROJECT_VERSION = 1670;
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_PREVIEWS = YES;
@@ -1139,10 +1154,12 @@
 				ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS = NO;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
-				CURRENT_PROJECT_VERSION = 1663;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1670;
 				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				DRIVERKIT_DEPLOYMENT_TARGET = 20.0;
 				ENABLE_MODULE_VERIFIER = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1166,6 +1183,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Wand;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "$(AVAILABLE_PLATFORMS)";
 				SUPPORTS_MACCATALYST = YES;
@@ -1188,10 +1206,12 @@
 				ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS = NO;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
-				CURRENT_PROJECT_VERSION = 1663;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1670;
 				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				DRIVERKIT_DEPLOYMENT_TARGET = 20.0;
 				ENABLE_MODULE_VERIFIER = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1215,6 +1235,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Wand;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "$(AVAILABLE_PLATFORMS)";
 				SUPPORTS_MACCATALYST = YES;
@@ -1237,7 +1258,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1663;
+				CURRENT_PROJECT_VERSION = 1670;
 				DEAD_CODE_STRIPPING = YES;
 				DRIVERKIT_DEPLOYMENT_TARGET = 20.0;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1285,7 +1306,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1663;
+				CURRENT_PROJECT_VERSION = 1670;
 				DEAD_CODE_STRIPPING = YES;
 				DRIVERKIT_DEPLOYMENT_TARGET = 20.0;
 				FRAMEWORK_SEARCH_PATHS = (
