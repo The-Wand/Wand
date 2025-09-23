@@ -26,7 +26,7 @@
 @inline(__always)
 public
 func |(wand: Core, handler: @escaping (Error)->() ) -> Core {
-    wand | Ask.Option(once: false, handler: handler)
+    wand | Ask.Option(once: true, handler: handler)
 }
 
 /// Handle Error
@@ -39,7 +39,22 @@ func |(wand: Core, handler: @escaping (Error)->() ) -> Core {
 @inline(__always)
 public
 func |(wand: Core, ask: Ask<Error>) -> Core {
-    wand.append(handler: ask.optional())
+
+    if ask.once {
+
+        let handler = ask.handler
+        ask.handler = {
+
+            _ = handler($0)
+            wand.close()
+            return false
+
+        }
+
+    }
+
+    return wand.append(handler: ask.optional())
+
 }
 
 ///Error codes and reasons
