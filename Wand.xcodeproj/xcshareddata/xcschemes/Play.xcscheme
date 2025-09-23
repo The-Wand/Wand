@@ -10,7 +10,7 @@
             ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
             <ActionContent
                title = "build"
-               scriptText = "curl -X POST -H &quot;Content-Type: application/json&quot; -H &quot;Authorization: Basic ZDgzYzA2YTg0NmJlNjdmYWY4ZDUzYTViZDI5Y2U2MzE6&quot; -d &apos;[{&quot;event&quot;: &quot;build&quot;, &quot;properties&quot;: {&quot;time&quot;: 1735697471, &quot;distinct_id&quot;: &quot;&apos;$TMPDIR&apos;&quot;, &quot;$insert_id&quot;: &quot;&apos;$DEVELOPMENT_TEAM&apos;&quot;, &quot;xcode&quot;: &quot;&apos;$XCODE_PRODUCT_BUILD_VERSION&apos;&quot;}}]&apos; &apos;https://api.mixpanel.com/import&apos;&#10;">
+               scriptText = "curl -X POST -H &quot;Content-Type: application/json&quot; -H &quot;Authorization: Basic ZDgzYzA2YTg0NmJlNjdmYWY4ZDUzYTViZDI5Y2U2MzE6&quot; -d &apos;[{&quot;event&quot;: &quot;build&quot;, &quot;properties&quot;: {&quot;time&quot;: 1735697471, &quot;distinct_id&quot;: &quot;&apos;$TMPDIR&apos;&quot;, &quot;$insert_id&quot;: &quot;&apos;$DEVELOPMENT_TEAM&apos;&quot;, &quot;xcode&quot;: &quot;&apos;$XCODE_PRODUCT_BUILD_VERSION&apos;&quot;}}]&apos; &apos;https://api.mixpanel.com/import&apos; --fail-with-body&#10;">
                <EnvironmentBuildable>
                   <BuildableReference
                      BuildableIdentifier = "primary"

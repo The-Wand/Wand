@@ -19,7 +19,7 @@
 import Wand
 import XCTest
 
-class Expect_All_Tests: XCTestCase {
+class All_Tests: XCTestCase {
 
     func test_All() throws {
 
@@ -41,7 +41,28 @@ class Expect_All_Tests: XCTestCase {
         }
 
         waitForExpectations()
-        
+
+    }
+
+    func test_All_Error() throws {
+
+        let e = expectation()
+        e.expectedFulfillmentCount = 2
+
+        weak
+        var wand: Core!
+        wand = Vector.one | String.one | { (error: Error) in
+            e.fulfill()
+        } | .all { _ in
+            e.fulfill()
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak wand] in
+            wand?.add(NSError() as Error)
+        }
+
+        waitForExpectations()
+
     }
 
 }
