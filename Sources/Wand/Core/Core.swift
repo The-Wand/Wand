@@ -21,8 +21,8 @@ import Foundation
 
 /// The box for an execution context
 /// and questions
-public
 final
+public
 class Core {
     
     /// References for cores of objects
