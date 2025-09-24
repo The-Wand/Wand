@@ -85,7 +85,7 @@ class Core {
     @inline(__always)
     internal
     init() {
-        log("|💪🏽 #init\n\(self)\n")
+        Log.verbose("|💪🏽 #init\n\(self)\n")
     }
 
     @inline(__always)
@@ -105,7 +105,7 @@ class Core {
         sendAsking()
         close()
 
-        log("|✅ #bonsua\n\(self)\n")
+        Log.verbose("|✅ #bonsua\n\(self)\n")
 
     }
 
@@ -399,7 +399,7 @@ extension Core {
         asking.forEach {
 
             $0.value.cleaner?()
-            log("|🧼 \($0.value)")
+            Log.verbose("|🧼 \($0.value)")
 
         }
         asking.removeAll()

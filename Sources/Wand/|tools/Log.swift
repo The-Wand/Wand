@@ -17,32 +17,37 @@
 /// El Machine 🤖
 
 #if DEBUG
+    public
     enum Log: Int {
         
         case none
         case verbose
         case warning
         case info
-        
+
+        public
         static
         var level = Log.default
-        
+
+        public
         static
         let `default` = Log.none
-        
-        func print(_ message: String) {
-            
+
+        @inlinable
+        public
+        func callAsFunction(_ message: String) {
+
             let level = Log.level
             if level > .none && .verbose...level ~= self {
                 Swift.print(message)
             }
-            
         }
-        
+
     }
 
     extension Log: Comparable {
-        
+
+        @inlinable
         public
         static
         func < (lhs: Log, rhs: Log) -> Bool {
@@ -52,12 +57,13 @@
     }
 #endif
 
+@available(*, deprecated, renamed: "Log.verbose(message:)")
 @inline(__always)
 public
 func log(_ message: String) {
-    
+
     #if DEBUG
-        Log.verbose.print(message)
+        Log.verbose(message)
     #endif
 
 }
