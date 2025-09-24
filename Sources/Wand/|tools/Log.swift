@@ -16,45 +16,47 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-#if DEBUG
+
+public
+enum Log: Int {
+
+    case none
+    case verbose
+    case warning
+    case info
+
     public
-    enum Log: Int {
-        
-        case none
-        case verbose
-        case warning
-        case info
+    static
+    var level = Log.default
 
-        public
-        static
-        var level = Log.default
+    public
+    static
+    let `default` = Log.none
 
-        public
-        static
-        let `default` = Log.none
-
-        @inlinable
-        public
-        func callAsFunction(_ message: String) {
-
-            let level = Log.level
-            if level > .none && .verbose...level ~= self {
-                Swift.print(message)
-            }
+    @inlinable
+    public
+    func callAsFunction(_ message: String) {
+#if DEBUG
+        let level = Log.level
+        if level > .none && .verbose...level ~= self {
+            Swift.print(message)
         }
-
+#endif
     }
 
-    extension Log: Comparable {
+}
 
-        @inlinable
-        public
-        static
-        func < (lhs: Log, rhs: Log) -> Bool {
-            lhs.rawValue < rhs.rawValue
-        }
-        
+#if DEBUG
+extension Log: Comparable {
+
+    @inlinable
+    public
+    static
+    func < (lhs: Log, rhs: Log) -> Bool {
+        lhs.rawValue < rhs.rawValue
     }
+
+}
 #endif
 
 @available(*, deprecated, renamed: "Log.verbose(message:)")
@@ -62,8 +64,8 @@
 public
 func log(_ message: String) {
 
-    #if DEBUG
-        Log.verbose(message)
-    #endif
+#if DEBUG
+    Log.verbose(message)
+#endif
 
 }
