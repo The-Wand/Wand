@@ -1,13 +1,52 @@
 
 # ``Wand``
 
-The app displays a list of available gifts. Select a gift, then enter shipping information. Finally, write a gift message along with the recipient's email addressesWand started from the idea about receiving anything in most efficient way. Bus for <#Any#> Factory + Cache.
+Swift implementation of declarative approach. 
+Use pipeline syntax to receive <#Any#> object. 
+Bus for <#Any#> Factory + Cache.
 
+```swift
+| .one { (t: <#T#>) in 
+
+} | .every { (u: <#U#>) in
+ 
+} | .while { (v: <#V#>) in 
+
+} | { (error: Error) in
+
+} | .all { _ in
+
+}
+```
+
+@version 3
 ## Overview
 
-Through this app, you'll learn all about focus management in SwiftUI using modifiers and wrappers like **FocusState** to help users navigate forms more effectively.
+Call the operator with handler to receive only one object:
+```swift
+|{ (t: <#T#>) in 
 
-You'll learn how to:
-- Use the **FocusState** property wrapper with both the **focused(_:)** and **focused(_:equals:)** modifiers.
-- Manage focus in lists and with the MVVM design pattern.
-- Use the **FocusedValue** and **FocusedBinding** property wrappers to track and change the wrapped values of focused views from other scenes.
+}
+```
+
+Use labels to specify behaviour:
+- **One** to receive an object and stop
+```swift
+| .one { (t: <#T#>) in 
+
+}
+```
+
+- **Every** for continius updates
+```swift
+| .every { (t: <#T#>) in 
+
+}
+```
+
+- **While** handler returns **true**
+```swift
+| .while { (t: <#T#>) in 
+
+}
+```
