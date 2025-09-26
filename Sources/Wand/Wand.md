@@ -29,7 +29,7 @@ Call the operator with handler to receive only one object:
 }
 ```
 
-Use labels to specify behaviour:
+Custom `labels` for deep control:
 - **One** to receive an object and stop
 ```swift
 | .one { (t: <#T#>) in 
@@ -47,6 +47,21 @@ Use labels to specify behaviour:
 - **While** handler returns **true**
 ```swift
 | .while { (t: <#T#>) in 
+
+}
+```
+
+Notifications:
+- **All** 
+```swift
+| .all { (wand: Wand.Core) in 
+
+}
+```
+
+- **Any** to
+```swift 
+| .any { (t: <#T#>) in 
 
 }
 ```
