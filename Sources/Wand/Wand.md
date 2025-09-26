@@ -51,6 +51,13 @@ Custom `labels` for deep control:
 }
 ```
 
+Error handling: 
+```swift
+| { (error: Error) in 
+
+}
+```
+
 Notifications:
 - **All** 
 ```swift
