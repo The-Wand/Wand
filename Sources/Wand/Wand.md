@@ -54,9 +54,6 @@ Custom `labels` for deep control:
 ```swift
 ```
 
-```swift
-```
-
 Error handling: 
 ```swift
 | { (error: Error) in 
