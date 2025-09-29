@@ -92,15 +92,6 @@ class Core_Init_Tests: XCTestCase {
     }
 
     //TODO: Fix and enable
-//    func test_init_UnicodeScalarLiteral() throws {
-//
-//        let wand: Wand.Core = "🌚"
-//
-//        XCTAssertEqual(wand.get(), "🌚")
-//        XCTAssertNotNil(wand)
-//
-//    }
-//
 //    func test_init_Context() throws {
 //
 //        //TODO: Add URL.any
@@ -112,5 +103,14 @@ class Core_Init_Tests: XCTestCase {
 //        XCTAssertNotNil(wand)
 //
 //    }
+    func test_init_UnicodeScalarLiteral() throws {
+
+        let wand: Wand.Core = "ñ"
+
+        XCTAssertEqual(wand.get(), "ñ")
+        XCTAssertNotNil(wand)
+
+    }
+
 
 }
