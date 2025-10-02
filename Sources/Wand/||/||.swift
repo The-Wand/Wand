@@ -18,3 +18,20 @@
 
 prefix  operator ||
 infix   operator || : AdditionPrecedence
+
+extension AskingNil {
+
+}
+
+@inlinable
+prefix
+public
+func ||<T> (handler: @escaping (T)->() ) -> Core {
+    Core()
+}
+
+@inlinable
+public
+func ||<C, T> (context: C, handler: @escaping (T)->() ) -> Core {
+    Core()
+}

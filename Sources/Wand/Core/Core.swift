@@ -83,7 +83,7 @@ class Core {
     var context = [String: Any]()
 
     @inline(__always)
-    internal
+    public
     init() {
         Log.verbose("|💪🏽 #init\n\(self)\n")
     }
