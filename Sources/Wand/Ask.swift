@@ -55,13 +55,13 @@ class Ask<T> {
     }
 
     private
-    var wand: Core?
+    var core: Core?
 
     ///@synthesize `wand`
     @inline(__always)
     public
-    func set(wand: Core?) {
-        self.wand = wand
+    func set(core: Core?) {
+        self.core = core
     }
 
     @inline(__always)
@@ -103,9 +103,7 @@ class Ask<T> {
 /// - `while`
 extension Ask {
 
-    /// Ask
-    ///
-    /// |.every { T in
+    /// Ask.every { T in
     ///
     /// }
     ///
@@ -121,9 +119,7 @@ extension Ask {
         }
     }
 
-    /// Ask
-    ///
-    /// |.one { T in
+    /// Ask.one { T in
     ///
     /// }
     ///
@@ -139,9 +135,7 @@ extension Ask {
         }
     }
 
-    /// Ask
-    ///
-    /// |.while { T in
+    /// Ask.while { T in
     ///     true
     /// }
     ///
@@ -197,7 +191,7 @@ extension Ask {
     public
     func cancel() {
         
-        set(wand: nil)
+        set(core: nil)
         
         handler = { _ in
             false
