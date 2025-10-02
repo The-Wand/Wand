@@ -367,7 +367,7 @@
 			path = Describing;
 			sourceTree = "<group>";
 		};
-		618CB43E2C584FD2007B5DC9 /* |tools */ = {
+		618CB43E2C584FD2007B5DC9 /* tools */ = {
 			isa = PBXGroup;
 			children = (
 				618D8EB42D26DF1E00C05692 /* Convertible */,
@@ -376,7 +376,7 @@
 				618CB43B2C584FD2007B5DC9 /* Log.swift */,
 				618CB43C2C584FD2007B5DC9 /* Memory.swift */,
 			);
-			path = "|tools";
+			path = tools;
 			sourceTree = "<group>";
 		};
 		618CB4432C584FD2007B5DC9 /* Addons */ = {
@@ -407,7 +407,7 @@
 		618CB4502C584FD2007B5DC9 /* Wand */ = {
 			isa = PBXGroup;
 			children = (
-				618CB43E2C584FD2007B5DC9 /* |tools */,
+				618CB43E2C584FD2007B5DC9 /* tools */,
 				618CB4472C584FD2007B5DC9 /* Ask */,
 				615DA0DF2DBED72D005A245C /* Core */,
 				616666672DA93193005FF43D /* Wanded */,
