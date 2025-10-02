@@ -241,7 +241,7 @@ extension Core {
         }
 
         //Attach the wand
-        ask.set(wand: self)
+        ask.set(core: self)
 
         //Add ask to the chain
         let tail = stored?.last as? Ask<T>

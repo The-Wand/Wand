@@ -16,36 +16,6 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-import SwiftUI
-import Wand
-
-@available(iOS 14, macOS 12, tvOS 14, watchOS 7, *)
-@main
-struct PlayApp: App {
-
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
-    }
-
-}
-
-@available(iOS 14, macOS 12, tvOS 14, watchOS 7, *)
-struct ContentView: View {
-
-    var body: some View {
-        VStack {
-            Image(systemName: "wand.and.stars")
-            Text("Hello, Wand|")
-        }.onAppear() {
-            let _: Wand.Core = "1"
-        }
-    }
-
-}
-
-@available(iOS 14, macOS 12, tvOS 14, watchOS 7, *)
-#Preview {
-    ContentView()
-}
+prefix  operator |
+postfix operator |
+infix   operator | : AdditionPrecedence

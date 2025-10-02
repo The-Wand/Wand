@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		611219892E8E3C31006954E5 /* ||.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611219882E8E3C31006954E5 /* ||.swift */; };
 		611358202D91BDAD0073E4EB /* Ubiquitous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6113581F2D91BDAD0073E4EB /* Ubiquitous.swift */; };
 		613966662BE0FB0D004C18A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6162624728BC8E2B00D63EA5 /* Assets.xcassets */; };
 		613966672BE0FB14004C18A3 /* Play.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6162624628BC8E2A00D63EA5 /* Play.swift */; };
@@ -154,6 +155,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		611219882E8E3C31006954E5 /* ||.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "||.swift"; sourceTree = "<group>"; };
 		6113581F2D91BDAD0073E4EB /* Ubiquitous.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ubiquitous.swift; sourceTree = "<group>"; };
 		6117E7862E3110730064136F /* Wand.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Wand.md; sourceTree = "<group>"; };
 		611A358D2DA001700024D08D /* packages.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = packages.json; sourceTree = "<group>"; };
@@ -265,6 +267,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		611219872E8E3C18006954E5 /* || */ = {
+			isa = PBXGroup;
+			children = (
+				611219882E8E3C31006954E5 /* ||.swift */,
+			);
+			path = "||";
+			sourceTree = "<group>";
+		};
+		6112198D2E8E3CCC006954E5 /* | */ = {
+			isa = PBXGroup;
+			children = (
+				618CB4432C584FD2007B5DC9 /* Addons */,
+				618D8EB42D26DF1E00C05692 /* Convertible */,
+				618CB4392C584FD2007B5DC9 /* Describing */,
+				616666672DA93193005FF43D /* Wanded */,
+				618CB4452C584FD2007B5DC9 /* Asking.swift */,
+				618CB4462C584FD2007B5DC9 /* AskingNil.swift */,
+				618CB44E2C584FD2007B5DC9 /* |.swift */,
+			);
+			path = "|";
+			sourceTree = "<group>";
+		};
 		614B218B2C4489B700EB9DEE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -283,6 +307,8 @@
 		615DA0DF2DBED72D005A245C /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				61924A5E2E72B0220030DA87 /* Expressible */,
+				618CB43E2C584FD2007B5DC9 /* tools */,
 				618CB44F2C584FD2007B5DC9 /* Core.swift */,
 				6146C6DA2DBEAE420055A5DE /* Key.swift */,
 				61F0774F2E0E8E1300A3146D /* State.swift */,
@@ -370,9 +396,6 @@
 		618CB43E2C584FD2007B5DC9 /* tools */ = {
 			isa = PBXGroup;
 			children = (
-				618D8EB42D26DF1E00C05692 /* Convertible */,
-				618CB4392C584FD2007B5DC9 /* Describing */,
-				61924A5E2E72B0220030DA87 /* Expressible */,
 				618CB43B2C584FD2007B5DC9 /* Log.swift */,
 				618CB43C2C584FD2007B5DC9 /* Memory.swift */,
 			);
@@ -393,25 +416,13 @@
 			path = Addons;
 			sourceTree = "<group>";
 		};
-		618CB4472C584FD2007B5DC9 /* Ask */ = {
-			isa = PBXGroup;
-			children = (
-				618CB4432C584FD2007B5DC9 /* Addons */,
-				618CB4442C584FD2007B5DC9 /* Ask.swift */,
-				618CB4452C584FD2007B5DC9 /* Asking.swift */,
-				618CB4462C584FD2007B5DC9 /* AskingNil.swift */,
-			);
-			path = Ask;
-			sourceTree = "<group>";
-		};
 		618CB4502C584FD2007B5DC9 /* Wand */ = {
 			isa = PBXGroup;
 			children = (
-				618CB43E2C584FD2007B5DC9 /* tools */,
-				618CB4472C584FD2007B5DC9 /* Ask */,
 				615DA0DF2DBED72D005A245C /* Core */,
-				616666672DA93193005FF43D /* Wanded */,
-				618CB44E2C584FD2007B5DC9 /* |.swift */,
+				618CB4442C584FD2007B5DC9 /* Ask.swift */,
+				6112198D2E8E3CCC006954E5 /* | */,
+				611219872E8E3C18006954E5 /* || */,
 				6117E7862E3110730064136F /* Wand.md */,
 			);
 			path = Wand;
@@ -704,6 +715,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				611219892E8E3C31006954E5 /* ||.swift in Sources */,
 				6146C6DB2DBEAE420055A5DE /* Key.swift in Sources */,
 				618D8EBA2D26DFA700C05692 /* String_Convertible.swift in Sources */,
 				61924A602E72B0280030DA87 /* ExpressibleByArray.swift in Sources */,
@@ -806,7 +818,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1719;
+				CURRENT_PROJECT_VERSION = 1722;
 				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -865,7 +877,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1719;
+				CURRENT_PROJECT_VERSION = 1722;
 				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_PREVIEWS = YES;
@@ -917,7 +929,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1719;
+				CURRENT_PROJECT_VERSION = 1722;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -964,7 +976,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1719;
+				CURRENT_PROJECT_VERSION = 1722;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -1028,7 +1040,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1719;
+				CURRENT_PROJECT_VERSION = 1722;
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1117,7 +1129,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1719;
+				CURRENT_PROJECT_VERSION = 1722;
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_PREVIEWS = YES;
@@ -1170,7 +1182,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1719;
+				CURRENT_PROJECT_VERSION = 1722;
 				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
@@ -1223,7 +1235,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1719;
+				CURRENT_PROJECT_VERSION = 1722;
 				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
@@ -1274,7 +1286,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1719;
+				CURRENT_PROJECT_VERSION = 1722;
 				DEAD_CODE_STRIPPING = YES;
 				DRIVERKIT_DEPLOYMENT_TARGET = 20.0;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -1323,7 +1335,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1719;
+				CURRENT_PROJECT_VERSION = 1722;
 				DEAD_CODE_STRIPPING = YES;
 				DRIVERKIT_DEPLOYMENT_TARGET = 20.0;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
