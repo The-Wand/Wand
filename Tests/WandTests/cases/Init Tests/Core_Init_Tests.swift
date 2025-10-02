@@ -92,17 +92,6 @@ class Core_Init_Tests: XCTestCase {
     }
 
     //TODO: Fix and enable
-//    func test_init_Context() throws {
-//
-//        //TODO: Add URL.any
-//        let context = URLRequest(url: Bundle.main.bundleURL)
-//
-//        let wand = Core.to(context)
-//
-//        XCTAssertEqual(wand.get(), context as URLRequest)
-//        XCTAssertNotNil(wand)
-//
-//    }
     func test_init_UnicodeScalarLiteral() throws {
 
         let wand: Wand.Core = "ñ"
@@ -112,5 +101,16 @@ class Core_Init_Tests: XCTestCase {
 
     }
 
+    func test_init_Context() throws {
+
+        //TODO: Add URL.any
+        let context = URLRequest(url: Bundle.main.bundleURL)
+
+        let wand = Core.to(context)
+
+        XCTAssertEqual(wand.get(), context as URLRequest)
+        XCTAssertNotNil(wand)
+
+    }
 
 }
