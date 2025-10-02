@@ -94,9 +94,9 @@ class Core_Init_Tests: XCTestCase {
     //TODO: Fix and enable
     func test_init_UnicodeScalarLiteral() throws {
 
-        let wand: Wand.Core = "ñ"
+        let wand: Wand.Core = "䷓"
 
-        XCTAssertEqual(wand.get(), "ñ")
+        XCTAssertEqual(wand.get(), "䷓")
         XCTAssertNotNil(wand)
 
     }
