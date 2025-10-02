@@ -26,7 +26,7 @@
 @inline(__always)
 public
 func |(wand: Core, handler: @escaping (Error?)->() ) -> Core {
-    wand | Ask.every(handler: handler)
+    wand | Ask.one(handler: handler)
 }
 
 /// Handle Error and Success

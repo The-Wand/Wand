@@ -35,7 +35,7 @@ protocol AskingNil: Asking {
 prefix
 public
 func |<T: Asking>(handler: @escaping (T)->() ) -> Core {
-    nil as Core? | Ask.every(handler: handler)
+    nil as Core? | Ask.one(handler: handler)
 }
 
 /// Ask

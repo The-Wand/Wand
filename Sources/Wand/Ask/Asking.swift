@@ -38,7 +38,7 @@ protocol Asking {
 @discardableResult
 public
 func |<C, T: Asking>(context: C, handler: @escaping (T)->() ) -> Core {
-    context | Ask.every(handler: handler)
+    context | Ask.one(handler: handler)
 }
 
 /// Ask
