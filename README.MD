@@ -75,7 +75,7 @@ CLAuthorizationStatus.authorizedAlways | { (status: CLAuthorizationStatus) in
 ```
 
 **📦 An ideal API acts as the [black box](https://wikipedia.org/wiki/Blackbox)**  
-**⚡️ It’s possible to incapsulate whole data receiving process and memory managment duty to one symbol?**   
+**⚡️ Is it possible to incapsulate whole data receiving process and memory managment duty to one symbol?**   
 [Astanahub.com](https://astanahub.com/blog/uskorit-razrabotku-x2)
 [Medium.com](https://medium.com/@al.kozin/universal-api-7ddc67bb0aa5)
 [YouTube.com](https://www.youtube.com/playlist?list=PLvprpeoOl6IoZ67BcD-t0rS1L5c5J4lPh)
@@ -195,29 +195,22 @@ any | { (error: Error?) in
 }
 ```
 
+### 📑 Documentation
+  DocC, or Documentation Compiler, makes it easy to produce rich and engaging developer   
+  documentation for your apps, frameworks, and packages:   
+     
+  Product > Build Documentation (⌃ ⇧ ⌘ D)   
+  
 ### 📚 Books
 
 🖼️ Design Patterns: Elements of Reusable Object-Oriented Software (1994)   
 $\hspace{17pt}$ GOF: Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides
 
-🧼 Clean Code: A Handbook of Agile Software Craftsmanship (2008)   
-$\hspace{17pt}$ Robert C. Martin  
-
-🎼 Introduction to TRIZ. Basic Concepts and Approaches (2015)   
-$\hspace{17pt}$ G.S. Altshuller  
-
-🏛️ Clean Architecture: A Craftsman's Guide to Software Structure and Design (2017)   
-$\hspace{17pt}$ Robert C. Martin  
-
-😜 The Inmates Are Running the Asylum:   
-$\hspace{17pt}$ Why High Tech Products Drive Us Crazy and How to Restore the Sanity (2019)   
-$\hspace{17pt}$ Alan Cooper 
+🏛️ Clean Everething   
+$\hspace{17pt}$ Robert C. Martin 
 
 ⊶ $\hspace{5pt}$ Origin (2017)   
-$\hspace{17pt}$ Dan Brown 
-
-⏳ The Deadline: A Novel About Project Management (2007)   
-$\hspace{17pt}$ Tom DeMarco
+$\hspace{17pt}$ Dan Brown
 
 ## [🤝 Inspirtation](https://github.com/El-Machine/Wand/blob/main/INSPIRATION.TXT)
 
@@ -279,20 +272,9 @@ $\hspace{17pt}$ in a toy-like body. It loves to explore the digital world around
 $\hspace{17pt}$ radio protocols, access control systems, hardware, and more.   
 $\hspace{17pt}$ https://flipperzero.one
 
-## Tasks
-
-- [x] Contacts
-- [x] CoreLocation
-- [x] CoreMotion
-- [x] CoreNFC
-- [x] Data
-- [x] NSNotification
-- [x] Rest
-- [x] Vision
-- [ ] MultipeerConnectivity
+There is no magic 💂
 
 The Wand may collect usage data   
 You must attribute the author   
-[Alex Kozin](mailto:al.kozin@gmail.com)   
-[El Machine 🤖](https://el-machine.com)  
+[Aleksandr Kozin](mailto:al.kozin@gmail.com)  
 Apps since 2008
