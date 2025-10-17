@@ -197,7 +197,7 @@ any | { (error: Error?) in
 
 ### 📑 Documentation
   DocC, or Documentation Compiler, makes it easy to produce rich and engaging developer   
-  documentation for your apps, frameworks, and packages   
+  documentation for your apps, frameworks, and packages:   
      
   Product > Build Documentation (⌃ ⇧ ⌘ D)   
   
