@@ -21,6 +21,7 @@ import Foundation
 
 /// The box for an execution context
 /// and questions
+final
 public
 class Core {
     
