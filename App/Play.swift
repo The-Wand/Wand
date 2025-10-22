@@ -39,7 +39,7 @@ struct ContentView: View {
             Image(systemName: "wand.and.stars")
             Text("Hello, Wand|")
         }.onAppear() {
-            let _: Wand.Core = "1"
+//            let _: Wand.Core = "1"
         }
     }
 
