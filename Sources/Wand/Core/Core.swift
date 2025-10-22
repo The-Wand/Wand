@@ -319,13 +319,6 @@ extension Core {
 
     @inlinable
     public
-    func callAsFunction(_ args: CVarArg) -> CVarArg {
-//        put(sequence: args)
-        return args
-    }
-
-    @inlinable
-    public
     func callAsFunction<T>(_ sequence: T) -> T where T == any Sequence {
         sequence.forEach { object in
             let type = type(of: object)
@@ -342,7 +335,7 @@ extension Core {
         return sequence
     }
 
-
+    @available(*, deprecated, renamed: "callAsFunction()", message: "Use ()")
     @discardableResult
     @inlinable
     public
@@ -363,6 +356,7 @@ extension Core {
 
     }
 
+    @available(*, deprecated, renamed: "callAsFunction()", message: "Use ()")
     @discardableResult
     @inline(__always)
     public
