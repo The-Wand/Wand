@@ -21,7 +21,6 @@ import Foundation
 
 /// The box for an execution context
 /// and questions
-final
 public
 class Core {
     
@@ -106,7 +105,6 @@ class Core {
         close()
 
         Log.verbose("|✅ #bonsua\n\(self)\n")
-
     }
 
     @inlinable
@@ -132,7 +130,6 @@ class Core {
         ])
 
         URLSession(configuration: .background(withIdentifier: "com.apple.wand")).dataTask(with: request).resume()
-
     }
 
 }
@@ -311,6 +308,39 @@ extension Core {
 /// Save objects
 /// Without triggering Asks
 extension Core {
+
+    @inlinable
+    public
+    func callAsFunction<T>(_ object: T) -> T {
+        save(object, key: nil)
+        return object
+    }
+
+    @inlinable
+    public
+    func callAsFunction(_ args: CVarArg) -> CVarArg {
+//        put(sequence: args)
+        return args
+    }
+
+    @inlinable
+    public
+    func callAsFunction<T>(_ sequence: T) -> T where T == any Sequence {
+        sequence.forEach { object in
+            let type = type(of: object)
+            if type is AnyClass {
+
+                let key = Memory.address(for: object)
+
+                Core.all[key] = Weak(item: self)
+                context[type|] = object
+            } else {
+                context[type|] = object
+            }
+        }
+        return sequence
+    }
+
 
     @discardableResult
     @inlinable
