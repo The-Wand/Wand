@@ -46,7 +46,7 @@ extension Ask {
     @inline(__always)
     public
     func depends<U>(for key: String? = nil, while handler: @escaping (U)->(Bool) ) -> Ask<U>.Option {
-        .init(for: key, handler: handler)
+        .init(once: false, for: key, handler: handler)
     }
 
 }

@@ -26,7 +26,7 @@
 @inline(__always)
 public
 func |(wand: Core, handler: @escaping (Error)->() ) -> Core {
-    wand | Ask.Option(once: true, handler: handler)
+    wand | Ask.Option(handler: handler)
 }
 
 /// Handle Error

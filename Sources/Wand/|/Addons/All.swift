@@ -28,7 +28,7 @@ extension Ask<Core> {
     public
     static
     func all(handler: @escaping (Core)->() ) -> Ask<Core> {
-        .Option(once: true, for: .all) {
+        .Option(for: .all) {
             handler($0)
         }
     }

@@ -31,7 +31,7 @@ extension Ask {
                  handler: @escaping (T, Int)->(Bool) ) -> Ask {
 
         var i = 0
-        return Ask(for: key) {
+        return Ask(once: false, for: key) {
 
             defer {
                 i += 1
