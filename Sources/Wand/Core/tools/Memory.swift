@@ -33,15 +33,15 @@ struct Memory {
     static
     public
     func address<T>(for model: T) -> Int {
-        
-        var address: String?
+
+        var address: Int = 0
+
         var mutable = model
         withUnsafePointer(to: &mutable) { pointer in
-            address = String(format: "%p", pointer)
+            address = Int(bitPattern: pointer)
         }
 
-        return Int(address!)!
-        
+        return address
     }
 
 }
