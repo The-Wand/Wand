@@ -32,16 +32,16 @@ class Core_Put_Tests: XCTestCase {
         self.wand = wand
 
         let `struct` = CLLocationCoordinate2D.any
-        wand.add(`struct`)
+        wand(`struct`)
 
         let custom_struct = Custom(bar: .any)
-        wand.add(custom_struct)
+        wand(custom_struct)
 
-        let `class` = wand.add(CLLocation.any)
+        let `class` = wand(CLLocation.any)
 
         let custom_class = CustomClass()
         custom_class.bar = .any
-        wand.add(custom_class)
+        wand(custom_class)
 
         // wanded equals original
         let wanded_struct: CLLocationCoordinate2D = try XCTUnwrap(wand.get() )
@@ -65,21 +65,21 @@ class Core_Put_Tests: XCTestCase {
         XCTAssertNil(self.wand)
 
     }
-    
+
     func test_put_Sequense() throws {
-        
+
         var wand: Core! = Core()
         self.wand = wand
-        
+
         let bool = true
         let int = 4
 
         let location = CLLocation.any
         let date = Date.any
-        
+
         let sequence: [Any] = [bool, int, location, date]
-        wand.put(sequence: sequence)
-        
+        wand(sequence)
+
         XCTAssertEqual(wand.get(), bool)
         XCTAssertEqual(wand.get(), int)
         XCTAssertEqual(wand.get(), location)
@@ -87,26 +87,26 @@ class Core_Put_Tests: XCTestCase {
 
         //TODO: Fix and reenable
         // wand is the same
-//        XCTAssertTrue(wand === (location as Optional).wand)
-//        XCTAssertTrue(wand === (date as Optional).wand)
-        
+        //        XCTAssertTrue(wand === (location as Optional).wand)
+        //        XCTAssertTrue(wand === (date as Optional).wand)
+
         //Close wand
         weak
         var closed = wand|
         wand = nil
-        
+
         XCTAssertNil(closed)
         XCTAssertNil(self.wand)
     }
-    
+
     func test_put_Wanded() throws {
         
         var wand: Core! = Core()
         self.wand = wand
         
         let original: CLLocation = CLLocation.any
-        wand.add(original)
-        
+        wand(original)
+
         // wanded equals original
         let wanded: CLLocation = try XCTUnwrap(wand.get())
         XCTAssertEqual(original, wanded)
