@@ -18,6 +18,8 @@
 
 import CoreLocation.CLLocation
 
+import Any_
+
 import Wand
 import XCTest
 
