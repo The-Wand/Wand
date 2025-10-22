@@ -16,22 +16,40 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-prefix  operator ||
-infix   operator || : AdditionPrecedence
+/// Dependency operator
+/// operator ?
+prefix  operator |?
+infix   operator |? : AdditionPrecedence
 
-extension AskingNil {
-
+/// Ask ?
+///
+/// context |? { T in
+///
+/// }
+///
+@inlinable
+public
+func |?<C, T: Asking>(context: C, handler: @escaping (T)->() ) -> Core {
+    context | Ask.Option(once: true, handler: handler)
 }
 
-@inlinable
+@inline(__always)
+@discardableResult
+public
+func |?<C, T: Asking>(context: C, ask: Ask<T>.Option) -> Core {
+    T.ask(with: context, ask: ask)
+}
+
+/// Ask ?
+///
+/// |?{ T in
+///
+/// }
+///
+@discardableResult
+@inline(__always)
 prefix
 public
-func ||<T> (handler: @escaping (T)->() ) -> Core {
-    Core()
-}
-
-@inlinable
-public
-func ||<C, T> (context: C, handler: @escaping (T)->() ) -> Core {
-    Core()
+func |?<T: AskingNil>(handler: @escaping (T)->() ) -> Core {
+    nil as Core? | Ask.Option(once: true, handler: handler)
 }
