@@ -18,26 +18,26 @@
 
 //TODO: Fix and enable
 /// Init with Array
-//extension Core: ExpressibleByArrayLiteral {
-//
-//    @inline(__always)
-//    convenience
-//    public
-//    init(arrayLiteral array: Any...) {
-//        
-//        self.init()
-//        put(sequence: array)
-//
-//    }
-//
-//    @inline(__always)
-//    convenience
-//    public
-//    init(array: [Any]) {
-//
-//        self.init()
-//        put(sequence: array)
-//
-//    }
-//
-//}
+extension Core: ExpressibleByArrayLiteral {
+
+    @inline(__always)
+    convenience
+    public
+    init(arrayLiteral array: Any...) {
+        
+        self.init()
+        put(sequence: array)
+
+    }
+
+    @inline(__always)
+    convenience
+    public
+    init(array: [Any]) {
+
+        self.init()
+        put(sequence: array)
+
+    }
+
+}
