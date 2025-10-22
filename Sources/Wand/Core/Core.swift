@@ -310,6 +310,7 @@ extension Core {
 /// Without triggering Asks
 extension Core {
 
+    @discardableResult
     @inlinable
     public
     func callAsFunction<T>(_ object: T) -> T {
@@ -317,6 +318,7 @@ extension Core {
         return object
     }
 
+    @discardableResult
     @inlinable
     public
     func callAsFunction<T>(_ sequence: T) -> T where T == any Sequence {
