@@ -28,8 +28,8 @@ class Core_Init_Array_Tests: XCTestCase {
 
     func test_init_Array() throws {
  
-        let bool = true
-        let int = 4
+        let bool = Bool.any
+        let int = Int.any
         let location = CLLocation.any
         let date = Date.any
 
@@ -45,8 +45,8 @@ class Core_Init_Array_Tests: XCTestCase {
 
     func test_init_ArrayLiteral() throws {
 
-        let bool = true
-        let int = 4
+        let bool =  Bool.any
+        let int = Int.any
         let location = CLLocation.any
         let date = Date.any
 
@@ -56,6 +56,17 @@ class Core_Init_Array_Tests: XCTestCase {
         XCTAssertEqual(int, wand.get())
         XCTAssertEqual(location, wand.get())
         XCTAssertEqual(date, wand.get())
+    }
+
+}
+
+//TODO: update to Any 1.0.2
+extension Bool: Any_ {
+
+    public
+    static
+    var any: Bool {
+        .random()
     }
 
 }
