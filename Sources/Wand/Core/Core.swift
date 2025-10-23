@@ -35,7 +35,7 @@ class Core {
     @inlinable
     public
     static
-    subscript <T> (_ object: T?) -> Core? {
+    subscript <T>(_ object: T?) -> Core? {
 
         get { if let object {
             Core[object]
@@ -46,12 +46,13 @@ class Core {
         set { if let object {
             Core[object] = newValue
         }}
+
     }
 
     @inlinable
     public
     static
-    subscript <T> (_ object: T) -> Core? {
+    subscript <T>(_ object: T) -> Core? {
 
         get { if T.self is AnyClass {
 
@@ -70,9 +71,10 @@ class Core {
             all[key] = Weak(item: core)
 
         }}
+
     }
 
-    /// Questions stored as Linked List
+    /// Questions
     /// with context cleaners
     public
     var asking = [String: (last: Any, cleaner: ( ()->() )? )]()
@@ -161,6 +163,170 @@ extension Core {
 
 }
 
+/// Save objects
+/// Without triggering Asks
+extension Core {
+
+    @discardableResult
+    @inline(__always)
+    public
+    func put<T>(_ object: T, for key: String? = nil) -> T {
+
+        save(object, key: key)
+        return object
+    }
+
+    @inline(__always)
+    public
+    func putDefault<T>(_ object: T, for key: String? = nil) {
+
+        let result = key ?? T.self|
+        if !contains(result) {
+            wand.save(object, key: result)
+        }
+    }
+
+    @discardableResult
+    @inlinable
+    public
+    func save<T>(_ object: T, key: String? = nil) -> String {
+
+        let result = key ?? T.self|
+        Core[object] = self
+        context[result] = object
+
+        return result
+    }
+
+}
+
+/// Save sequence
+/// Without triggering Asks
+extension Core {
+
+    @discardableResult
+    @inlinable
+    public
+    func put<T>(sequence: T) -> T where T == any Sequence {
+
+        sequence.forEach { object in
+
+            let type = type(of: object)
+            if type is AnyClass {
+
+                let address = Memory.address(for: object)
+                Core.all[address] = Weak(item: self)
+            }
+
+            context[type|] = object
+        }
+
+        return sequence
+    }
+
+    @discardableResult
+    @inlinable
+    public
+    func dynamicallyCall<T>(withKeywordArguments args: T) -> Self where T == KeyValuePairs<String, Any> {
+
+        for (key, object) in args {
+
+            let type = type(of: object)
+            if type is AnyClass {
+
+                let address = Memory.address(for: object)
+                Core.all[address] = Weak(item: self)
+            }
+
+            context[key] = object
+        }
+
+        return self
+    }
+
+}
+
+/// Check object availability
+/// Context contains
+extension Core {
+
+    @discardableResult
+    @inline(__always)
+    public
+    func contains(_ key: String) -> Bool {
+        context.keys.contains(key)
+    }
+
+}
+
+/// Get
+/// From context
+extension Core {
+
+    @inline(__always)
+    public
+    func get<T>(for key: String? = nil) -> T? {
+        context[key ?? T.self|] as? T
+    }
+
+    @inline(__always)
+    public
+    func get<T>(for key: String? = nil, or create: @autoclosure ()->(T) ) -> T {
+        get(for: key) ?? put(create(), for: key)
+    }
+
+}
+
+/// Remove object
+extension Core {
+
+    @discardableResult
+    @inline(__always)
+    public
+    func extract<T>(_ key: String? = nil) -> T? {
+        context.removeValue(forKey: key ?? T.self|) as? T
+    }
+
+}
+
+/// Store Asks
+extension Core {
+
+    @inlinable
+    public
+    func append<T>(ask: Ask<T>, check: Bool = false) -> Bool {
+
+        let key = ask.key
+        let stored = asking[key]
+
+        //Call handler if object exist
+        if check, let object: T = get(for: key), !ask.handler(object) {
+            return false
+        }
+
+        //Attach the wand
+        ask.set(core: self)
+
+        //Add ask to the chain
+        let tail = stored?.last as? Ask<T>
+        ask.next = tail?.next ?? ask
+        tail?.next = ask
+
+        asking[key] = (last: ask, cleaner: stored?.cleaner)
+
+        return stored == nil
+    }
+
+    @inline(__always)
+    public
+    func setCleaner<T>(for ask: Ask<T>, cleaner: @escaping ()->() ) {
+
+        let key = ask.key
+        asking[key] = (asking[key]!.last, cleaner)
+    }
+
+}
+
 /// Add object
 /// Call handlers
 extension Core {
@@ -169,6 +335,7 @@ extension Core {
     @inlinable
     public
     func add<T>(_ object: T, for raw: String? = nil) -> T {
+
         //Store object and retreive the key
         let key = save(object, key: raw)
 
@@ -217,192 +384,13 @@ extension Core {
 
 }
 
-/// Store Asks
-extension Core {
-
-    @inlinable
-    public
-    func append<T>(ask: Ask<T>, check: Bool = false) -> Bool {
-
-        let key = ask.key
-        let stored = asking[key]
-
-        //Call handler if object exist
-        if check, let object: T = get(for: key), !ask.handler(object) {
-            return false
-        }
-
-        //Attach the wand
-        ask.set(core: self)
-
-        //Add ask to the chain
-        let tail = stored?.last as? Ask<T>
-        ask.next = tail?.next ?? ask
-        tail?.next = ask
-
-        asking[key] = (last: ask, cleaner: stored?.cleaner)
-
-        return stored == nil
-
-    }
-
-    @inline(__always)
-    public
-    func setCleaner<T>(for ask: Ask<T>, cleaner: @escaping ()->() ) {
-
-        let key = ask.key
-        asking[key] = (asking[key]!.last, cleaner)
-    }
-
-}
-
-/// Check object availability
-/// Context contains
-extension Core {
-
-    @discardableResult
-    @inline(__always)
-    public
-    func contains(_ key: String) -> Bool {
-        context.keys.contains(key)
-    }
-
-}
-
-/// Remove object
-extension Core {
-
-    @discardableResult
-    @inline(__always)
-    public
-    func extract<T>(_ key: String? = nil) -> T? {
-        context.removeValue(forKey: key ?? T.self|) as? T
-    }
-
-}
-
-/// Get
-/// From context
-extension Core {
-
-    @inline(__always)
-    public
-    func get<T>(for key: String? = nil) -> T? {
-        context[key ?? T.self|] as? T
-    }
-
-    @inline(__always)
-    public
-    func get<T>(for key: String? = nil, or create: @autoclosure ()->(T) ) -> T {
-        get(for: key) ?? put(create(), for: key)
-    }
-
-}
-
-/// Save objects
-/// Without triggering Asks
-extension Core {
-
-    @discardableResult
-    @inline(__always)
-    public
-    func put<T>(_ object: T, for key: String? = nil) -> T {
-
-        save(object, key: key)
-        return object
-    }
-
-    @inline(__always)
-    public
-    func putDefault<T>(_ object: T, for key: String? = nil) {
-
-        let result = key ?? T.self|
-        if !contains(result) {
-            wand.save(object, key: result)
-        }
-    }
-
-    @discardableResult
-    @inlinable
-    public
-    func save<T>(_ object: T, key: String? = nil) -> String {
-
-        let result = key ?? T.self|
-        Core[object] = self
-        context[result] = object
-
-        return result
-    }
-
-}
-
-/// Save sequence
-/// Without triggering Asks
-extension Core {
-
-    @discardableResult
-    @inlinable
-    public
-    func put<T>(sequence: T) -> T where T == any Sequence {
-
-        sequence.forEach { object in
-            
-            let type = type(of: object)
-            if type is AnyClass {
-
-                let address = Memory.address(for: object)
-                Core.all[address] = Weak(item: self)
-            }
-
-            context[type|] = object
-        }
-
-        return sequence
-    }
-
-    @discardableResult
-    @inlinable
-    public
-    func dynamicallyCall<T>(withKeywordArguments args: T) -> Self where T == KeyValuePairs<String, Any> {
-
-        for (key, object) in args {
-
-            let type = type(of: object)
-            if type is AnyClass {
-
-                let address = Memory.address(for: object)
-                Core.all[address] = Weak(item: self)
-            }
-
-            context[key] = object
-        }
-
-        return self
-    }
-
-}
-
-
-    @inline(__always)
-    public
-    var wand: Core {
-        self
-    }
-
-    @inline(__always)
-    public
-    var isWanded: Core? {
-        self
-    }
-
-}
-
 /// Close
 extension Core {
 
     @inlinable
     public
     func close() {
+
         //Handle Ask.all
         if let tail = asking[.all]?.last as? Ask<Core> {
             handle(self, head: tail.next, tail: tail)
@@ -413,8 +401,8 @@ extension Core {
 
             $0.value.cleaner?()
             Log.verbose("|🧼 \($0.value)")
-
         }
+
         asking.removeAll()
 
         //Release context
