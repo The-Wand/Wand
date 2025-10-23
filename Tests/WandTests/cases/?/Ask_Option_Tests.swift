@@ -19,7 +19,6 @@
 import Wand
 import XCTest
 
-
 class Ask_Option_Tests: XCTestCase {
 
     func test_One_Optional_Strong() throws {
