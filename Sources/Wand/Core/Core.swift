@@ -382,8 +382,6 @@ extension Core {
 
 }
 
-/// Wanded
-extension Core: Wanded {
 
     @inline(__always)
     public

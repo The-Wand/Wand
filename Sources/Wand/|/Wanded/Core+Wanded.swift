@@ -16,45 +16,32 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-/// Object that supports Wand
+/// Wanded
+extension Core: Wanded {
+
+    @inline(__always)
+    public
+    var wand: Core {
+        self
+    }
+
+    @inline(__always)
+    public
+    var isWanded: Core? {
+        self
+    }
+
+}
+
+/// Close Wand
+@discardableResult
+@inline(__always)
+postfix
 public
-protocol Wanded {
-
-    var wand: Core {get}
-    var isWanded: Core? {get}
-
-}
-
-extension Wanded {
-
-    @inline(__always)
-    public
-    var wand: Core {
-        isWanded ?? Core(self)
-    }
-
-    @inline(__always)
-    public
-    var isWanded: Core? {
-        Core[self]
-    }
-
-}
-
-/// Any?
-/// All Optional object supports Wand
-extension Optional {
-
-    @inline(__always)
-    public
-    var wand: Core {
-        isWanded ?? .to(self)
-    }
-
-    @inline(__always)
-    public
-    var isWanded: Core? {
-        Core[self]
-    }
+func |(wanded: Wanded?) -> Core? {
+    
+    let wand = wanded?.isWanded
+    wand?.close()
+    return wand
 
 }
