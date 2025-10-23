@@ -17,7 +17,8 @@
 /// El Machine 🤖
 
 extension Core {
-    
+
+    /// Append utility Asks
     @inlinable
     public
     func append<T>(handler ask: Ask<T>) -> Core {
