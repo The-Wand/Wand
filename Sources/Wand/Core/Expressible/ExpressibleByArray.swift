@@ -16,7 +16,6 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-//TODO: Fix and enable
 /// Init with Array
 extension Core: ExpressibleByArrayLiteral {
 
@@ -27,7 +26,6 @@ extension Core: ExpressibleByArrayLiteral {
         
         self.init()
         put(sequence: array)
-
     }
 
     @inline(__always)
@@ -37,7 +35,6 @@ extension Core: ExpressibleByArrayLiteral {
 
         self.init()
         put(sequence: array)
-
     }
 
 }

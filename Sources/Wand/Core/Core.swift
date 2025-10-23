@@ -21,10 +21,11 @@ import Foundation
 
 /// The box for an execution context
 /// and questions
+@dynamicCallable
 final
 public
 class Core {
-    
+
     /// References for cores of objects
     /// object <-> Core
     public
@@ -45,7 +46,6 @@ class Core {
         set { if let object {
             Core[object] = newValue
         }}
-
     }
 
     @inlinable
@@ -70,14 +70,13 @@ class Core {
             all[key] = Weak(item: core)
 
         }}
-
     }
-    
+
     /// Questions stored as Linked List
     /// with context cleaners
     public
     var asking = [String: (last: Any, cleaner: ( ()->() )? )]()
-    
+
     /// Execution context
     public
     var context = [String: Any]()
@@ -97,7 +96,6 @@ class Core {
 
         Core[object] = self
         context[T.self|] = object
-
     }
 
     deinit {
@@ -146,20 +144,19 @@ extension Core {
         switch context {
         case let context as Wanded:
             context.wand
-            
-            //            case let context as [Any]:
-            //                Core(array: context)
-            
+
+        case let context as [Any]:
+            Core(array: context)
+
         case let context as [String: Any]:
             Core(dictionary: context)
-            
+
         case .some(let value):
             Core(value)
-            
+
         default:
             Core()
         }
-
     }
 
 }
@@ -172,7 +169,6 @@ extension Core {
     @inlinable
     public
     func add<T>(_ object: T, for raw: String? = nil) -> T {
-
         //Store object and retreive the key
         let key = save(object, key: raw)
 
@@ -205,7 +201,6 @@ extension Core {
         }
 
         return object
-
     }
 
     @discardableResult
@@ -218,7 +213,6 @@ extension Core {
         }
 
         return add(object, for: key)
-
     }
 
 }
@@ -258,7 +252,6 @@ extension Core {
 
         let key = ask.key
         asking[key] = (asking[key]!.last, cleaner)
-
     }
 
 }
@@ -311,62 +304,12 @@ extension Core {
 extension Core {
 
     @discardableResult
-    @inlinable
-    public
-    func callAsFunction<T>(_ object: T) -> T {
-        save(object, key: nil)
-        return object
-    }
-
-    @discardableResult
-    @inlinable
-    public
-    func callAsFunction<T>(_ sequence: T) -> T where T == any Sequence {
-        sequence.forEach { object in
-            let type = type(of: object)
-            if type is AnyClass {
-
-                let key = Memory.address(for: object)
-
-                Core.all[key] = Weak(item: self)
-                context[type|] = object
-            } else {
-                context[type|] = object
-            }
-        }
-        return sequence
-    }
-
-    @available(*, deprecated, renamed: "callAsFunction()", message: "Use ()")
-    @discardableResult
-    @inlinable
-    public
-    func put<T>(sequence: T) -> T where T == any Sequence {
-        sequence.forEach { object in
-            let type = type(of: object)
-            if type is AnyClass {
-
-                let key = Memory.address(for: object)
-
-                Core.all[key] = Weak(item: self)
-                context[type|] = object
-            } else {
-                context[type|] = object
-            }
-        }
-        return sequence
-
-    }
-
-    @available(*, deprecated, renamed: "callAsFunction()", message: "Use ()")
-    @discardableResult
     @inline(__always)
     public
     func put<T>(_ object: T, for key: String? = nil) -> T {
 
         save(object, key: key)
         return object
-
     }
 
     @inline(__always)
@@ -377,11 +320,10 @@ extension Core {
         if !contains(result) {
             wand.save(object, key: result)
         }
-
     }
 
     @discardableResult
-    @inline(__always)
+    @inlinable
     public
     func save<T>(_ object: T, key: String? = nil) -> String {
 
@@ -390,7 +332,52 @@ extension Core {
         context[result] = object
 
         return result
+    }
 
+}
+
+/// Save sequence
+/// Without triggering Asks
+extension Core {
+
+    @discardableResult
+    @inlinable
+    public
+    func put<T>(sequence: T) -> T where T == any Sequence {
+
+        sequence.forEach { object in
+            
+            let type = type(of: object)
+            if type is AnyClass {
+
+                let address = Memory.address(for: object)
+                Core.all[address] = Weak(item: self)
+            }
+
+            context[type|] = object
+        }
+
+        return sequence
+    }
+
+    @discardableResult
+    @inlinable
+    public
+    func dynamicallyCall<T>(withKeywordArguments args: T) -> Self where T == KeyValuePairs<String, Any> {
+
+        for (key, object) in args {
+
+            let type = type(of: object)
+            if type is AnyClass {
+
+                let address = Memory.address(for: object)
+                Core.all[address] = Weak(item: self)
+            }
+
+            context[key] = object
+        }
+
+        return self
     }
 
 }
@@ -418,7 +405,6 @@ extension Core {
     @inlinable
     public
     func close() {
-
         //Handle Ask.all
         if let tail = asking[.all]?.last as? Ask<Core> {
             handle(self, head: tail.next, tail: tail)
@@ -440,7 +426,6 @@ extension Core {
         Core.all = Core.all.filter {
             $0.value.item != nil
         }
-
     }
 
 }
