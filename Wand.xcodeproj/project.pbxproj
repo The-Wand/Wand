@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -58,8 +58,6 @@
 		618CB4592C584FD2007B5DC9 /* Counting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618CB4412C584FD2007B5DC9 /* Counting.swift */; };
 		618CB45A2C584FD2007B5DC9 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618CB4422C584FD2007B5DC9 /* Option.swift */; };
 		618CB45B2C584FD2007B5DC9 /* Ask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618CB4442C584FD2007B5DC9 /* Ask.swift */; };
-		618CB45C2C584FD2007B5DC9 /* Asking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618CB4452C584FD2007B5DC9 /* Asking.swift */; };
-		618CB45D2C584FD2007B5DC9 /* AskingNil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618CB4462C584FD2007B5DC9 /* AskingNil.swift */; };
 		618CB45E2C584FD2007B5DC9 /* Obtainable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618CB4482C584FD2007B5DC9 /* Obtainable.swift */; };
 		618CB45F2C584FD2007B5DC9 /* Error?.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618CB44A2C584FD2007B5DC9 /* Error?.swift */; };
 		618CB4602C584FD2007B5DC9 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618CB44B2C584FD2007B5DC9 /* Error.swift */; };
@@ -205,8 +203,6 @@
 		618CB4412C584FD2007B5DC9 /* Counting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Counting.swift; sourceTree = "<group>"; };
 		618CB4422C584FD2007B5DC9 /* Option.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
 		618CB4442C584FD2007B5DC9 /* Ask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ask.swift; sourceTree = "<group>"; };
-		618CB4452C584FD2007B5DC9 /* Asking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Asking.swift; sourceTree = "<group>"; };
-		618CB4462C584FD2007B5DC9 /* AskingNil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AskingNil.swift; sourceTree = "<group>"; };
 		618CB4482C584FD2007B5DC9 /* Obtainable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Obtainable.swift; sourceTree = "<group>"; };
 		618CB44A2C584FD2007B5DC9 /* Error?.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Error?.swift"; sourceTree = "<group>"; };
 		618CB44B2C584FD2007B5DC9 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
@@ -230,6 +226,10 @@
 		"pipe::Pipe::Product" /* Wand.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Wand.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"pipe::PipeTests::Product" /* WandTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = WandTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		61C56FA82EAA3A1B00E79B54 /* Asking */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Asking; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		613966122BE0F4EF004C18A3 /* Frameworks */ = {
@@ -289,11 +289,10 @@
 			isa = PBXGroup;
 			children = (
 				618CB4432C584FD2007B5DC9 /* Addons */,
+				61C56FA82EAA3A1B00E79B54 /* Asking */,
 				618D8EB42D26DF1E00C05692 /* Convertible */,
 				618CB4392C584FD2007B5DC9 /* Describing */,
 				616666672DA93193005FF43D /* Wanded */,
-				618CB4452C584FD2007B5DC9 /* Asking.swift */,
-				618CB4462C584FD2007B5DC9 /* AskingNil.swift */,
 				618CB44E2C584FD2007B5DC9 /* |.swift */,
 			);
 			path = "|";
@@ -597,6 +596,9 @@
 			);
 			dependencies = (
 			);
+			fileSystemSynchronizedGroups = (
+				61C56FA82EAA3A1B00E79B54 /* Asking */,
+			);
 			name = Wand;
 			productName = Pipe;
 			productReference = "pipe::Pipe::Product" /* Wand.framework */;
@@ -766,9 +768,7 @@
 				618CB45A2C584FD2007B5DC9 /* Option.swift in Sources */,
 				618CB4632C584FD2007B5DC9 /* Core.swift in Sources */,
 				618CB4542C584FD2007B5DC9 /* Log.swift in Sources */,
-				618CB45C2C584FD2007B5DC9 /* Asking.swift in Sources */,
 				61C56FA72EAA0D9E00E79B54 /* Core+Wanded.swift in Sources */,
-				618CB45D2C584FD2007B5DC9 /* AskingNil.swift in Sources */,
 				6146C6D92DBEAE120055A5DE /* Weak.swift in Sources */,
 				618D8EB72D26DF2E00C05692 /* Numbers_Convertible.swift in Sources */,
 				618D8EB82D26DF2E00C05692 /* CoreGraphics_Convertible.swift in Sources */,
