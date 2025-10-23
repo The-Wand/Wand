@@ -16,21 +16,26 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-import Any_
-import Wand
+/// Expect from context
+/// ``
+public
+protocol Expecting: AskingNil {
 
-struct Vector: Equatable, Any_ {
-
-    let x, y, z, t: UInt64
-
-    public
     static
-    var any: Self {
-        .init(x: .any, y: .any, z: .any, t: .any(in: 0...5))
-    }
-
+    func ask<C, T>(with context: C, ask: Ask<T>) -> Core
+    
 }
 
-extension Vector: Expecting, Wanded {
+extension Expecting {
+
+    @inline(__always)
+    public
+    static
+    func ask<C, T>(with context: C, ask: Ask<T>) -> Core {
+
+        let wand = Core.to(context)
+        _ = wand.append(ask: ask)
+        return wand
+    }
 
 }

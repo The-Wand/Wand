@@ -92,17 +92,7 @@ class Expect_Any_Tests: XCTestCase {
 }
 
 //Example of conforming to Asking
-extension String: @retroactive AskingNil
-{
-    @inline(__always)
-    public
-    static
-    func ask<C, T>(with context: C, ask: Ask<T>) -> Core {
-        
-        let wand = Wand.Core.to(context)
-        _ = wand.append(ask: ask)
-        return wand
-        
-    }
+//Can be at least Expecting
+extension String: @retroactive Expecting {
 
 }
