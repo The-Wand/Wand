@@ -34,3 +34,56 @@ struct Vector: Equatable, Any_ {
 extension Vector: Expecting, Wanded {
 
 }
+
+//extension Ask {
+//
+//    public
+//    var request: ( ()->() )? {
+//        didSet {
+//            request?()
+//        }
+//    }
+//
+//}
+//
+//struct Vector2: AskingNil {
+//
+//    var request: ( ()->() )? {
+//        didSet {
+//            request?()
+//        }
+//    }
+//
+//    public
+//    static
+//    func ask<C, T>(with context: C, ask: Wand.Ask<T>) -> Core {
+//
+//        let wand = Core.to(context)
+//
+//        guard wand.append(ask: ask, check: true) else {
+//            return wand
+//        }
+//
+//
+//        //Make request
+//        ask.request = {
+//
+////            source.startUpdates(from: date) { (data, error) in
+////                wand.addIf(exist: data)
+////                wand.addIf(exist: error)
+////            }
+//        }
+//
+//        return wand
+//    }
+//
+//    public
+//    static
+//    func `try`<C>(with context: C, wand: Core) {
+//
+//
+//    }
+//
+//}
+
+
