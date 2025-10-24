@@ -60,8 +60,9 @@ class Ask<T> {
     ///@synthesize `wand`
     @inline(__always)
     public
-    func set(core: Core?) {
+    func set(core: Core?) -> Bool {
         self.core = core
+        return false
     }
 
     @inline(__always)

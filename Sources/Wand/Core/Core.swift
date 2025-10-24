@@ -299,13 +299,14 @@ extension Core {
         let key = ask.key
         let stored = asking[key]
 
+        //Attach the wand
         //Call handler if object exist
-        if check, let object: T = get(for: key), !ask.handler(object) {
+        if (check || ask.set(core: self)),
+           let object: T = get(for: key),
+           !ask.handler(object)
+        {
             return false
         }
-
-        //Attach the wand
-        ask.set(core: self)
 
         //Add ask to the chain
         let tail = stored?.last as? Ask<T>

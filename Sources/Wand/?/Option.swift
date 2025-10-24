@@ -22,10 +22,15 @@ extension Ask {
     public
     class Option: Ask {
 
+        //TODO: Test #37
+        //Change to let?
+        var check: Bool = false
+
         @inline(__always)
         override
         public
-        func set(core: Core?) {
+        func set(core: Core?) -> Bool {
+            check
         }
 
         @inline(__always)
@@ -39,14 +44,18 @@ extension Ask {
 
     @inline(__always)
     public
-    func dependency<U>(for key: String? = nil, on handler: ( (U)->() )? = nil ) -> Ask<U>.Option {
-        .init(once: self.once, for: key, handler: handler)
+    func dependency<U>(for key: String? = nil, check: Bool = false, on handler: ( (U)->() )? = nil ) -> Ask<U>.Option {
+        let ask = Ask<U>.Option(once: self.once, for: key, handler: handler)
+        ask.check = check
+        return ask
     }
 
     @inline(__always)
     public
-    func depends<U>(for key: String? = nil, while handler: @escaping (U)->(Bool) ) -> Ask<U>.Option {
-        .init(once: false, for: key, handler: handler)
+    func depends<U>(for key: String? = nil, check: Bool = false, while handler: @escaping (U)->(Bool) ) -> Ask<U>.Option {
+        let ask = Ask<U>.Option(once: false, for: key, handler: handler)
+        ask.check = check
+        return ask
     }
 
 }
