@@ -61,14 +61,3 @@ class Core_Init_Array_Tests: XCTestCase {
     }
 
 }
-
-//TODO: update to Any 1.0.2
-extension Bool: Any_ {
-
-    public
-    static
-    var any: Bool {
-        .random()
-    }
-
-}
