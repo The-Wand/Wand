@@ -58,6 +58,7 @@ class Ask<T> {
     var core: Core?
 
     ///@synthesize `wand`
+    @discardableResult
     @inline(__always)
     public
     func set(core: Core?) -> Bool {
