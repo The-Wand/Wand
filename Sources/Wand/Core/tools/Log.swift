@@ -58,14 +58,3 @@ extension Log: Comparable {
 
 }
 #endif
-
-@available(*, deprecated, renamed: "Log.verbose(message:)")
-@inline(__always)
-public
-func log(_ message: String) {
-
-#if DEBUG
-    Log.verbose(message)
-#endif
-
-}
