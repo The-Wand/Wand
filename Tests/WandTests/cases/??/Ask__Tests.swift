@@ -15,11 +15,29 @@
 ///
 /// Created by Alex Kozin
 /// El Machine 🤖
-
-infix   operator ||| : AdditionPrecedence
-
-@inlinable
-public
-func |||<T, U> (context: Ask<T>, handler: @escaping (U)->() ) -> Core {
-    Core()
-}
+//
+//import Wand
+//import XCTest
+//
+//class Ask__Tests: XCTestCase {
+//
+//    func test__() throws {
+//
+//        let e = expectation()
+//
+//        let point = Vector.any
+//
+//        var wand: Core!
+//        wand = |{ (point: Vector) in
+//            e.fulfill()
+//        } ||/ {
+//
+//        }
+//
+//        wand.add(point)
+//
+//        waitForExpectations()
+//        XCTAssertNotNil(wand)
+//    }
+//
+//}
