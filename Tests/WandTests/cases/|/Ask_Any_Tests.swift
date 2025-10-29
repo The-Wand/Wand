@@ -90,9 +90,3 @@ class Expect_Any_Tests: XCTestCase {
     }
 
 }
-
-//Example of conforming to Asking
-//Can be at least Expecting
-extension String: @retroactive Expecting {
-
-}

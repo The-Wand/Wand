@@ -28,7 +28,7 @@ class Ask_Option_Tests: XCTestCase {
         let point = Vector.any
 
         var wand: Core!
-        wand = ??{ (point: Vector) in
+        wand = |/{ (point: Vector) in
             e.fulfill()
         }
 
@@ -42,50 +42,69 @@ class Ask_Option_Tests: XCTestCase {
 
         weak
         var wand: Core?
-        wand = ??{ (point: Vector) in
+        wand = |/{ (point: Vector) in
             fatalError()
         }
 
         XCTAssertNil(wand)
     }
 
-//    func test_Every_Optional_Strong() throws {
-//
-//    }
-//
-//    func test_Every_Optional_Weak() throws {
-//
-//    }
-//
-//    func test_While_Optional_Strong() throws {
-//
-//        let e = expectation()
-//
-//        let point = Vector.any
-//
-//        var wand: Core!
-//        wand = ??.while{ (point: Vector) in
-//            e.fulfill()
-//
-//            return true
-//        }
-//
-//        wand.add(point)
-//
-//        waitForExpectations()
-//        XCTAssertNotNil(wand)
-//    }
-//
-//    func test_While_Optional_Weak() throws {
-//
-//        weak
-//        var wand: Core?
-//        wand = ??.while{ (point: Vector) in
-//            fatalError()
-//        }
-//
-//
-//        XCTAssertNil(wand)
-//    }
+    func test_Every_Optional_Strong() throws {
+
+        let e = expectation()
+
+        let point = Vector.any
+
+        var wand: Core!
+        wand = |/.every { (point: Vector) in
+            e.fulfill()
+        }
+
+        wand.add(point)
+
+        waitForExpectations()
+        XCTAssertNotNil(wand)
+    }
+
+    func test_Every_Optional_Weak() throws {
+
+        weak
+        var wand: Core?
+        wand = |/.every { (point: Vector) in
+            fatalError()
+        }
+
+        XCTAssertNil(wand)
+    }
+
+    func test_While_Optional_Strong() throws {
+
+        let e = expectation()
+
+        let point = Vector.any
+
+        var wand: Core!
+        wand = |/.while { (point: Vector) in
+
+            e.fulfill()
+            return true
+        }
+
+        wand.add(point)
+
+        waitForExpectations()
+        XCTAssertNotNil(wand)
+    }
+
+    func test_While_Optional_Weak() throws {
+
+        weak
+        var wand: Core?
+        wand = |/.while { (point: Vector) in
+            fatalError()
+        }
+
+        XCTAssertNil(wand)
+    }
 
 }

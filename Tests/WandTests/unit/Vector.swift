@@ -35,6 +35,12 @@ extension Vector: Expecting, Wanded {
 
 }
 
+//Example of conforming to Asking
+//Can be at least Expecting
+extension String: @retroactive Expecting {
+
+}
+
 //extension Ask {
 //
 //    public

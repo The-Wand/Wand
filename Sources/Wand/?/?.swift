@@ -18,8 +18,8 @@
 
 /// Dependency operator
 /// operator ?
-prefix  operator ??
-infix   operator ?? : AdditionPrecedence
+prefix  operator |/
+infix   operator |/ : AdditionPrecedence
 
 /// Ask ?
 ///
@@ -29,15 +29,15 @@ infix   operator ?? : AdditionPrecedence
 ///
 @inlinable
 public
-func ??<C, T: Asking>(context: C, handler: @escaping (T)->() ) -> Core {
+func |/<C, T: Asking>(context: C, handler: @escaping (T)->() ) -> Core {
     context | Ask.Option(handler: handler)
 }
 
 @inline(__always)
 @discardableResult
 public
-func ??<C, T: Asking>(context: C, ask: Ask<T>.Option) -> Core {
-    T.ask(with: context, ask: ask)
+func |/<C, T: Asking>(context: C, ask: Ask<T>) -> Core {
+    T.ask(with: context, ask: ask.optional())
 }
 
 /// Ask ?
@@ -50,6 +50,20 @@ func ??<C, T: Asking>(context: C, ask: Ask<T>.Option) -> Core {
 @inline(__always)
 prefix
 public
-func ??<T: AskingNil>(handler: @escaping (T)->() ) -> Core {
+func |/<T: AskingNil>(handler: @escaping (T)->() ) -> Core {
     nil as Core? | Ask.Option(handler: handler)
+}
+
+/// Ask ?
+///
+/// |?{ T in
+///
+/// }
+///
+@discardableResult
+@inline(__always)
+prefix
+public
+func |/<T: AskingNil>(ask: Ask<T>) -> Core {
+    nil as Core? | ask.optional()
 }
