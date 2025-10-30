@@ -178,9 +178,9 @@ extension Core {
 
     @inline(__always)
     public
-    func putDefault<T>(_ object: T, for key: String? = nil) {
+    func putDefault(_ object, for key: String? = nil) {
 
-        let result = key ?? T.self|
+        let result = key
         if !contains(result) {
             wand.save(object, key: result)
         }
