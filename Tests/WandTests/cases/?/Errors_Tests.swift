@@ -16,32 +16,31 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-//import Wand
-//import XCTest
-//
-//class Errors_Tests: XCTestCase {
-//
-//    func test_Error_Handling() throws {
-//
-//        let e = expectation()
-//        e.assertForOverFulfill = false
-//
-//        weak
-//        var wand: Core!
-//        wand = Vector.one | String.one | .all { _ in
-//            e.fulfill()
-//        }
-//
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak wand] in
-//            wand?.add(Vector.any)
-//        }
-//
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak wand] in
-//            wand?.add(String.any)
-//        }
-//
-//        waitForExpectations()
-//        
-//    }
-//
-//}
+import Wand
+import XCTest
+
+class Errors_Tests: XCTestCase {
+
+    func test_One_Error_Fail_Handling() throws {
+
+        let e1 = expectation()
+        let e2 = expectation()
+
+        weak
+        var wand: Core!
+        wand = Vector.every | String.one { _ in
+            fatalError()
+        } | { (error: Error) in
+            e1.fulfill()
+        } | .all { _ in
+            e2.fulfill()
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak wand] in
+            wand?.add(NSError() as Error)
+        }
+
+        wait(for: [e1, e2])
+    }
+
+}
