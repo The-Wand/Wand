@@ -33,11 +33,24 @@ func |?<C, T: Asking>(context: C, handler: @escaping (T)->() ) -> Core {
     context | Ask.Option(handler: handler)
 }
 
+/// Ask ?
+///
+/// context |? .every { T in
+///
+/// }
+///
 @inline(__always)
 @discardableResult
 public
 func |?<C, T: Asking>(context: C, ask: Ask<T>) -> Core {
     T.ask(with: context, ask: ask.optional())
+}
+
+@inline(__always)
+@discardableResult
+public
+func |?<C, T: Asking>(context: C, ask: Ask<T>.Option) -> Core {
+    T.ask(with: context, ask: ask)
 }
 
 /// Ask ?
@@ -56,7 +69,7 @@ func |?<T: AskingNil>(handler: @escaping (T)->() ) -> Core {
 
 /// Ask ?
 ///
-/// |?{ T in
+/// |? .every { T in
 ///
 /// }
 ///
@@ -66,4 +79,11 @@ prefix
 public
 func |?<T: AskingNil>(ask: Ask<T>) -> Core {
     nil as Core? | ask.optional()
+}
+@discardableResult
+@inline(__always)
+prefix
+public
+func |?<T: AskingNil>(ask: Ask<T>.Option) -> Core {
+    nil as Core? | ask
 }
