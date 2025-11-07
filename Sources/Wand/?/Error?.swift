@@ -25,8 +25,8 @@
 @discardableResult
 @inline(__always)
 public
-func |(wand: Core, handler: @escaping (Error?)->() ) -> Core {
-    wand | Ask.one(handler: handler)
+func |?(wand: Core, handler: @escaping (Error?)->() ) -> Core {
+    wand |? Ask.one(handler: handler)
 }
 
 /// Handle Error and Success
@@ -38,7 +38,7 @@ func |(wand: Core, handler: @escaping (Error?)->() ) -> Core {
 @discardableResult
 @inline(__always)
 public
-func |(wand: Core, ask: Ask<Error?>) -> Core {
+func |?(wand: Core, ask: Ask<Error?>) -> Core {
 
     //Handle Succeed completion
     let all = Ask.all { _ in
@@ -52,6 +52,6 @@ func |(wand: Core, ask: Ask<Error?>) -> Core {
     }
 
     //Handle Error completion
-    return wand | all | error
+    return wand | all |? error
 
 }

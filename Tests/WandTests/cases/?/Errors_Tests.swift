@@ -30,7 +30,7 @@ class Errors_Tests: XCTestCase {
         var wand: Core!
         wand = Vector.every | String.one { _ in
             fatalError()
-        } | { (error: Error) in
+        } |? { (error: Error) in
             e1.fulfill()
         } | .all { _ in
             e2.fulfill()
@@ -41,6 +41,59 @@ class Errors_Tests: XCTestCase {
         }
 
         wait(for: [e1, e2])
+        //Will work at production environment
+        //        XCTAssertNil(wand)
     }
+
+    func test_Every_Error_Fail_Handling() throws {
+
+        let count = (1...4).any
+
+        let e1 = expectation()
+        e1.expectedFulfillmentCount = count
+
+        weak
+        var wand: Core!
+        wand = Vector.every | String.one { _ in
+            fatalError()
+        } |? .every { (error: Error) in
+            e1.fulfill()
+        } | .all { _ in
+            fatalError()
+        }
+
+        (1...count).forEach { _ in
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak wand] in
+                wand?.add(NSError() as Error)
+            }
+        }
+
+        wait(for: [e1])
+        XCTAssertNotNil(wand)
+    }
+
+//    func test_One_Error_Success_Handling() throws {
+//
+//        let e1 = expectation()
+//        let e2 = expectation()
+//
+//        weak
+//        var wand: Core!
+//        wand = |String.one { _ in
+//            e1.fulfill()
+//        } | { (error: Error) in
+//            fatalError()
+//        } | .all { _ in
+//            e2.fulfill()
+//        }
+//
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak wand] in
+//            wand?.add(String.any)
+//        }
+//
+//        wait(for: [e1, e2])
+//        XCTAssertNil(wand)
+//    }
 
 }

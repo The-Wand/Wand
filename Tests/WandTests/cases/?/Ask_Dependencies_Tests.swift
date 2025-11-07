@@ -31,7 +31,7 @@ class Ask_Dependencies_Tests: XCTestCase {
         var wand: Core!
         wand = |.one { (point: Vector) in
             e.fulfill()
-        } |/ { (string: String) in
+        } |? { (string: String) in
 
         }
 
@@ -51,7 +51,7 @@ class Ask_Dependencies_Tests: XCTestCase {
         var wand: Core!
         wand = |.every { (point: Vector) in
             e.fulfill()
-        } |/ { (string: String) in
+        } |? { (string: String) in
 
         }
 

@@ -28,7 +28,7 @@ class Ask_Option_Tests: XCTestCase {
         let point = Vector.any
 
         var wand: Core!
-        wand = |/{ (point: Vector) in
+        wand = |?{ (point: Vector) in
             e.fulfill()
         }
 
@@ -42,7 +42,7 @@ class Ask_Option_Tests: XCTestCase {
 
         weak
         var wand: Core?
-        wand = |/{ (point: Vector) in
+        wand = |?{ (point: Vector) in
             fatalError()
         }
 
@@ -56,7 +56,7 @@ class Ask_Option_Tests: XCTestCase {
         let point = Vector.any
 
         var wand: Core!
-        wand = |/.every { (point: Vector) in
+        wand = |?.every { (point: Vector) in
             e.fulfill()
         }
 
@@ -70,7 +70,7 @@ class Ask_Option_Tests: XCTestCase {
 
         weak
         var wand: Core?
-        wand = |/.every { (point: Vector) in
+        wand = |?.every { (point: Vector) in
             fatalError()
         }
 
@@ -84,7 +84,7 @@ class Ask_Option_Tests: XCTestCase {
         let point = Vector.any
 
         var wand: Core!
-        wand = |/.while { (point: Vector) in
+        wand = |?.while { (point: Vector) in
 
             e.fulfill()
             return true
@@ -100,7 +100,7 @@ class Ask_Option_Tests: XCTestCase {
 
         weak
         var wand: Core?
-        wand = |/.while { (point: Vector) in
+        wand = |?.while { (point: Vector) in
             fatalError()
         }
 

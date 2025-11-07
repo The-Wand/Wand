@@ -18,15 +18,15 @@
 
 /// Handle Error
 ///
-/// wand | { (error: Error) in
+/// wand |? { (error: Error) in
 ///
 /// }
 ///
 @discardableResult
 @inline(__always)
 public
-func |(wand: Core, handler: @escaping (Error)->() ) -> Core {
-    wand | Ask.Option(handler: handler)
+func |?(wand: Core, handler: @escaping (Error)->() ) -> Core {
+    wand |? Ask.Option(handler: handler)
 }
 
 /// Handle Error
@@ -38,7 +38,7 @@ func |(wand: Core, handler: @escaping (Error)->() ) -> Core {
 @discardableResult
 @inline(__always)
 public
-func |(wand: Core, ask: Ask<Error>) -> Core {
+func |?(wand: Core, ask: Ask<Error>) -> Core {
 
     if ask.once {
 
