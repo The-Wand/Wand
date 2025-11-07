@@ -18,6 +18,30 @@
 
 extension Ask {
 
+    /// Ask every counting
+    ///
+    /// |.every { (object, i) in
+    ///
+    /// }
+    ///
+    @inline(__always)
+    public
+    static
+    func every(key: String? = nil,
+                 handler: @escaping (T, Int)->() ) -> Ask {
+
+        var i = 0
+        return Ask(once: false, for: key) {
+
+            defer {
+                i += 1
+            }
+            return handler($0, i)
+
+        }
+
+    }
+
     /// Ask while counting
     ///
     /// |.while { (object, i) in
