@@ -15,9 +15,9 @@
 		613966672BE0FB14004C18A3 /* Play.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6162624628BC8E2A00D63EA5 /* Play.swift */; };
 		613966692BE0FB2E004C18A3 /* Wand.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "pipe::Pipe::Product" /* Wand.framework */; };
 		6139666A2BE0FB2E004C18A3 /* Wand.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = "pipe::Pipe::Product" /* Wand.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6146C6D92DBEAE120055A5DE /* Weak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6146C6D82DBEAE120055A5DE /* Weak.swift */; };
-		6146C6DB2DBEAE420055A5DE /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6146C6DA2DBEAE420055A5DE /* Key.swift */; };
 		614B218F2C4489CF00EB9DEE /* Any_ in Frameworks */ = {isa = PBXBuildFile; productRef = 614B218E2C4489CF00EB9DEE /* Any_ */; };
+		615054912EBDD6CD00CF9E7B /* DefaultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615054902EBDD6CD00CF9E7B /* DefaultTests.swift */; };
+		615054922EBDD6CD00CF9E7B /* DefaultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615054902EBDD6CD00CF9E7B /* DefaultTests.swift */; };
 		6162625628BC8E2B00D63EA5 /* Play.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6162624628BC8E2A00D63EA5 /* Play.swift */; };
 		6162625828BC8E2B00D63EA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6162624728BC8E2B00D63EA5 /* Assets.xcassets */; };
 		6162626428BC944300D63EA5 /* Wand.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "pipe::Pipe::Product" /* Wand.framework */; platformFilters = (ios, maccatalyst, macos, tvos, xros, ); };
@@ -48,13 +48,7 @@
 		6181C9462D4BFCD0007EBDF6 /* Core_Init_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6181C9262D4BFC7D007EBDF6 /* Core_Init_Tests.swift */; };
 		6181C9472D4BFCD0007EBDF6 /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6181C92A2D4BFC7D007EBDF6 /* Vector.swift */; };
 		6181C9482D4BFCD0007EBDF6 /* Describing_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6181C9222D4BFC7D007EBDF6 /* Describing_Tests.swift */; };
-		618CB4532C584FD2007B5DC9 /* Expressible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618CB43A2C584FD2007B5DC9 /* Expressible.swift */; };
-		618CB4542C584FD2007B5DC9 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618CB43B2C584FD2007B5DC9 /* Log.swift */; };
-		618CB4552C584FD2007B5DC9 /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618CB43C2C584FD2007B5DC9 /* Memory.swift */; };
 		618CB45B2C584FD2007B5DC9 /* Ask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618CB4442C584FD2007B5DC9 /* Ask.swift */; };
-		618CB4632C584FD2007B5DC9 /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618CB44F2C584FD2007B5DC9 /* Core.swift */; };
-		61924A602E72B0280030DA87 /* ExpressibleByArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61924A5F2E72B0280030DA87 /* ExpressibleByArray.swift */; };
-		61924A622E72B0560030DA87 /* ExpressibleByDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61924A612E72B0560030DA87 /* ExpressibleByDictionary.swift */; };
 		61924A642E72B4920030DA87 /* Core_Init_Array_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61924A632E72B4920030DA87 /* Core_Init_Array_Tests.swift */; };
 		61924A652E72B4920030DA87 /* Core_Init_Array_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61924A632E72B4920030DA87 /* Core_Init_Array_Tests.swift */; };
 		61B740042DC4FC6300F80993 /* Core_Init_Dictionary_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B740032DC4FC6300F80993 /* Core_Init_Dictionary_Tests.swift */; };
@@ -64,7 +58,6 @@
 		61C56FA32EAA08CE00E79B54 /* Core_Put_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616666682DA935D6005FF43D /* Core_Put_Tests.swift */; };
 		61D1D6672E82C1F100032E5D /* Errors_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D1D6662E82C1F100032E5D /* Errors_Tests.swift */; };
 		61D1D6682E82C1F100032E5D /* Errors_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D1D6662E82C1F100032E5D /* Errors_Tests.swift */; };
-		61F077502E0E8E1300A3146D /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F0774F2E0E8E1300A3146D /* State.swift */; };
 		OBJ_254 /* Wand.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "pipe::Pipe::Product" /* Wand.framework */; };
 /* End PBXBuildFile section */
 
@@ -149,8 +142,7 @@
 		611A358D2DA001700024D08D /* packages.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = packages.json; sourceTree = "<group>"; };
 		613966152BE0F4EF004C18A3 /* WatchPlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchPlay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		613966482BE0F87A004C18A3 /* WatchPlayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WatchPlayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6146C6D82DBEAE120055A5DE /* Weak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weak.swift; sourceTree = "<group>"; };
-		6146C6DA2DBEAE420055A5DE /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
+		615054902EBDD6CD00CF9E7B /* DefaultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTests.swift; sourceTree = "<group>"; };
 		615158912BF74A4C001646EA /* TestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestPlan.xctestplan; sourceTree = "<group>"; };
 		615158922BF74A4C001646EA /* WatchTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = WatchTestPlan.xctestplan; sourceTree = "<group>"; };
 		615158E52BF7552D001646EA /* WatchInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = WatchInfo.plist; sourceTree = "<group>"; };
@@ -175,19 +167,12 @@
 		6181C9292D4BFC7D007EBDF6 /* Unit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
 		6181C92A2D4BFC7D007EBDF6 /* Vector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
 		6181C92B2D4BFC7D007EBDF6 /* XCTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCase.swift; sourceTree = "<group>"; };
-		618CB43A2C584FD2007B5DC9 /* Expressible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expressible.swift; sourceTree = "<group>"; };
-		618CB43B2C584FD2007B5DC9 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
-		618CB43C2C584FD2007B5DC9 /* Memory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
 		618CB4442C584FD2007B5DC9 /* Ask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ask.swift; sourceTree = "<group>"; };
-		618CB44F2C584FD2007B5DC9 /* Core.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
-		61924A5F2E72B0280030DA87 /* ExpressibleByArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressibleByArray.swift; sourceTree = "<group>"; };
-		61924A612E72B0560030DA87 /* ExpressibleByDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressibleByDictionary.swift; sourceTree = "<group>"; };
 		61924A632E72B4920030DA87 /* Core_Init_Array_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core_Init_Array_Tests.swift; sourceTree = "<group>"; };
 		61AA24C02D787669005550F4 /* NOTICE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = NOTICE.txt; sourceTree = "<group>"; };
 		61B740032DC4FC6300F80993 /* Core_Init_Dictionary_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core_Init_Dictionary_Tests.swift; sourceTree = "<group>"; };
 		61C56FA02EAA01B400E79B54 /* Core_Put_Keyed_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core_Put_Keyed_Tests.swift; sourceTree = "<group>"; };
 		61D1D6662E82C1F100032E5D /* Errors_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors_Tests.swift; sourceTree = "<group>"; };
-		61F0774F2E0E8E1300A3146D /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		"pipe::Pipe::Product" /* Wand.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Wand.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"pipe::PipeTests::Product" /* WandTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = WandTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -197,6 +182,7 @@
 		615051CD2EBDD12C00CF9E7B /* ? */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "?"; sourceTree = "<group>"; };
 		615051CF2EBDD12C00CF9E7B /* & */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "&"; sourceTree = "<group>"; };
 		615051F12EBDD14F00CF9E7B /* | */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "|"; sourceTree = "<group>"; };
+		615054D02EBDD73B00CF9E7B /* Core */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Core; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -267,19 +253,6 @@
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		615DA0DF2DBED72D005A245C /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				61924A5E2E72B0220030DA87 /* Expressible */,
-				618CB43E2C584FD2007B5DC9 /* tools */,
-				618CB44F2C584FD2007B5DC9 /* Core.swift */,
-				6146C6DA2DBEAE420055A5DE /* Key.swift */,
-				61F0774F2E0E8E1300A3146D /* State.swift */,
-				6146C6D82DBEAE120055A5DE /* Weak.swift */,
-			);
-			path = Core;
-			sourceTree = "<group>";
-		};
 		6162624428BC8E2A00D63EA5 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -338,6 +311,7 @@
 		6181C92C2D4BFC7D007EBDF6 /* Unit */ = {
 			isa = PBXGroup;
 			children = (
+				615054902EBDD6CD00CF9E7B /* DefaultTests.swift */,
 				6181C9282D4BFC7D007EBDF6 /* T_Tests.swift */,
 				6181C9292D4BFC7D007EBDF6 /* Unit.swift */,
 				616692F22DB63A8E001ABFC1 /* Performance.swift */,
@@ -356,19 +330,10 @@
 			path = WandTests;
 			sourceTree = "<group>";
 		};
-		618CB43E2C584FD2007B5DC9 /* tools */ = {
-			isa = PBXGroup;
-			children = (
-				618CB43B2C584FD2007B5DC9 /* Log.swift */,
-				618CB43C2C584FD2007B5DC9 /* Memory.swift */,
-			);
-			path = tools;
-			sourceTree = "<group>";
-		};
 		618CB4502C584FD2007B5DC9 /* Wand */ = {
 			isa = PBXGroup;
 			children = (
-				615DA0DF2DBED72D005A245C /* Core */,
+				615054D02EBDD73B00CF9E7B /* Core */,
 				618CB4442C584FD2007B5DC9 /* Ask.swift */,
 				615051F12EBDD14F00CF9E7B /* | */,
 				615051CD2EBDD12C00CF9E7B /* ? */,
@@ -376,16 +341,6 @@
 				6117E7862E3110730064136F /* Wand.md */,
 			);
 			path = Wand;
-			sourceTree = "<group>";
-		};
-		61924A5E2E72B0220030DA87 /* Expressible */ = {
-			isa = PBXGroup;
-			children = (
-				618CB43A2C584FD2007B5DC9 /* Expressible.swift */,
-				61924A5F2E72B0280030DA87 /* ExpressibleByArray.swift */,
-				61924A612E72B0560030DA87 /* ExpressibleByDictionary.swift */,
-			);
-			path = Expressible;
 			sourceTree = "<group>";
 		};
 		61B740022DC4FC5C00F80993 /* Init Tests */ = {
@@ -504,6 +459,7 @@
 				615051CD2EBDD12C00CF9E7B /* ? */,
 				615051CF2EBDD12C00CF9E7B /* & */,
 				615051F12EBDD14F00CF9E7B /* | */,
+				615054D02EBDD73B00CF9E7B /* Core */,
 			);
 			name = Wand;
 			productName = Pipe;
@@ -637,6 +593,7 @@
 				6181C9432D4BFCD0007EBDF6 /* Ask_Tests.swift in Sources */,
 				616692F42DB63A8E001ABFC1 /* Performance.swift in Sources */,
 				616B670F2EA8FBD3003CF869 /* Ask_Option_Tests.swift in Sources */,
+				615054912EBDD6CD00CF9E7B /* DefaultTests.swift in Sources */,
 				61C56FA22EAA01B400E79B54 /* Core_Put_Keyed_Tests.swift in Sources */,
 				61D1D6682E82C1F100032E5D /* Errors_Tests.swift in Sources */,
 				6181C9442D4BFCD0007EBDF6 /* Unit.swift in Sources */,
@@ -663,16 +620,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				6146C6DB2DBEAE420055A5DE /* Key.swift in Sources */,
-				61924A602E72B0280030DA87 /* ExpressibleByArray.swift in Sources */,
-				61F077502E0E8E1300A3146D /* State.swift in Sources */,
-				618CB4532C584FD2007B5DC9 /* Expressible.swift in Sources */,
-				618CB4632C584FD2007B5DC9 /* Core.swift in Sources */,
-				618CB4542C584FD2007B5DC9 /* Log.swift in Sources */,
-				6146C6D92DBEAE120055A5DE /* Weak.swift in Sources */,
-				61924A622E72B0560030DA87 /* ExpressibleByDictionary.swift in Sources */,
 				618CB45B2C584FD2007B5DC9 /* Ask.swift in Sources */,
-				618CB4552C584FD2007B5DC9 /* Memory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -687,6 +635,7 @@
 				6181C9392D4BFCD0007EBDF6 /* Ask_Tests.swift in Sources */,
 				6181C93A2D4BFCD0007EBDF6 /* Ask_All_Tests.swift in Sources */,
 				616692F32DB63A8E001ABFC1 /* Performance.swift in Sources */,
+				615054922EBDD6CD00CF9E7B /* DefaultTests.swift in Sources */,
 				616B67102EA8FBD3003CF869 /* Ask_Option_Tests.swift in Sources */,
 				61C56FA12EAA01B400E79B54 /* Core_Put_Keyed_Tests.swift in Sources */,
 				61D1D6672E82C1F100032E5D /* Errors_Tests.swift in Sources */,
@@ -750,7 +699,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1912;
+				CURRENT_PROJECT_VERSION = 1914;
 				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -809,7 +758,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1912;
+				CURRENT_PROJECT_VERSION = 1914;
 				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_PREVIEWS = YES;
@@ -861,7 +810,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1912;
+				CURRENT_PROJECT_VERSION = 1914;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -908,7 +857,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1912;
+				CURRENT_PROJECT_VERSION = 1914;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -972,7 +921,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1912;
+				CURRENT_PROJECT_VERSION = 1914;
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1061,7 +1010,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1912;
+				CURRENT_PROJECT_VERSION = 1914;
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_PREVIEWS = YES;
@@ -1114,7 +1063,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1912;
+				CURRENT_PROJECT_VERSION = 1914;
 				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
@@ -1166,7 +1115,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1912;
+				CURRENT_PROJECT_VERSION = 1914;
 				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
@@ -1216,7 +1165,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1912;
+				CURRENT_PROJECT_VERSION = 1914;
 				DEAD_CODE_STRIPPING = YES;
 				DRIVERKIT_DEPLOYMENT_TARGET = 20.0;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -1265,7 +1214,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1912;
+				CURRENT_PROJECT_VERSION = 1914;
 				DEAD_CODE_STRIPPING = YES;
 				DRIVERKIT_DEPLOYMENT_TARGET = 20.0;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
