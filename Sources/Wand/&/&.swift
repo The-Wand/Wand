@@ -16,7 +16,7 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-infix   operator & : AdditionPrecedence
+infix   operator & : MultiplicationPrecedence
 
 //@inlinable
 //public
@@ -24,13 +24,13 @@ infix   operator & : AdditionPrecedence
 //
 //}
 
-@inlinable
+@inline(__always)
 public
 func &<T> (ask: Ask<T>, handler: @escaping (T)->() ) -> Ask<T> {
     ask & .one(handler: handler)
 }
 
-@inlinable
+@inline(__always)
 public
 func &<T> (ask: Ask<T>, asks: Ask<T> ) -> Ask<T> {
 
@@ -40,4 +40,10 @@ func &<T> (ask: Ask<T>, asks: Ask<T> ) -> Ask<T> {
     }
 
     return ask
+}
+
+@inline(__always)
+public
+func &<T> (handler: @escaping (T)->(), appending: @escaping (T)->() ) -> Ask<T> {
+    Ask.one(handler: handler) & Ask.one(handler: appending)
 }
