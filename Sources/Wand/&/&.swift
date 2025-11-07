@@ -16,5 +16,28 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-infix   operator ||/ : AdditionPrecedence
+infix   operator & : AdditionPrecedence
 
+//@inlinable
+//public
+//func &<T, U> (ask: Ask<T>, handler: @escaping (U)->() ) -> Ask<T> {
+//
+//}
+
+@inlinable
+public
+func &<T> (ask: Ask<T>, handler: @escaping (T)->() ) -> Ask<T> {
+    ask & .one(handler: handler)
+}
+
+@inlinable
+public
+func &<T> (ask: Ask<T>, asks: Ask<T> ) -> Ask<T> {
+
+    let saved = ask.handler
+    ask.handler = {
+        saved($0) && asks.handler($0)
+    }
+
+    return ask
+}
