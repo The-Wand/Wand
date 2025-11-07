@@ -15,29 +15,38 @@
 ///
 /// Created by Alex Kozin
 /// El Machine 🤖
-//
-//import Wand
-//import XCTest
-//
-//class Ask__Tests: XCTestCase {
-//
-//    func test__() throws {
+
+import Wand
+import XCTest
+
+class And_Tests: XCTestCase {
+
+//    func test_And() throws {
 //
 //        let e = expectation()
+//        e.expectedFulfillmentCount = 2
 //
 //        let point = Vector.any
 //
-//        var wand: Core!
-//        wand = |{ (point: Vector) in
+//        let a = { (point: Vector) in
 //            e.fulfill()
-//        } ||/ {
-//
+//        } & { (point: Vector) in
+//            e.fulfill()
 //        }
+//
+//        var wand: Core!
+//        wand = |a
+//
+////        wand = |{ (point: Vector) in
+////            e.fulfill()
+////        } & { (point: Vector) in
+////            e.fulfill()
+////        }
 //
 //        wand.add(point)
 //
 //        waitForExpectations()
 //        XCTAssertNotNil(wand)
 //    }
-//
-//}
+
+}
