@@ -16,37 +16,49 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
+import Testing
 import Wand
-import XCTest
 
-class And_Tests: XCTestCase {
+@Test
+func test_Handler_And_Handler()
+throws
+{
+    // Is it MultiplicationPrecedence ?
+    let point = Vector.any
 
-//    func test_And() throws {
-//
-//        let e = expectation()
-//        e.expectedFulfillmentCount = 2
-//
-//        let point = Vector.any
-//
-//        let a = { (point: Vector) in
-//            e.fulfill()
-//        } & { (point: Vector) in
-//            e.fulfill()
-//        }
-//
-//        var wand: Core!
-//        wand = |a
-//
-////        wand = |{ (point: Vector) in
-////            e.fulfill()
-////        } & { (point: Vector) in
-////            e.fulfill()
-////        }
-//
-//        wand.add(point)
-//
-//        waitForExpectations()
-//        XCTAssertNotNil(wand)
-//    }
+    var wand: Core!
+    wand = |({ (point: Vector) in
+        #expect(true)
+    } & { (point: Vector) in
+        #expect(true)
+    })
 
+    wand.add(point)
 }
+
+//@Test
+//func test_Ask_Every_And_Handler()
+//throws
+//{
+//    let count = (1...4).any
+//
+////    let e1 = expectation()
+////    e1.expectedFulfillmentCount = count
+//
+//    // Is it MultiplicationPrecedence ?
+//    let point = Vector.any
+//
+//    var wand: Core!
+//    wand = |(.every { (point: Vector) in
+//
+//    } & { (point: Vector) in
+//
+//    })
+//
+//    (1...count).forEach { _ in
+//
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak wand] in
+//            wand?.add(point)
+//        }
+//    }
+//}
