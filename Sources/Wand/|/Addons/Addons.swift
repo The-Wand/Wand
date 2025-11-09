@@ -32,7 +32,6 @@ extension Core {
         wand.asking[key] = (ask, nil)
         
         return wand
-        
     }
 
     @inlinable
@@ -45,7 +44,6 @@ extension Core {
         while ask?.handler(object) != nil {
             ask = ask?.next
         }
-        
     }
 
 }

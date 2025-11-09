@@ -45,7 +45,6 @@ class Expect_Any_Tests: XCTestCase {
                 } else {
                     wand?.add(String.any)
                 }
-
             }
 
         }

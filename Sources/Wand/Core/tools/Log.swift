@@ -16,7 +16,6 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-
 public
 enum Log: Int {
 
@@ -36,6 +35,7 @@ enum Log: Int {
     @inlinable
     public
     func callAsFunction(_ message: String) {
+
 #if DEBUG
         let level = Log.level
         if level > .none && .verbose...level ~= self {

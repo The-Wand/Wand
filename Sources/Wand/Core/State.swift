@@ -24,7 +24,8 @@ extension Core {
     enum State {
         case ready, active
     }
-    
+
+    @inlinable
     var state: State {
         asking.isEmpty ? .ready : .active
     }

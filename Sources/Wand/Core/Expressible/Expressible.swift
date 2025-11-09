@@ -28,7 +28,6 @@ extension Core: ExpressibleByBooleanLiteral {
 
         self.init()
         context[BooleanLiteralType.self|] = value
-
     }
 
 }
@@ -43,7 +42,6 @@ extension Core: ExpressibleByExtendedGraphemeClusterLiteral {
 
         self.init()
         context[ExtendedGraphemeClusterLiteralType.self|] = value
-
     }
 
 }
@@ -58,7 +56,6 @@ extension Core: ExpressibleByFloatLiteral {
 
         self.init()
         context[FloatLiteralType.self|] = value
-
     }
 
 }
@@ -73,7 +70,6 @@ extension Core: ExpressibleByIntegerLiteral {
 
         self.init()
         context[IntegerLiteralType.self|] = value
-
     }
 
 }
@@ -100,7 +96,6 @@ extension Core: ExpressibleByStringLiteral {
 
         self.init()
         context[StringLiteralType.self|] = value
-
     }
 
 }

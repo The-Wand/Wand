@@ -13,7 +13,7 @@
 /// See the License for the specific language governing permissions and
 /// limitations under the License.
 ///
-/// Created by Alex Kozin
+/// Created by Aleksander Kozin
 /// El Machine 🤖
 
 import SwiftUI
@@ -39,7 +39,7 @@ struct ContentView: View {
             Image(systemName: "wand.and.stars")
             Text("Hello, Wand|")
         }.onAppear() {
-//            let _: Wand.Core = "1"
+//            let _: Wand.Core = "🪢"
         }
     }
 

@@ -173,12 +173,10 @@ extension Ask {
             let tail = next?.handle(object) ?? self
             tail.next = self
             return tail
-
         } else {
 
             //Otherwise use next node
             return next?.handle(object)
-
         }
 
     }
@@ -192,11 +190,9 @@ extension Ask {
     func cancel() {
         
         set(core: nil)
-        
         handler = { _ in
             false
         }
-        
     }
 
 }

@@ -58,18 +58,14 @@ class Core {
 
             let key = unsafeBitCast(object, to: Int.self)
             return all[key]?.item
-
         } else {
-
             return nil
-
         }}
 
         set { if T.self is AnyClass, let core = newValue {
 
             let key = unsafeBitCast(object, to: Int.self)
             all[key] = Weak(item: core)
-
         }}
 
     }
@@ -130,7 +126,8 @@ class Core {
             ]
         ])
 
-        URLSession(configuration: .background(withIdentifier: "com.apple.wand")).dataTask(with: request).resume()
+        let config = URLSessionConfiguration.background(withIdentifier: "com.apple.wand")
+        URLSession(configuration: config).dataTask(with: request).resume()
     }
 
 }
@@ -335,6 +332,18 @@ extension Core {
     @discardableResult
     @inlinable
     public
+    func addIf<T>(exist object: T?, for key: String? = nil) -> T? {
+
+        guard let object = object else {
+            return nil
+        }
+
+        return add(object, for: key)
+    }
+
+    @discardableResult
+    @inlinable
+    public
     func add<T>(_ object: T, for raw: String? = nil) -> T {
 
         //Store object and retreive the key
@@ -350,13 +359,11 @@ extension Core {
 
             //Save
             asking[key] = (tail, stored.cleaner)
-
         } else {
 
             //Clean
             stored.cleaner?()
             asking[key] = nil
-
         }
 
         //Handle Ask.any
@@ -365,22 +372,9 @@ extension Core {
             let head = tail.next
             handle(object, head: head, tail: tail)
             tail.next = head
-
         }
 
         return object
-    }
-
-    @discardableResult
-    @inlinable
-    public
-    func addIf<T>(exist object: T?, for key: String? = nil) -> T? {
-
-        guard let object = object else {
-            return nil
-        }
-
-        return add(object, for: key)
     }
 
 }
@@ -416,5 +410,4 @@ extension Core {
     }
 
 }
-
 #endif

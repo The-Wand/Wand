@@ -37,7 +37,6 @@ extension Ask {
                 i += 1
             }
             return handler($0, i)
-
         }
 
     }
@@ -61,7 +60,6 @@ extension Ask {
                 i += 1
             }
             return handler($0, i)
-
         }
 
     }

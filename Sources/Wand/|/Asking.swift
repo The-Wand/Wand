@@ -22,7 +22,6 @@
 public
 protocol Asking {
 
-    @inline(__always)
     static 
     func ask<C, T>(with context: C, ask: Ask<T>) -> Core
 

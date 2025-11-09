@@ -30,7 +30,6 @@ extension Core: ExpressibleByDictionaryLiteral {
             Core[object] = self
             context[key] = object
         }
-
     }
 
     @inline(__always)
@@ -44,7 +43,6 @@ extension Core: ExpressibleByDictionaryLiteral {
             Core[object] = self
             context[key] = object
         }
-
     }
 
 }
