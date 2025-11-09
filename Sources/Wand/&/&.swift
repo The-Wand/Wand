@@ -26,24 +26,19 @@ infix   operator & : MultiplicationPrecedence
 
 @inline(__always)
 public
-func &<T> (ask: Ask<T>, handler: @escaping (T)->() ) -> Ask<T> {
-    ask & .one(handler: handler)
-}
-
-@inline(__always)
-public
-func &<T> (ask: Ask<T>, asks: Ask<T> ) -> Ask<T> {
-
-    let saved = ask.handler
-    ask.handler = {
-        saved($0) && asks.handler($0)
+func &<T> (ask: Ask<T>, appending: @escaping (T)->() ) -> Ask<T> {
+    Ask(once: ask.once) {
+        let handled = ask.handler($0)
+        appending($0)
+        return handled
     }
-
-    return ask
 }
 
 @inline(__always)
 public
 func &<T> (handler: @escaping (T)->(), appending: @escaping (T)->() ) -> Ask<T> {
-    Ask.one(handler: handler) & Ask.one(handler: appending)
+    Ask.one {
+        handler($0)
+        appending($0)
+    }
 }
