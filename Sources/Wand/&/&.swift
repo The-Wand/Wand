@@ -18,22 +18,6 @@
 
 infix   operator & : MultiplicationPrecedence
 
-//@inlinable
-//public
-//func &<T, U> (ask: Ask<T>, handler: @escaping (U)->() ) -> Ask<T> {
-//
-//}
-
-@inline(__always)
-public
-func &<T> (ask: Ask<T>, appending: @escaping (T)->() ) -> Ask<T> {
-    Ask(once: ask.once) {
-        let handled = ask.handler($0)
-        appending($0)
-        return handled
-    }
-}
-
 @inline(__always)
 public
 func &<T> (handler: @escaping (T)->(), appending: @escaping (T)->() ) -> Ask<T> {
@@ -42,3 +26,20 @@ func &<T> (handler: @escaping (T)->(), appending: @escaping (T)->() ) -> Ask<T> 
         appending($0)
     }
 }
+
+@inline(__always)
+public
+func &<T> (ask: Ask<T>, appending: @escaping (T)->() ) -> Ask<T> {
+    Ask(once: ask.once) { object in
+        defer {
+            appending(object)
+        }
+        return ask.handler(object)
+    }
+}
+
+//@inlinable
+//public
+//func &<T, U> (ask: Ask<T>, handler: @escaping (U)->() ) -> Ask<T> {
+//
+//}
