@@ -19,22 +19,22 @@
 import Testing
 import Wand
 
-@Test
-func test_Handler_And_Handler()
-throws
-{
-    // Is it MultiplicationPrecedence ?
-    let point = Vector.any
-
-    var wand: Core!
-    wand = |({ (point: Vector) in
-        #expect(true)
-    } & { (point: Vector) in
-        #expect(true)
-    })
-
-    wand.add(point)
-}
+//@Test
+//func test_Handler_And_Handler()
+//throws
+//{
+//    // Is it MultiplicationPrecedence ?
+//    let point = Vector.any
+//
+//    var wand: Core!
+//    wand = { (point: Vector) in
+//        #expect(true)
+//    } & .padding(to: Int) { (point: Vector) in
+//        #expect(true)
+//    }
+//
+//    wand.add(point)
+//}
 
 //@Test
 //func test_Ask_Every_And_Handler()

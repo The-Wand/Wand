@@ -16,30 +16,33 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-infix   operator & : MultiplicationPrecedence
+infix   operator |& : MultiplicationPrecedence
 
-@inline(__always)
-public
-func &<T> (handler: @escaping (T)->(), appending: @escaping (T)->() ) -> Ask<T> {
-    Ask.one {
-        handler($0)
-        appending($0)
-    }
-}
-
-@inline(__always)
-public
-func &<T> (ask: Ask<T>, appending: @escaping (T)->() ) -> Ask<T> {
-    Ask(once: ask.once) { object in
-        defer {
-            appending(object)
-        }
-        return ask.handler(object)
-    }
-}
-
-//@inlinable
+//@inline(__always)
 //public
-//func &<T, U> (ask: Ask<T>, handler: @escaping (U)->() ) -> Ask<T> {
+//func &<T: AskingNil> (handler: @escaping (T)->(), applying: Ask<T> ) -> Ask<T> {
+//    Ask.one {
+//        handler($0)
+//        applying.handler($0)
+//    }
+//}
 //
+//@inline(__always)
+//public
+//func &<T> (handler: @escaping (T)->(), appending: @escaping (T)->() ) -> Ask<T> {
+//    Ask.one {
+//        handler($0)
+//        appending($0)
+//    }
+//}
+//
+//@inline(__always)
+//public
+//func &<T> (ask: Ask<T>, appending: @escaping (T)->() ) -> Ask<T> {
+//    Ask(once: ask.once) { object in
+//        defer {
+//            appending(object)
+//        }
+//        return ask.handler(object)
+//    }
 //}
