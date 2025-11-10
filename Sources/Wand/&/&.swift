@@ -18,15 +18,29 @@
 
 infix   operator |& : MultiplicationPrecedence
 
-//@inline(__always)
-//public
-//func &<T: AskingNil> (handler: @escaping (T)->(), applying: Ask<T> ) -> Ask<T> {
-//    Ask.one {
-//        handler($0)
+@inline(__always)
+public
+func &<T: AskingNil> (handler: @escaping (T)->(), applying: Ask<T> ) -> Core { //Ask<T> {
+    let ask = Ask.one {
+        handler($0)
+        _ = applying.handler($0)
+    }
+
+    let wand = Core()
+    _ = wand.append(ask: ask)
+
+    return wand
+}
+
+@inline(__always)
+public
+func &<T: AskingNil, U: Asking> (handler: @escaping (T)->(), applying: Ask<U> ) -> Ask<T> {
+    Ask.one {
+        handler($0)
 //        applying.handler($0)
-//    }
-//}
-//
+    }
+}
+
 //@inline(__always)
 //public
 //func &<T> (handler: @escaping (T)->(), appending: @escaping (T)->() ) -> Ask<T> {
