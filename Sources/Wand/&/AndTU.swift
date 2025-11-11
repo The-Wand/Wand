@@ -18,6 +18,35 @@
 
 @inline(__always)
 public
-func &<T: Asking, U: Asking> (ask: Ask<T>, appending: @escaping (U)->() ) -> Ask<U> {
-    ask.dependency(on: appending)
+func &<T: Asking, U: Asking> (ask: Ask<T>, appending: @escaping (U)->() ) -> Ask<T> {
+
+    let saved = ask.handler
+    ask.handler = {
+
+        let result = saved($0)
+        ask.core |? appending
+        ask.handler = saved
+
+        return result
+    }
+
+    return ask
 }
+
+@inline(__always)
+public
+func &<T: Asking, U: Asking> (ask: Ask<T>, appending: @escaping (U)->(Bool) ) -> Ask<T> {
+
+    let saved = ask.handler
+    ask.handler = {
+
+        let result = saved($0)
+        ask.core | ask.depends(while: appending)
+        ask.handler = saved
+
+        return result
+    }
+
+    return ask
+}
+
