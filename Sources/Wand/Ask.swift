@@ -54,7 +54,7 @@ class Ask<T> {
 
     }
 
-    private
+    private(set)
     var core: Core?
 
     ///@synthesize `wand`

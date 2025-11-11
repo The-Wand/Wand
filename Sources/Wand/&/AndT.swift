@@ -16,18 +16,8 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-infix   operator |& : MultiplicationPrecedence
-
 import CoreGraphics
 import UIKit
-
-public
-extension Ask {
-
-    class Operation: Ask {
-    }
-
-}
 
 public
 extension Ask {
@@ -87,7 +77,6 @@ extension Ask {
 //
 //}
 
-@discardableResult
 func & (input: UIImage, ask: Ask<UIImage>.Scale) -> UIImage {
     let size = ask.size
     let scaled = UIGraphicsImageRenderer(size: size).image { c in
@@ -100,16 +89,56 @@ func & (input: UIImage, ask: Ask<UIImage>.Scale) -> UIImage {
 
 @inline(__always)
 public
-func &<T: Asking> (ask: Ask<T>, applying: Ask<UIImage>.Operation ) -> Ask<T> {
+func & (ask: Ask<UIImage>, applying: Ask<UIImage>.Scale ) -> Ask<UIImage> {
+
+    let saved = ask.handler
+    ask.handler = {
+        saved($0 & applying)
+    }
 
     return ask
 }
 
-@inline(__always)
-public
-func &<T: Asking> (ask: Ask<T>, applying: Ask<T>.Operation ) -> Ask<T> {
 
-    return ask
-}
+//@inline(__always)
+//public
+//func & (ask: Ask<UIImage>, applying: Ask<UIImage>.Crop ) -> Ask<UIImage> {
+//
+//    let saved = ask.handler
+//    ask.handler = {
+//        saved($0 & applying)
+//    }
+//
+//    return ask
+//}
+//
+//@inline(__always)
+//public
+//func &<T: Asking, O: Ask<T>.Operation> (ask: Ask<T>, applying: O ) -> Ask<T> {
+//
+//    let saved = ask.handler
+//    ask.handler = {
+//        saved($0 & applying)
+//    }
+//
+//    return ask
+//}
 
+//@inline(__always)
+//public
+//func &<T: Asking> (ask: Ask<T>, applying: Ask<T>.Operation ) -> Ask<T> {
+//
+//    let saved = ask.handler
+//    ask.handler = {
+//        saved($0 & applying)
+//    }
+//
+//    return ask
+//}
+//
+//@inline(__always)
+//func &<T: Asking> (input: T, ask: Ask<T>.Operation) -> T {
+//    let output = input//|
+//    return output
+//}
 

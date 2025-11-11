@@ -44,21 +44,22 @@ func |?<T: AskingNil>(ask: Ask<T>.Option) -> Core {
     nil as Core? |? ask
 }
 
+@discardableResult
 @inline(__always)
 public
 func |?<C, T: Asking>(context: C, handler: @escaping (T)->() ) -> Core {
     context |? Ask.Option(handler: handler)
 }
 
-@inline(__always)
 @discardableResult
+@inline(__always)
 public
 func |?<C, T: Asking>(context: C, ask: Ask<T>) -> Core {
     context |? ask.optional()
 }
 
-@inline(__always)
 @discardableResult
+@inline(__always)
 public
 func |?<C, T: Asking>(context: C, ask: Ask<T>.Option) -> Core {
     context | ask
