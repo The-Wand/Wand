@@ -23,11 +23,16 @@ public
 extension Ask {
 
     class Crop: Operation {
+
+        var rect: CGRect = .zero
+
     }
 
     static
-    func crop(to rect: CGRect) -> Crop {
-        .init()
+    func crop(to rect: CGRect, handler: ( (T)->() )? = nil ) -> Crop {
+        let crop = Crop.one(handler: handler)
+        crop.rect = rect
+        return crop
     }
 
     class Scale: Operation {
@@ -37,14 +42,14 @@ extension Ask {
     }
 
     static
-    func scale(x value: Int, handler: @escaping (T)->() ) -> Scale {
+    func scale(x value: Int, handler: ( (T)->() )? = nil ) -> Scale {
         let scale = Scale.one(handler: handler)
 //        scale.size = value|
         return scale
     }
 
     static
-    func scale(to size: CGSize, handler: @escaping (T)->() ) -> Scale {
+    func scale(to size: CGSize, handler: ( (T)->() )? = nil ) -> Scale {
         let scale = Scale.one(handler: handler)
         scale.size = size
         return scale
@@ -59,28 +64,23 @@ extension Ask {
 //
 //}
 //
-//@discardableResult
-//func &<T> (input: T, ask: Ask<T>.Crop) -> T where T == UIImage {
-//
-//}
-//
-//@discardableResult
-//func &<T> (input: T, ask: Ask<T>.Scale) -> T where T == UIImage {
-//
-//}
 
-//func &<T: Asking> (input: T, ask: Ask<T>) -> T {
-//
-//}
-//
-//func &<T: Asking> (input: T, ask: Ask<T>) -> (T) -> () {
-//
-//}
 
 func & (input: UIImage, ask: Ask<UIImage>.Scale) -> UIImage {
     let size = ask.size
     let scaled = UIGraphicsImageRenderer(size: size).image { c in
-        input.draw(in: CGRect(origin: .zero, size: size))
+        input.draw(in: CGRect(origin: .zero, size: size)) //size|
+    }
+
+    return scaled
+}
+
+func & (input: UIImage, ask: Ask<UIImage>.Crop) -> UIImage {
+    let rect = ask.rect
+    let scaled = UIGraphicsImageRenderer(size: rect.size).image { c in
+        input.draw(in: CGRectInset(CGRect(origin: .zero, size: input.size), //size| as CGRect - rect.origin
+                                   -rect.origin.x,
+                                   -rect.origin.y))
     }
 
     return scaled
@@ -99,10 +99,21 @@ func & (ask: Ask<UIImage>, applying: Ask<UIImage>.Scale ) -> Ask<UIImage> {
     return ask
 }
 
+@inline(__always)
+public
+func & (ask: Ask<UIImage>, applying: Ask<UIImage>.Crop ) -> Ask<UIImage> {
+
+    let saved = ask.handler
+    ask.handler = {
+        saved($0 & applying)
+    }
+
+    return ask
+}
 
 //@inline(__always)
 //public
-//func & (ask: Ask<UIImage>, applying: Ask<UIImage>.Crop ) -> Ask<UIImage> {
+//func & (ask: Ask<UIImage>, applying: Ask<UIImage>.Operation ) -> Ask<UIImage> {
 //
 //    let saved = ask.handler
 //    ask.handler = {
@@ -111,7 +122,7 @@ func & (ask: Ask<UIImage>, applying: Ask<UIImage>.Scale ) -> Ask<UIImage> {
 //
 //    return ask
 //}
-//
+
 //@inline(__always)
 //public
 //func &<T: Asking, O: Ask<T>.Operation> (ask: Ask<T>, applying: O ) -> Ask<T> {
