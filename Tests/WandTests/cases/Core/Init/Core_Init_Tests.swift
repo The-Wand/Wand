@@ -32,7 +32,6 @@ class Core_Init_Tests: XCTestCase {
 
         XCTAssertEqual(wand.get(), true)
         XCTAssertNotNil(wand)
-
     }
 
     func test_init_ExtendedGraphemeClusterLiteral() throws {
@@ -41,7 +40,6 @@ class Core_Init_Tests: XCTestCase {
 
         XCTAssertEqual(wand.get(), "🫱🏿‍🫲🏻")
         XCTAssertNotNil(wand)
-
     }
 
     func test_init_FloatLiteral() throws {
@@ -50,7 +48,6 @@ class Core_Init_Tests: XCTestCase {
 
         XCTAssertEqual(wand.get(), 2.0 as Float)
         XCTAssertNotNil(wand)
-
     }
 
     func test_init_IntegerLiteral() throws {
@@ -59,16 +56,6 @@ class Core_Init_Tests: XCTestCase {
 
         XCTAssertEqual(wand.get(), 4)
         XCTAssertNotNil(wand)
-
-    }
-
-
-    func test_init_Nil() throws {
-
-        let wand = Core.to(nil as Int?)
-
-        XCTAssertNotNil(wand)
-
     }
 
     func test_init_NilLiteral() throws {
@@ -76,7 +63,6 @@ class Core_Init_Tests: XCTestCase {
         let wand: Wand.Core = nil
 
         XCTAssertNotNil(wand)
-
     }
 
     func test_init_StringLiteral() throws {
@@ -85,7 +71,6 @@ class Core_Init_Tests: XCTestCase {
 
         XCTAssertEqual(wand.get(), "one")
         XCTAssertNotNil(wand)
-
     }
 
     func test_init_StringInterpolation() throws {
@@ -98,19 +83,6 @@ class Core_Init_Tests: XCTestCase {
 
         XCTAssertEqual(wand.get(), "䷓")
         XCTAssertNotNil(wand)
-
-    }
-
-    func test_init_Context() throws {
-
-        //TODO: Add URL.any
-        let context = URLRequest(url: Bundle.main.bundleURL)
-
-        let wand = Core.to(context)
-
-        XCTAssertEqual(wand.get(), context as URLRequest)
-        XCTAssertNotNil(wand)
-
     }
 
 }

@@ -44,6 +44,7 @@ class Core_Init_Array_Tests: XCTestCase {
         XCTAssertEqual(location, wand.get())
         XCTAssertEqual(date, wand.get())
     }
+    
 
     func test_init_ArrayLiteral() throws {
 
@@ -60,4 +61,22 @@ class Core_Init_Array_Tests: XCTestCase {
         XCTAssertEqual(date, wand.get())
     }
 
+    func test_to_Array() throws {
+
+        let bool = Bool.any
+        let int = Int.any
+        let location = CLLocation.any
+        let date = Date.any
+
+        let array: [Any] = [bool, int, location, date]
+
+        let wand = Core.to(array)
+
+        XCTAssertEqual(bool, wand.get())
+        XCTAssertEqual(int, wand.get())
+        XCTAssertEqual(location, wand.get())
+        XCTAssertEqual(date, wand.get())
+        XCTAssertNotNil(wand)
+    }
+    
 }
