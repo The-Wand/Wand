@@ -1,4 +1,4 @@
-The project will be deleted and suspended due to the need to find money for food and water
+The project will be suspended due to the need to find money for DTV Visa
 
 [🏛️ |Foundation](https://github.com/The-Wand/Foundation)   
 ~~[🔖 |Location](https://github.com/The-Wand/Location)~~   
