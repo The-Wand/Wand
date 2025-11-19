@@ -16,6 +16,7 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
+#if canImport(UIKit)
 import CoreGraphics
 import UIKit
 
@@ -153,3 +154,4 @@ func & (ask: Ask<UIImage>, applying: Ask<UIImage>.Crop ) -> Ask<UIImage> {
 //    return output
 //}
 
+#endif

@@ -11,8 +11,6 @@ import Wand
 
 @Test
 func attach_core_to_nil()
-async
-throws
 {
     let object: Any? = nil
 
@@ -22,8 +20,6 @@ throws
 
 @Test
 func try_get_core_from_value_type()
-async
-throws
 {
     let object = String.any
 
@@ -36,8 +32,6 @@ import CoreLocation.CLLocation
 
 @Test
 func get_dont_attached_core()
-async
-throws
 {
     let object = CLLocation.any
 
@@ -47,8 +41,6 @@ throws
 
 @Test
 func attach_core_to_object()
-async
-throws
 {
     let object = CLLocation.any
 
@@ -61,8 +53,6 @@ throws
 
 @Test
 func attach_core_to_optional()
-async
-throws
 {
     let object: CLLocation? = .any
 

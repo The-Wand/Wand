@@ -16,6 +16,7 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
+import Any_
 import Wand
 import XCTest
 
@@ -40,5 +41,39 @@ extension [XCTMetric] {
         XCTMemoryMetric(),
         XCTStorageMetric(),
     ]}()
+
+}
+
+extension Ask {
+
+    func fatal() -> Self {
+        handler = { _ in
+            fatalError()
+        }
+
+        return self
+    }
+
+}
+
+public
+extension ClosedRange where Bound == Int {
+
+    @inline(__always)
+    static
+    var any: Self {
+        1...(1...11).any
+    }
+
+}
+
+public
+extension Range where Bound == Int {
+
+    @inline(__always)
+    static
+    var any: Self {
+        Range(uncheckedBounds: (1, (1...11).any))
+    }
 
 }

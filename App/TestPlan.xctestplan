@@ -12,11 +12,24 @@
     "locationScenario" : {
       "identifier" : "Tokyo, Japan",
       "referenceType" : "built-in"
-    },
-    "testTimeoutsEnabled" : true
+    }
   },
   "testTargets" : [
     {
+      "parallelizable" : false,
+      "skippedTests" : {
+        "suites" : [
+          {
+            "name" : "Highload",
+            "testFunctions" : [
+              "highload_tests()"
+            ]
+          }
+        ],
+        "testFunctions" : [
+          "load_tests()"
+        ]
+      },
       "target" : {
         "containerPath" : "container:Wand.xcodeproj",
         "identifier" : "pipe::PipeTests",
@@ -24,5 +37,5 @@
       }
     }
   ],
-  "version" : 1
+  "version" : 2
 }

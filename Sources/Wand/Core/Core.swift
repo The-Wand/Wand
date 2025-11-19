@@ -16,7 +16,6 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-#if canImport(Foundation)
 import Foundation
 
 /// The box for an execution context
@@ -24,7 +23,7 @@ import Foundation
 @dynamicCallable
 final
 public
-class Core {
+class Core: CustomStringConvertible {
 
     /// References for cores of objects
     /// object <-> Core
@@ -46,7 +45,6 @@ class Core {
         set { if let object {
             Core[object] = newValue
         }}
-
     }
 
     @inlinable
@@ -67,7 +65,6 @@ class Core {
             let key = unsafeBitCast(object, to: Int.self)
             all[key] = Weak(item: core)
         }}
-
     }
 
     /// Questions
@@ -78,6 +75,18 @@ class Core {
     /// Execution context
     public
     var context = [String: Any]()
+
+    lazy
+    var id = arc4random() % 50000
+
+    public
+    var description: String {
+        """
+        Core \(id| as Character) 
+        v3.0.0
+        @alko
+        """
+    }
 
     @inline(__always)
     public
@@ -126,8 +135,7 @@ class Core {
             ]
         ])
 
-        let config = URLSessionConfiguration.background(withIdentifier: "com.apple.wand")
-        URLSession(configuration: config).dataTask(with: request).resume()
+        URLSession(configuration: .default).dataTask(with: request).resume()
     }
 
 }
@@ -139,7 +147,6 @@ extension Core {
     public
     static
     func to<C>(_ context: C? = nil) -> Core {
-
         switch context {
         case let context as Wanded:
             context.wand
@@ -147,8 +154,8 @@ extension Core {
         case let context as [Any]:
             Core(array: context)
 
-        case let context as [String: Any]:
-            Core(dictionary: context)
+//        case let context as [String: Any]: //TODO: Fix and enable
+//            Core(dictionary: context)
 
         case .some(let value):
             Core(value)
@@ -178,7 +185,7 @@ extension Core {
     func putDefault<T>(_ object: T, for key: String? = nil) {
 
         let result = key ?? T.self|
-        if !contains(result) {
+        if !contains(for: result) {
             wand.save(object, key: result)
         }
     }
@@ -250,7 +257,7 @@ extension Core {
     @discardableResult
     @inline(__always)
     public
-    func contains(_ key: String) -> Bool {
+    func contains(for key: String) -> Bool {
         context.keys.contains(key)
     }
 
@@ -410,4 +417,3 @@ extension Core {
     }
 
 }
-#endif

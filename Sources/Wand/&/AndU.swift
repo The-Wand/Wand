@@ -49,4 +49,3 @@ func &<T: Asking, U: Asking> (ask: Ask<T>, appending: @escaping (U)->(Bool) ) ->
 
     return ask
 }
-

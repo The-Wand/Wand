@@ -1,5 +1,5 @@
 
-# ``Wand``
+# ``Wand 3.0.0``
 
 Swift implementation of declarative approach. 
 Use pipeline syntax to receive <#Any#> object. 

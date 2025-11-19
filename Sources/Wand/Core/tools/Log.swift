@@ -30,7 +30,7 @@ enum Log: Int {
 
     public
     static
-    let `default` = Log.verbose
+    let `default` = Log.none
 
     @inlinable
     public

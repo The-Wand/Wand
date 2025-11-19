@@ -39,7 +39,8 @@ struct ContentView: View {
             Image(systemName: "wand.and.stars")
             Text("Hello, Wand|")
         }.onAppear() {
-//            let _: Wand.Core = "🪢"
+//            Wand.Log.level = .verbose
+//            Highload.highload_tests()
         }
     }
 
