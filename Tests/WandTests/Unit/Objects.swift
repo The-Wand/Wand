@@ -41,6 +41,14 @@ extension String: @retroactive Expecting {
 
 }
 
+struct Tool {
+
+    func handle(point: Vector) {
+
+    }
+
+}
+
 //extension Ask {
 //
 //    public
