@@ -77,7 +77,7 @@ class Core: CustomStringConvertible {
     var context = [String: Any]()
 
     lazy
-    var id = arc4random() % 50000
+    var id = arc4random() % 50_000
 
     public
     var description: String {
