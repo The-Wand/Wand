@@ -34,7 +34,7 @@ let package = Package(
     ],
 
     dependencies: [
-        .package(url: "https://github.com/The-Wand/Any.git", .upToNextMajor(from: "1.0.1") ),
+        .package(url: "https://github.com/The-Wand/Any.git", .upToNextMajor(from: "1.0.2") ),
         .package(url: "https://github.com/swiftlang/swift-docc-plugin", .upToNextMajor(from: "1.1.0") ),
     ],
     targets: [
@@ -47,4 +47,3 @@ let package = Package(
                    )
     ]
 )
-
