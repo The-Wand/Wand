@@ -18,14 +18,6 @@
     {
       "parallelizable" : false,
       "skippedTests" : {
-        "suites" : [
-          {
-            "name" : "Highload",
-            "testFunctions" : [
-              "highload_tests()"
-            ]
-          }
-        ],
         "testFunctions" : [
           "load_tests()"
         ]
