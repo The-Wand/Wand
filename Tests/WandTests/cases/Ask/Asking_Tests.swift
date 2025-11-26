@@ -29,12 +29,12 @@ class Expect_T_Tests: XCTestCase {
         let e = expectation()
         e.expectedFulfillmentCount = count
 
-        var last: Vector?
+        var last: Point?
 
         //Wait for 'count' Points
         weak
         var wand: Core!
-        wand = |.every { (point: Vector) in
+        wand = |.every { (point: Point) in
 
             if point == last {
                 e.fulfill()
@@ -45,7 +45,7 @@ class Expect_T_Tests: XCTestCase {
         //Put for 'count' Vector
         (0..<count).forEach { [weak wand] _ in
 
-            let point = Vector.any
+            let point = Point.any
             last = point
 
             wand?.add(point)
@@ -63,11 +63,11 @@ class Expect_T_Tests: XCTestCase {
 
         let e = expectation()
 
-        let point = Vector.any
+        let point = Point.any
 
         weak
         var wand: Core!
-        wand = |.one { (point: Vector) in
+        wand = |.one { (point: Point) in
             e.fulfill()
         }
 
@@ -82,7 +82,7 @@ class Expect_T_Tests: XCTestCase {
 
         func put() {
             DispatchQueue.main.async {
-                wand.add(Vector.any)
+                wand.add(Point.any)
             }
         }
 
@@ -90,7 +90,7 @@ class Expect_T_Tests: XCTestCase {
 
         weak
         var wand: Core!
-        wand = |.while { (point: Vector) in
+        wand = |.while { (point: Point) in
 
             if point.t > 2 {
                 e.fulfill()
@@ -113,14 +113,14 @@ class Expect_T_Tests: XCTestCase {
 
         let e = expectation()
 
-        let point = Vector.any
+        let point = Point.any
 
         weak
         var wand: Core!
 
         var handlePerformance: Performance!
 
-        wand = |.one { (point: Vector) in
+        wand = |.one { (point: Point) in
 
             handlePerformance.measure()
             e.fulfill()

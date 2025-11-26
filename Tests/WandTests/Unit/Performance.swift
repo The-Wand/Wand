@@ -35,7 +35,7 @@ struct Performance {
 
     public
     static
-    func measure(of label: String = #function, block: ()->() ) {
+    func measure(_ label: String = #function, block: ()->() ) {
 
         #if DEBUG
             let start = Date().timeIntervalSince1970

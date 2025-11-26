@@ -25,10 +25,10 @@ class Ask_Option_Tests: XCTestCase {
 
         let e = expectation()
 
-        let point = Vector.any
+        let point = Point.any
 
         var wand: Core!
-        wand = |?{ (point: Vector) in
+        wand = |?{ (point: Point) in
             e.fulfill()
         }
 
@@ -42,7 +42,7 @@ class Ask_Option_Tests: XCTestCase {
 
         weak
         var wand: Core?
-        wand = |?{ (point: Vector) in
+        wand = |?{ (point: Point) in
             fatalError()
         }
 
@@ -53,10 +53,10 @@ class Ask_Option_Tests: XCTestCase {
 
         let e = expectation()
 
-        let point = Vector.any
+        let point = Point.any
 
         var wand: Core!
-        wand = |?.every { (point: Vector) in
+        wand = |?.every { (point: Point) in
             e.fulfill()
         }
 
@@ -70,7 +70,7 @@ class Ask_Option_Tests: XCTestCase {
 
         weak
         var wand: Core?
-        wand = |?.every { (point: Vector) in
+        wand = |?.every { (point: Point) in
             fatalError()
         }
 
@@ -81,10 +81,10 @@ class Ask_Option_Tests: XCTestCase {
 
         let e = expectation()
 
-        let point = Vector.any
+        let point = Point.any
 
         var wand: Core!
-        wand = |?.while { (point: Vector) in
+        wand = |?.while { (point: Point) in
 
             e.fulfill()
             return true
@@ -100,7 +100,7 @@ class Ask_Option_Tests: XCTestCase {
 
         weak
         var wand: Core?
-        wand = |?.while { (point: Vector) in
+        wand = |?.while { (point: Point) in
             fatalError()
         }
 

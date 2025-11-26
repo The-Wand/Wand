@@ -10,10 +10,8 @@ struct DefaultTests {
 
     @Test
     func launch()
-    async
-    throws
     {
-
+        #expect(true)
     }
 
 }

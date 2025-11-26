@@ -28,12 +28,12 @@ class All_Tests: XCTestCase {
 
         weak
         var wand: Core!
-        wand = Vector.one | String.one | .all { _ in
+        wand = Point.one | String.one | .all { _ in
             e.fulfill()
         }
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak wand] in
-            wand?.add(Vector.any)
+            wand?.add(Point.any)
         }
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak wand] in

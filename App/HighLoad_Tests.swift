@@ -12,7 +12,7 @@ private
 struct Point: Expecting, Equatable {
 
     let x, y, z: UInt64
-    let t: Int64
+    let t: Int32
 
     public
     static
@@ -20,7 +20,7 @@ struct Point: Expecting, Equatable {
         .init(x: UInt64(arc4random() % UInt32.max),
               y: UInt64(arc4random() % UInt32.max),
               z: UInt64(arc4random() % UInt32.max),
-              t: Int64(arc4random() % UInt32.max))
+              t: Int32(arc4random() % UInt32.max))
     }
 
 }

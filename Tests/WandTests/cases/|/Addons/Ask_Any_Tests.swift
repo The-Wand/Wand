@@ -31,7 +31,7 @@ class Expect_Any_Tests: XCTestCase {
 
         var wand: Wand.Core!
         
-        wand = Vector.every | String.every | .any { _ in
+        wand = Point.every | String.every | .any { _ in
             e.fulfill()
         }
 
@@ -41,7 +41,7 @@ class Expect_Any_Tests: XCTestCase {
 
                 //TODO: Update Any_
                 if .random() {
-                    wand?.add(Vector.any)
+                    wand?.add(Point.any)
                 } else {
                     wand?.add(String.any)
                 }
@@ -50,23 +50,21 @@ class Expect_Any_Tests: XCTestCase {
         }
 
         waitForExpectations()
-        
     }
 
     func test_Any_Performance() throws {
 
         let e = expectation()
 
-        let wand = Vector.every | String.every
+        let wand = Point.every | String.every
 
         var handlePerformance: Performance!
-        Performance.measure(of: "Ask<Any> add") {
+        Performance.measure("Ask<Any> add") {
 
             wand | .any { _ in
 
                 handlePerformance.measure()
                 e.fulfill()
-                
             }
 
         }
@@ -75,13 +73,11 @@ class Expect_Any_Tests: XCTestCase {
 
             handlePerformance = Performance(of: "Ask<Any> handle")
 
-            //TODO: Update Any_
             if .random() {
-                wand?.add(Vector.any)
+                wand?.add(Point.any)
             } else {
                 wand?.add(String.any)
             }
-
         }
 
         waitForExpectations()

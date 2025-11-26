@@ -25,11 +25,11 @@ class Ask_Dependencies_Tests: XCTestCase {
 
         let e = expectation()
 
-        let point = Vector.any
+        let point = Point.any
 
         weak
         var wand: Core!
-        wand = |.one { (point: Vector) in
+        wand = |.one { (point: Point) in
             e.fulfill()
         } |? { (string: String) in
 
@@ -45,11 +45,11 @@ class Ask_Dependencies_Tests: XCTestCase {
 
         let e = expectation()
 
-        let point = Vector.any
+        let point = Point.any
 
         weak
         var wand: Core!
-        wand = |.every { (point: Vector) in
+        wand = |.every { (point: Point) in
             e.fulfill()
         } |? { (string: String) in
 

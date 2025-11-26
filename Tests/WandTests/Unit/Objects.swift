@@ -1,5 +1,5 @@
 ///
-/// Copyright 2020 Alexander Kozin
+/// Copyright 2020 Aleksander Kozin
 ///
 /// Licensed under the Apache License, Version 2.0 (the "License");
 /// you may not use this file except in compliance with the License.
@@ -13,25 +13,30 @@
 /// See the License for the specific language governing permissions and
 /// limitations under the License.
 ///
-/// Created by Alex Kozin
+/// Created by Alek Kozin
 /// El Machine 🤖
 
 import Any_
 import Wand
 
-struct Vector: Equatable, Any_ {
+struct Point: Equatable {
 
-    let x, y, z, t: UInt64
+    let x, y, z: UInt64
+    let t: Int32
+
+}
+
+extension Point: Expecting, Wanded {
+
+}
+
+extension Point: Any_ {
 
     public
     static
     var any: Self {
-        .init(x: .any, y: .any, z: .any, t: .any(in: 0...5))
+        .init(x: .any, y: .any, z: .any, t: .any)
     }
-
-}
-
-extension Vector: Expecting, Wanded {
 
 }
 
@@ -43,7 +48,21 @@ extension String: @retroactive Expecting {
 
 struct Tool {
 
-    func handle(point: Vector) {
+    func send(message: String, to point: Point) {
+        
+    }
+
+    func didReceive(message: String, from point: Point) {
+
+        print(message)
+        
+        let isValid = true
+        if isValid {
+            handshake()
+        }
+    }
+
+    func handshake() {
 
     }
 

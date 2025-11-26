@@ -28,7 +28,7 @@ class Errors_Tests: XCTestCase {
 
         weak
         var wand: Core!
-        wand = Vector.every | String.one { _ in
+        wand = Point.every | String.one { _ in
             fatalError()
         } |? { (error: Error) in
             e1.fulfill()
@@ -54,7 +54,7 @@ class Errors_Tests: XCTestCase {
 
         weak
         var wand: Core!
-        wand = Vector.every | String.one { _ in
+        wand = Point.every | String.one { _ in
             fatalError()
         } |? .every { (error: Error) in
             e1.fulfill()
