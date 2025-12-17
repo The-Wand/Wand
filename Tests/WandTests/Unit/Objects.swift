@@ -21,8 +21,7 @@ import Wand
 
 struct Point: Equatable {
 
-    let x, y, z: UInt64
-    let t: Int32
+    let x, y, z, t: Int64
 
 }
 
@@ -48,8 +47,16 @@ extension String: @retroactive Expecting {
 
 struct Tool {
 
-    func send(message: String, to point: Point) {
-        
+    @inlinable
+    func send(message: Int, to point: Point, index: Int) {
+        send(index: index)
+    }
+
+    @inlinable
+    func send(index: Int) {
+        if index % 500_000 == 0 {
+            print(index)
+        }
     }
 
     func didReceive(message: String, from point: Point) {

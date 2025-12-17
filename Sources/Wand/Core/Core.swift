@@ -107,7 +107,7 @@ class Core: CustomStringConvertible {
 
     deinit {
 
-        sendAsking()
+//        sendAsking()
         close()
 
         Log.verbose("|✅ #bonsua\n\(self)\n")

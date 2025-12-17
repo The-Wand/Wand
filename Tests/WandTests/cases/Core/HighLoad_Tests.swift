@@ -12,103 +12,57 @@ import Wand
 
 struct Highload {
 
-    /// Debug Highload
-    /// Core 3.0.0
+    /// Core 3.0.1
     /// A2485 | M1 Pro 16 Gb | macOS 15.6.1
     /// -logs ~380
-    /// 2_111_111 2297.08 seconds.
-    /// 4_111_111 8606.62 seconds.
-    /// 20 Nov 2025
     ///
-    /// 🏎️ Launching 150m cores : 1098.95
+    /// 🏎️ Launching 150m cores: ~900s
+    /// 🏎️ Fulfilling 150m handlers: ~2400s
+    ///
+    /// 🏎️ Launching 111m cores: 384.420s
+    /// 🏎️ Fulfilling 111m handlers: 482.9533100s
     @Test
     func highload_tests()
     {
-        let count = 150//_000_000
-        let message = "|?&"
+        let count = 111_111_111
+        let message = 0x1F408
         let tool = Tool()
 
-        var cores = [Int: Core.Weak](minimumCapacity: count)
+        var core: Core? = |{ (point: Point) in
+            tool.send(message: message, to: point, index: 0)
+        }
+
+        var nextCore = core
 
         Performance.measure("Launching \(count) cores") {
 
-            (0...count).forEach {
+            (1...count).forEach { index in
 
-                let wand = |{ (point: Point) in
-                    tool.send(message: message, to: point)
+                let newWand = |{ (point: Point) in
+                    tool.send(message: message, to: point, index: index)
                 }
 
-                cores[$0] = Core.Weak(item: wand)
+                nextCore?.put(Core.Weak(item: newWand), for: "Wand")
+                nextCore = newWand
 
-                examine(value: cores.count, every: 500_000)
+                tool.send(index: index)
             }
         }
+
+        nextCore = core
+        core = nil
 
         Performance.measure("Fulfilling \(count) handlers") {
 
-            while let item = cores.randomElement() {
+            nextCore?.add(Point.any)
 
-                weak
-                var wand = cores.removeValue(forKey: item.key)?.item
-
-                #expect(wand != nil)
-                wand?.add(Point.any)
-                #expect(wand == nil)
-
-                examine(value: cores.count, every: 10_000)
+            while let wand = (nextCore?.get(for: "Wand") as Core.Weak?)?.item {
+                wand.add(Point.any)
+                nextCore = wand
             }
-
         }
 
-        #expect(cores.isEmpty)
-    }
-
-    @inline(__always)
-    func examine(value: Int, every: Int) {
-        if value % every == 0 {
-            print(value)
-        }
+        #expect(true)
     }
 
 }
-
-//struct Node<T> {
-//
-//    var next: Self?
-//    var object: T?
-//
-//    func item(at index: Int) -> T {
-//
-//        var node: Self
-//        (0...index).forEach {
-//
-//            if $0 == index {
-//                return object
-//            } else {
-//                node = self
-//            }
-//            
-//        }
-//    }
-//
-//}
-//
-//func a() {
-//
-//
-//    var wand: Node<Core> = Node()
-//
-//    (1...count).forEach { _ 0
-//
-//        let core = |{ (point: Point) in
-//            tool.send(message: message, to: point)
-//        }
-//
-//        wand?.object = core
-//
-//        wand?.next = Node()
-//        wand = wand?.next
-//    }
-//
-//}
-

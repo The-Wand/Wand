@@ -160,7 +160,6 @@ extension Ask {
         self.next = nil
 
         return head?.handle(object)
-
     }
 
     @inlinable
@@ -178,7 +177,6 @@ extension Ask {
             //Otherwise use next node
             return next?.handle(object)
         }
-
     }
 
 }
