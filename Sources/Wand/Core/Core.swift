@@ -176,7 +176,7 @@ extension Core {
     public
     func put<T>(_ object: T, for key: String? = nil) -> T {
 
-        save(object, key: key)
+        save(object, for: key)
         return object
     }
 
@@ -186,14 +186,14 @@ extension Core {
 
         let result = key ?? T.self|
         if !contains(for: result) {
-            wand.save(object, key: result)
+            wand.save(object, for: result)
         }
     }
 
     @discardableResult
     @inlinable
     public
-    func save<T>(_ object: T, key: String? = nil) -> String {
+    func save<T>(_ object: T, for key: String? = nil) -> String {
 
         let result = key ?? T.self|
         Core[object] = self
@@ -287,7 +287,7 @@ extension Core {
     @discardableResult
     @inline(__always)
     public
-    func extract<T>(_ key: String? = nil) -> T? {
+    func extract<T>(for key: String? = nil) -> T? {
         context.removeValue(forKey: key ?? T.self|) as? T
     }
 
@@ -354,7 +354,7 @@ extension Core {
     func add<T>(_ object: T, for raw: String? = nil) -> T {
 
         //Store object and retreive the key
-        let key = save(object, key: raw)
+        let key = save(object, for: raw)
 
         //Answer the questions
         guard let stored = asking[key] else {
