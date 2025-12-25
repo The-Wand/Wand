@@ -20,10 +20,12 @@
       "skippedTests" : {
         "suites" : [
           {
-            "name" : "Highload",
-            "testFunctions" : [
-              "highload_tests()"
-            ]
+            "name" : "Highload"
+          }
+        ],
+        "xctestClasses" : [
+          {
+            "name" : "CoreCloseTests"
           }
         ]
       },

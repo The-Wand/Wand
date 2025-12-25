@@ -1,8 +1,8 @@
 The Wand
-Copyright 2020 Alexander Kozin
+Copyright 2020 Aleksander Kozin
 
 This product includes software developed by
-Alexander Kozin (al.kozin@gmail.com, al@el-machine.com).
+Aleksander Kozin (al.kozin@gmail.com).
 
 The Wand icon in 
 Assets

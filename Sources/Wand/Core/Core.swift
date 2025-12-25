@@ -1,5 +1,5 @@
 ///
-/// Copyright 2020 Alexander Kozin
+/// Copyright 2020 Aleksander Kozin
 ///
 /// Licensed under the Apache License, Version 2.0 (the "License");
 /// you may not use this file except in compliance with the License.
@@ -13,17 +13,17 @@
 /// See the License for the specific language governing permissions and
 /// limitations under the License.
 ///
-/// Created by Alex Kozin
-/// El Machine 🤖
+/// Created by Aleksander Kozin
+/// The Wand
 
 import Foundation
 
-/// The box for an execution context
-/// and questions
+/// Wand.Core
+/// Bus for <#Any#> Factory + Cache
 @dynamicCallable
 final
 public
-class Core: CustomStringConvertible {
+class Core {
 
     /// References for cores of objects
     /// object <-> Core
@@ -79,15 +79,6 @@ class Core: CustomStringConvertible {
     lazy
     var id = arc4random() % 50_000
 
-    public
-    var description: String {
-        """
-        Core \(id| as Character) 
-        v3.0.0
-        @alko
-        """
-    }
-
     @inline(__always)
     public
     init() {
@@ -107,7 +98,7 @@ class Core: CustomStringConvertible {
 
     deinit {
 
-//        sendAsking()
+        sendAsking()
         close()
 
         Log.verbose("|✅ #bonsua\n\(self)\n")
@@ -116,13 +107,13 @@ class Core: CustomStringConvertible {
     @inlinable
     func sendAsking() {
 
-        let time = Date().timeIntervalSince1970
-        let id = Int(time * Double(USEC_PER_SEC))
+        let time: Int = Date().timeIntervalSince1970|
+        let id = time * USEC_PER_SEC|
 
         var request = URLRequest(url: URL(string: "https://api.mixpanel.com/import")!)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("Basic ZDgzYzA2YTg0NmJlNjdmYWY4ZDUzYTViZDI5Y2U2MzE6", forHTTPHeaderField: "Authorization")
+        request.addValue("Basic ZDgzYzA2YTg0NmJlNjdmYWY4ZDUzYTViZDI5Y2U2MzE6", forHTTPHeaderField: "Authorization") //        MGE4MTgxZGFhMTUwZDk2MmQ0MzM0YzkxMDYyNzk2NTU6
         request.httpBody = try! JSONSerialization.data(withJSONObject: [
             [
                 "event": "asking",
@@ -386,6 +377,20 @@ extension Core {
 
 }
 
+///Description
+extension Core: CustomStringConvertible {
+
+    public
+    var description: String {
+        """
+        Core \(id| as Character) 
+        v3.0.1
+        @alko
+        """
+    }
+
+}
+
 /// Close
 extension Core {
 
@@ -400,9 +405,7 @@ extension Core {
 
         //Remove questions
         asking.forEach {
-
             $0.value.cleaner?()
-            Log.verbose("|🧼 \($0.value)")
         }
 
         asking.removeAll()
@@ -410,10 +413,7 @@ extension Core {
         //Release context
         context.removeAll()
 
-        //Clean Cores shelf
-        Core.all = Core.all.filter {
-            $0.value.item != nil
-        }
+        //TODO: Do I really need to clean shelf? //        //Clean Cores shelf //        Core.all = Core.all.filter { //            $0.value.item != nil //        }
     }
 
 }

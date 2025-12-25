@@ -1,5 +1,5 @@
 ///
-/// Copyright 2020 Alexander Kozin
+/// Copyright 2020 Aleksander Kozin
 ///
 /// Licensed under the Apache License, Version 2.0 (the "License");
 /// you may not use this file except in compliance with the License.
@@ -13,24 +13,24 @@
 /// See the License for the specific language governing permissions and
 /// limitations under the License.
 ///
-/// Created by Alex Kozin
-/// El Machine 🤖
+/// Created by Aleksander Kozin
+/// The Wand
 
 extension Core {
     
     public
     struct Weak {
-        
+
         public
         weak
         var item: Core?
-        
+
         @inline(__always)
         public
         init(item: Core) {
             self.item = item
         }
-        
+
     }
     
 }

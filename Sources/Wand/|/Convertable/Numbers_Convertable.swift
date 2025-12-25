@@ -1,5 +1,5 @@
 ///
-/// Copyright 2020 Alexander Kozin
+/// Copyright 2020 Aleksander Kozin
 ///
 /// Licensed under the Apache License, Version 2.0 (the "License");
 /// you may not use this file except in compliance with the License.
@@ -13,57 +13,51 @@
 /// See the License for the specific language governing permissions and
 /// limitations under the License.
 ///
-/// Created by Alex Kozin
-/// El Machine 🤖
-
-#if canImport(Foundation)
-import Foundation
+/// Created by Aleksander Kozin
+/// The Wand
 
 @inline(__always)
 postfix
 public
-func |(string: String) -> Int? {
-    Int(string) ?? Int(String(string.unicodeScalars.filter(CharacterSet.decimalDigits.inverted.contains)))
+func |<T: Numeric>(value: Bool) -> T {
+    value ? 1 : 0
 }
 
 @inline(__always)
 postfix
 public
-func |(self: String) -> Int {
-    (self|)!
+func |(value: any BinaryFloatingPoint) -> Int {
+    Int(value)
 }
 
 @inline(__always)
 postfix
 public
-func |(string: String?) -> Double? {
-    Double(string ?? "")
+func |(value: any BinaryInteger) -> Double {
+    Double(value)
 }
 
 @inline(__always)
 postfix
 public
-func |(string: String?) -> Data? {
-    string | nil
+func |(value: any BinaryInteger) -> Int {
+    Int(value)
 }
 
 @inline(__always)
 postfix
 public
-func |(string: String?) -> Data {
-    string | nil
+func |(value: Double) -> Float {
+    Float(value)
 }
 
 @inline(__always)
+postfix
 public
-func |(string: String?, encoding: String.Encoding?) -> Data {
-    (string! | nil)!
+func |(value: (any BinaryInteger)?) -> String? {
+    guard let value else {
+        return ""
+    }
+    
+    return String(describing: value)
 }
-
-@inline(__always)
-public
-func |(string: String?, encoding: String.Encoding?) -> Data? {
-    string?.data(using: encoding ?? .utf8)
-}
-
-#endif

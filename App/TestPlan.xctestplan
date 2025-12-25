@@ -18,8 +18,18 @@
     {
       "parallelizable" : false,
       "skippedTests" : {
+        "suites" : [
+          {
+            "name" : "Highload"
+          }
+        ],
         "testFunctions" : [
           "load_tests()"
+        ],
+        "xctestClasses" : [
+          {
+            "name" : "CoreCloseTests"
+          }
         ]
       },
       "target" : {

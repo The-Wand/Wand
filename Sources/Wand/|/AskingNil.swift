@@ -1,5 +1,5 @@
 ///
-/// Copyright 2020 Alexander Kozin
+/// Copyright 2020 Aleksander Kozin
 ///
 /// Licensed under the Apache License, Version 2.0 (the "License");
 /// you may not use this file except in compliance with the License.
@@ -13,8 +13,8 @@
 /// See the License for the specific language governing permissions and
 /// limitations under the License.
 ///
-/// Created by Alex Kozin
-/// El Machine 🤖
+/// Created by Aleksander Kozin
+/// The Wand
 
 /// Ask object with default settings
 ///
@@ -52,7 +52,7 @@ func |<T: Asking>(handler: @escaping (T)->() ) -> Core {
 prefix
 public
 func |<T: Asking>(ask: Ask<T>) -> Core {
-    nil as Core? | ask
+    nil as Core | ask
 }
 
 /// Make the chain
@@ -65,6 +65,6 @@ func |<T: Asking>(ask: Ask<T>) -> Core {
 @inline(__always)
 public
 func |<T: AskingNil, U: Asking>(l: Ask<T>, r: Ask<U>) -> Core {
-    U.ask(with: T.ask(with: nil as Core?, ask: l),
+    U.ask(with: T.ask(with: nil as Core, ask: l),
           ask: r)
 }
