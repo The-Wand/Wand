@@ -56,7 +56,6 @@ class Expect_T_Tests: XCTestCase {
 
         //TODO: add is closed test
         wand.close()
-
     }
  
     func test_One() throws {
@@ -75,7 +74,6 @@ class Expect_T_Tests: XCTestCase {
 
         waitForExpectations()
         XCTAssertNil(wand)
-
     }
 
     func test_While() throws {
@@ -93,9 +91,11 @@ class Expect_T_Tests: XCTestCase {
         wand = |.while { (point: Point) in
 
             if point.t > 2 {
+
                 e.fulfill()
                 return false
             } else {
+
                 put()
                 return true
             }
@@ -106,7 +106,6 @@ class Expect_T_Tests: XCTestCase {
 
         waitForExpectations()
         XCTAssertNil(wand)
-
     }
     
     func test_One_Performance() throws {
@@ -132,7 +131,6 @@ class Expect_T_Tests: XCTestCase {
 
         waitForExpectations()
         XCTAssertNil(wand)
-
     }
 
 }

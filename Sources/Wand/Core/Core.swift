@@ -354,11 +354,9 @@ extension Core {
 
         //From head
         if let tail = (stored.last as? Ask<T>)?.head(object) {
-
             //Save
             asking[key] = (tail, stored.cleaner)
         } else {
-
             //Clean
             stored.cleaner?()
             asking[key] = nil
@@ -397,7 +395,6 @@ extension Core {
     @inlinable
     public
     func close() {
-
         //Handle Ask.all
         if let tail = asking[.all]?.last as? Ask<Core> {
             handle(self, head: tail.next, tail: tail)
@@ -407,7 +404,6 @@ extension Core {
         asking.forEach {
             $0.value.cleaner?()
         }
-
         asking.removeAll()
 
         //Release context
