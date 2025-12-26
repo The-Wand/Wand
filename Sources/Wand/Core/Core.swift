@@ -23,7 +23,7 @@ import Foundation
 @dynamicCallable
 final
 public
-class Core {
+class Core: Identifiable {
 
     /// References for cores of objects
     /// object <-> Core
@@ -76,8 +76,12 @@ class Core {
     public
     var context = [String: Any]()
 
+    public
     lazy
-    var id = arc4random() % 50_000
+    var id = arc4random()
+
+    public
+    lazy
 
     @inline(__always)
     public
