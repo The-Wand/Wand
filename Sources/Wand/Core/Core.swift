@@ -67,8 +67,7 @@ class Core: Identifiable {
         }}
     }
 
-    /// Questions
-    /// with context cleaners
+    /// Questions & Cleaners
     public
     var asking = [String: (last: Any, cleaner: ( ()->() )? )]()
 

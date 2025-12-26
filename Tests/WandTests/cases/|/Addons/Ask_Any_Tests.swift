@@ -38,8 +38,6 @@ class Expect_Any_Tests: XCTestCase {
         (0..<count).forEach { _ in
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak wand] in
-
-                //TODO: Update Any_
                 if .random() {
                     wand?.add(Point.any)
                 } else {
