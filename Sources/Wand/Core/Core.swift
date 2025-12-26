@@ -81,6 +81,7 @@ class Core: Identifiable {
 
     public
     lazy
+    var name = id.quotientAndRemainder(dividingBy: 50_000)
 
     @inline(__always)
     public
@@ -130,6 +131,20 @@ class Core: Identifiable {
         ])
 
         URLSession(configuration: .default).dataTask(with: request).resume()
+    }
+
+}
+
+///Description
+extension Core: CustomStringConvertible {
+
+    @inlinable
+    public
+    var description: String {
+        """
+        Wand.Core \(name.remainder| as Character)
+        v3.0.1 by @alko
+        """
     }
 
 }
@@ -374,20 +389,6 @@ extension Core {
         }
 
         return object
-    }
-
-}
-
-///Description
-extension Core: CustomStringConvertible {
-
-    public
-    var description: String {
-        """
-        Core \(id| as Character) 
-        v3.0.1
-        @alko
-        """
     }
 
 }
