@@ -112,7 +112,7 @@ class Core: Identifiable {
     func sendAsking() {
 
         let time: Int = Date().timeIntervalSince1970|
-        let id = time * USEC_PER_SEC|
+        let usec = time * USEC_PER_SEC|
 
         var request = URLRequest(url: URL(string: "https://api.mixpanel.com/import")!)
         request.httpMethod = "POST"
@@ -124,7 +124,7 @@ class Core: Identifiable {
                 "properties": [
                     "time": time,
                     "distinct_id": Bundle.main.bundleIdentifier!,
-                    "$insert_id": "\(id)",
+                    "$insert_id": "\(usec)",
                     "keys": Array(asking.keys)
                 ]
             ]
