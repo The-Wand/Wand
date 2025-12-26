@@ -82,7 +82,7 @@ class Core {
     @inline(__always)
     public
     init() {
-        Log.verbose("|💪🏽 #init\n\(self)\n")
+        log("|💪🏽 #init")
     }
 
     @inline(__always)
@@ -101,7 +101,7 @@ class Core {
         sendAsking()
         close()
 
-        Log.verbose("|✅ #bonsua\n\(self)\n")
+        log("|✅ #bonsua")
     }
 
     @inlinable

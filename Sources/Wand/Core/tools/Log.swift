@@ -16,6 +16,7 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
+#if DEBUG
 public
 enum Log: Int {
 
@@ -32,21 +33,8 @@ enum Log: Int {
     static
     let `default` = Log.verbose
 
-    @inlinable
-    public
-    func callAsFunction(_ message: String) {
-
-#if DEBUG
-        let level = Log.level
-        if level > .none && .verbose...level ~= self {
-            print(message)
-        }
-#endif
-    }
-
 }
 
-#if DEBUG
 extension Log: Comparable {
 
     @inlinable
@@ -57,4 +45,30 @@ extension Log: Comparable {
     }
 
 }
+
+extension Core {
+
+    @inlinable
+    internal
+    func log(_ message: String, to level: Log = .verbose) {
+
+        let bound = Log.level
+        if bound > .none && .verbose...bound ~= level {
+            print(message + "\n" + description + "\n")
+        }
+    }
+
+}
+
+#else
+
+extension Core {
+
+    @inline(__always)
+    internal
+    func log(_ message: String) {
+    }
+
+}
+
 #endif
