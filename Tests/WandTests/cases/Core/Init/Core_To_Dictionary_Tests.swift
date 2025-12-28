@@ -26,20 +26,19 @@ class Core_Init_Dictionary_Tests: XCTestCase {
     weak
     var wand: Core?
 
-    //TODO: Fix
     func test_init_Dictionary() throws {
 
-        let prefix = String(String.any.split(separator: " ").randomElement()!)
+        let prefix: Character = (arc4random() % 50_000)|
 
         let bool = true
-        let int = 4
-        let location = CLLocation.any
         let date = Date.any
+        let int = 0x1FAA8
+        let location = CLLocation.any
 
-        let boolKey = prefix + String(type(of: bool)|)
-        let intKey = prefix + type(of: int)|
-        let locationKey = prefix + type(of: location)|
-        let dateKey = prefix + type(of: date)|
+        let boolKey     = "\(prefix)_\(type(of: bool)|)"
+        let dateKey     = "\(prefix)_\(type(of: date)|)"
+        let intKey      = "\(prefix)_\(type(of: int)|)"
+        let locationKey = "\(prefix)_\(type(of: location)|)"
 
         let dictionary: [String: Any] = [boolKey: bool,
                                           intKey: int,
@@ -55,7 +54,7 @@ class Core_Init_Dictionary_Tests: XCTestCase {
         XCTAssertEqual(wand.get(for: dateKey), date)
 
         // wand is the same
-//        let core = (location as Optional).wand
+//        let core = (location as Optional).isWanded
 //        XCTAssertTrue(wand === core)
 //        XCTAssertTrue(wand === (date as Optional).wand)
 

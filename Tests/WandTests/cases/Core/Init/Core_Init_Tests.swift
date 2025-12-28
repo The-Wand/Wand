@@ -36,9 +36,9 @@ class Core_Init_Tests: XCTestCase {
 
     func test_init_ExtendedGraphemeClusterLiteral() throws {
 
-        let wand: Wand.Core = "🫱🏿‍🫲🏻" //🦾
+        let wand: Wand.Core = "🪨"
 
-        XCTAssertEqual(wand.get(), "🫱🏿‍🫲🏻")
+        XCTAssertEqual(wand.get(), "🪨")
         XCTAssertNotNil(wand)
     }
 

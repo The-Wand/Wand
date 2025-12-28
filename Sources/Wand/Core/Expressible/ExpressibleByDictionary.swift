@@ -40,7 +40,16 @@ extension Core: ExpressibleByDictionaryLiteral {
         self.init()
 
         dictionary.forEach { (key, object) in
-            Core[object] = self
+
+//            let type = type(of: object)
+//            if type is AnyClass {
+//                let key = unsafeBitCast(object as type, to: Int.self)
+//                Core.all[key] = Weak(item: self)
+//            }
+
+//            self(withKeywordArguments: <#T##KeyValuePairs<String, Any>#>)
+//            self(key: object)
+
             context[key] = object
         }
     }
