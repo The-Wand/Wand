@@ -39,7 +39,7 @@ extension Point: Any_ {
 
 }
 
-//Example of conforming to Asking
+//Example of conforming to Askable
 //Can be at least Expecting
 extension String: @retroactive Expecting {
 
@@ -86,7 +86,7 @@ struct Tool {
 //
 //}
 //
-//struct Vector2: AskingNil {
+//struct Vector2: Ask.Nil {
 //
 //    var request: ( ()->() )? {
 //        didSet {

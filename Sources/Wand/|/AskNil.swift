@@ -20,7 +20,14 @@
 ///
 /// TODO: func |(context: C, asks: Ask<Self>)
 public
-protocol AskingNil: Asking {
+extension Ask {
+
+    typealias Nil = AskNil
+
+}
+
+public
+protocol AskNil: Ask.Able {
 
 }
 
@@ -34,7 +41,7 @@ protocol AskingNil: Asking {
 @inline(__always)
 prefix
 public
-func |<T: Asking>(handler: @escaping (T)->() ) -> Core {
+func |<T: Askable>(handler: @escaping (T)->() ) -> Core {
     nil as Core | Ask.one(handler: handler)
 }
 
@@ -51,7 +58,7 @@ func |<T: Asking>(handler: @escaping (T)->() ) -> Core {
 @inline(__always)
 prefix
 public
-func |<T: Asking>(ask: Ask<T>) -> Core {
+func |<T: Askable>(ask: Ask<T>) -> Core {
     nil as Core | ask
 }
 
@@ -64,7 +71,7 @@ func |<T: Asking>(ask: Ask<T>) -> Core {
 @discardableResult
 @inline(__always)
 public
-func |<T: AskingNil, U: Asking>(l: Ask<T>, r: Ask<U>) -> Core {
+func |<T: Ask.Nil, U: Ask.Able>(l: Ask<T>, r: Ask<U>) -> Core {
     U.ask(with: T.ask(with: nil as Core, ask: l),
           ask: r)
 }

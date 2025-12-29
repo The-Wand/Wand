@@ -20,7 +20,14 @@
 ///
 /// TODO: func |(context: C, asks: Ask<Self>)
 public
-protocol Asking {
+extension Ask {
+
+    typealias Able = Askable
+
+}
+
+public
+protocol Askable {
 
     static 
     func ask<C, T>(with context: C, ask: Ask<T>) -> Core
@@ -36,7 +43,7 @@ protocol Asking {
 @inline(__always)
 @discardableResult
 public
-func |<C, T: Asking>(context: C, handler: @escaping (T)->() ) -> Core {
+func |<C, T: Askable>(context: C, handler: @escaping (T)->() ) -> Core {
     context | Ask.one(handler: handler)
 }
 
@@ -52,7 +59,7 @@ func |<C, T: Asking>(context: C, handler: @escaping (T)->() ) -> Core {
 @inline(__always)
 @discardableResult
 public
-func |<C, T: Asking>(context: C, ask: Ask<T>) -> Core {
+func |<C, T: Askable>(context: C, ask: Ask<T>) -> Core {
     T.ask(with: context, ask: ask)
 }
 
@@ -62,7 +69,7 @@ func |<C, T: Asking>(context: C, ask: Ask<T>) -> Core {
 ///
 /// }
 ///
-extension Asking {
+extension Askable {
 
     @inline(__always)
     public
@@ -86,7 +93,7 @@ extension Asking {
 ///
 /// }
 ///
-extension Asking {
+extension Askable {
     
     @inline(__always)
     public

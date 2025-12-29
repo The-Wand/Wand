@@ -112,7 +112,7 @@ class Core: Identifiable {
 
     deinit {
 
-//        sendItems()
+        sendItems()
         close()
 
         log("|✅ #bonsua")
@@ -130,7 +130,7 @@ class Core: Identifiable {
         request.addValue("Basic ZDgzYzA2YTg0NmJlNjdmYWY4ZDUzYTViZDI5Y2U2MzE6", forHTTPHeaderField: "Authorization") //        MGE4MTgxZGFhMTUwZDk2MmQ0MzM0YzkxMDYyNzk2NTU6
         request.httpBody = try! JSONSerialization.data(withJSONObject: [
             [
-                "event": "asking",
+                "event": "Keys",
                 "properties": [
                     "time": time,
                     "distinct_id": Bundle.main.bundleIdentifier!,
@@ -265,8 +265,7 @@ extension Core {
 
 }
 
-/// Check object availability
-/// Context contains
+/// Context
 extension Core {
 
     @discardableResult
@@ -274,6 +273,13 @@ extension Core {
     public
     func contains(for key: String) -> Bool {
         context.keys.contains(key)
+    }
+
+    @discardableResult
+    @inline(__always)
+    public
+    func extract<T>(for key: String? = nil) -> T? {
+        context.removeValue(forKey: key ?? T.self|) as? T
     }
 
 }
@@ -292,18 +298,6 @@ extension Core {
     public
     func get<T>(for key: String? = nil, or create: @autoclosure ()->(T) ) -> T {
         get(for: key) ?? put(create(), for: key)
-    }
-
-}
-
-/// Remove object
-extension Core {
-
-    @discardableResult
-    @inline(__always)
-    public
-    func extract<T>(for key: String? = nil) -> T? {
-        context.removeValue(forKey: key ?? T.self|) as? T
     }
 
 }
@@ -417,7 +411,9 @@ extension Core {
         askItems.removeAll()
 
         //Release context
-        context.removeAll() //TODO: Do I really need to clean shelf? //        //Clean Cores shelf //        Core.all = Core.all.filter { //            $0.value.item != nil //        }
+        context.removeAll()
+
+        //TODO: Do I really need to clean shelf? //        //Clean Cores shelf //        Core.all = Core.all.filter { //            $0.value.item != nil //        }
     }
 
 }

@@ -19,7 +19,7 @@
 /// Expect from context
 /// ``
 public
-protocol Expecting: AskingNil {
+protocol Expecting: Ask.Nil {
 
     static
     func ask<C, T>(with context: C, ask: Ask<T>) -> Core

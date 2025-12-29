@@ -25,7 +25,7 @@ infix   operator |? : AdditionPrecedence
 @inline(__always)
 prefix
 public
-func |?<T: AskingNil>(handler: @escaping (T)->() ) -> Core {
+func |?<T: Ask.Nil>(handler: @escaping (T)->() ) -> Core {
     nil as Core |? Ask.Option(handler: handler)
 }
 
@@ -33,7 +33,7 @@ func |?<T: AskingNil>(handler: @escaping (T)->() ) -> Core {
 @inline(__always)
 prefix
 public
-func |?<T: AskingNil>(ask: Ask<T>) -> Core {
+func |?<T: Ask.Nil>(ask: Ask<T>) -> Core {
     nil as Core |? ask.optional()
 }
 
@@ -41,27 +41,27 @@ func |?<T: AskingNil>(ask: Ask<T>) -> Core {
 @inline(__always)
 prefix
 public
-func |?<T: AskingNil>(ask: Ask<T>.Option) -> Core {
+func |?<T: Ask.Nil>(ask: Ask<T>.Option) -> Core {
     nil as Core |? ask
 }
 
 @discardableResult
 @inline(__always)
 public
-func |?<C, T: Asking>(context: C, handler: @escaping (T)->() ) -> Core {
+func |?<C, T: Askable>(context: C, handler: @escaping (T)->() ) -> Core {
     context |? Ask.Option(handler: handler)
 }
 
 @discardableResult
 @inline(__always)
 public
-func |?<C, T: Asking>(context: C, ask: Ask<T>) -> Core {
+func |?<C, T: Askable>(context: C, ask: Ask<T>) -> Core {
     context |? ask.optional()
 }
 
 @discardableResult
 @inline(__always)
 public
-func |?<C, T: Asking>(context: C, ask: Ask<T>.Option) -> Core {
+func |?<C, T: Askable>(context: C, ask: Ask<T>.Option) -> Core {
     context | ask
 }

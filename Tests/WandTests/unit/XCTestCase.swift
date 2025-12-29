@@ -19,14 +19,14 @@
 import Wand
 import XCTest
 
-/// Asking
+/// Askable
 extension XCTestCase {
 
-    func auto<C, T: Asking>(test context: C, completion:  @escaping (T)->() ) {
+    func auto<C, T: Askable>(test context: C, completion:  @escaping (T)->() ) {
         auto(test: context, api: |, completion: completion)
     }
 
-    func auto<C, T: Asking>(test context: C,
+    func auto<C, T: Askable>(test context: C,
                             api: ( (C, (T)->()) )->(Core),
                             completion:  @escaping (T)->() ) {
 
@@ -44,14 +44,14 @@ extension XCTestCase {
 
 }
 
-/// AskingNil
+/// Ask.Nil
 extension XCTestCase {
     
-    func auto_test<T: AskingNil>(completion:  @escaping (T)->() ) {
+    func auto_test<T: Ask.Nil>(completion:  @escaping (T)->() ) {
         auto_test(|, completion: completion)
     }
 
-    func auto_test<T: AskingNil>(_ api:   ( @escaping (T)->() )->(Core) ,
+    func auto_test<T: Ask.Nil>(_ api:   ( @escaping (T)->() )->(Core) ,
                                completion:  @escaping (T)->() ) {
 
         let e = expectation()
