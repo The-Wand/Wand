@@ -53,25 +53,33 @@ class Core: Identifiable {
     subscript <T>(_ object: T) -> Core? {
 
         get { if T.self is AnyClass {
-
-            let address = unsafeBitCast(object, to: Int.self)
-            return all[address]?.item
-            print("#ad: %@", address)
+            all[object|]?.item
         } else {
-            return nil
+            nil
         }}
 
         set { if T.self is AnyClass, let core = newValue {
+            all[object|] = Weak(item: core)
+        }}
+    }
 
-            let address = unsafeBitCast(object, to: Int.self)
-            all[address] = Weak(item: core)
-            print("#ad: %@", address)
+    @inlinable
+    public
+    static
+    subscript (_ object: AnyObject) -> Core? {
+
+        get {
+            all[object|]?.item
+        }
+
+        set { if let core = newValue {
+            all[object|] = Weak(item: core)
         }}
     }
 
     /// Questions & Cleaners
     public
-    var asking = [String: (last: Any, cleaner: ( ()->() )? )]()
+    var askItems = [String: (last: Any, cleaner: ( ()->() )? )]()
 
     /// Execution context
     public
@@ -104,14 +112,14 @@ class Core: Identifiable {
 
     deinit {
 
-//        sendAsking()
+//        sendItems()
         close()
 
         log("|✅ #bonsua")
     }
 
     @inlinable
-    func sendAsking() {
+    func sendItems() {
 
         let time: Int = Date().timeIntervalSince1970|
         let usec = time * USEC_PER_SEC|
@@ -127,7 +135,7 @@ class Core: Identifiable {
                     "time": time,
                     "distinct_id": Bundle.main.bundleIdentifier!,
                     "$insert_id": "\(usec)",
-                    "keys": Array(asking.keys)
+                    "keys": Array(askItems.keys)
                 ]
             ]
         ])
@@ -165,8 +173,8 @@ extension Core {
             case let context as [Any]:
                 Core(array: context)
 
-                        case let context as [String: Any]: //TODO: Fix and enable
-                            Core(dictionary: context)
+            case let context as [String: Any]:
+                Core(dictionary: context)
 
             case .some(let value):
                 Core(value)
@@ -228,9 +236,7 @@ extension Core {
 
             let type = type(of: object)
             if type is AnyClass {
-
-                let address = Memory.address(for: object)
-                Core.all[address] = Weak(item: self)
+                Core.all[(object as AnyObject)|] = Weak(item: self)
             }
 
             context[type|] = object
@@ -248,13 +254,7 @@ extension Core {
 
             let type = type(of: object)
             if type is AnyClass {
-
-//                let address = Memory.address(for: object)
-                let address = Int(bitPattern: Unmanaged.passUnretained(object as AnyObject).toOpaque())
-
-                // unsafeBitCast(object, to: Int.self)
-                Core.all[address] = Weak(item: self)
-                print("#ad: %@", address)
+                Core.all[(object as AnyObject)|] = Weak(item: self)
             }
 
             context[key] = object
@@ -316,7 +316,7 @@ extension Core {
     func append<T>(ask: Ask<T>, check: Bool = false) -> Bool {
 
         let key = ask.key
-        let stored = asking[key]
+        let stored = askItems[key]
 
         //Attach the wand
         //Call handler if object exist
@@ -332,7 +332,7 @@ extension Core {
         ask.next = tail?.next ?? ask
         tail?.next = ask
 
-        asking[key] = (last: ask, cleaner: stored?.cleaner)
+        askItems[key] = (last: ask, cleaner: stored?.cleaner)
 
         return stored == nil
     }
@@ -342,7 +342,7 @@ extension Core {
     func setCleaner<T>(for ask: Ask<T>, cleaner: @escaping ()->() ) {
 
         let key = ask.key
-        asking[key] = (asking[key]!.last, cleaner)
+        askItems[key] = (askItems[key]!.last, cleaner)
     }
 
 }
@@ -372,22 +372,22 @@ extension Core {
         let key = save(object, for: raw)
 
         //Answer the questions
-        guard let stored = asking[key] else {
+        guard let stored = askItems[key] else {
             return object
         }
 
         //From head
         if let tail = (stored.last as? Ask<T>)?.head(object) {
             //Save
-            asking[key] = (tail, stored.cleaner)
+            askItems[key] = (tail, stored.cleaner)
         } else {
             //Clean
             stored.cleaner?()
-            asking[key] = nil
+            askItems[key] = nil
         }
 
         //Handle Ask.any
-        if let tail = asking[.any]?.last as? Ask<Any> {
+        if let tail = askItems[.any]?.last as? Ask<Any> {
 
             let head = tail.next
             handle(object, head: head, tail: tail)
@@ -406,20 +406,18 @@ extension Core {
     public
     func close() {
         //Handle Ask.all
-        if let tail = asking[.all]?.last as? Ask<Core> {
+        if let tail = askItems[.all]?.last as? Ask<Core> {
             handle(self, head: tail.next, tail: tail)
         }
 
         //Remove questions
-        asking.forEach {
+        askItems.forEach {
             $0.value.cleaner?()
         }
-        asking.removeAll()
+        askItems.removeAll()
 
         //Release context
-        context.removeAll()
-
-        //TODO: Do I really need to clean shelf? //        //Clean Cores shelf //        Core.all = Core.all.filter { //            $0.value.item != nil //        }
+        context.removeAll() //TODO: Do I really need to clean shelf? //        //Clean Cores shelf //        Core.all = Core.all.filter { //            $0.value.item != nil //        }
     }
 
 }

@@ -53,7 +53,7 @@ class Core_Init_Dictionary_Tests: XCTestCase {
         XCTAssertEqual(wand.get(for: locationKey), location)
         XCTAssertEqual(wand.get(for: dateKey), date)
 
-        // wand is the same
+        // Wand is the same
         XCTAssertTrue(wand === (location as Optional).isWanded)
 
         //Close wand
@@ -90,9 +90,8 @@ class Core_Init_Dictionary_Tests: XCTestCase {
         XCTAssertEqual(wand.get(for: locationKey), location)
         XCTAssertEqual(wand.get(for: dateKey), date)
 
-        // wand is the same
-//        XCTAssertTrue(wand === (location as Optional).wand)
-//        XCTAssertTrue(wand === (date as Optional).wand)
+        // Wand is the same
+        XCTAssertTrue(wand === (location as Optional).wand)
 
         //Close wand
         weak

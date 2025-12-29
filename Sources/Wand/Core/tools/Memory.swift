@@ -16,35 +16,19 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-#if canImport(Foundation)
-import Foundation
+/// e|| ♟️
+postfix operator |
 
+@inlinable
+postfix
 public
-struct Memory {
-
-//    @inlinable
-//    static
-//    public
-//    func address<T: AnyObject>(for model: T) -> Int {
-////        Int(bitPattern: Unmanaged.passUnretained(model).toOpaque())
-//        unsafeBitCast(model, to: Int.self)
-//    }
-
-    @inlinable
-    static
-    public
-    func address<T>(for model: T) -> Int {
-
-        var address: Int = 0
-
-        var mutable = model
-        withUnsafePointer(to: &mutable) { pointer in
-            address = Int(bitPattern: pointer)
-        }
-
-        return address
-    }
-
+func |(model: AnyObject) -> Int {
+    Int(bitPattern: Unmanaged.passUnretained(model).toOpaque())
 }
 
-#endif
+@inlinable
+postfix
+public
+func |<T>(model: T) -> Int {
+    unsafeBitCast(model, to: Int.self)
+}

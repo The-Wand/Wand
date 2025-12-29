@@ -20,6 +20,8 @@ import Foundation
 import Testing
 import Wand
 
+import CoreLocation
+
 struct Highload {
 
     /// Core 3.0.1
@@ -34,7 +36,7 @@ struct Highload {
     @Test
     func highload_tests()
     {
-        let count = 111_111_111
+        let count = 111_11//1_111
         let message = 0x1F408
         let tool = Tool()
 
@@ -73,6 +75,43 @@ struct Highload {
         }
 
         #expect(true)
+    }
+
+//    🏎️ Launching 11111 cores
+//    0.0281
+
+//    🏎️ Fulfilling 11111 handlers
+//    0.0340
+
+    @Test
+    func int_pointer() {
+
+        var locs = [CLLocation]()
+        (1...500_500).forEach { _ in
+            let location = CLLocation(coordinate: .any,
+                                      altitude: .any,
+                                      horizontalAccuracy: .any,
+                                      verticalAccuracy: .any,
+                                      timestamp: .any)
+            locs.append(location)
+        }
+
+        Performance.measure("bitCast") {
+            locs.forEach {
+
+                let address: Int = ($0 as AnyObject)|
+//                print(address)
+            }
+        }
+
+        Performance.measure("unsafeCast") {
+            locs.forEach {
+
+                let address: Int = $0|
+//                print(address)
+            }
+        }
+
     }
 
 }

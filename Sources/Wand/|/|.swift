@@ -16,6 +16,7 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
+/// e|| ♟️
 prefix  operator |
 postfix operator |
 infix   operator | : AdditionPrecedence

@@ -25,12 +25,12 @@ extension Core {
         
         let key = ask.key
         
-        let tail = wand.asking[key]?.last as? Ask<T>
+        let tail = wand.askItems[key]?.last as? Ask<T>
         ask.next = tail?.next ?? ask
         tail?.next = ask
         
-        wand.asking[key] = (ask, nil)
-        
+        wand.askItems[key] = (ask, nil)
+
         return wand
     }
 

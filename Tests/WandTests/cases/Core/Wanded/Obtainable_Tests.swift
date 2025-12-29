@@ -96,12 +96,3 @@ func obtain_unwrap_type()
 }
 
 #endif
-
-//@Test
-//func try_get_core_from_value_type()
-//{
-//    let object = String.any
-//
-//    let wand = Core[object]
-//    #expect(wand == nil)
-//}

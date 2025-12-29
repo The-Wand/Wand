@@ -126,7 +126,7 @@ class Expect_T_Tests: XCTestCase {
 
         }
 
-        handlePerformance = Performance(of: "AskingNil answer")
+        handlePerformance = Performance(of: "Nil answer")
         wand.add(point)
 
         waitForExpectations()
