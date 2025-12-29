@@ -54,16 +54,18 @@ class Core: Identifiable {
 
         get { if T.self is AnyClass {
 
-            let key = unsafeBitCast(object, to: Int.self)
-            return all[key]?.item
+            let address = unsafeBitCast(object, to: Int.self)
+            return all[address]?.item
+            print("#ad: %@", address)
         } else {
             return nil
         }}
 
         set { if T.self is AnyClass, let core = newValue {
 
-            let key = unsafeBitCast(object, to: Int.self)
-            all[key] = Weak(item: core)
+            let address = unsafeBitCast(object, to: Int.self)
+            all[address] = Weak(item: core)
+            print("#ad: %@", address)
         }}
     }
 
@@ -102,7 +104,7 @@ class Core: Identifiable {
 
     deinit {
 
-        sendAsking()
+//        sendAsking()
         close()
 
         log("|✅ #bonsua")
@@ -247,8 +249,12 @@ extension Core {
             let type = type(of: object)
             if type is AnyClass {
 
-                let address = Memory.address(for: object)
+//                let address = Memory.address(for: object)
+                let address = Int(bitPattern: Unmanaged.passUnretained(object as AnyObject).toOpaque())
+
+                // unsafeBitCast(object, to: Int.self)
                 Core.all[address] = Weak(item: self)
+                print("#ad: %@", address)
             }
 
             context[key] = object

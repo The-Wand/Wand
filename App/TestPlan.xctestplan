@@ -20,15 +20,96 @@
       "skippedTests" : {
         "suites" : [
           {
+            "name" : "DefaultTests"
+          },
+          {
             "name" : "Highload"
           }
         ],
         "testFunctions" : [
-          "load_tests()"
+          "add_object_if_exist()",
+          "add_object_if_exist_not()",
+          "ask_cancel()",
+          "ask_set_key()",
+          "ask_set_key_not()",
+          "attach_core_to_nil()",
+          "attach_core_to_object()",
+          "attach_core_to_optional()",
+          "cleaner_set()",
+          "contains_object()",
+          "contains_object_not()",
+          "counting_every()",
+          "counting_while()",
+          "extract_object()",
+          "extract_object_not()",
+          "get_dont_attached_core()",
+          "get_not_create()",
+          "get_or_create()",
+          "load_tests()",
+          "obtain_from_context_access()",
+          "obtain_from_context_cast()",
+          "obtain_from_context_obtain()",
+          "obtain_from_core()",
+          "obtain_from_core_get()",
+          "obtain_from_type()",
+          "obtain_unwrap()",
+          "obtain_unwrap_type()",
+          "put_default()",
+          "put_default_not()",
+          "try_get_core_from_value_type()",
+          "ubiquitous_from_context_cast()",
+          "ubiquitous_from_core()",
+          "ubiquitous_from_core_optional()",
+          "ubiquitous_from_type()",
+          "ubiquitous_setter()",
+          "ubiquitous_unwrap()",
+          "ubiquitous_unwrap_type()"
         ],
         "xctestClasses" : [
           {
+            "name" : "All_Tests"
+          },
+          {
+            "name" : "Ask_Dependencies_Tests"
+          },
+          {
+            "name" : "Ask_Option_Tests"
+          },
+          {
+            "name" : "Core_Init_Array_Tests"
+          },
+          {
+            "name" : "Core_Init_Dictionary_Tests",
+            "xctestMethods" : [
+              "test_init_DictionaryLiteral()"
+            ]
+          },
+          {
+            "name" : "Core_Init_Tests"
+          },
+          {
+            "name" : "Core_Put_Keyed_Tests"
+          },
+          {
+            "name" : "Core_Put_Tests"
+          },
+          {
+            "name" : "Core_To_Tests"
+          },
+          {
             "name" : "CoreCloseTests"
+          },
+          {
+            "name" : "Describing_Tests"
+          },
+          {
+            "name" : "Errors_Tests"
+          },
+          {
+            "name" : "Expect_Any_Tests"
+          },
+          {
+            "name" : "Expect_T_Tests"
           }
         ]
       },

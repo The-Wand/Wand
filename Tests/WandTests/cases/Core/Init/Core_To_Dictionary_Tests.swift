@@ -54,9 +54,7 @@ class Core_Init_Dictionary_Tests: XCTestCase {
         XCTAssertEqual(wand.get(for: dateKey), date)
 
         // wand is the same
-//        let core = (location as Optional).isWanded
-//        XCTAssertTrue(wand === core)
-//        XCTAssertTrue(wand === (date as Optional).wand)
+        XCTAssertTrue(wand === (location as Optional).isWanded)
 
         //Close wand
         weak
@@ -72,7 +70,7 @@ class Core_Init_Dictionary_Tests: XCTestCase {
         let prefix = String(String.any.split(separator: " ").randomElement()!)
 
         let bool = true
-        let int = 4
+        let int = 0x1F48E
         let location = CLLocation.any
         let date = Date.any
 

@@ -22,12 +22,13 @@ import Foundation
 public
 struct Memory {
 
-    @inlinable
-    static
-    public
-    func address<T: AnyObject>(for model: T) -> Int {
-        Int(bitPattern: Unmanaged.passUnretained(model).toOpaque())
-    }
+//    @inlinable
+//    static
+//    public
+//    func address<T: AnyObject>(for model: T) -> Int {
+////        Int(bitPattern: Unmanaged.passUnretained(model).toOpaque())
+//        unsafeBitCast(model, to: Int.self)
+//    }
 
     @inlinable
     static

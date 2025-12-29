@@ -41,17 +41,30 @@ extension Core: ExpressibleByDictionaryLiteral {
 
         dictionary.forEach { (key, object) in
 
-//            let type = type(of: object)
-//            if type is AnyClass {
+            let type = type(of: object)
+            if type is AnyClass {
 //                let key = unsafeBitCast(object as type, to: Int.self)
 //                Core.all[key] = Weak(item: self)
-//            }
+
+                let address = Int(bitPattern: Unmanaged.passUnretained(object as AnyObject).toOpaque())
+                Core.all[address] = Weak(item: self)
+
+                print("#ad: %@", address)
+            }
 
 //            self(withKeywordArguments: <#T##KeyValuePairs<String, Any>#>)
 //            self(key: object)
 
+            //            let p = KeyValuePairs(dictionaryLiteral: (key, object))
+            //            dynamicallyCall(withKeywordArguments: p)
+
             context[key] = object
+
         }
+
+
+
+//        self.dynamicallyCall(withKeywordArguments: dictionary.enumerated())
     }
 
 }
