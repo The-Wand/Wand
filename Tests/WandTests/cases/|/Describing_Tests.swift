@@ -16,43 +16,33 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-import Foundation
-
 import Wand
 import XCTest
 
 class Describing_Tests: XCTestCase {
 
-    func test_wand() throws {
-        
-        let char: Character = 0x7C|
-        XCTAssertEqual("|", char)
-
+    func test_wand() {
+        XCTAssertEqual("|", 0x7C| as Character)
     }
 
-    func test_Any() throws {
-
-        let char: Character = 0x5F|
-        XCTAssertEqual("_", char)
-
+    func test_Any() {
+        XCTAssertEqual("🐕", 0x1F415| as Character)
     }
 
-    func test_Data_to_String() throws {
+    func test_Data_to_String() {
 
         let sample = Data([72, 101, 108, 108, 111, 44, 32, 119, 97, 110, 100, 33])
         let string: String = sample|
 
         XCTAssertEqual("Hello, wand!", string)
-
     }
 
-    func test_String_to_Data() throws {
+    func test_String_to_Data() {
 
         let sample = Data([72, 101, 108, 108, 111, 44, 32, 119, 97, 110, 100, 33])
         let data: Data? = "Hello, wand!"|
 
         XCTAssertEqual(data!, sample)
-
     }
 
 }

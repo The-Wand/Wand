@@ -77,14 +77,45 @@ struct Highload {
         #expect(true)
     }
 
+
+
 //    🏎️ Launching 11111 cores
-//    0.0281
-
+//    : 0.0277169
 //    🏎️ Fulfilling 11111 handlers
-//    0.0340
+//    0
+//    : 0.0349998
 
-    @Test
-    func int_pointer() {
+//    🏎️ Launching 11111 cores
+//    : 0.0279210
+//    🏎️ Fulfilling 11111 handlers
+//    0
+//    : 0.0352640
+//|
+
+
+
+//    0.0273636
+//    0.035012
+    
+//    🏎️ Launching 11111 cores
+//    : 0.0278430
+//    🏎️ Fulfilling 11111 handlers
+//    0
+//    : 0.0365388
+
+//    🏎️ Launching 11111 cores
+//    : 0.0270190
+//    🏎️ Fulfilling 11111 handlers
+//    0
+//    : 0.0344501
+
+//    🏎️ Launching 11111 cores
+//    : 0.0272288
+//    🏎️ Fulfilling 11111 handlers
+//    0
+//    : 0.0340471
+
+    @Test func int_pointer() {
 
         var locs = [CLLocation]()
         (1...500_500).forEach { _ in

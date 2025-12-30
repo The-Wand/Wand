@@ -19,7 +19,7 @@
 /// Get object from Core
 /// or create in context
 ///
-/// TODO: func |(wand: Core?) -> Self
+/// TODO: postfix static func |(wand: Core?) -> Self
 public
 protocol Obtainable: Wanded {
 

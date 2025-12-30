@@ -51,7 +51,6 @@ class Ask<T> {
         set {
             _key = newValue
         }
-
     }
 
     private(set)

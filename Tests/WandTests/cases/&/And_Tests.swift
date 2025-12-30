@@ -16,9 +16,9 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-import Testing
-import Wand
-
+//import Testing
+//import Wand
+//
 //@Test
 //func test_Handler_And_Handler()
 //throws

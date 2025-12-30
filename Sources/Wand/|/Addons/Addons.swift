@@ -18,18 +18,18 @@
 
 extension Core {
 
-    /// Append utility Asks
+    /// Append utility Ask
     @inlinable
     public
     func append<T>(handler ask: Ask<T>) -> Core {
         
         let key = ask.key
         
-        let tail = wand.askItems[key]?.last as? Ask<T>
+        let tail = (wand.scope[key] as? Last)?.last as? Ask<T>
         ask.next = tail?.next ?? ask
         tail?.next = ask
         
-        wand.askItems[key] = (ask, nil)
+        wand.scope[key] = Last(ask, nil)
 
         return wand
     }

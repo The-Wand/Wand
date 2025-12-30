@@ -77,13 +77,17 @@ class Core: Identifiable {
         }}
     }
 
-    /// Questions & Cleaners
-    public
-    var askItems = [String: (last: Any, cleaner: ( ()->() )? )]()
+    /// Questions & Cleaners //    public //    var scope = [String: (last: Any, cleaner: ( ()->() )? )]() //
 
     /// Execution context
     public
-    var context = [String: Any]()
+    var context = [String: Any]() //RE?
+
+    public
+    typealias Last = (last: Any, cleaner: ( ()->() )? )
+
+    public
+    var scope = [String: Any]()
 
     public
     lazy
@@ -111,10 +115,8 @@ class Core: Identifiable {
     }
 
     deinit {
-
-        sendItems()
+//        sendItems()
         close()
-
         log("|✅ #bonsua")
     }
 
@@ -135,7 +137,7 @@ class Core: Identifiable {
                     "time": time,
                     "distinct_id": Bundle.main.bundleIdentifier!,
                     "$insert_id": "\(usec)",
-                    "keys": Array(askItems.keys)
+                    "keys": Array(scope.keys)
                 ]
             ]
         ])
@@ -310,7 +312,7 @@ extension Core {
     func append<T>(ask: Ask<T>, check: Bool = false) -> Bool {
 
         let key = ask.key
-        let stored = askItems[key]
+        let stored = scope[key] as? Last
 
         //Attach the wand
         //Call handler if object exist
@@ -326,7 +328,7 @@ extension Core {
         ask.next = tail?.next ?? ask
         tail?.next = ask
 
-        askItems[key] = (last: ask, cleaner: stored?.cleaner)
+        scope[key] = (last: ask, cleaner: stored?.cleaner)
 
         return stored == nil
     }
@@ -336,7 +338,7 @@ extension Core {
     func setCleaner<T>(for ask: Ask<T>, cleaner: @escaping ()->() ) {
 
         let key = ask.key
-        askItems[key] = (askItems[key]!.last, cleaner)
+        scope[key] = ((scope[key] as! Last).last, cleaner)
     }
 
 }
@@ -366,22 +368,22 @@ extension Core {
         let key = save(object, for: raw)
 
         //Answer the questions
-        guard let stored = askItems[key] else {
+        guard let stored = scope[key] as? Last else {
             return object
         }
 
         //From head
         if let tail = (stored.last as? Ask<T>)?.head(object) {
             //Save
-            askItems[key] = (tail, stored.cleaner)
+            scope[key] = (tail, stored.cleaner)
         } else {
             //Clean
             stored.cleaner?()
-            askItems[key] = nil
+            scope[key] = nil
         }
 
         //Handle Ask.any
-        if let tail = askItems[.any]?.last as? Ask<Any> {
+        if let tail = (scope[.any] as? Last)?.last as? Ask<Any> {
 
             let head = tail.next
             handle(object, head: head, tail: tail)
@@ -400,20 +402,18 @@ extension Core {
     public
     func close() {
         //Handle Ask.all
-        if let tail = askItems[.all]?.last as? Ask<Core> {
+        if let tail = (scope[.all] as? Last)?.last as? Ask<Core> {
             handle(self, head: tail.next, tail: tail)
         }
 
         //Remove questions
-        askItems.forEach {
-            $0.value.cleaner?()
+        scope.forEach {
+            ($0.value as? Last)?.cleaner?()
         }
-        askItems.removeAll()
+        scope.removeAll()
 
         //Release context
-        context.removeAll()
-
-        //TODO: Do I really need to clean shelf? //        //Clean Cores shelf //        Core.all = Core.all.filter { //            $0.value.item != nil //        }
+        context.removeAll()        //TODO: Do I really need to clean shelf? //        //Clean Cores shelf //        Core.all = Core.all.filter { //            $0.value.item != nil //        }
     }
 
 }

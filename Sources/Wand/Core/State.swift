@@ -27,7 +27,7 @@ extension Core {
 
     @inlinable
     var state: State {
-        askItems.isEmpty ? .ready : .active
+        scope.isEmpty ? .ready : .active
     }
     
 }
