@@ -48,20 +48,20 @@ func |?<T: Ask.Nil>(ask: Ask<T>.Option) -> Core {
 @discardableResult
 @inline(__always)
 public
-func |?<C, T: Askable>(context: C, handler: @escaping (T)->() ) -> Core {
+func |?<C, T: Ask.T>(context: C, handler: @escaping (T)->() ) -> Core {
     context |? Ask.Option(handler: handler)
 }
 
 @discardableResult
 @inline(__always)
 public
-func |?<C, T: Askable>(context: C, ask: Ask<T>) -> Core {
+func |?<C, T: Ask.T>(context: C, ask: Ask<T>) -> Core {
     context |? ask.optional()
 }
 
 @discardableResult
 @inline(__always)
 public
-func |?<C, T: Askable>(context: C, ask: Ask<T>.Option) -> Core {
+func |?<C, T: Ask.T>(context: C, ask: Ask<T>.Option) -> Core {
     context | ask
 }

@@ -17,8 +17,6 @@
 /// The Wand
 
 /// Ask object with default settings
-///
-/// TODO: func |(context: C, asks: Ask<Self>)
 public
 extension Ask {
 
@@ -26,8 +24,9 @@ extension Ask {
 
 }
 
+/// TODO: func |(context: C, asks: Ask<Self>)
 public
-protocol AskNil: Ask.Able {
+protocol AskNil: Ask.T {
 
 }
 
@@ -41,7 +40,7 @@ protocol AskNil: Ask.Able {
 @inline(__always)
 prefix
 public
-func |<T: Askable>(handler: @escaping (T)->() ) -> Core {
+func |<T: Ask.Nil>(handler: @escaping (T)->() ) -> Core {
     nil as Core | Ask.one(handler: handler)
 }
 
@@ -58,7 +57,7 @@ func |<T: Askable>(handler: @escaping (T)->() ) -> Core {
 @inline(__always)
 prefix
 public
-func |<T: Askable>(ask: Ask<T>) -> Core {
+func |<T: Ask.Nil>(ask: Ask<T>) -> Core {
     nil as Core | ask
 }
 
@@ -71,7 +70,7 @@ func |<T: Askable>(ask: Ask<T>) -> Core {
 @discardableResult
 @inline(__always)
 public
-func |<T: Ask.Nil, U: Ask.Able>(l: Ask<T>, r: Ask<U>) -> Core {
-    U.ask(with: T.ask(with: nil as Core, ask: l),
+func |<U: Ask.Nil, T: Ask.T>(l: Ask<U>, r: Ask<T>) -> Core {
+    T.ask(with: U.ask(with: nil as Core, ask: l),
           ask: r)
 }

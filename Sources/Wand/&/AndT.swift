@@ -126,7 +126,7 @@ func & (ask: Ask<UIImage>, applying: Ask<UIImage>.Crop ) -> Ask<UIImage> {
 
 //@inline(__always)
 //public
-//func &<T: Askable, O: Ask<T>.Operation> (ask: Ask<T>, applying: O ) -> Ask<T> {
+//func &<T: Ask.T, O: Ask<T>.Operation> (ask: Ask<T>, applying: O ) -> Ask<T> {
 //
 //    let saved = ask.handler
 //    ask.handler = {
@@ -138,7 +138,7 @@ func & (ask: Ask<UIImage>, applying: Ask<UIImage>.Crop ) -> Ask<UIImage> {
 
 //@inline(__always)
 //public
-//func &<T: Askable> (ask: Ask<T>, applying: Ask<T>.Operation ) -> Ask<T> {
+//func &<T: Ask.T> (ask: Ask<T>, applying: Ask<T>.Operation ) -> Ask<T> {
 //
 //    let saved = ask.handler
 //    ask.handler = {
@@ -149,7 +149,7 @@ func & (ask: Ask<UIImage>, applying: Ask<UIImage>.Crop ) -> Ask<UIImage> {
 //}
 //
 //@inline(__always)
-//func &<T: Askable> (input: T, ask: Ask<T>.Operation) -> T {
+//func &<T: Ask.T> (input: T, ask: Ask<T>.Operation) -> T {
 //    let output = input//|
 //    return output
 //}

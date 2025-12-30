@@ -18,7 +18,7 @@
 
 @inline(__always)
 public
-func &<T: Askable, U: Askable> (ask: Ask<T>, appending: @escaping (U)->() ) -> Ask<T> {
+func &<T: Ask.T, U: Ask.T> (ask: Ask<T>, appending: @escaping (U)->() ) -> Ask<T> {
 
     let saved = ask.handler
     ask.handler = {
@@ -35,7 +35,7 @@ func &<T: Askable, U: Askable> (ask: Ask<T>, appending: @escaping (U)->() ) -> A
 
 @inline(__always)
 public
-func &<T: Askable, U: Askable> (ask: Ask<T>, appending: @escaping (U)->(Bool) ) -> Ask<T> {
+func &<T: Ask.T, U: Ask.T> (ask: Ask<T>, appending: @escaping (U)->(Bool) ) -> Ask<T> {
 
     let saved = ask.handler
     ask.handler = {

@@ -17,17 +17,16 @@
 /// The Wand
 
 /// Ask from context
-///
-/// TODO: func |(context: C, asks: Ask<Self>)
 public
 extension Ask {
 
-    typealias Able = Askable
+    typealias T = AskT
 
 }
 
+/// TODO: static func |<C>(context: C, asks: Ask<Self>)
 public
-protocol Askable {
+protocol AskT {
 
     static 
     func ask<C, T>(with context: C, ask: Ask<T>) -> Core
@@ -43,7 +42,7 @@ protocol Askable {
 @inline(__always)
 @discardableResult
 public
-func |<C, T: Askable>(context: C, handler: @escaping (T)->() ) -> Core {
+func |<C, T: Ask.T>(context: C, handler: @escaping (T)->() ) -> Core {
     context | Ask.one(handler: handler)
 }
 
@@ -59,7 +58,7 @@ func |<C, T: Askable>(context: C, handler: @escaping (T)->() ) -> Core {
 @inline(__always)
 @discardableResult
 public
-func |<C, T: Askable>(context: C, ask: Ask<T>) -> Core {
+func |<C, T: Ask.T>(context: C, ask: Ask<T>) -> Core {
     T.ask(with: context, ask: ask)
 }
 
@@ -69,7 +68,7 @@ func |<C, T: Askable>(context: C, ask: Ask<T>) -> Core {
 ///
 /// }
 ///
-extension Askable {
+extension Ask.T {
 
     @inline(__always)
     public
@@ -93,8 +92,8 @@ extension Askable {
 ///
 /// }
 ///
-extension Askable {
-    
+extension Ask.T {
+
     @inline(__always)
     public
     static

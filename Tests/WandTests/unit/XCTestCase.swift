@@ -19,54 +19,54 @@
 import Wand
 import XCTest
 
-/// Askable
-extension XCTestCase {
-
-    func auto<C, T: Askable>(test context: C, completion:  @escaping (T)->() ) {
-        auto(test: context, api: |, completion: completion)
-    }
-
-    func auto<C, T: Askable>(test context: C,
-                            api: ( (C, (T)->()) )->(Core),
-                            completion:  @escaping (T)->() ) {
-
-        let e = expectation()
-        e.assertForOverFulfill = true
-
-        _ = api( (context, { (t: T) in
-            e.fulfill()
-            completion(t)
-        }) )
-
-        waitForExpectations(timeout: .default)
-        
-    }
-
-}
-
-/// Ask.Nil
-extension XCTestCase {
-    
-    func auto_test<T: Ask.Nil>(completion:  @escaping (T)->() ) {
-        auto_test(|, completion: completion)
-    }
-
-    func auto_test<T: Ask.Nil>(_ api:   ( @escaping (T)->() )->(Core) ,
-                               completion:  @escaping (T)->() ) {
-
-        let e = expectation()
-        e.assertForOverFulfill = true
-
-        _ = api({ (t: T) in
-            e.fulfill()
-            completion(t)
-        })
-
-        waitForExpectations(timeout: .default)
-
-    }
-
-}
+///// AskT
+//extension XCTestCase {
+//
+//    func auto<C, T: AskT>(test context: C, completion:  @escaping (T)->() ) {
+//        auto(test: context, api: |, completion: completion)
+//    }
+//
+//    func auto<C, T: AskT>(test context: C,
+//                            api: ( (C, (T)->()) )->(Core),
+//                            completion:  @escaping (T)->() ) {
+//
+//        let e = expectation()
+//        e.assertForOverFulfill = true
+//
+//        _ = api( (context, { (t: T) in
+//            e.fulfill()
+//            completion(t)
+//        }) )
+//
+//        waitForExpectations(timeout: .default)
+//        
+//    }
+//
+//}
+//
+///// Ask.Nil
+//extension XCTestCase {
+//    
+//    func auto_test<T: Ask.Nil>(completion:  @escaping (T)->() ) {
+//        auto_test(|, completion: completion)
+//    }
+//
+//    func auto_test<T: Ask.Nil>(_ api:   ( @escaping (T)->() )->(Core) ,
+//                               completion:  @escaping (T)->() ) {
+//
+//        let e = expectation()
+//        e.assertForOverFulfill = true
+//
+//        _ = api({ (t: T) in
+//            e.fulfill()
+//            completion(t)
+//        })
+//
+//        waitForExpectations(timeout: .default)
+//
+//    }
+//
+//}
 
 /// Tools
 extension XCTestCase {

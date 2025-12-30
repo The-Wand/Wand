@@ -39,7 +39,7 @@ extension Point: Any_ {
 
 }
 
-//Example of conforming to Askable
+//Example of conforming to AskT
 //Can be at least Expecting
 extension String: @retroactive Expecting {
 
