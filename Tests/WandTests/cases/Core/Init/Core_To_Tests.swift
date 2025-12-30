@@ -44,15 +44,18 @@ class Core_To_Tests: XCTestCase {
         XCTAssertNotNil(wand)
     }
 
-//    func test_to_Dictionary() throws {
-//
-//        //TODO: Add URL.any
-//        let context = URLRequest(url: Bundle.main.bundleURL)
-//
-//        let wand = Core.to(context)
-//
-//        XCTAssertEqual(wand.get(), context as URLRequest)
-//        XCTAssertNotNil(wand)
-//    }
+    func test_to_Dictionary() throws {
+
+        //TODO: Add URL.any
+        let request = URLRequest(url: Bundle.main.bundleURL)
+        let key = "Request"
+
+        let context = [key: request]
+
+        let wand = Core.to(context)
+
+        XCTAssertEqual(wand.get(for: key), request)
+        XCTAssertNotNil(wand)
+    }
 
 }

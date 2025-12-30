@@ -76,7 +76,6 @@ class Core_Init_Tests: XCTestCase {
     func test_init_StringInterpolation() throws {
     }
 
-    //TODO: Fix and enable
     func test_init_UnicodeScalarLiteral() throws {
 
         let wand: Wand.Core = "䷓"
