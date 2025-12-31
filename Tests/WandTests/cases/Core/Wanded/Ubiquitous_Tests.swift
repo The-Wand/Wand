@@ -67,7 +67,7 @@ func ubiquitous_from_core_optional()
 }
 
 @Test
-func ubiquitous_from_context_cast()
+func ubiquitous_from_scope_cast()
 {
     let object: Any = sharedCache
     let ubiquitous: URLCache = object|
@@ -76,7 +76,7 @@ func ubiquitous_from_context_cast()
 }
 
 @Test
-func obtain_from_context_access()
+func obtain_from_scope_access()
 {
     let object = String.any
     let obtained: URLCache = object|

@@ -27,7 +27,7 @@ extension Core: ExpressibleByBooleanLiteral {
     init(booleanLiteral value: Bool) {
 
         self.init()
-        context[BooleanLiteralType.self|] = value
+        scope[BooleanLiteralType.self|] = value
     }
 
 }
@@ -41,7 +41,7 @@ extension Core: ExpressibleByExtendedGraphemeClusterLiteral {
     init(extendedGraphemeClusterLiteral value: ExtendedGraphemeClusterLiteralType) {
 
         self.init()
-        context[ExtendedGraphemeClusterLiteralType.self|] = value
+        scope[ExtendedGraphemeClusterLiteralType.self|] = value
     }
 
 }
@@ -55,7 +55,7 @@ extension Core: ExpressibleByFloatLiteral {
     init(floatLiteral value: Float) {
 
         self.init()
-        context[FloatLiteralType.self|] = value
+        scope[FloatLiteralType.self|] = value
     }
 
 }
@@ -69,7 +69,7 @@ extension Core: ExpressibleByIntegerLiteral {
     init(integerLiteral value: Int) {
 
         self.init()
-        context[IntegerLiteralType.self|] = value
+        scope[IntegerLiteralType.self|] = value
     }
 
 }
@@ -95,7 +95,7 @@ extension Core: ExpressibleByStringLiteral {
     init(stringLiteral value: String) {
 
         self.init()
-        context[StringLiteralType.self|] = value
+        scope[StringLiteralType.self|] = value
     }
 
 }
@@ -110,7 +110,7 @@ extension Core: ExpressibleByStringLiteral {
 //    init(unicodeScalarLiteral value: UnicodeScalarLiteralType) {
 //
 //        self.init()
-//        context[UnicodeScalarLiteralType.self|] = value
+//        scope[UnicodeScalarLiteralType.self|] = value
 //
 //    }
 //

@@ -16,13 +16,13 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-/// Expect from context
+/// Expect from scope
 /// ``
 public
 protocol Expecting: Ask.Nil {
 
     static
-    func ask<C, T>(with context: C, ask: Ask<T>) -> Core
+    func ask<C, T>(with scope: C, ask: Ask<T>) -> Core
     
 }
 
@@ -31,9 +31,9 @@ extension Expecting {
     @inline(__always)
     public
     static
-    func ask<C, T>(with context: C, ask: Ask<T>) -> Core {
+    func ask<C, T>(with scope: C, ask: Ask<T>) -> Core {
 
-        let wand = Core.to(context)
+        let wand = Core.to(scope)
         _ = wand.append(ask: ask)
         return wand
     }

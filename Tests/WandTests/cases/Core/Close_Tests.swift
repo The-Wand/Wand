@@ -46,7 +46,7 @@ class CoreCloseTests: XCTestCase {
 //            wand|
 //        }
 
-        Performance.measure("Closing \(wand!) with \(wand!.context.count) objects") {
+        Performance.measure("Closing \(wand!) with \(wand!.scope.count) objects") {
             _ = (wand!)|
         }
 

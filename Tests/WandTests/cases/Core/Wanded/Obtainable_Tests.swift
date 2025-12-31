@@ -53,7 +53,7 @@ func obtain_from_core_get()
 }
 
 @Test
-func obtain_from_context_cast()
+func obtain_from_scope_cast()
 {
     let object: Any = toObtain
     let obtained: NotificationCenter = object|
@@ -62,7 +62,7 @@ func obtain_from_context_cast()
 }
 
 @Test
-func obtain_from_context_obtain()
+func obtain_from_scope_obtain()
 {
     let object = String.any
     let obtained: NotificationCenter = object|

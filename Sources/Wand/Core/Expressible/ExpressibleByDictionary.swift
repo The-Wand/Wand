@@ -29,7 +29,7 @@ extension Core: ExpressibleByDictionaryLiteral {
         elements.forEach { (key, object) in
 
             Core[object as AnyObject] = self
-            context[key] = object
+            scope[key] = object
         }
     }
 
@@ -43,7 +43,7 @@ extension Core: ExpressibleByDictionaryLiteral {
         dictionary.forEach { (key, object) in
 
             Core[object as AnyObject] = self
-            context[key] = object
+            scope[key] = object
         }
     }
 

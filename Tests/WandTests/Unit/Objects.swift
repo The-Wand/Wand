@@ -96,9 +96,9 @@ struct Tool {
 //
 //    public
 //    static
-//    func ask<C, T>(with context: C, ask: Wand.Ask<T>) -> Core {
+//    func ask<C, T>(with scope: C, ask: Wand.Ask<T>) -> Core {
 //
-//        let wand = Core.to(context)
+//        let wand = Core.to(scope)
 //
 //        guard wand.append(ask: ask, check: true) else {
 //            return wand
@@ -119,7 +119,7 @@ struct Tool {
 //
 //    public
 //    static
-//    func `try`<C>(with context: C, wand: Core) {
+//    func `try`<C>(with scope: C, wand: Core) {
 //
 //
 //    }

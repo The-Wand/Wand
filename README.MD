@@ -182,7 +182,7 @@ view.layer.addSublayer(preview!)
 ### ❗ Error handling
 
 ```swift
-//Attach Ask<Error> to the context
+//Attach Ask<Error> to the scope
 any | { (error: Error) in
     
 }

@@ -22,18 +22,18 @@ import XCTest
 ///// AskT
 //extension XCTestCase {
 //
-//    func auto<C, T: AskT>(test context: C, completion:  @escaping (T)->() ) {
-//        auto(test: context, api: |, completion: completion)
+//    func auto<C, T: AskT>(test scope: C, completion:  @escaping (T)->() ) {
+//        auto(test: scope, api: |, completion: completion)
 //    }
 //
-//    func auto<C, T: AskT>(test context: C,
+//    func auto<C, T: AskT>(test scope: C,
 //                            api: ( (C, (T)->()) )->(Core),
 //                            completion:  @escaping (T)->() ) {
 //
 //        let e = expectation()
 //        e.assertForOverFulfill = true
 //
-//        _ = api( (context, { (t: T) in
+//        _ = api( (scope, { (t: T) in
 //            e.fulfill()
 //            completion(t)
 //        }) )

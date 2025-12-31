@@ -36,11 +36,11 @@ class Core_To_Tests: XCTestCase {
     func test_to_Object() throws {
 
         //TODO: Add URL.any
-        let context = URLRequest(url: Bundle.main.bundleURL)
+        let scope = URLRequest(url: Bundle.main.bundleURL)
 
-        let wand = Core.to(context)
+        let wand = Core.to(scope)
 
-        XCTAssertEqual(wand.get(), context as URLRequest)
+        XCTAssertEqual(wand.get(), scope as URLRequest)
         XCTAssertNotNil(wand)
     }
 
@@ -50,9 +50,9 @@ class Core_To_Tests: XCTestCase {
         let request = URLRequest(url: Bundle.main.bundleURL)
         let key = "Request"
 
-        let context = [key: request]
+        let scope = [key: request]
 
-        let wand = Core.to(context)
+        let wand = Core.to(scope)
 
         XCTAssertEqual(wand.get(for: key), request)
         XCTAssertNotNil(wand)

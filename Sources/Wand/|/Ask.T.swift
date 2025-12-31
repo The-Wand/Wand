@@ -16,7 +16,7 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-/// Ask from context
+/// Ask from scope
 public
 extension Ask {
 
@@ -24,12 +24,12 @@ extension Ask {
 
 }
 
-/// TODO: static func |<C>(context: C, asks: Ask<Self>)
+/// TODO: static func |<C>(scope: C, asks: Ask<Self>)
 public
 protocol AskT {
 
     static 
-    func ask<C, T>(with context: C, ask: Ask<T>) -> Core
+    func ask<C, T>(with scope: C, ask: Ask<T>) -> Core
 
 }
 
@@ -42,8 +42,8 @@ protocol AskT {
 @inline(__always)
 @discardableResult
 public
-func |<C, T: Ask.T>(context: C, handler: @escaping (T)->() ) -> Core {
-    context | Ask.one(handler: handler)
+func |<C, T: Ask.T>(scope: C, handler: @escaping (T)->() ) -> Core {
+    scope | Ask.one(handler: handler)
 }
 
 /// Ask
@@ -58,8 +58,8 @@ func |<C, T: Ask.T>(context: C, handler: @escaping (T)->() ) -> Core {
 @inline(__always)
 @discardableResult
 public
-func |<C, T: Ask.T>(context: C, ask: Ask<T>) -> Core {
-    T.ask(with: context, ask: ask)
+func |<C, T: Ask.T>(scope: C, ask: Ask<T>) -> Core {
+    T.ask(with: scope, ask: ask)
 }
 
 /// Ask without handler

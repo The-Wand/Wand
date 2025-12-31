@@ -17,7 +17,7 @@
 /// The Wand
 
 /// Get object from Core
-/// or create in context
+/// or create in scope
 ///
 /// TODO: postfix static func |(wand: Core?) -> Self
 public
@@ -55,15 +55,15 @@ func |<T: Obtainable>(wand: Core?) -> T {
     }()
 }
 
-/// Obtain from context
+/// Obtain from scope
 ///
-/// let object: T = context|
+/// let object: T = scope|
 ///
 @inline(__always)
 postfix
 public
-func |<C, T: Obtainable>(context: C) -> T {
-    context as? T ?? Core.to(context).get()
+func |<C, T: Obtainable>(scope: C) -> T {
+    scope as? T ?? Core.to(scope).get()
 }
 
 /// Obtainable unwrap

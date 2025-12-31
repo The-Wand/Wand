@@ -25,11 +25,11 @@ extension Core {
         
         let key = ask.key
         
-        let tail = (wand.scope[key] as? Last)?.last as? Ask<T>
+        let tail = handlers[key]?.last as? Ask<T>
         ask.next = tail?.next ?? ask
         tail?.next = ask
         
-        wand.scope[key] = Last(ask, nil)
+        handlers[key] = (ask, nil)
 
         return wand
     }
