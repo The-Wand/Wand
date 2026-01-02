@@ -19,6 +19,8 @@
 import SwiftUI
 import Wand
 
+import Network
+
 @available(iOS 14, macOS 12, tvOS 14, watchOS 7, *)
 @main
 struct PlayApp: App {
@@ -41,6 +43,14 @@ struct ContentView: View {
         }.onAppear() {
 //            Wand.Log.level = .verbose
 //            Highload.highload_tests()
+
+            |{ (changes: NWBrowser.Result.Change) in
+                print(changes)
+            }
+
+            |{ (connect: NWConnection) in
+                print(connect)
+            }
         }
     }
 
