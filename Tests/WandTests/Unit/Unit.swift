@@ -55,25 +55,3 @@ extension Ask {
     }
 
 }
-
-//public
-//extension ClosedRange where Bound == Int {
-//
-//    @inline(__always)
-//    static
-//    var any: Self {
-//        1...(1...11).any
-//    }
-//
-//}
-//
-//public
-//extension Range where Bound == Int {
-//
-//    @inline(__always)
-//    static
-//    var any: Self {
-//        Range(uncheckedBounds: (1, (1...11).any))
-//    }
-//
-//}

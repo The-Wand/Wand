@@ -35,8 +35,7 @@ class Core_To_Tests: XCTestCase {
 
     func test_to_Object() throws {
 
-        //TODO: Add URL.any
-        let scope = URLRequest(url: Bundle.main.bundleURL)
+        let scope = URLRequest(url: .any)
 
         let wand = Core.to(scope)
 
@@ -46,8 +45,7 @@ class Core_To_Tests: XCTestCase {
 
     func test_to_Dictionary() throws {
 
-        //TODO: Add URL.any
-        let request = URLRequest(url: Bundle.main.bundleURL)
+        let request = URLRequest(url: .any)
         let key = "Request"
 
         let scope = [key: request]
