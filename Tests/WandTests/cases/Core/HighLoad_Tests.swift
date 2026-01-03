@@ -24,7 +24,7 @@ import CoreLocation
 
 struct Highload {
 
-    /// Core 3.0.1
+    /// Core 3.0.2
     /// A2485 | M1 Pro 16 Gb | macOS 15.6.1
     /// -logs ~380
     ///
@@ -32,11 +32,11 @@ struct Highload {
     /// 🏎️ Fulfilling 150m handlers: ~2400s
     ///
     /// 🏎️ Launching 111m cores: ~300s
-    /// 🏎️ Fulfilling 111m handlers: ~460s
+    /// 🏎️ Fulfilling 111m handlers: ~450s
     @Test
-    func highload_tests()
+    func struct_test()
     {
-        let count = 111_11//1_111
+        let count = 111_111_111
         let message = 0x1F408
         let tool = Tool()
 
@@ -77,45 +77,61 @@ struct Highload {
         #expect(true)
     }
 
+    /// Core 3.0.2
+    /// A2485 | M1 Pro 16 Gb | macOS 15.6.1
+    /// -logs ~380
+    ///
+    /// 🏎️ Launching 150m cores:
+    /// 🏎️ Fulfilling 150m handlers:
+    ///
+    /// 🏎️ Launching 111m cores: ~300s
+    /// 🏎️ Fulfilling 111m handlers: ~650s
+    @Test
+    func class_test()
+    {
+        let count = 111_111_111
+        let message = 0x1F408
+        let tool = Tool()
 
+        var core: Core? = |{ (location: CLLocation) in
+            tool.send(message: message, index: 0)
+        }
 
-//    🏎️ Launching 11111 cores
-//    : 0.0277169
-//    🏎️ Fulfilling 11111 handlers
-//    0
-//    : 0.0349998
+        var nextCore = core
 
-//    🏎️ Launching 11111 cores
-//    : 0.0279210
-//    🏎️ Fulfilling 11111 handlers
-//    0
-//    : 0.0352640
-//|
+        Performance.measure("Launching \(count) cores") {
 
+            (1...count).forEach { index in
 
+                let newWand = |{ (location: CLLocation) in
+                    tool.send(message: message, index: index)
+                }
 
-//    0.0273636
-//    0.035012
-    
-//    🏎️ Launching 11111 cores
-//    : 0.0278430
-//    🏎️ Fulfilling 11111 handlers
-//    0
-//    : 0.0365388
+                nextCore?.put(Core.Weak(item: newWand), for: "Wand")
+                nextCore = newWand
 
-//    🏎️ Launching 11111 cores
-//    : 0.0270190
-//    🏎️ Fulfilling 11111 handlers
-//    0
-//    : 0.0344501
+                tool.send(index: index)
+            }
+        }
 
-//    🏎️ Launching 11111 cores
-//    : 0.0272288
-//    🏎️ Fulfilling 11111 handlers
-//    0
-//    : 0.0340471
+        nextCore = core
+        core = nil
 
-    @Test func int_pointer() {
+        Performance.measure("Fulfilling \(count) handlers") {
+
+            nextCore?.add(CLLocation.any)
+
+            while let wand = (nextCore?.get(for: "Wand") as Core.Weak?)?.item {
+                wand.add(CLLocation.any)
+                nextCore = wand
+            }
+        }
+
+        #expect(true)
+    }
+
+    @Test
+    func int_pointer() {
 
         var locs = [CLLocation]()
         (1...500_500).forEach { _ in
@@ -144,5 +160,12 @@ struct Highload {
         }
 
     }
+
+}
+
+
+import CoreLocation.CLLocation
+
+extension CLLocation: Expecting {
 
 }
