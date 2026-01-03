@@ -353,12 +353,7 @@ extension Core {
     @inlinable
     public
     func addIf<T>(exist object: T?, for key: String? = nil) -> T? {
-
-        guard let object = object else {
-            return nil
-        }
-
-        return add(object, for: key)
+        (object == nil) ? nil : add(object!, for: key) //TODO: Swift evolution suggest let object ? add(object, for: key) : nil
     }
 
     @discardableResult
