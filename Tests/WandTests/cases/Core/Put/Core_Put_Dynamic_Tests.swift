@@ -56,7 +56,7 @@ class Core_Put_Dynamic_Tests: XCTestCase {
         XCTAssertNil(self.wand)
     }
 
-    func test_put_empty_key() throws {
+    func test_put_empty_key_object() throws {
 
         var wand: Core! = Core()
         self.wand = wand
@@ -78,6 +78,33 @@ class Core_Put_Dynamic_Tests: XCTestCase {
         XCTAssertNil(self.wand)
     }
 
+    func test_put_empty_keys() throws {
+
+        var wand: Core! = Core()
+        self.wand = wand
+
+        let bool = true
+        let int = 4
+
+        let location = CLLocation.any
+        let date = Date.any
+
+        wand([bool, int, location, date])
+
+        XCTAssertEqual(wand.get(), bool)
+        XCTAssertEqual(wand.get(), int)
+        XCTAssertEqual(wand.get(), location)
+        XCTAssertEqual(wand.get(), date)
+
+        XCTAssertTrue(wand === (location as Optional).wand)
+
+        //Close wand
+        weak
+        var closed = wand|
+        wand = nil
+
+        XCTAssertNil(closed)
+        XCTAssertNil(self.wand)
+    }
 
 }
-
