@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/el-machine/Any.git",
       "state" : {
-        "revision" : "7cae63b1a897006d9d1cadef06ea266415f1b3e5",
-        "version" : "1.0.2"
+        "revision" : "5fccdf9628bc117439a87a564958196c28896c97",
+        "version" : "1.0.3"
       }
     }
   ],

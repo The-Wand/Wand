@@ -150,7 +150,7 @@ extension Core: CustomStringConvertible {
     var description: String {
         """
         Wand.Core \(name.remainder| as Character)
-        v3.0.1 by @alko
+        v3.0.2 by @alko
         """
     }
 
@@ -284,7 +284,7 @@ extension Core {
     @inline(__always)
     public
     func extract<T>(for key: String? = nil) -> T? {
-        scope.removeValue(forKey: key ?? T.self|) as? T
+        scope.removeValue(forKey: key ?? T.self|) as? T //TODO: Extracted not T ?
     }
 
 }
@@ -412,11 +412,16 @@ extension Core {
         //Release scope
         scope.removeAll()
 
+
+
+
+
         //TODO: Do I really need to clean shelf?
         //
         //Clean Cores shelf
         //        Core.all = Core.all.filter {
-        //            $0.value.item != nil //        }
+        //            $0.value.item != nil
+        //        }
     }
 
 }
