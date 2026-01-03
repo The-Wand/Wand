@@ -16,7 +16,7 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS)
 import CoreGraphics
 import UIKit
 

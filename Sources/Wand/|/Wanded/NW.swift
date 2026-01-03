@@ -133,7 +133,7 @@ extension NWConnection: Ask.Nil {
         }
 
         let parameters: NWParameters =
-        if #available(macOS 13.0, iOS 16.0, *) {
+        if #available(macOS 13.0, iOS 16.0, watchOS 9.0, *) {
             wand.get() ?? NWParameters.applicationService
         } else {
             NWParameters()
@@ -144,7 +144,7 @@ extension NWConnection: Ask.Nil {
 
         do {
             let source = try NWListener(using: parameters)
-            if #available(macOS 13.0, iOS 16.0, *) {
+            if #available(macOS 13.0, iOS 16.0, watchOS 9.0, *) {
                 source.service = NWListener.Service(applicationService: "wand")
             }
 
