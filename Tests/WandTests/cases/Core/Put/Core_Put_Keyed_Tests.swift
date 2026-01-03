@@ -21,11 +21,12 @@ import CoreLocation.CLLocation
 import Wand
 import XCTest
 
-class Core_Put_Keyed_Tests: XCTestCase {
+class Core_Put_Dynamic_Tests: XCTestCase {
 
     weak
     var wand: Core?
 
+//    @Test
     func test_put_keyed() throws {
 
         var wand: Core! = Core()
@@ -44,10 +45,29 @@ class Core_Put_Keyed_Tests: XCTestCase {
         XCTAssertEqual(wand.get(for: "l"), location)
         XCTAssertEqual(wand.get(for: "d"), date)
 
-        //TODO: Fix and reenable
-        // wand is the same
-        //        XCTAssertTrue(wand === (location as Optional).wand)
-        //        XCTAssertTrue(wand === (date as Optional).wand)
+        XCTAssertTrue(wand === (location as Optional).wand)
+
+        //Close wand
+        weak
+        var closed = wand|
+        wand = nil
+
+        XCTAssertNil(closed)
+        XCTAssertNil(self.wand)
+    }
+
+    func test_put_empty_key() throws {
+
+        var wand: Core! = Core()
+        self.wand = wand
+
+        let location = CLLocation.any
+
+        wand(location)
+
+        XCTAssertEqual(wand.get(), location)
+
+        XCTAssertTrue(wand === (location as Optional).wand)
 
         //Close wand
         weak
@@ -60,3 +80,4 @@ class Core_Put_Keyed_Tests: XCTestCase {
 
 
 }
+
