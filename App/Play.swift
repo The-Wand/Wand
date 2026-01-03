@@ -43,14 +43,6 @@ struct ContentView: View {
         }.onAppear() {
 //            Wand.Log.level = .verbose
 //            Highload.highload_tests()
-
-            |{ (changes: NWBrowser.Result.Change) in
-                print(changes)
-            }
-
-            |{ (connect: NWConnection) in
-                print(connect)
-            }
         }
     }
 

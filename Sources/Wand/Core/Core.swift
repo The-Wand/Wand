@@ -260,6 +260,14 @@ extension Core {
         return self
     }
 
+    @discardableResult
+    @inlinable
+    public
+    func dynamicallyCall(withArguments objects: [Any]) -> Self {
+        put(sequence: objects)
+        return self
+    }
+
 }
 
 /// Scope

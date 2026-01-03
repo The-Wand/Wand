@@ -31,11 +31,11 @@ class Ask<T> {
     public
     var next: Ask?
     
-    /// Need only one
+    /// Wait for only one object
     public
     let once: Bool
     
-    /// Question label
+    /// Label
     internal
     var _key: String?
 
@@ -114,7 +114,6 @@ extension Ask {
 
             handler?($0)
             return true
-
         }
     }
 
@@ -130,7 +129,6 @@ extension Ask {
 
             handler?($0)
             return false
-
         }
     }
 

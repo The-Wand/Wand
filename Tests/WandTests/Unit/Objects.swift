@@ -48,7 +48,7 @@ extension String: @retroactive Expecting {
 struct Tool {
 
     @inlinable
-    func send(message: Int, to point: Point, index: Int) {
+    func send(message: Int, to point: Point? = nil, index: Int) {
         send(index: index)
     }
 
