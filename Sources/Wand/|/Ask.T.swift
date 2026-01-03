@@ -24,7 +24,7 @@ extension Ask {
 
 }
 
-/// TODO: static func |<C>(scope: C, asks: Ask<Self>)
+//TODO: static func |<C>(scope: C, asks: Ask<Self>)
 public
 protocol AskT {
 

@@ -18,11 +18,10 @@
 
 /// Get object from Core
 /// or create in scope
-///
-/// TODO: postfix static func |(wand: Core?) -> Self
 public
 protocol Obtainable: Wanded {
 
+    //TODO: postfix static func |(wand: Core?) -> Self
     @inline(__always)
     static 
     func obtain(by wand: Core?) -> Self
