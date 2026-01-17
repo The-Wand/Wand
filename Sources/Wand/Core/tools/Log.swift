@@ -27,7 +27,7 @@ enum Log: Int {
 
     public
     static
-    var level = Log.default
+    let `default` = Log.info
 
     public
     static
