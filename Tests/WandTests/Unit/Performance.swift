@@ -23,38 +23,26 @@ public
 struct Performance {
 
     private
-    let label: String
-
-    private
     let start = Date().timeIntervalSince1970
 
+    @discardableResult
     @inline(__always)
     public
-    init(of label: String = #function) {
-        print("🏎️ " + label)
-        self.label = label
-    }
-
-    @inlinable
-    public
-    static
-    func measure(_ label: String = #function, block: ()->() ) {
-
+    init(of label: String = #function, block: ( ()->() )? = nil) {
         #if DEBUG
             print("🏎️ " + label)
-            let start = Date().timeIntervalSince1970
 
-            block()
+            if let block {
 
-            let delta = Date().timeIntervalSince1970 - start
-            print(": " + String(format: "%.7f", delta))
+                block()
+                measure()
+            }
         #endif
     }
 
     @inline(__always)
     public
     func measure() {
-
         #if DEBUG
             let delta = Date().timeIntervalSince1970 - start
             print(": " + String(format: "%.7f", delta))
