@@ -85,10 +85,7 @@ class Core_Put_Tests: XCTestCase {
         XCTAssertEqual(wand.get(), location)
         XCTAssertEqual(wand.get(), date)
 
-        //TODO: Fix and reenable
-        // wand is the same
-        //        XCTAssertTrue(wand === (location as Optional).wand)
-        //        XCTAssertTrue(wand === (date as Optional).wand)
+        XCTAssertTrue(wand === (location as Optional).wand)
 
         //Close wand
         weak

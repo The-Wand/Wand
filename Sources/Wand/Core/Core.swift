@@ -224,48 +224,38 @@ extension Core {
 /// Without triggering Asks
 extension Core {
 
-    @discardableResult
     @inlinable
     public
-    func put<T>(sequence: T) -> T where T == any Sequence {
-
+    func put<T>(sequence: T) where T == any Sequence {
         sequence.forEach { object in
 
             let type = type(of: object)
             if type is AnyClass {
-                Core.all[(object as AnyObject)|] = Weak(item: self)
+                Core[object as AnyObject] = self
             }
 
             scope[type|] = object
         }
-
-        return sequence
     }
 
-    @discardableResult
     @inlinable
     public
-    func dynamicallyCall<T>(withKeywordArguments args: T) -> Self where T == KeyValuePairs<String, Any> {
-
+    func dynamicallyCall<T>(withKeywordArguments args: T) where T == KeyValuePairs<String, Any> {
         for (key, object) in args {
 
             let type = type(of: object)
             if type is AnyClass {
-                Core.all[(object as AnyObject)|] = Weak(item: self)
+                Core[object as AnyObject] = self
             }
 
             scope[key] = object
         }
-
-        return self
     }
 
-    @discardableResult
     @inlinable
     public
-    func dynamicallyCall(withArguments objects: [Any]) -> Self {
+    func dynamicallyCall(withArguments objects: [Any]) {
         put(sequence: objects)
-        return self
     }
 
 }
