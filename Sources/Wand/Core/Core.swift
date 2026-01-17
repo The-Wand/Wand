@@ -380,6 +380,14 @@ extension Core {
         return object
     }
 
+    @inlinable
+    public
+    func add<T>(sequence: any Sequence<T>) {
+        sequence.forEach {
+            add($0)
+        }
+    }
+
 }
 
 /// Close
