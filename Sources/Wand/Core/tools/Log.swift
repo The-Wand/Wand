@@ -21,9 +21,9 @@ public
 enum Log: Int {
 
     case none
-    case verbose
-    case warning
     case info
+    case warning
+    case verbose
 
     public
     static
@@ -31,7 +31,7 @@ enum Log: Int {
 
     public
     static
-    let `default` = Log.none
+    var level = Log.default
 
 }
 
@@ -49,11 +49,9 @@ extension Log: Comparable {
 extension Core {
 
     @inlinable
-    internal
+    public
     func log(_ message: String, to level: Log = .verbose) {
-
-        let bound = Log.level
-        if bound > .none && .verbose...bound ~= level {
+        if Log.level > .none && Log.level >= level {
             print(message + "\n" + description + "\n")
         }
     }
