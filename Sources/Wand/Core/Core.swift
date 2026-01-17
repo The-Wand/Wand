@@ -109,7 +109,7 @@ class Core: Identifiable {
     }
 
     deinit {
-        sendLogs()
+//        sendLogs()
 
         close()
         log("|✅ #bonsua")

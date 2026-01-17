@@ -62,11 +62,9 @@ class Core_Put_Dynamic_Tests: XCTestCase {
         self.wand = wand
 
         let location = CLLocation.any
-
         wand(location)
 
         XCTAssertEqual(wand.get(), location)
-
         XCTAssertTrue(wand === (location as Optional).wand)
 
         //Close wand
@@ -89,7 +87,7 @@ class Core_Put_Dynamic_Tests: XCTestCase {
         let location = CLLocation.any
         let date = Date.any
 
-        wand([bool, int, location, date])
+        wand(bool, int, location, date)
 
         XCTAssertEqual(wand.get(), bool)
         XCTAssertEqual(wand.get(), int)

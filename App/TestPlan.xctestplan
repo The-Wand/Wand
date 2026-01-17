@@ -16,7 +16,7 @@
   },
   "testTargets" : [
     {
-      "parallelizable" : false,
+      "parallelizable" : true,
       "skippedTests" : {
         "suites" : [
           {
