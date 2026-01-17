@@ -36,20 +36,6 @@ extension URLCache: @retroactive Ubiquitous {
 
 }
 
-extension URLCache {
-
-    @inline(__always)
-    @discardableResult
-    prefix
-    public
-    static
-    func | (the: URLCache) -> Self {
-        URLCache.shared = the
-        return the as! Self
-    }
-
-}
-
 @Test
 func ubiquitous_from_core()
 {
@@ -110,20 +96,14 @@ func ubiquitous_unwrap_type()
 }
 
 @Test
-func ubiquitous_setter()
+func ubiquitous_default_setter()
 {
-    let original = URLCache.self|
-    #expect(sharedCache == original)
-
     let memory = 42 * 1024 * 8
     let disk = memory * memory
 
-    |URLCache(memoryCapacity: memory, diskCapacity: disk)
+    let cache = URLCache(memoryCapacity: memory, diskCapacity: disk)
 
-    let setted = URLCache.self|
-    #expect(sharedCache == setted)
-    #expect(setted.diskCapacity == disk)
-    #expect(setted.memoryCapacity == memory)
+    #expect(|cache == cache)
 }
 
 #endif
