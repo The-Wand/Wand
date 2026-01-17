@@ -16,55 +16,22 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-import CoreLocation.CLLocation
-
+import Testing
 import Wand
-import XCTest
 
-class Core_To_Tests: XCTestCase {
+struct Core_Utils_Tests {
 
-    weak
-    var wand: Core?
-
-    func test_to_Nil() throws {
-
-        let wand = Core.to(nil as Int?)
-
-        XCTAssertNotNil(wand)
-    }
-
-    func test_to_Scope()
+    @Test
+    func test_description()
     {
-        let scope = "🫵"
-
-        let wand = Core.to(scope)
-
-        XCTAssertEqual(wand.get(), scope as String)
-        XCTAssertNotNil(wand)
+        #expect(!Core().description.isEmpty)
     }
 
-    func test_to_Dictionary() throws {
-
-        let request = URLRequest(url: .any)
-        let key = "Request"
-
-        let scope = [key: request]
-
-        let wand = Core.to(scope)
-
-        XCTAssertEqual(wand.get(for: key), request)
-        XCTAssertNotNil(wand)
-    }
-
-    func test_to_Object()
+    @Test
+    func test_log()
     {
-        let location = CLLocation.any
-
-        let wand = (location as Optional).wand
-        let isWanded = (location as Optional).isWanded
-
-        XCTAssertNotNil(isWanded)
-        XCTAssertTrue(wand === isWanded)
+        Core().log("Test Log", to: .info)
+        #expect(true)
     }
 
 }

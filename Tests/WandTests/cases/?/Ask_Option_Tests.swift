@@ -42,9 +42,7 @@ class Ask_Option_Tests: XCTestCase {
 
         weak
         var wand: Core?
-        wand = |?{ (point: Point) in
-            fatalError()
-        }
+        wand = |?Point.one
 
         XCTAssertNil(wand)
     }

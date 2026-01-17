@@ -21,6 +21,12 @@ import Wand
 
 import Network
 
+extension String: @retroactive AskNil {}
+extension String: @retroactive AskT {}
+extension String: @retroactive Expecting {
+
+}
+
 @available(iOS 14, macOS 12, tvOS 14, watchOS 7, *)
 @main
 struct PlayApp: App {
@@ -40,6 +46,19 @@ struct ContentView: View {
         VStack {
             Image(systemName: "wand.and.stars")
             Text("Hello, Wand|")
+//            Button("Receive") {
+//                |.while { (connection: NWConnection) in
+//                    print("✅ \(connection)")
+//                    return true
+//                }
+//            }
+//            Button("Transfer") {
+//                |.while { (result: NWBrowser.Result) in
+//                    print("✅ \(result)")
+//                    return true
+//                }
+//
+//            }
         }.onAppear() {
 //            Wand.Log.level = .verbose
 //            Highload.highload_tests()

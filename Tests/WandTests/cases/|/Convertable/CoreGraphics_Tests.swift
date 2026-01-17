@@ -16,21 +16,28 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-#if canImport(CoreGraphics)
+import Testing
 import CoreGraphics
+import Wand
 
-@inline(__always)
-public
-postfix
-func |(value: CGFloat) -> Float {
-    Float(value)
+struct CoreGraphics {
+
+    @Test
+    func test_CGFloat_to_Float() {
+
+        let value = CGFloat.any
+        let float: Float = value|
+
+        #expect(float.isEqual(to: Float(value)))
+    }
+
+    @Test
+    func test_Int_CGFloat() {
+
+        let value = Int.any
+        let float: CGFloat = value|
+
+        #expect(float.isEqual(to: CGFloat(value)))
+    }
+
 }
-
-@inline(__always)
-postfix
-public
-func |(value: any BinaryInteger) -> CGFloat {
-    CGFloat(value)
-}
-
-#endif

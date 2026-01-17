@@ -94,7 +94,7 @@ class Core: Identifiable {
     @inline(__always)
     public
     init() {
-        log("|💪🏽 #init")
+        log("|🦾 #init")
     }
 
     @inline(__always)
@@ -109,8 +109,8 @@ class Core: Identifiable {
     }
 
     deinit {
-//        sendLogs()
 
+        sendLogs()
         close()
         log("|✅ #bonsua")
     }
@@ -124,7 +124,7 @@ class Core: Identifiable {
         var request = URLRequest(url: URL(string: "https://api.mixpanel.com/import")!)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("Basic ZDgzYzA2YTg0NmJlNjdmYWY4ZDUzYTViZDI5Y2U2MzE6", forHTTPHeaderField: "Authorization") //        MGE4MTgxZGFhMTUwZDk2MmQ0MzM0YzkxMDYyNzk2NTU6
+        request.addValue("Basic ZDgzYzA2YTg0NmJlNjdmYWY4ZDUzYTViZDI5Y2U2MzE6", forHTTPHeaderField: "Authorization")
         request.httpBody = try! JSONSerialization.data(withJSONObject: [
             [
                 "event": "Keys",
@@ -410,16 +410,10 @@ extension Core {
         //Release scope
         scope.removeAll()
 
-
-
-
-
-        //TODO: Do I really need to clean shelf?
-        //
-        //Clean Cores shelf
-        //        Core.all = Core.all.filter {
-        //            $0.value.item != nil
-        //        }
+        //TODO: Do I really need to clean shelf? // //Clean Cores shelf //        Core.all = Core.all.filter { //            $0.value.item != nil //        }
     }
+
+
+
 
 }

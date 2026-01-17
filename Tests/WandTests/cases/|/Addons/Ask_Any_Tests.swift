@@ -57,7 +57,7 @@ class Expect_Any_Tests: XCTestCase {
         let wand = Point.every | String.every
 
         var handlePerformance: Performance!
-        Performance.measure("Ask<Any> add") {
+        Performance(of: "Ask<Any> add") {
 
             wand | .any { _ in
 
@@ -79,7 +79,6 @@ class Expect_Any_Tests: XCTestCase {
         }
 
         waitForExpectations()
-
     }
 
 }

@@ -21,6 +21,29 @@ import XCTest
 
 class Errors_Tests: XCTestCase {
 
+    func test_One_Error_Success_Handling() throws {
+
+        let e1 = expectation()
+        let e2 = expectation()
+
+        weak
+        var wand: Core!
+        wand = |String.one { _ in
+            e1.fulfill()
+        } |? { (error: Error) in
+            XCTAssert(false)
+        } | .all { _ in
+            e2.fulfill()
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak wand] in
+            wand?.add(String.any)
+        }
+
+        wait(for: [e1, e2])
+        XCTAssertNil(wand)
+    }
+
     func test_One_Error_Fail_Handling() throws {
 
         let e1 = expectation()
@@ -29,7 +52,7 @@ class Errors_Tests: XCTestCase {
         weak
         var wand: Core!
         wand = Point.every | String.one { _ in
-            fatalError()
+            XCTAssert(false)
         } |? { (error: Error) in
             e1.fulfill()
         } | .all { _ in
@@ -42,58 +65,105 @@ class Errors_Tests: XCTestCase {
 
         wait(for: [e1, e2])
         //Will work at production environment
-        //        XCTAssertNil(wand)
+        //XCTAssertNil(wand)
     }
 
-    func test_Every_Error_Fail_Handling() throws {
+    func test_Every_Error_Fail_Handling() {
 
-        let count = (1...4).any
+        let range = ClosedRange.any
 
-        let e1 = expectation()
-        e1.expectedFulfillmentCount = count
+        let e = expectation()
+        e.expectedFulfillmentCount = range.upperBound
 
         weak
         var wand: Core!
         wand = Point.every | String.one { _ in
             fatalError()
         } |? .every { (error: Error) in
-            e1.fulfill()
+            e.fulfill()
         } | .all { _ in
             fatalError()
         }
 
-        (1...count).forEach { _ in
+        range.forEach { _ in
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak wand] in
                 wand?.add(NSError() as Error)
             }
         }
 
-        wait(for: [e1])
+        waitForExpectations()
         XCTAssertNotNil(wand)
     }
 
-//    func test_One_Error_Success_Handling() throws {
-//
-//        let e1 = expectation()
-//        let e2 = expectation()
-//
-//        weak
-//        var wand: Core!
-//        wand = |String.one { _ in
-//            e1.fulfill()
-//        } | { (error: Error) in
-//            fatalError()
-//        } | .all { _ in
-//            e2.fulfill()
-//        }
-//
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak wand] in
-//            wand?.add(String.any)
-//        }
-//
-//        wait(for: [e1, e2])
-//        XCTAssertNil(wand)
-//    }
+    func test_Optional_Error_done() {
+
+        let e = expectation()
+
+        weak
+        var wand: Core!
+        wand = |Point.one |? { (error: Error?) in
+            if error == nil {
+                e.fulfill()
+            }
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak wand] in
+            wand?.add(nil as Error?)
+        }
+
+        wait(for: [e])
+        //Will work at production environment
+        //XCTAssertNil(wand)
+    }
+
+    func test_Optional_Error_fail() {
+
+        let e = expectation()
+
+        weak
+        var wand: Core!
+        wand = |Point.one |? { (error: Error?) in
+            if error != nil {
+                e.fulfill()
+            }
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak wand] in
+            wand?.add(Core.Error(reason: .any) as Error)
+        }
+
+        wait(for: [e])
+        //Will work at production environment
+        //XCTAssertNil(wand)
+    }
+
+    func test_Optional_Error_every_done() {
+
+        let range = ClosedRange.any
+
+        let e = expectation()
+        e.expectedFulfillmentCount = range.upperBound
+
+        weak
+        var wand: Core!
+        wand = |Point.one |? .every { (error: Error?) in
+            if error == nil {
+                e.fulfill()
+            }
+        }
+
+        range.forEach { _ in
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak wand] in
+                wand?.add(nil as Error?)
+            }
+        }
+
+        wait(for: [e])
+        //Will work at production environment
+        //XCTAssertNil(wand)
+    }
 
 }
+

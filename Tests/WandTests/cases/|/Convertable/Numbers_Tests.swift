@@ -16,48 +16,62 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-@inline(__always)
-postfix
-public
-func |<T: Numeric>(value: Bool) -> T {
-    value ? 1 : 0
-}
+import Testing
+import Wand
 
-@inline(__always)
-postfix
-public
-func |(value: any BinaryFloatingPoint) -> Int {
-    Int(value)
-}
+struct Numbers {
 
-@inline(__always)
-postfix
-public
-func |(value: any BinaryInteger) -> Double {
-    Double(value)
-}
-
-@inline(__always)
-postfix
-public
-func |(value: any BinaryInteger) -> Int {
-    Int(value)
-}
-
-@inline(__always)
-postfix
-public
-func |(value: Double) -> Float {
-    Float(value)
-}
-
-@inline(__always)
-postfix
-public
-func |(value: (any BinaryInteger)?) -> String? {
-    guard let value else {
-        return ""
+    @Test
+    func test_Bool_to_Numeric() {
+        #expect(true| == 1)
+        #expect(false| == 0)
     }
-    
-    return String(describing: value)
+
+    @Test
+    func test_BinaryFloatingPoint_to_Int() {
+
+        let value = Float(Int.any)
+        let int: Int = value|
+
+        #expect(int == Int(value))
+    }
+
+    @Test
+    func test_BinaryInteger_to_Double() {
+
+        let value: Int8 = .any
+        let double: Double = value|
+
+        #expect(double.isEqual(to: Double(value)))
+    }
+
+    @Test
+    func test_BinaryInteger_to_Int() {
+
+        let value: Int8 = .any
+        let numeric: Int = value|
+
+        #expect(numeric == value)
+    }
+
+    @Test
+    func test_Double_to_Float() {
+
+        let value: Double = .any
+        let float: Float = value|
+
+        #expect(float.isEqual(to: Float(value)))
+    }
+
+    @Test
+    func test_BinaryInteger_to_String() {
+
+        let value: Int16 = .any
+        let string: String = value|
+
+        #expect(string == value.description)
+
+        #expect((nil as Int32?)| == nil)
+    }
+
 }

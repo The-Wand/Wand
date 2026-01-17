@@ -36,20 +36,27 @@ extension NotificationCenter: @retroactive Obtainable {
 }
 
 @Test
-func obtain_from_core()
+func obtain_from_type()
 {
-    let obtained: NotificationCenter = Core().get()
-
+    let obtained = NotificationCenter.self|
     #expect(obtained == toObtain)
 }
 
 @Test
-func obtain_from_core_get()
+func obtain_from_wand_get()
 {
-    let core = Core(toObtain)
-    let obtained: NotificationCenter = core.get()
+    let object = NotificationCenter.self|
+    let wand: Core? = Core.to(object)
 
-    #expect(obtained == toObtain)
+    #expect(wand| as NotificationCenter == toObtain)
+}
+
+@Test
+func obtain_from_wand_obtain()
+{
+    let wand: Core? = nil
+
+    #expect(wand| as NotificationCenter == toObtain)
 }
 
 @Test
@@ -71,13 +78,6 @@ func obtain_from_scope_obtain()
 }
 
 @Test
-func obtain_from_type()
-{
-    let obtained = NotificationCenter.self|
-    #expect(obtained == toObtain)
-}
-
-@Test
 func obtain_unwrap()
 {
     let object: NotificationCenter? = toObtain
@@ -91,6 +91,23 @@ func obtain_unwrap_type()
 {
     let object: NotificationCenter? = nil
     let obtained: NotificationCenter = object|
+
+    #expect(obtained == toObtain)
+}
+
+@Test
+func obtain_from_core()
+{
+    let obtained: NotificationCenter = Core().get()
+
+    #expect(obtained == toObtain)
+}
+
+@Test
+func obtain_from_core_get()
+{
+    let core = Core(toObtain)
+    let obtained: NotificationCenter = core.get()
 
     #expect(obtained == toObtain)
 }

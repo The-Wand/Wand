@@ -16,57 +16,59 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-import Testing
+import Foundation
+import XCTest
 import Wand
 
-//@Test
-//func test_Every_Counting()
-//throws
-//{
-//
-//    let bound = (1...5).any
-//
-//    var expect = 0
-//
-//    let wand = |.every { (string: String, count: Int) in
-//
-//        expect = count
-//    }
-//
-//    (1...bound).forEach { _ in
-//        Task {
-//            try await Task.sleep(nanoseconds: 1_000_000)
-//
-//            wand.add(String.any)
-//        }
-//    }
-//
-//    #expect(expect == bound)
-//}
-//
-//@Test
-//func test_While_Counting()
-//throws
-//{
-//
-//    let bound = (1...5).any
-//
-//    var expect = 0
-//
-//    let wand = |.while { (string: String, count: Int) in
-//
-//        expect = count
-//
-//        return count < bound
-//    }
-//
-//    (1...bound).forEach { _ in
-//        Task {
-//            try await Task.sleep(nanoseconds: 1_000_000)
-//
-//            wand.add(String.any)
-//        }
-//    }
-//
-//    #expect(expect == bound)
-//}
+class CountingTests: XCTestCase {
+
+    func test_Every_Counting()
+    {
+        let bound = ClosedRange.any.any
+
+        let e = expectation()
+        e.expectedFulfillmentCount = bound
+
+        var expect = 0
+
+        let wand = |.every { (string: String, count: Int) in
+
+            expect = count
+            e.fulfill()
+        }
+
+        (0..<bound).forEach { _ in
+            wand.add(String.any)
+        }
+
+        waitForExpectations()
+        XCTAssert(expect == bound - 1)
+    }
+
+    func test_While_Counting()
+    {
+        let bound = ClosedRange.any.any
+
+        let e = expectation()
+        e.expectedFulfillmentCount = bound
+
+        var expect = 0
+
+        let wand = |.while { (string: String, count: Int) in
+
+            expect = count
+            e.fulfill()
+
+            return count <= bound
+        }
+
+
+        (0..<bound).forEach { _ in
+            wand.add(String.any)
+        }
+
+        waitForExpectations()
+        XCTAssert(expect == bound - 1)
+    }
+
+}

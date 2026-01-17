@@ -40,7 +40,7 @@ func ask_set_key_not()
 func ask_cancel()
 async
 {
-    let ask = String.one.fatal()
+    let ask = String.one
 
     let wand = |ask
 

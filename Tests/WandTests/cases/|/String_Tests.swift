@@ -16,35 +16,37 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
+import Foundation
 import Testing
 import Wand
-import XCTest
 
-class Describing_Tests: XCTestCase {
-
-
-}
-
-struct Describing {
+struct Strings {
 
     @Test
-    func test_Character_to_Int() {
-        let character: Character = "|"
-        #expect(character| == 0x7C)
+    func test_String_to_Int_numbers() {
+
+        let sample = "12345"
+        let int: Int? = 12345
+
+        #expect(sample| == int)
     }
 
     @Test
-    func test_Int_toCharacter() {
-        #expect("🐕" as Character == 0x1F415|)
+    func test_String_to_Int_filtration() {
+
+        let sample = "asadas12345__ qqw d3"
+        let int: Int? = 123453
+
+        #expect(sample| == int)
     }
 
     @Test
-    func test_Data_to_String() {
+    func test_String_to_Double() {
 
-        let sample = Data([72, 101, 108, 108, 111, 44, 32, 119, 97, 110, 100, 33])
-        let string: String? = sample|
+        let sample = "42.0"
+        let double: Double = 42.0
 
-        #expect("Hello, wand!" == string)
+        #expect((sample|)?.isEqual(to: double) == true)
     }
 
     @Test
