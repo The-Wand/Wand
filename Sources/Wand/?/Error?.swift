@@ -40,17 +40,22 @@ func |?(wand: Core, handler: @escaping (Error?)->() ) -> Core {
 public
 func |?(wand: Core, ask: Ask<Error?>) -> Core {
 
-    //Handle Succeed completion
-    let all = Ask.all { _ in
-        _ = ask.handler(nil)
-    }
-    
-    //Handle Error completion
     let error = Ask<Error>.Option(once: ask.once) {
-        all.cancel()
-        return ask.handler($0)
+        ask.handler($0)
     }
 
-    //Handle Error completion
-    return wand | all |? error
+    let success = if ask.once {
+        Ask<Error?>.Option(once: true) { [weak wand] in
+            defer {
+                wand?.close()
+            }
+            return ask.handler($0)
+        }
+    } else {
+        ask.optional()
+    }
+
+    _ = wand.append(ask: success)
+
+    return wand |? error
 }
