@@ -343,7 +343,7 @@ extension Core {
     @inlinable
     public
     func addIf<T>(exist object: T?, for key: String? = nil) -> T? {
-        (object == nil) ? nil : add(object!, for: key) //TODO: Swift evolution suggest let object ? add(object, for: key) : nil
+        (object == nil) ? nil : add(object!, for: key) //TODO: Swift evolution suggest let object ? add(object, for: key) : nil //https://forums.swift.org/t/ternary-unwrapping/84147
     }
 
     @discardableResult

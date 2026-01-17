@@ -45,3 +45,23 @@ func add_object_if_exist_not()
     #expect(wand.get() == nil as String?)
 }
 
+@Test
+func add_objects_sequence()
+{
+    let range = ClosedRange.any
+    let bound = range.upperBound
+
+    var hit = bound
+
+    let wand = |.while { (string: String) in
+        hit -= 1
+        return hit > 0
+    }
+
+    let sequence = range.map { _ in
+        String.any
+    }
+
+    wand.add(sequence: sequence)
+    #expect(hit == 0)
+}
