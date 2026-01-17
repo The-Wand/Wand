@@ -32,20 +32,6 @@ extension Core: ExpressibleByBooleanLiteral {
 
 }
 
-/// Init with extended grapheme cluster
-extension Core: ExpressibleByExtendedGraphemeClusterLiteral {
-
-    @inline(__always)
-    convenience
-    public
-    init(extendedGraphemeClusterLiteral value: ExtendedGraphemeClusterLiteralType) {
-
-        self.init()
-        scope[ExtendedGraphemeClusterLiteralType.self|] = value
-    }
-
-}
-
 /// Init with Float
 extension Core: ExpressibleByFloatLiteral {
 
@@ -99,19 +85,3 @@ extension Core: ExpressibleByStringLiteral {
     }
 
 }
-
-//TODO: Fix and enable
-/// Init with Unicode.Scalar
-//extension Core: ExpressibleByUnicodeScalarLiteral {
-//
-//    @inline(__always)
-//    convenience
-//    public
-//    init(unicodeScalarLiteral value: UnicodeScalarLiteralType) {
-//
-//        self.init()
-//        scope[UnicodeScalarLiteralType.self|] = value
-//
-//    }
-//
-//}
