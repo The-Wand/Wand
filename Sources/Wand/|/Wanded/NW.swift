@@ -36,7 +36,7 @@ struct B {
 
 }
 
-extension NWBrowser.Result.Change: Ask.Nil {
+extension NWBrowser.Result: Ask.Nil {
 
     @inlinable
     public
@@ -50,12 +50,21 @@ extension NWBrowser.Result.Change: Ask.Nil {
 
         let source: NWBrowser = wand.get()
 
-        source |? { (state: NWBrowser.State) in
-            print(state)
+        source |? .while { [weak wand] (state: NWBrowser.State) in
+
+            switch state {
+                case .ready:
+
+                    wand?.add(sequence: source.browseResults)
+                    return false
+
+                default:
+                    return true
+            }
         }
 
-        source.browseResultsChangedHandler = { [weak wand] _, change in
-            wand?.add(change)
+        source.browseResultsChangedHandler = { [weak wand] newResults, change in
+            wand?.add(sequence: newResults)
         }
 
         let queue: DispatchQueue = wand.get() ?? .global()
@@ -63,7 +72,6 @@ extension NWBrowser.Result.Change: Ask.Nil {
 
         return wand
     }
-
 
 }
 
@@ -81,33 +89,8 @@ extension NWBrowser.State: Ask.Nil {
 
         let source: NWBrowser = wand.get()
 
-        source.stateUpdateHandler = { [weak wand, unowned source] state in
-            wand?.add(state)
-
-            switch state {
-                case .failed(let error):
-                    // Restart the browser if it loses its connection.
-                    if error == NWError.dns(DNSServiceErrorType(kDNSServiceErr_DefunctConnection)) {
-                        print("Browser failed with \(error), restarting")
-                        source.cancel()
-//                        self.startBrowsing()
-                    } else {
-
-                        wand?.add(error)
-                        source.cancel()
-                    }
-                case .ready:
-                    // Post initial results.
-//                    delegate?.refreshResults(results: browser.browseResults)
-                    wand?.add(source.browseResults)
-                case .cancelled:
-                    break
-//                    sharedBrowser = nil
-//                    delegate?.refreshResults(results: Set())
-
-                default:
-                    break
-            }
+        source.stateUpdateHandler = { [weak wand] in
+            wand?.add($0)
         }
 
         let queue: DispatchQueue = wand.get() ?? .global()
@@ -144,9 +127,8 @@ extension NWConnection: Ask.Nil {
 
         do {
             let source = try NWListener(using: parameters)
-            if #available(macOS 13.0, iOS 16.0, watchOS 9.0, *) {
-                source.service = NWListener.Service(applicationService: "wand")
-            }
+            source.service = NWListener.Service(name: ask.key,
+                                                type: "_wand._tcp")
 
             source.newConnectionHandler = { [weak wand] in
                 wand?.add($0)
