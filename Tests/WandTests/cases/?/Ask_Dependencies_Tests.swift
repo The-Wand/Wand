@@ -51,7 +51,7 @@ class Ask_Dependencies_Tests: XCTestCase {
         var wand: Core!
         wand = |.every { (point: Point) in
             e.fulfill()
-        } |? { (string: String) in
+        } |? .every { (string: String) in
 
         }
 
@@ -89,5 +89,68 @@ class Ask_Dependencies_Tests: XCTestCase {
     //        waitForExpectations()
     //        XCTAssertNil(wand)
     //    }
+
+    func test_Scope_to_Dependency()
+    {
+        let e = expectation()
+
+        let point = Point.any
+
+        var wand: Core!
+        wand = point |? .every { (string: String) in
+            e.fulfill()
+        }
+
+        wand.add(String.any)
+
+        waitForExpectations()
+        XCTAssertNotNil(wand)
+
+        wand = nil
+        XCTAssertNil(wand)
+    }
+
+    func test_Scope_to_Ask_Dependency()
+    {
+        let e = expectation()
+
+        let point = Point.any
+
+
+        let ask = Ask.every { (string: String) in
+            e.fulfill()
+        }
+
+        var wand: Core!
+        wand = point |? ask
+
+        wand.add(String.any)
+
+        waitForExpectations()
+        XCTAssertNotNil(wand)
+
+        wand = nil
+        XCTAssertNil(wand)
+    }
+
+    func test_Ask_Dependency()
+    {
+        let e = expectation()
+
+        let ask = Ask.every { (string: String) in
+            e.fulfill()
+        }
+
+        var wand: Core!
+        wand = |?ask
+
+        wand.add(String.any)
+
+        waitForExpectations()
+        XCTAssertNotNil(wand)
+
+        wand = nil
+        XCTAssertNil(wand)
+    }
 
 }
