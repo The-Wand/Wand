@@ -16,8 +16,6 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-import Foundation
-
 public
 extension Core {
     

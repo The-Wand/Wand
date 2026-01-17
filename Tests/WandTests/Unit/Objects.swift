@@ -59,19 +59,19 @@ struct Tool {
         }
     }
 
-    func didReceive(message: String, from point: Point) {
-
-        print(message)
-        
-        let isValid = true
-        if isValid {
-            handshake()
-        }
-    }
-
-    func handshake() {
-
-    }
+//    func didReceive(message: String, from point: Point) {
+//
+//        print(message)
+//        
+//        let isValid = true
+//        if isValid {
+//            handshake()
+//        }
+//    }
+//
+//    func handshake() {
+//
+//    }
 
 }
 

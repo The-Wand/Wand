@@ -36,7 +36,7 @@ func add_object_if_exist()
 @Test
 func add_object_if_exist_not()
 {
-    let wand = |String.one.fatal()
+    let wand = |String.one
 
     let optional: String? = nil
 

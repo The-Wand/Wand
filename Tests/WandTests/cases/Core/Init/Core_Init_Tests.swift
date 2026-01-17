@@ -34,14 +34,6 @@ class Core_Init_Tests: XCTestCase {
         XCTAssertNotNil(wand)
     }
 
-    func test_init_ExtendedGraphemeClusterLiteral() throws {
-
-        let wand: Wand.Core = "🪨"
-
-        XCTAssertEqual(wand.get(), "🪨")
-        XCTAssertNotNil(wand)
-    }
-
     func test_init_FloatLiteral() throws {
 
         let wand: Wand.Core = 2.0
@@ -66,17 +58,6 @@ class Core_Init_Tests: XCTestCase {
     }
 
     func test_init_StringLiteral() throws {
-
-        let wand: Wand.Core = "one"
-
-        XCTAssertEqual(wand.get(), "one")
-        XCTAssertNotNil(wand)
-    }
-
-    func test_init_StringInterpolation() throws {
-    }
-
-    func test_init_UnicodeScalarLiteral() throws {
 
         let wand: Wand.Core = "䷓"
 

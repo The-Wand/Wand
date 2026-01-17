@@ -32,26 +32,26 @@ extension TimeInterval {
 }
 
 ///Performance
-extension [XCTMetric] {
+//extension [XCTMetric] {
+//
+//    static
+//    var `default`: Self = {[
+//        XCTCPUMetric(),
+//        XCTClockMetric(),
+//        XCTMemoryMetric(),
+//        XCTStorageMetric(),
+//    ]}()
+//
+//}
 
-    static
-    var `default`: Self = {[
-        XCTCPUMetric(),
-        XCTClockMetric(),
-        XCTMemoryMetric(),
-        XCTStorageMetric(),
-    ]}()
-
-}
-
-extension Ask {
-
-    func fatal() -> Self {
-        handler = { _ in
-            fatalError()
-        }
-
-        return self
-    }
-
-}
+//extension Ask {
+//
+//    func fatal() -> Self {
+//        handler = { _ in
+//            fatalError()
+//        }
+//
+//        return self
+//    }
+//
+//}

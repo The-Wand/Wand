@@ -45,7 +45,6 @@ class Core_Init_Array_Tests: XCTestCase {
         XCTAssertEqual(date, wand.get())
     }
     
-
     func test_init_ArrayLiteral() throws {
 
         let bool =  Bool.any
