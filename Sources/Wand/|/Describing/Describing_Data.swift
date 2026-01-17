@@ -23,27 +23,14 @@ import Foundation.NSData
 @inline(__always)
 postfix
 public
-func |(data: Data) -> String {
-    (data | nil)!
-}
-
-@inline(__always)
-postfix
-public
 func |(data: Data) -> String? {
-    data | nil
+    data | .utf8
 }
 
 @inline(__always)
 public
-func |(data: Data, encoding: String.Encoding) -> String {
-    (data | encoding)!
-}
-
-@inline(__always)
-public
-func |(data: Data, encoding: String.Encoding?) -> String? {
-    String(data: data, encoding: encoding ?? .utf8)
+func |(data: Data, encoding: String.Encoding) -> String? {
+    String(data: data, encoding: encoding)
 }
 
 #endif

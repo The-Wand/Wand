@@ -19,8 +19,8 @@
 @inline(__always)
 postfix
 public
-func |<T: FixedWidthInteger>(char: Character) -> T {
-    char.unicodeScalars.first?.value as! T
+func |(char: Character) -> UInt32? {
+    char.unicodeScalars.first?.value
 }
 
 @inline(__always)

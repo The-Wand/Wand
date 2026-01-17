@@ -29,15 +29,8 @@ func |(string: String) -> Int? {
 @inline(__always)
 postfix
 public
-func |(self: String) -> Int {
-    (self|)!
-}
-
-@inline(__always)
-postfix
-public
-func |(string: String?) -> Double? {
-    Double(string ?? "")
+func |(string: String) -> Double? {
+    Double(string)
 }
 
 @inline(__always)
@@ -45,19 +38,6 @@ postfix
 public
 func |(string: String?) -> Data? {
     string | nil
-}
-
-@inline(__always)
-postfix
-public
-func |(string: String?) -> Data {
-    string | nil
-}
-
-@inline(__always)
-public
-func |(string: String?, encoding: String.Encoding?) -> Data {
-    (string! | nil)!
 }
 
 @inline(__always)

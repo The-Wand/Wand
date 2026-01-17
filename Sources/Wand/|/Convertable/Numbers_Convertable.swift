@@ -56,7 +56,7 @@ postfix
 public
 func |(value: (any BinaryInteger)?) -> String? {
     guard let value else {
-        return ""
+        return nil
     }
     
     return String(describing: value)
