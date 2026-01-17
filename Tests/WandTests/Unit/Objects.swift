@@ -54,7 +54,7 @@ struct Tool {
 
     @inlinable
     func send(index: Int) {
-        if index % 500_000 == 0 {
+        if index % 1_000_000 == 0 {
             print(index)
         }
     }
