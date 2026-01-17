@@ -44,11 +44,11 @@ func |?(wand: Core, ask: Ask<Error>) -> Core {
     if ask.once {
 
         let handler = ask.handler
-        ask.handler = {
-
-            _ = handler($0)
-            wand.close()
-            return false
+        ask.handler = { [weak wand] in
+            defer {
+                wand?.close()
+            }
+            return handler($0)
         }
     }
 
@@ -71,6 +71,7 @@ extension Core {
         @inline(__always)
         public
         init(code: Int = .zero, reason: String, function: String = #function) {
+
             self.code = code
             self.reason = function + reason
         }
