@@ -23,7 +23,7 @@ import Foundation
 postfix
 public
 func |(string: String) -> Int? {
-    Int(string) ?? Int(String(string.unicodeScalars.filter(CharacterSet.decimalDigits.inverted.contains)))
+    Int(string) ?? Int(String(string.unicodeScalars.filter(CharacterSet.decimalDigits.contains)))
 }
 
 @inline(__always)
