@@ -16,36 +16,36 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-@inline(__always)
-public
-func &<T: Ask.T, U: Ask.T> (ask: Ask<T>, appending: @escaping (U)->() ) -> Ask<T> {
-
-    let saved = ask.handler
-    ask.handler = {
-
-        let result = saved($0)
-        ask.core |? appending
-        ask.handler = saved
-
-        return result
-    }
-
-    return ask
-}
-
-@inline(__always)
-public
-func &<T: Ask.T, U: Ask.T> (ask: Ask<T>, appending: @escaping (U)->(Bool) ) -> Ask<T> {
-
-    let saved = ask.handler
-    ask.handler = {
-
-        let result = saved($0)
-        ask.core | ask.depends(while: appending)
-        ask.handler = saved
-
-        return result
-    }
-
-    return ask
-}
+//@inline(__always)
+//public
+//func &<T: Ask.T, U: Ask.T> (ask: Ask<T>, appending: @escaping (U)->() ) -> Ask<T> {
+//
+//    let saved = ask.handler
+//    ask.handler = {
+//
+//        let result = saved($0)
+//        ask.core |? appending
+//        ask.handler = saved
+//
+//        return result
+//    }
+//
+//    return ask
+//}
+//
+//@inline(__always)
+//public
+//func &<T: Ask.T, U: Ask.T> (ask: Ask<T>, appending: @escaping (U)->(Bool) ) -> Ask<T> {
+//
+//    let saved = ask.handler
+//    ask.handler = {
+//
+//        let result = saved($0)
+//        ask.core | ask.depends(while: appending)
+//        ask.handler = saved
+//
+//        return result
+//    }
+//
+//    return ask
+//}
