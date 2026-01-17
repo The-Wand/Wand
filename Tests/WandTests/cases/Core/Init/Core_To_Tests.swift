@@ -33,13 +33,13 @@ class Core_To_Tests: XCTestCase {
         XCTAssertNotNil(wand)
     }
 
-    func test_to_Object() throws {
-
-        let scope = URLRequest(url: .any)
+    func test_to_Scope()
+    {
+        let scope = "🫵"
 
         let wand = Core.to(scope)
 
-        XCTAssertEqual(wand.get(), scope as URLRequest)
+        XCTAssertEqual(wand.get(), scope as String)
         XCTAssertNotNil(wand)
     }
 
@@ -54,6 +54,17 @@ class Core_To_Tests: XCTestCase {
 
         XCTAssertEqual(wand.get(for: key), request)
         XCTAssertNotNil(wand)
+    }
+
+    func test_to_Object()
+    {
+        let location = CLLocation.any
+
+        let wand = (location as Optional).wand
+        let isWanded = (location as Optional).isWanded
+
+        XCTAssertNotNil(isWanded)
+        XCTAssertTrue(wand === isWanded)
     }
 
 }
