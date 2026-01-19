@@ -342,11 +342,11 @@ extension Core {
 
     @inline(__always)
     public
-    func putDefault<T>(_ object: T, for key: String? = nil) {
+    func putDefault<T>(for key: String? = nil, object: @autoclosure ()->(T)) {
 
         let result = key ?? T.self|
         if !contains(result) {
-            wand.save(object, key: result)
+            wand.save(object(), key: result)
         }
 
     }

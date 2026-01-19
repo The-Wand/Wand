@@ -140,3 +140,16 @@ class Core_Put_Tests: XCTestCase {
     }
 
 }
+
+import CoreLocation.CLLocation
+import Testing
+import Wand
+
+@Test
+func putDefault_test()
+{
+    let wand = Core(String.any)
+    wand.putDefault(object: Int.any.description)
+
+    #expect(wand.get() == String.any)
+}
