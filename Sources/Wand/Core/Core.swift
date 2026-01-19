@@ -342,7 +342,7 @@ extension Core {
 
     @inline(__always)
     public
-    func putDefault<T>(for key: String? = nil, object: @autoclosure ()->(T)) {
+    func putDefault<T>(for key: String? = nil, _ object: @autoclosure ()->(T)) {
 
         let result = key ?? T.self|
         if !contains(result) {
