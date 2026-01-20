@@ -7,7 +7,5 @@
 		<key>ServiceType</key>
 		<string>Application</string>
 	</dict>
-	<key>NSAppleEventsUsageDescription</key>
-	<string>NSAppleEventsUsageDescription</string>
 </dict>
 </plist>

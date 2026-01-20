@@ -18,10 +18,6 @@
 	<string>3141</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.developer-tools</string>
-	<key>NSAppleEventsUsageDescription</key>
-	<string>NSAppleEventsUsageDescription</string>
-	<key>NSLocalNetworkUsageDescription</key>
-	<string>Near communications</string>
 	<key>UILaunchStoryboardName</key>
 	<string></string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
