@@ -8,14 +8,13 @@
 
 import Foundation
 import XcodeKit
+import OSLog
 
 class SourceEditorExtension: NSObject, XCSourceEditorExtension {
     
-    /*
     func extensionDidFinishLaunching() {
-        // If your extension needs to do any work at launch, implement this optional method.
+        os_log("Extension ready", type: .debug)
     }
-    */
     
     /*
     var commandDefinitions: [[XCSourceEditorCommandDefinitionKey: Any]] {

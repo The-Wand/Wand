@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import ScriptingBridge
+import OSLog
 
 /// This object implements the protocol which we have defined. It provides the actual behavior for the service. It is 'exported' by the service to make it available to the process hosting the service over an NSXPCConnection.
 class XcodeXPC: NSObject, XcodeXPCProtocol {
@@ -16,4 +18,26 @@ class XcodeXPC: NSObject, XcodeXPCProtocol {
         let response = firstNumber + secondNumber
         reply(response)
     }
+
+    @objc
+    func jumpToDefinition(reply: @escaping (String)->() ) {
+        guard let app = SBApplication(bundleIdentifier: "com.apple.dt.Xcode") else {
+
+            reply("")
+            return
+        }
+
+
+        let windows = app.value(forKey: "windows")
+
+
+        let xcode = app as? XcodeApplication
+
+//        let windows = app.windows
+//        let window = windows.firstObject
+
+
+        reply("aaa")
+    }
+    
 }
