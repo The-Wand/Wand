@@ -27,17 +27,33 @@ class XcodeXPC: NSObject, XcodeXPCProtocol {
             return
         }
 
+        guard let name = app.windows.first?.name else {
+            return
+        }
 
-        let windows = app.value(forKey: "windows")
 
+        let xcode = app as! XcodeApplication
 
-        let xcode = app as? XcodeApplication
-
-//        let windows = app.windows
+//        let windows = xcode.windows
 //        let window = windows.firstObject
-
 
         reply("aaa")
     }
     
+}
+
+extension SBApplication {
+
+    var windows: [SBObject] {
+        value(forKey: "windows") as! [SBObject]
+    }
+
+}
+
+extension SBObject {
+
+    var name: String {
+        value(forKey: "name") as! String
+    }
+
 }

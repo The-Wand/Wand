@@ -15,21 +15,19 @@ import ScriptingBridge
     @objc optional func extractAddressFrom(_ x: String) -> String
 }
 
-@objc
 protocol XcodeApplication {
 
-//    var documents: [XcodeDocument]
-//    @objc optional var windows: SBElementArray { get }
+//    var windows: [SBObject] { get }
 
 }
 
-@objc
-protocol XcodeGenericMethods {
-
-}
-
-@objc
-protocol XcodeWindow where Self: SBObject {
-
-}
-
+//@objc
+//protocol XcodeGenericMethods {
+//
+//}
+//
+//@objc
+//protocol XcodeWindow where Self: SBObject {
+//
+//}
+//
