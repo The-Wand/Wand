@@ -33,6 +33,10 @@
 		6181C9452D4BFCD0007EBDF6 /* T_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6181C9282D4BFC7D007EBDF6 /* T_Tests.swift */; };
 		6181C9472D4BFCD0007EBDF6 /* Objects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6181C92A2D4BFC7D007EBDF6 /* Objects.swift */; };
 		618CB45B2C584FD2007B5DC9 /* Ask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618CB4442C584FD2007B5DC9 /* Ask.swift */; };
+		618D806E2F1F97880060C7F9 /* Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 61E823B82F1F918600C54221 /* Extension.appex */; platformFilters = (macos, ); settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		61E823B92F1F918700C54221 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6131C7652F1F8221007A8718 /* Cocoa.framework */; platformFilters = (macos, ); };
+		61E824AB2F1F929C00C54221 /* XcodeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6131C7672F1F8222007A8718 /* XcodeKit.framework */; };
+		61E824AC2F1F929C00C54221 /* XcodeKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6131C7672F1F8222007A8718 /* XcodeKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		OBJ_254 /* Wand.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "pipe::Pipe::Product" /* Wand.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +76,20 @@
 			remoteGlobalIDString = "pipe::Pipe";
 			remoteInfo = wand;
 		};
+		618D806F2F1F97880060C7F9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 61E823B72F1F918600C54221;
+			remoteInfo = Extension;
+		};
+		618D80722F1F97980060C7F9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 61E823B72F1F918600C54221;
+			remoteInfo = Extension;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -108,12 +126,36 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		618D80712F1F97880060C7F9 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				618D806E2F1F97880060C7F9 /* Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61E824AD2F1F929C00C54221 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				61E824AC2F1F929C00C54221 /* XcodeKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		6111213C2ECDCE9900F30B03 /* HighLoad_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighLoad_Tests.swift; sourceTree = "<group>"; };
 		6117E7862E3110730064136F /* Wand.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Wand.md; sourceTree = "<group>"; };
 		611A358D2DA001700024D08D /* packages.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = packages.json; sourceTree = "<group>"; };
+		6131C7652F1F8221007A8718 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		6131C7672F1F8222007A8718 /* XcodeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XcodeKit.framework; path = Library/Frameworks/XcodeKit.framework; sourceTree = DEVELOPER_DIR; };
 		613966152BE0F4EF004C18A3 /* WatchPlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchPlay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		613966482BE0F87A004C18A3 /* WatchPlayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WatchPlayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		615054902EBDD6CD00CF9E7B /* DefaultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTests.swift; sourceTree = "<group>"; };
@@ -136,6 +178,7 @@
 		6181C92B2D4BFC7D007EBDF6 /* XCTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCase.swift; sourceTree = "<group>"; };
 		618CB4442C584FD2007B5DC9 /* Ask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ask.swift; sourceTree = "<group>"; };
 		61AA24C02D787669005550F4 /* NOTICE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = NOTICE.txt; sourceTree = "<group>"; };
+		61E823B82F1F918600C54221 /* Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Extension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		"pipe::Pipe::Product" /* Wand.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Wand.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"pipe::PipeTests::Product" /* WandTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = WandTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -173,6 +216,7 @@
 		615051F12EBDD14F00CF9E7B /* | */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (6145C4E92F0FB32D0004C791 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "|"; sourceTree = "<group>"; };
 		615054D02EBDD73B00CF9E7B /* Core */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (61838A242F0D2D7A00F8C562 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Core; sourceTree = "<group>"; };
 		618732052EC0A6FE002DD48F /* Cases */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Cases; sourceTree = "<group>"; };
+		61E823BB2F1F918700C54221 /* Extension */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Extension; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +245,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		61E823B52F1F918600C54221 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61E823B92F1F918700C54221 /* Cocoa.framework in Frameworks */,
+				61E824AB2F1F929C00C54221 /* XcodeKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		OBJ_214 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
@@ -223,6 +276,8 @@
 		614B218B2C4489B700EB9DEE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6131C7652F1F8221007A8718 /* Cocoa.framework */,
+				6131C7672F1F8222007A8718 /* XcodeKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -300,6 +355,7 @@
 				6162624C28BC8E2B00D63EA5 /* Play.app */,
 				613966152BE0F4EF004C18A3 /* WatchPlay.app */,
 				613966482BE0F87A004C18A3 /* WatchPlayTests.xctest */,
+				61E823B82F1F918600C54221 /* Extension.appex */,
 			);
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -312,6 +368,7 @@
 				615158E72BF75EEC001646EA /* info.plist */,
 				OBJ_6 /* Package.swift */,
 				611A358D2DA001700024D08D /* packages.json */,
+				61E823BB2F1F918700C54221 /* Extension */,
 				OBJ_138 /* Products */,
 				618056362BCB90D60013EC56 /* Tests */,
 				615A968B2BF39E88003875F5 /* CONTRIB.TXT */,
@@ -376,15 +433,41 @@
 				6162624928BC8E2B00D63EA5 /* Frameworks */,
 				6162624A28BC8E2B00D63EA5 /* Resources */,
 				6162626628BC944300D63EA5 /* Embed Frameworks */,
+				618D80712F1F97880060C7F9 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				618D80702F1F97880060C7F9 /* PBXTargetDependency */,
+				618D80732F1F97980060C7F9 /* PBXTargetDependency */,
 			);
 			name = Play;
 			productName = "Sandbox (iOS)";
 			productReference = 6162624C28BC8E2B00D63EA5 /* Play.app */;
 			productType = "com.apple.product-type.application";
+		};
+		61E823B72F1F918600C54221 /* Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 61E823C52F1F918700C54221 /* Build configuration list for PBXNativeTarget "Extension" */;
+			buildPhases = (
+				61E823B42F1F918600C54221 /* Sources */,
+				61E823B52F1F918600C54221 /* Frameworks */,
+				61E823B62F1F918600C54221 /* Resources */,
+				61E824AD2F1F929C00C54221 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				61E823BB2F1F918700C54221 /* Extension */,
+			);
+			name = Extension;
+			packageProductDependencies = (
+			);
+			productName = Extension;
+			productReference = 61E823B82F1F918600C54221 /* Extension.appex */;
+			productType = "com.apple.product-type.xcode-extension";
 		};
 		"pipe::Pipe" /* Wand */ = {
 			isa = PBXNativeTarget;
@@ -440,7 +523,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastSwiftMigration = 9999;
-				LastSwiftUpdateCheck = 1530;
+				LastSwiftUpdateCheck = 2600;
 				LastUpgradeCheck = 2600;
 				ORGANIZATIONNAME = "El Machine, Alex Kozin";
 				TargetAttributes = {
@@ -455,6 +538,9 @@
 						CreatedOnToolsVersion = 13.4.1;
 						DevelopmentTeam = LZSP4Z4B6A;
 						ProvisioningStyle = Automatic;
+					};
+					61E823B72F1F918600C54221 = {
+						CreatedOnToolsVersion = 26.0.1;
 					};
 					"pipe::Pipe" = {
 						LastSwiftMigration = 1540;
@@ -488,6 +574,7 @@
 				"pipe::PipeTests" /* WandTests */,
 				613966142BE0F4EF004C18A3 /* WatchPlay */,
 				613966472BE0F87A004C18A3 /* WatchPlayTests */,
+				61E823B72F1F918600C54221 /* Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -513,6 +600,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				6162625828BC8E2B00D63EA5 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61E823B62F1F918600C54221 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,6 +639,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				6162625628BC8E2B00D63EA5 /* Play.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61E823B42F1F918600C54221 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -593,6 +694,19 @@
 			target = "pipe::Pipe" /* Wand */;
 			targetProxy = 6168E5F02CFDC00E00676432 /* PBXContainerItemProxy */;
 		};
+		618D80702F1F97880060C7F9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilters = (
+				macos,
+			);
+			target = 61E823B72F1F918600C54221 /* Extension */;
+			targetProxy = 618D806F2F1F97880060C7F9 /* PBXContainerItemProxy */;
+		};
+		618D80732F1F97980060C7F9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 61E823B72F1F918600C54221 /* Extension */;
+			targetProxy = 618D80722F1F97980060C7F9 /* PBXContainerItemProxy */;
+		};
 		OBJ_255 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "pipe::Pipe" /* Wand */;
@@ -617,7 +731,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3128;
+				CURRENT_PROJECT_VERSION = 3141;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -670,7 +784,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3128;
+				CURRENT_PROJECT_VERSION = 3141;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -718,7 +832,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3128;
+				CURRENT_PROJECT_VERSION = 3141;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -762,7 +876,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3128;
+				CURRENT_PROJECT_VERSION = 3141;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -795,6 +909,7 @@
 				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=appletvos*]" = tvIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				AUTOMATION_APPLE_EVENTS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -822,10 +937,17 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3128;
-				ENABLE_HARDENED_RUNTIME = NO;
+				CURRENT_PROJECT_VERSION = 3141;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -856,6 +978,12 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "el-machine.Play";
 				PRODUCT_NAME = Play;
+				RUNTIME_EXCEPTION_ALLOW_DYLD_ENVIRONMENT_VARIABLES = NO;
+				RUNTIME_EXCEPTION_ALLOW_JIT = NO;
+				RUNTIME_EXCEPTION_ALLOW_UNSIGNED_EXECUTABLE_MEMORY = NO;
+				RUNTIME_EXCEPTION_DEBUGGING_TOOL = NO;
+				RUNTIME_EXCEPTION_DISABLE_EXECUTABLE_PAGE_PROTECTION = NO;
+				RUNTIME_EXCEPTION_DISABLE_LIBRARY_VALIDATION = NO;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx xros xrsimulator";
 				SUPPORTS_MACCATALYST = YES;
@@ -877,6 +1005,7 @@
 				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=appletvos*]" = tvIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				AUTOMATION_APPLE_EVENTS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -904,12 +1033,19 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3128;
-				ENABLE_HARDENED_RUNTIME = NO;
+				CURRENT_PROJECT_VERSION = 3141;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -935,6 +1071,12 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "el-machine.Play";
 				PRODUCT_NAME = Play;
+				RUNTIME_EXCEPTION_ALLOW_DYLD_ENVIRONMENT_VARIABLES = NO;
+				RUNTIME_EXCEPTION_ALLOW_JIT = NO;
+				RUNTIME_EXCEPTION_ALLOW_UNSIGNED_EXECUTABLE_MEMORY = NO;
+				RUNTIME_EXCEPTION_DEBUGGING_TOOL = NO;
+				RUNTIME_EXCEPTION_DISABLE_EXECUTABLE_PAGE_PROTECTION = NO;
+				RUNTIME_EXCEPTION_DISABLE_LIBRARY_VALIDATION = NO;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx xros xrsimulator";
 				SUPPORTS_MACCATALYST = YES;
@@ -948,6 +1090,109 @@
 			};
 			name = Release;
 		};
+		61E823C62F1F918700C54221 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 3141;
+				DEVELOPMENT_TEAM = LZSP4Z4B6A;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Extension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Extension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2026 El Machine, Alex Kozin. All rights reserved.";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "el-machine.Play.Extension.Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 6;
+			};
+			name = Debug;
+		};
+		61E823C72F1F918700C54221 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 3141;
+				DEVELOPMENT_TEAM = LZSP4Z4B6A;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Extension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Extension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2026 El Machine, Alex Kozin. All rights reserved.";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "el-machine.Play.Extension.Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 6;
+			};
+			name = Release;
+		};
 		OBJ_146 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -956,7 +1201,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3128;
+				CURRENT_PROJECT_VERSION = 3141;
 				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
@@ -1007,7 +1252,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3128;
+				CURRENT_PROJECT_VERSION = 3141;
 				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
@@ -1055,7 +1300,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3128;
+				CURRENT_PROJECT_VERSION = 3141;
 				DEAD_CODE_STRIPPING = YES;
 				DRIVERKIT_DEPLOYMENT_TARGET = 20.0;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -1099,7 +1344,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3128;
+				CURRENT_PROJECT_VERSION = 3141;
 				DEAD_CODE_STRIPPING = YES;
 				DRIVERKIT_DEPLOYMENT_TARGET = 20.0;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -1139,6 +1384,7 @@
 		OBJ_3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -1205,6 +1451,7 @@
 		OBJ_4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -1291,6 +1538,15 @@
 			buildConfigurations = (
 				6162625B28BC8E2B00D63EA5 /* Debug */,
 				6162625C28BC8E2B00D63EA5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		61E823C52F1F918700C54221 /* Build configuration list for PBXNativeTarget "Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61E823C62F1F918700C54221 /* Debug */,
+				61E823C72F1F918700C54221 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

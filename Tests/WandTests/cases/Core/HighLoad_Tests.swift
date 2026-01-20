@@ -224,6 +224,8 @@ struct Highload {
 
 import CoreLocation.CLLocation
 
-extension CLLocation: Expecting {
+extension CLLocation: @retroactive AskNil {}
+extension CLLocation: @retroactive AskT {}
+extension CLLocation: @retroactive Expecting {
 
 }
