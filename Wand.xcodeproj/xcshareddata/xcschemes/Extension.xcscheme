@@ -71,7 +71,7 @@
       </MacroExpansion>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "/Users/al/Projects/Wand/Any/Any_.xcodeproj"
+            argument = "/Users/al/Projects/Wand/Location/WandLocation.xcodeproj"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

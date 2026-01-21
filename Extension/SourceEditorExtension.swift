@@ -16,21 +16,8 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-import Foundation
 import XcodeKit
-import OSLog
 
 class SourceEditorExtension: NSObject, XCSourceEditorExtension {
-    
-    func extensionDidFinishLaunching() {
-        os_log("Extension ready", type: .debug)
-    }
-    
-    /*
-    var commandDefinitions: [[XCSourceEditorCommandDefinitionKey: Any]] {
-        // If your extension needs to return a collection of command definitions that differs from those in its Info.plist, implement this optional property getter.
-        return []
-    }
-    */
     
 }

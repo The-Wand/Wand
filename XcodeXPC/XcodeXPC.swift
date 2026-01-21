@@ -18,29 +18,60 @@
 
 import Foundation
 import ScriptingBridge
-import OSLog
 
 class XcodeXPC: NSObject, XcodeXPCProtocol {
 
     @objc
-    func jumpToDefinition(reply: @escaping (String)->() ) {
+    func jump(to type: String, reply: @escaping (String?)->()) {
+
+
+//        let app2 = SBApplication(bundleIdentifier: "com.apple.dt.Xcode") as! XcodeApplication
+
         guard let app = SBApplication(bundleIdentifier: "com.apple.dt.Xcode") else {
-
-            reply("")
+            reply("Where is Xcode?")
             return
         }
 
-        guard let name = app.windows.first?.name else {
+        let workspaceDocument = app.activeWorkspaceDocument
+        let root = workspaceDocument.file.deletingLastPathComponent()
+
+
+        let manager = FileManager.default
+        let keys: [URLResourceKey] = [.isDirectoryKey]
+
+        guard let files = manager.enumerator(at: root, includingPropertiesForKeys: keys) else {
+            reply("No files")
             return
         }
 
+        var destination: URL? = nil
+        for case let url as URL in files {
+            let values = try? url.resourceValues(forKeys: Set(keys))
+            guard let values, values.isDirectory == false else {
+                continue
+            }
 
-        let xcode = app as! XcodeApplication
+            let path = url.path
 
-//        let windows = xcode.windows
-//        let window = windows.firstObject
+            if (path.firstRange(of: type) != nil) {
+                destination = url
+                print(destination as Any)
+//                break
+            }
 
-        reply("aaa")
+        }
+
+        if let destination {
+            DispatchQueue.main.async {
+                app.open(destination)
+            }
+
+            reply(nil)
+        } else {
+            reply("Destination not found")
+        }
+
+//        reply(type)
     }
     
 }
@@ -51,12 +82,25 @@ extension SBApplication {
         value(forKey: "windows") as! [SBObject]
     }
 
+    var activeWorkspaceDocument: SBObject {
+        value(forKey: "activeWorkspaceDocument") as! SBObject
+    }
+
+    func open(_ url: URL) {
+        let sel = NSSelectorFromString("open:")
+        perform(sel, with: url)
+    }
+
 }
 
 extension SBObject {
 
     var name: String {
         value(forKey: "name") as! String
+    }
+
+    var file: URL {
+        value(forKey: "file") as! URL
     }
 
 }

@@ -21,6 +21,6 @@ import Foundation
 @objc
 protocol XcodeXPCProtocol {
 
-    func jumpToDefinition(reply: @escaping (String)->())
+    func jump(to: String, reply: @escaping (String?)->())
 
 }
