@@ -88,7 +88,7 @@ extension SBApplication {
 
     func open(_ url: URL) {
         let sel = NSSelectorFromString("open:")
-        perform(sel, with: url)
+        perform(sel, with: url.standardizedFileURL)
     }
 
 }

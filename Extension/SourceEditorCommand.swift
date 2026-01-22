@@ -30,8 +30,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
 
         let buffer = invocation.buffer
 //
-////        buffer.selections.forEach(\.isSelected) {
-////            $0 = false
+////        buffer.selections.forEach {
 ////        }
 //
         let lines = buffer.lines
@@ -41,7 +40,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
 //        lines.removeAllObjects()
 //        lines.addObjects(from: updatedText)
 
-        var error: Error? = nil
+//        var error: Error? = nil
 
         let selection = buffer.selections.firstObject as! XCSourceTextRange
 
@@ -53,45 +52,64 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             return
         }
 
-
         let line = lines[start.line] as! String
 
 //        let symbols = String(line.unicodeScalars.filter(CharacterSet.whitespacesAndNewlines.contains))
 //
 //        let selected = line.substring(from: start.column, to: end.column)
 
-        guard let wand = line.firstIndex(of: "|") else {
-            handler("No operator")
-            return
+
+        let trimmed = line.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        let or: Character = "|" //Means parallel, like ||
+
+        let type: String
+
+        //Sync calls
+        //let string: String = date|
+        if trimmed.last == or {
+
+            guard let match: NSTextCheckingResult = trimmed | "([A-Z])\\w+" else {
+                handler("No type")
+                return
+            }
+
+            let range = match.range
+
+            type = trimmed.substring(from: range.location, length: range.length) + "_Convert"
+
+        } else {
+
+            //Async calls
+            //|.one { (point: Point) in
+            //|.every { (point: Point) in
+            //|.while { (point: Point) in
+            //|{ (point: Point) in
+            //
+            //aaa | .one { (point: Point) in
+            //
+            //|Point.one
+            //|Point.every
+
+            guard let wand = trimmed.firstIndex(of: or) else {
+                handler("No operator")
+                return
+            }
+
+            let asyncDeclaration = String(trimmed.suffix(from: wand))
+
+            guard let match: NSTextCheckingResult = asyncDeclaration | "([A-Z])\\w+" else {
+                handler("No type")
+                return
+            }
+
+            let range = match.range
+
+            type = asyncDeclaration.substring(from: range.location, length: range.length) + "_Ask"
+
         }
 
-        let asyncDeclaration = String(line.suffix(from: wand))
-
-        guard let match: NSTextCheckingResult = asyncDeclaration | "([A-Z])\\w+" else {
-            handler("No type")
-            return
-        }
-
-        let range = match.range
-
-        let type = asyncDeclaration.substring(from: range.location, length: range.length)
-
-
-
-//        |.one { (point: Point) in
-//        |.every { (point: Point) in
-//        |.while { (point: Point) in
-//        |{ (point: Point) in
-//
-//        aaa | .one { (point: Point) in
-//
-//        |Point.one
-//        |Point.every
-//
-//        let string: String = date|
-
-
-
+        //Jump to type
         let connection = NSXPCConnection(serviceName: "com.el-machine.XcodeXPC")
         connection.remoteObjectInterface = NSXPCInterface(with: XcodeXPCProtocol.self)
         connection.resume()
@@ -106,12 +124,14 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         xcode.jump(to: type) { (errorMessage) in
             if let errorMessage {
                 handler(errorMessage)
+            } else {
+                completionHandler(nil)
             }
             semaphore.signal()
         }
         _ = semaphore.wait(timeout: .now() + 10)
 
-        completionHandler(error)
+//        completionHandler(error)
     }
     
 }
