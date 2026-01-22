@@ -33,7 +33,7 @@
 		6181C9452D4BFCD0007EBDF6 /* T_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6181C9282D4BFC7D007EBDF6 /* T_Tests.swift */; };
 		6181C9472D4BFCD0007EBDF6 /* Objects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6181C92A2D4BFC7D007EBDF6 /* Objects.swift */; };
 		618CB45B2C584FD2007B5DC9 /* Ask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618CB4442C584FD2007B5DC9 /* Ask.swift */; };
-		618D806E2F1F97880060C7F9 /* Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 61E823B82F1F918600C54221 /* Extension.appex */; platformFilters = (macos, ); settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		618D806E2F1F97880060C7F9 /* Wand.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 61E823B82F1F918600C54221 /* Wand.appex */; platformFilters = (macos, ); settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		61B4DB3A2F1FB63D00988A75 /* XcodeXPC.xpc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61B4DB282F1FB61500988A75 /* XcodeXPC.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		61E823B92F1F918700C54221 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6131C7652F1F8221007A8718 /* Cocoa.framework */; platformFilters = (macos, ); };
 		61E824AB2F1F929C00C54221 /* XcodeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6131C7672F1F8222007A8718 /* XcodeKit.framework */; };
@@ -126,7 +126,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				618D806E2F1F97880060C7F9 /* Extension.appex in Embed Foundation Extensions */,
+				618D806E2F1F97880060C7F9 /* Wand.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -162,12 +162,6 @@
 		6131C7672F1F8222007A8718 /* XcodeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XcodeKit.framework; path = Library/Frameworks/XcodeKit.framework; sourceTree = DEVELOPER_DIR; };
 		613966152BE0F4EF004C18A3 /* WatchPlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchPlay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		613966482BE0F87A004C18A3 /* WatchPlayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WatchPlayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		61435D592F20E45A009260B4 /* CLAuthorizationStatus_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLAuthorizationStatus_Tests.swift; sourceTree = "<group>"; };
-		61435D5A2F20E45A009260B4 /* CLLocation_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocation_Tests.swift; sourceTree = "<group>"; };
-		614EE6E72F20FC3800AD475E /* CLAuthorizationStatus_Ask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLAuthorizationStatus_Ask.swift; sourceTree = "<group>"; };
-		614EE6E82F20FC3800AD475E /* CLLocation_Ask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocation_Ask.swift; sourceTree = "<group>"; };
-		614EE6E92F20FC3800AD475E /* CLLocationManager_Obtain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationManager_Obtain.swift; sourceTree = "<group>"; };
-		614EE6EA2F20FC3800AD475E /* CLRegion_Ask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLRegion_Ask.swift; sourceTree = "<group>"; };
 		615054902EBDD6CD00CF9E7B /* DefaultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTests.swift; sourceTree = "<group>"; };
 		615158912BF74A4C001646EA /* TestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestPlan.xctestplan; sourceTree = "<group>"; };
 		615158922BF74A4C001646EA /* WatchTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = WatchTestPlan.xctestplan; sourceTree = "<group>"; };
@@ -189,7 +183,7 @@
 		618CB4442C584FD2007B5DC9 /* Ask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ask.swift; sourceTree = "<group>"; };
 		61AA24C02D787669005550F4 /* NOTICE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = NOTICE.txt; sourceTree = "<group>"; };
 		61B4DB282F1FB61500988A75 /* XcodeXPC.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; includeInIndex = 0; path = XcodeXPC.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
-		61E823B82F1F918600C54221 /* Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Extension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		61E823B82F1F918600C54221 /* Wand.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Wand.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		"pipe::Pipe::Product" /* Wand.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Wand.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"pipe::PipeTests::Product" /* WandTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = WandTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -374,12 +368,6 @@
 			children = (
 				615054D02EBDD73B00CF9E7B /* Core */,
 				618CB4442C584FD2007B5DC9 /* Ask.swift */,
-				61435D592F20E45A009260B4 /* CLAuthorizationStatus_Tests.swift */,
-				61435D5A2F20E45A009260B4 /* CLLocation_Tests.swift */,
-				614EE6E72F20FC3800AD475E /* CLAuthorizationStatus_Ask.swift */,
-				614EE6E82F20FC3800AD475E /* CLLocation_Ask.swift */,
-				614EE6E92F20FC3800AD475E /* CLLocationManager_Obtain.swift */,
-				614EE6EA2F20FC3800AD475E /* CLRegion_Ask.swift */,
 				615051F12EBDD14F00CF9E7B /* | */,
 				615051CD2EBDD12C00CF9E7B /* ? */,
 				615051CF2EBDD12C00CF9E7B /* & */,
@@ -396,7 +384,7 @@
 				6162624C28BC8E2B00D63EA5 /* Play.app */,
 				613966152BE0F4EF004C18A3 /* WatchPlay.app */,
 				613966482BE0F87A004C18A3 /* WatchPlayTests.xctest */,
-				61E823B82F1F918600C54221 /* Extension.appex */,
+				61E823B82F1F918600C54221 /* Wand.appex */,
 				61B4DB282F1FB61500988A75 /* XcodeXPC.xpc */,
 			);
 			name = Products;
@@ -531,7 +519,7 @@
 			packageProductDependencies = (
 			);
 			productName = Extension;
-			productReference = 61E823B82F1F918600C54221 /* Extension.appex */;
+			productReference = 61E823B82F1F918600C54221 /* Wand.appex */;
 			productType = "com.apple.product-type.xcode-extension";
 		};
 		"pipe::Pipe" /* Wand */ = {
@@ -810,7 +798,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3155;
+				CURRENT_PROJECT_VERSION = 3157;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -863,7 +851,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3155;
+				CURRENT_PROJECT_VERSION = 3157;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -911,7 +899,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3155;
+				CURRENT_PROJECT_VERSION = 3157;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -955,7 +943,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3155;
+				CURRENT_PROJECT_VERSION = 3157;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -1018,7 +1006,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3155;
+				CURRENT_PROJECT_VERSION = 3157;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
@@ -1115,7 +1103,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3155;
+				CURRENT_PROJECT_VERSION = 3157;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_PREVIEWS = YES;
@@ -1186,7 +1174,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3155;
+				CURRENT_PROJECT_VERSION = 3157;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
 				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
@@ -1249,7 +1237,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3155;
+				CURRENT_PROJECT_VERSION = 3157;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
@@ -1304,7 +1292,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3155;
+				CURRENT_PROJECT_VERSION = 3157;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1335,7 +1323,8 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "el-machine.Play.Extension.Extension";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_MODULE_NAME = Extension;
+				PRODUCT_NAME = Wand;
 				RUNTIME_EXCEPTION_ALLOW_DYLD_ENVIRONMENT_VARIABLES = NO;
 				RUNTIME_EXCEPTION_ALLOW_JIT = NO;
 				RUNTIME_EXCEPTION_ALLOW_UNSIGNED_EXECUTABLE_MEMORY = NO;
@@ -1371,7 +1360,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3155;
+				CURRENT_PROJECT_VERSION = 3157;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1399,7 +1388,8 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "el-machine.Play.Extension.Extension";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_MODULE_NAME = Extension;
+				PRODUCT_NAME = Wand;
 				RUNTIME_EXCEPTION_ALLOW_DYLD_ENVIRONMENT_VARIABLES = NO;
 				RUNTIME_EXCEPTION_ALLOW_JIT = NO;
 				RUNTIME_EXCEPTION_ALLOW_UNSIGNED_EXECUTABLE_MEMORY = NO;
@@ -1425,7 +1415,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3155;
+				CURRENT_PROJECT_VERSION = 3157;
 				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
@@ -1476,7 +1466,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3155;
+				CURRENT_PROJECT_VERSION = 3157;
 				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
@@ -1524,7 +1514,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3155;
+				CURRENT_PROJECT_VERSION = 3157;
 				DEAD_CODE_STRIPPING = YES;
 				DRIVERKIT_DEPLOYMENT_TARGET = 20.0;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -1568,7 +1558,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3155;
+				CURRENT_PROJECT_VERSION = 3157;
 				DEAD_CODE_STRIPPING = YES;
 				DRIVERKIT_DEPLOYMENT_TARGET = 20.0;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;

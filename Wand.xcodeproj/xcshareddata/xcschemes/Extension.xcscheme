@@ -17,7 +17,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "61E823B72F1F918600C54221"
-               BuildableName = "Extension.appex"
+               BuildableName = "Wand.appex"
                BlueprintName = "Extension"
                ReferencedContainer = "container:Wand.xcodeproj">
             </BuildableReference>
