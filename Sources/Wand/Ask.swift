@@ -21,6 +21,11 @@
 open
 class Ask<T> {
 
+    //TODO: Test #37
+    //Change to let?
+    public
+    var check: Bool
+
     /// Handler of T
     /// - Parameter object: Answer for the question
     /// - Returns: Need wait for next object?
@@ -34,7 +39,7 @@ class Ask<T> {
     /// Wait for only one object
     public
     let once: Bool
-    
+
     /// Label
     internal
     var _key: String?
@@ -42,8 +47,8 @@ class Ask<T> {
     ///@synthesize `key`
     @inline(__always)
     public
-    var key: String {
-
+    var key: String
+    {
         get {
             _key ?? T.self|
         }
@@ -60,16 +65,21 @@ class Ask<T> {
     @discardableResult
     @inline(__always)
     public
-    func set(core: Core?) -> Bool {
+    func set(core: Core?) -> Bool
+    {
         self.core = core
-        return false
+        return check
     }
 
     @inline(__always)
     public
     convenience
-    init(once: Bool = true, for key: String? = nil, handler: ( (T)->() )? = nil ) {
-        self.init(once: once, for: key) {
+    init(once: Bool = true,
+         check: Bool = false,
+         for key: String? = nil,
+         handler: ( (T)->() )? = nil )
+    {
+        self.init(once: once, check: check, for: key) {
 
             handler?($0)
             return !once
@@ -79,10 +89,14 @@ class Ask<T> {
     @inline(__always)
     public
     required
-    init(once: Bool, for key: String? = nil, handler: @escaping (T)->(Bool) ) {
-
-        self._key = key
+    init(once: Bool,
+         check: Bool = false,
+         for key: String? = nil,
+         handler: @escaping (T)->(Bool) )
+    {
         self.once = once
+        self.check = check
+        self._key = key
         self.handler = handler
     }
 
@@ -109,8 +123,11 @@ extension Ask {
     @inline(__always)
     public
     static
-    func every(_ key: String? = nil, handler: ( (T)->() )? = nil ) -> Self {
-        .init(once: false, for: key) {
+    func every(check: Bool = false,
+               _ key: String? = nil,
+               handler: ( (T)->() )? = nil ) -> Self
+    {
+        .init(once: false, check: check, for: key) {
 
             handler?($0)
             return true
@@ -124,8 +141,11 @@ extension Ask {
     @inline(__always)
     public
     static
-    func one(_ key: String? = nil, handler: ( (T)->() )? = nil ) -> Self {
-        .init(once: true, for: key) {
+    func one(check: Bool = false,
+             _ key: String? = nil,
+             handler: ( (T)->() )? = nil ) -> Self
+    {
+        .init(once: true, check: check, for: key) {
 
             handler?($0)
             return false
@@ -139,7 +159,10 @@ extension Ask {
     @inline(__always)
     public
     static
-    func `while`(_ key: String? = nil, handler: @escaping (T)->(Bool) ) -> Self {
+    func `while`(check: Bool = false,
+                 _ key: String? = nil,
+                 handler: @escaping (T)->(Bool) ) -> Self
+    {
         .init(once: false, for: key, handler: handler)
     }
 
@@ -151,8 +174,8 @@ extension Ask {
     @discardableResult
     @inline(__always)
     public
-    func head(_ object: T) -> Ask? {
-
+    func head(_ object: T) -> Ask?
+    {
         let head = next
         self.next = nil
 
@@ -161,8 +184,8 @@ extension Ask {
 
     @inlinable
     internal
-    func handle(_ object: T) -> Ask? {
-
+    func handle(_ object: T) -> Ask?
+    {
         if handler(object) {
             //Store ask while true
             let tail = next?.handle(object) ?? self
@@ -180,8 +203,8 @@ extension Ask {
 
     @inline(__always)
     public
-    func cancel() {
-        
+    func cancel()
+    {
         set(core: nil)
         handler = { _ in
             false

@@ -22,10 +22,6 @@ extension Ask {
     public
     class Option: Ask {
 
-        //TODO: Test #37
-        //Change to let?
-        var check: Bool = false
-
         @inline(__always)
         override
         public
@@ -42,24 +38,14 @@ extension Ask {
 
     }
 
-//    @inline(__always)
-//    public
-//    func dependency<U>(for key: String? = nil,
-//                       check: Bool = false,
-//                       on handler: ( (U)->() )? = nil ) -> Ask<U>.Option {
-//        let ask = Ask<U>.Option(once: self.once, for: key, handler: handler)
-//        ask.check = check
-//        return ask
-//    }
-//
-//    @inline(__always)
-//    public
-//    func depends<U>(for key: String? = nil,
-//                    check: Bool = false,
-//                    while handler: @escaping (U)->(Bool) ) -> Ask<U>.Option {
-//        let ask = Ask<U>.Option(once: false, for: key, handler: handler)
-//        ask.check = check
-//        return ask
-//    }
+    @inline(__always)
+    public
+    func dependency<U>(for key: String? = nil,
+                       check: Bool = false,
+                       on handler: ( (U)->() )? = nil ) -> Ask<U>.Option {
+        let ask = Ask<U>.Option(once: self.once, for: key, handler: handler)
+        ask.check = check
+        return ask
+    }
 
 }
