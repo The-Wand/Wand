@@ -195,6 +195,17 @@ any | { (error: Error?) in
 }
 ```
 
+### 📝 Jump to Definition
+  A long time ago in a galaxy far, far away....   
+  There was proper Jump to Definition ability in Xcode   
+  For predefined operators so as custom too:   
+  [Feedback](https://github.com/The-Wand/Wand/issues/17)   
+     
+  Today the Wand introducing Xcode Source Editor Extension:   
+     
+  Run   🔧 Extension > Mac   
+  Editor > Extension > Jump (App Shortcuts -> +)   
+  
 ### 📑 Documentation
   DocC, or Documentation Compiler, makes it easy to produce rich and engaging developer   
   documentation for your apps, frameworks, and packages:   
