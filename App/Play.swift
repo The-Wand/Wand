@@ -60,6 +60,9 @@ struct ContentView: View {
 //
 //            }
         }.onAppear() {
+
+            let a = "\u{0358}"
+            print(a)
 //            Wand.Log.level = .verbose
 //            Highload.highload_tests()
         }

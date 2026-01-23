@@ -34,7 +34,9 @@ class XcodeXPC: NSObject, XcodeXPCProtocol {
         let workspaceDocument = app.activeWorkspaceDocument
         let root = workspaceDocument.file.deletingLastPathComponent()
 
-        let target: String = if app.windows.first?.name.firstRange(of: type) != nil {
+        let windowName = app.windows.first?.name
+
+        let target: String = if windowName?.firstRange(of: type) != nil {
             type.replacing(/_.*/, with: "_Tests")
         } else {
             type
@@ -50,8 +52,11 @@ class XcodeXPC: NSObject, XcodeXPCProtocol {
 
         var destination: URL? = nil
         for case let url as URL in files {
-            let values = try? url.resourceValues(forKeys: Set(keys))
-            guard let values, values.isDirectory == false else {
+
+            guard
+                let values = try? url.resourceValues(forKeys: Set(keys)),
+                values.isDirectory == false
+            else {
                 continue
             }
 
@@ -59,23 +64,22 @@ class XcodeXPC: NSObject, XcodeXPCProtocol {
 
             if (path.firstRange(of: target) != nil) {
                 destination = url
-                print(destination as Any)
-//                break
+//                print(destination as Any)
+                break
             }
 
         }
 
-        if let destination {
-            DispatchQueue.main.async {
-                app.open(destination)
-            }
-
-            reply(nil)
-        } else {
+        guard let destination else {
             reply("Destination not found")
+            return
         }
 
-//        reply(type)
+        DispatchQueue.main.async {
+            app.open(destination)
+        }
+
+        reply(nil)
     }
     
 }
