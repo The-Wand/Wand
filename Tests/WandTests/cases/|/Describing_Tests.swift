@@ -24,6 +24,7 @@ struct Describing {
 
     @Test
     func test_Character_to_Int() {
+//TODO:        "\u{1111}" as Character
         let character: Character = "|"
         #expect(character| == 0x7C)
     }
