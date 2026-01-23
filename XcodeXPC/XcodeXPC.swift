@@ -24,7 +24,6 @@ class XcodeXPC: NSObject, XcodeXPCProtocol {
     @objc
     func jump(to type: String, reply: @escaping (String?)->()) {
 
-
 //        let app2 = SBApplication(bundleIdentifier: "com.apple.dt.Xcode") as! XcodeApplication
 
         guard let app = SBApplication(bundleIdentifier: "com.apple.dt.Xcode") else {
@@ -35,6 +34,11 @@ class XcodeXPC: NSObject, XcodeXPCProtocol {
         let workspaceDocument = app.activeWorkspaceDocument
         let root = workspaceDocument.file.deletingLastPathComponent()
 
+        let target: String = if app.windows.first?.name.firstRange(of: type) != nil {
+            type.replacing(/_.*/, with: "_Tests")
+        } else {
+            type
+        }
 
         let manager = FileManager.default
         let keys: [URLResourceKey] = [.isDirectoryKey]
@@ -53,7 +57,7 @@ class XcodeXPC: NSObject, XcodeXPCProtocol {
 
             let path = url.path
 
-            if (path.firstRange(of: type) != nil) {
+            if (path.firstRange(of: target) != nil) {
                 destination = url
                 print(destination as Any)
 //                break
