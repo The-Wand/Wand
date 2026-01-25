@@ -64,10 +64,10 @@ struct ContentView: View {
             let a = "\u{0358}"
             print(a)
 //            Wand.Log.level = .verbose
-//            Highload.highload_tests()
+            Highload.highload_prod(of: 111_111_111)
         }
     }
-
+    
 }
 
 @available(iOS 14, macOS 12, tvOS 14, watchOS 7, *)
