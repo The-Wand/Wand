@@ -1,5 +1,11 @@
 
-## **[Declarative Programming Language](https://github.com/The-Wand/Wand)**
+## **[![Wand 🪄](https://github.com/El-Machine/Wand/raw/main/App/Assets.xcassets/AppIcon.appiconset/magic-wand-transformed-20.png)  Declarative Programming Language](https://github.com/The-Wand/Wand)**
+
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FThe-Wand%2FWand%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/The-Wand/Wand)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FThe-Wand%2FWand%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/The-Wand/Wand)
+[![](https://img.shields.io/badge/Coverage-99%25-orange)](https://swiftpackageindex.com/The-Wand/Wand)
+[![Swift Package Manager](https://img.shields.io/badge/Swift_Package_Manager-compatible-orange?style=flat-square)](https://img.shields.io/badge/Swift_Package_Manager-compatible-orange?style=flat-square)
+[![Swift Forums](https://img.shields.io/badge/Swift_Forums-The_Wand-orange)](https://forums.swift.org/t/the-wand/84343)
 
 |wand created to support all platfroms   
 Prototype implemented on Swift
