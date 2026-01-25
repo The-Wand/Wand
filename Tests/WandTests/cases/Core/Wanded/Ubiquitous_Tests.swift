@@ -16,7 +16,7 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-#if canImport(Foundation)
+#if canImport(Foundation.NSData)
 import Foundation.NSURLCache
 import Testing
 import Wand
