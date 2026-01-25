@@ -16,8 +16,6 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-import Foundation
-
 /// Init with Bool
 extension Core: ExpressibleByBooleanLiteral {
 

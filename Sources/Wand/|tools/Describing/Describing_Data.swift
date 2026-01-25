@@ -17,7 +17,7 @@
 /// El Machine 🤖
 
 ///Data
-#if canImport(Foundation)
+#if canImport(Foundation.NSData)
 import Foundation.NSData
 
 @inline(__always)

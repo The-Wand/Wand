@@ -16,15 +16,12 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-#if canImport(Foundation)
-import Foundation
-
 /// The box for an execution context
 /// and questions
 final
 public
 class Core {
-    
+
     /// References for cores of objects
     /// object <-> Core
     public
@@ -72,12 +69,12 @@ class Core {
         }}
 
     }
-    
+
     /// Questions stored as Linked List
     /// with context cleaners
     public
     var asking = [String: (last: Any, cleaner: ( ()->() )? )]()
-    
+
     /// Execution context
     public
     var context = [String: Any]()
@@ -109,6 +106,13 @@ class Core {
 
     }
 
+}
+
+#if canImport(Foundation)
+import Foundation
+
+extension Core {
+
     @inlinable
     func sendAsking() {
 
@@ -136,6 +140,8 @@ class Core {
     }
 
 }
+#endif
+
 
 /// Attach to <#Any?#>
 extension Core {
@@ -415,5 +421,3 @@ extension Core {
     }
 
 }
-
-#endif
