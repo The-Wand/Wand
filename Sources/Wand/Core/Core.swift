@@ -160,7 +160,7 @@ extension Core: CustomStringConvertible {
     var description: String {
         """
         Wand.Core \(name.remainder| as Character)
-        v3.0.2 by @alko
+        v3.0.3 by @alko
         """
     }
 
