@@ -21,7 +21,7 @@
 @dynamicCallable
 final
 public
-class Core: Identifiable {
+class Core: CustomStringConvertible, Identifiable {
 
     /// References for cores of objects
     /// object <-> Core
@@ -81,13 +81,17 @@ class Core: Identifiable {
     public
     var handlers = [String: (last: Any, cleaner: ( ()->() )? )]()
 
-    public
     lazy
+    public
     var id = arc4random()
 
-    public
     lazy
+    public
     var name = id.quotientAndRemainder(dividingBy: 50_000)
+
+    lazy
+    public
+    var description = "Wand.Core \(name.remainder| as Character)\n\(version) by @alko"
 
     @inline(__always)
     public
@@ -115,7 +119,7 @@ class Core: Identifiable {
 
 }
 
-#if canImport(Foundation.NSData)
+#if canImport(Foundation.NSDate)
 import Foundation
 
 extension Core {
@@ -146,25 +150,7 @@ extension Core {
     }
 
 }
-#else
-@inline(__always)
-func sendLogs() {
-}
 #endif
-
-///Description
-extension Core: CustomStringConvertible {
-
-    @inlinable
-    public
-    var description: String {
-        """
-        Wand.Core \(name.remainder| as Character)
-        v3.0.3 by @alko
-        """
-    }
-
-}
 
 /// Attach to <#Any?#>
 extension Core {
@@ -422,6 +408,10 @@ extension Core {
 
         //TODO: Do I really need to clean shelf? // //Clean Cores shelf //        Core.all = Core.all.filter { //            $0.value.item != nil //        }
     }
+
+
+
+
 
 
 

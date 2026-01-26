@@ -29,3 +29,32 @@ extension Core {
     }
     
 }
+
+#if canImport(Foundation.NSData)
+import Foundation
+
+extension Core {
+
+    @inlinable
+    public
+    var version: String {
+        Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+    }
+
+}
+#else
+extension Core {
+
+    @inline(__always)
+    public
+    func sendLogs() {
+    }
+
+    @inline(__always)
+    public
+    var version: String {
+        ""
+    }
+
+}
+#endif
