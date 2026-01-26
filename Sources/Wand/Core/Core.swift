@@ -16,8 +16,6 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-import Foundation
-
 /// Wand.Core
 /// Bus for <#Any#> Factory + Cache
 @dynamicCallable
@@ -115,6 +113,13 @@ class Core: Identifiable {
         log("|✅ #bonsua")
     }
 
+}
+
+#if canImport(Foundation.NSData)
+import Foundation
+
+extension Core {
+
     @inlinable
     func sendLogs() {
 
@@ -141,6 +146,11 @@ class Core: Identifiable {
     }
 
 }
+#else
+@inline(__always)
+func sendLogs() {
+}
+#endif
 
 ///Description
 extension Core: CustomStringConvertible {

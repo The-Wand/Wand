@@ -64,7 +64,7 @@ struct ContentView: View {
             let a = "\u{0358}"
             print(a)
 //            Wand.Log.level = .verbose
-            Highload.highload_prod(of: 111_111_111)
+//            Highload.highload_prod(of: 111_111_111)
         }
     }
     
