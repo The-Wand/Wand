@@ -16,7 +16,6 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-///Data
 #if canImport(Foundation.NSData)
 import Foundation.NSData
 
