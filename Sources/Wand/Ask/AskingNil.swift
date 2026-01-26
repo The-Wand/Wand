@@ -19,6 +19,7 @@
 /// Ask object with default settings
 ///
 /// TODO: func |(context: C, asks: Ask<Self>)
+@available(*, renamed: "Ask.")
 public
 protocol AskingNil: Asking {
 

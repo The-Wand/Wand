@@ -19,6 +19,7 @@
 /// Ask from context
 ///
 /// TODO: func |(context: C, asks: Ask<Self>)
+@available(*, renamed: "Ask.")
 public
 protocol Asking {
 
