@@ -22,25 +22,25 @@ import Wand
 
 struct Describing {
 
+    /// Cast to variable
     @Test
     func test_Character_to_Int() {
-//TODO:        "\u{1111}" as Character
-        let character: Character = "|"
+        let character: Character = "\u{007C}"
         #expect(character| == 0x7C)
     }
 
+    /// Cast using explicit type
     @Test
     func test_Int_toCharacter() {
         #expect("🐕" as Character == 0x1F415|)
     }
 
+    /// Cast implicitly
     @Test
     func test_Data_to_String() {
 
         let sample = Data([72, 101, 108, 108, 111, 44, 32, 119, 97, 110, 100, 33])
-        let string: String? = sample|
-
-        #expect("Hello, wand!" == string)
+        #expect("Hello, wand!" == sample|)
     }
 
 }
