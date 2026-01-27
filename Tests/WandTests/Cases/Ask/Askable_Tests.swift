@@ -39,7 +39,6 @@ class Expect_T_Tests: XCTestCase {
             if point == last {
                 e.fulfill()
             }
-
         }
 
         //Put for 'count' Vector
@@ -49,7 +48,6 @@ class Expect_T_Tests: XCTestCase {
             last = point
 
             wand?.add(point)
-            
         }
 
         waitForExpectations(timeout: .default)
@@ -90,7 +88,7 @@ class Expect_T_Tests: XCTestCase {
         var wand: Core!
         wand = |.while { (point: Point) in
 
-            if point.t > 2 {
+            if point.t > 111_111 {
 
                 e.fulfill()
                 return false
@@ -99,7 +97,6 @@ class Expect_T_Tests: XCTestCase {
                 put()
                 return true
             }
-
         }
 
         put()
@@ -117,16 +114,15 @@ class Expect_T_Tests: XCTestCase {
         weak
         var wand: Core!
 
-        var handlePerformance: Performance!
+        var handling: Performance!
 
         wand = |.one { (point: Point) in
 
-            handlePerformance.measure()
+            handling.measure()
             e.fulfill()
-
         }
 
-        handlePerformance = Performance(of: "Nil answer")
+        handling = Performance(of: "Nil answer")
         wand.add(point)
 
         waitForExpectations()
