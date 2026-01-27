@@ -25,6 +25,7 @@ struct Describing {
     /// Cast to variable
     @Test
     func test_Character_to_Int() {
+
         let character: Character = "\u{007C}"
         #expect(character| == 0x7C)
     }
