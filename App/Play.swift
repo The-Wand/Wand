@@ -19,13 +19,7 @@
 import SwiftUI
 import Wand
 
-import Network
-
-extension String: @retroactive AskNil {}
-extension String: @retroactive AskT {}
-extension String: @retroactive Expecting {
-
-}
+//import Network
 
 @available(iOS 14, macOS 12, tvOS 14, watchOS 7, *)
 @main
@@ -59,13 +53,11 @@ struct ContentView: View {
 //                }
 //
 //            }
-        }.onAppear() {
-
-            let a = "\u{0358}"
-            print(a)
+        }
+//        .onAppear() {
 //            Wand.Log.level = .verbose
 //            Highload.highload_prod(of: 111_111_111)
-        }
+//        }
     }
     
 }
