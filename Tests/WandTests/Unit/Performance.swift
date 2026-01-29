@@ -1,5 +1,5 @@
 ///
-/// Copyright 2020 Alexander Kozin
+/// Copyright 2020 Aleksander Kozin
 ///
 /// Licensed under the Apache License, Version 2.0 (the "License");
 /// you may not use this file except in compliance with the License.
@@ -13,8 +13,8 @@
 /// See the License for the specific language governing permissions and
 /// limitations under the License.
 ///
-/// Created by Alex Kozin
-/// El Machine 🤖
+/// Created by Aleksander Kozin
+/// The Wand
 
 import Foundation
 
@@ -23,39 +23,30 @@ public
 struct Performance {
 
     private
-    let label: String
-
-    private
     let start = Date().timeIntervalSince1970
 
+    @discardableResult
+    @inline(__always)
     public
-    init(of label: String = #function) {
-        self.label = label
-    }
-
-    public
-    static
-    func measure(of label: String = #function, block: ()->() ) {
-
+    init(of label: String = #function, block: ( ()->() )? = nil) {
         #if DEBUG
-            let start = Date().timeIntervalSince1970
+            print("🏎️ " + label)
 
-            block()
+            if let block {
 
-            let delta = Date().timeIntervalSince1970 - start
-            print("🏎️ \(label) : " + String(format: "%.7f", delta))
+                block()
+                measure()
+            }
         #endif
-
     }
 
+    @inline(__always)
     public
     func measure() {
-
         #if DEBUG
             let delta = Date().timeIntervalSince1970 - start
-            print("🏎️ \(label) : " + String(format: "%.7f", delta))
+            print(": " + String(format: "%.7f", delta))
         #endif
-
     }
 
 }

@@ -1,6 +1,6 @@
 // swift-tools-version: 5.6
 ///
-/// Copyright 2020 Alexander Kozin
+/// Copyright 2020 Aleksander Kozin
 ///
 /// Licensed under the Apache License, Version 2.0 (the "License");
 /// you may not use this file except in compliance with the License.
@@ -14,8 +14,8 @@
 /// See the License for the specific language governing permissions and
 /// limitations under the License.
 ///
-/// Created by Alex Kozin
-/// El Machine 🤖
+/// Created by Aleksander Kozin
+/// The Wand
 
 import PackageDescription
 
@@ -34,9 +34,9 @@ let package = Package(
     ],
 
     dependencies: [
-        .package(url: "https://github.com/The-Wand/Any.git", .upToNextMajor(from: "1.0.2") ),
-        .package(url: "https://github.com/swiftlang/swift-docc-plugin", .upToNextMajor(from: "1.1.0") ),
+        .package(url: "https://github.com/The-Wand/Any.git", .upToNextMajor(from: "1.0.3") )
     ],
+
     targets: [
         .target(name: "Wand"),
         .testTarget(name: "WandTests", dependencies:
@@ -47,3 +47,4 @@ let package = Package(
                    )
     ]
 )
+

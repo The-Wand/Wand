@@ -1,5 +1,5 @@
 ///
-/// Copyright 2020 Alexander Kozin
+/// Copyright 2020 Aleksander Kozin
 ///
 /// Licensed under the Apache License, Version 2.0 (the "License");
 /// you may not use this file except in compliance with the License.
@@ -13,60 +13,60 @@
 /// See the License for the specific language governing permissions and
 /// limitations under the License.
 ///
-/// Created by Alex Kozin
-/// El Machine 🤖
+/// Created by Aleksander Kozin
+/// The Wand
 
 import Wand
 import XCTest
 
-/// Asking
-extension XCTestCase {
-
-    func auto<C, T: Asking>(test context: C, completion:  @escaping (T)->() ) {
-        auto(test: context, api: |, completion: completion)
-    }
-
-    func auto<C, T: Asking>(test context: C,
-                            api: ( (C, (T)->()) )->(Core),
-                            completion:  @escaping (T)->() ) {
-
-        let e = expectation()
-        e.assertForOverFulfill = true
-
-        _ = api( (context, { (t: T) in
-            e.fulfill()
-            completion(t)
-        }) )
-
-        waitForExpectations(timeout: .default)
-        
-    }
-
-}
-
-/// AskingNil
-extension XCTestCase {
-    
-    func auto_test<T: AskingNil>(completion:  @escaping (T)->() ) {
-        auto_test(|, completion: completion)
-    }
-
-    func auto_test<T: AskingNil>(_ api:   ( @escaping (T)->() )->(Core) ,
-                               completion:  @escaping (T)->() ) {
-
-        let e = expectation()
-        e.assertForOverFulfill = true
-
-        _ = api({ (t: T) in
-            e.fulfill()
-            completion(t)
-        })
-
-        waitForExpectations(timeout: .default)
-
-    }
-
-}
+///// AskT
+//extension XCTestCase {
+//
+//    func auto<C, T: AskT>(test scope: C, completion:  @escaping (T)->() ) {
+//        auto(test: scope, api: |, completion: completion)
+//    }
+//
+//    func auto<C, T: AskT>(test scope: C,
+//                            api: ( (C, (T)->()) )->(Core),
+//                            completion:  @escaping (T)->() ) {
+//
+//        let e = expectation()
+//        e.assertForOverFulfill = true
+//
+//        _ = api( (scope, { (t: T) in
+//            e.fulfill()
+//            completion(t)
+//        }) )
+//
+//        waitForExpectations(timeout: .default)
+//        
+//    }
+//
+//}
+//
+///// Ask.Nil
+//extension XCTestCase {
+//    
+//    func auto_test<T: Ask.Nil>(completion:  @escaping (T)->() ) {
+//        auto_test(|, completion: completion)
+//    }
+//
+//    func auto_test<T: Ask.Nil>(_ api:   ( @escaping (T)->() )->(Core) ,
+//                               completion:  @escaping (T)->() ) {
+//
+//        let e = expectation()
+//        e.assertForOverFulfill = true
+//
+//        _ = api({ (t: T) in
+//            e.fulfill()
+//            completion(t)
+//        })
+//
+//        waitForExpectations(timeout: .default)
+//
+//    }
+//
+//}
 
 /// Tools
 extension XCTestCase {

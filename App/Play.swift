@@ -1,5 +1,5 @@
 ///
-/// Copyright 2020 Alexander Kozin
+/// Copyright 2020 Aleksander Kozin
 ///
 /// Licensed under the Apache License, Version 2.0 (the "License");
 /// you may not use this file except in compliance with the License.
@@ -13,11 +13,13 @@
 /// See the License for the specific language governing permissions and
 /// limitations under the License.
 ///
-/// Created by Alex Kozin
-/// El Machine 🤖
+/// Created by Aleksander Kozin
+/// The Wand
 
 import SwiftUI
 import Wand
+
+//import Network
 
 @available(iOS 14, macOS 12, tvOS 14, watchOS 7, *)
 @main
@@ -38,11 +40,26 @@ struct ContentView: View {
         VStack {
             Image(systemName: "wand.and.stars")
             Text("Hello, Wand|")
-        }.onAppear() {
-            let wand: Wand.Core = "1"
+//            Button("Receive") {
+//                |.while { (connection: NWConnection) in
+//                    print("✅ \(connection)")
+//                    return true
+//                }
+//            }
+//            Button("Transfer") {
+//                |.while { (result: NWBrowser.Result) in
+//                    print("✅ \(result)")
+//                    return true
+//                }
+//
+//            }
         }
+//        .onAppear() {
+//            Wand.Log.level = .verbose
+//            Highload.highload_prod(of: 111_111_111)
+//        }
     }
-
+    
 }
 
 @available(iOS 14, macOS 12, tvOS 14, watchOS 7, *)

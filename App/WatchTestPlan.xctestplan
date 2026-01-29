@@ -16,6 +16,7 @@
   },
   "testTargets" : [
     {
+      "parallelizable" : false,
       "target" : {
         "containerPath" : "container:Wand.xcodeproj",
         "identifier" : "613966472BE0F87A004C18A3",
@@ -23,5 +24,5 @@
       }
     }
   ],
-  "version" : 1
+  "version" : 2
 }

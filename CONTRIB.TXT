@@ -8,7 +8,7 @@
                                Wand Release 1.0
                                Contributors List
 
-          - 🤖  Alex Kozin
+          - 🤖  Aleksandr Kozin
                 El Machine
 
 

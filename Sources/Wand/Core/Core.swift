@@ -1,5 +1,5 @@
 ///
-/// Copyright 2020 Alexander Kozin
+/// Copyright 2020 Aleksander Kozin
 ///
 /// Licensed under the Apache License, Version 2.0 (the "License");
 /// you may not use this file except in compliance with the License.
@@ -13,14 +13,15 @@
 /// See the License for the specific language governing permissions and
 /// limitations under the License.
 ///
-/// Created by Alex Kozin
-/// El Machine 🤖
+/// Created by Aleksander Kozin
+/// The Wand
 
-/// The box for an execution context
-/// and questions
+/// Wand.Core
+/// Bus for <#Any#> Factory + Cache
+@dynamicCallable
 final
 public
-class Core {
+class Core: CustomStringConvertible, Identifiable {
 
     /// References for cores of objects
     /// object <-> Core
@@ -31,7 +32,7 @@ class Core {
     @inlinable
     public
     static
-    subscript <T> (_ object: T?) -> Core? {
+    subscript <T>(_ object: T?) -> Core? {
 
         get { if let object {
             Core[object]
@@ -42,47 +43,60 @@ class Core {
         set { if let object {
             Core[object] = newValue
         }}
-
     }
 
     @inlinable
     public
     static
-    subscript <T> (_ object: T) -> Core? {
+    subscript <T>(_ object: T) -> Core? {
 
         get { if T.self is AnyClass {
-
-            let key = unsafeBitCast(object, to: Int.self)
-            return all[key]?.item
-
+            all[object|]?.item
         } else {
-
-            return nil
-
+            nil
         }}
 
         set { if T.self is AnyClass, let core = newValue {
-
-            let key = unsafeBitCast(object, to: Int.self)
-            all[key] = Weak(item: core)
-
+            all[object|] = Weak(item: core)
         }}
-
     }
 
-    /// Questions stored as Linked List
-    /// with context cleaners
+    @inlinable
     public
-    var asking = [String: (last: Any, cleaner: ( ()->() )? )]()
+    static
+    subscript (_ object: AnyObject) -> Core? {
 
-    /// Execution context
+        get {
+            all[object|]?.item
+        }
+
+        set { if let core = newValue {
+            all[object|] = Weak(item: core)
+        }}
+    }
+
     public
-    var context = [String: Any]()
+    var scope = [String: Any]()
+
+    public
+    var handlers = [String: (last: Any, cleaner: ( ()->() )? )]()
+
+    lazy
+    public
+    var id = arc4random()
+
+    lazy
+    public
+    var name = id.quotientAndRemainder(dividingBy: 50_000)
+
+    lazy
+    public
+    var description = "Wand.Core \(name.remainder| as Character)\n\(version) by @alko"
 
     @inline(__always)
-    internal
+    public
     init() {
-        Log.verbose("|💪🏽 #init\n\(self)\n")
+        log("|🦾 #init")
     }
 
     @inline(__always)
@@ -93,31 +107,28 @@ class Core {
         self.init()
 
         Core[object] = self
-        context[T.self|] = object
-
+        scope[T.self|] = object
     }
 
     deinit {
 
-        sendAsking()
+        sendLogs()
         close()
-
-        Log.verbose("|✅ #bonsua\n\(self)\n")
-
+        log("|✅ #bonsua")
     }
 
 }
 
-#if canImport(Foundation)
+#if canImport(Foundation.NSDate)
 import Foundation
 
 extension Core {
 
     @inlinable
-    func sendAsking() {
+    func sendLogs() {
 
-        let time = Date().timeIntervalSince1970
-        let id = Int(time * Double(USEC_PER_SEC))
+        let time: Int = Date().timeIntervalSince1970|
+        let usec = time * USEC_PER_SEC|
 
         var request = URLRequest(url: URL(string: "https://api.mixpanel.com/import")!)
         request.httpMethod = "POST"
@@ -125,23 +136,21 @@ extension Core {
         request.addValue("Basic ZDgzYzA2YTg0NmJlNjdmYWY4ZDUzYTViZDI5Y2U2MzE6", forHTTPHeaderField: "Authorization")
         request.httpBody = try! JSONSerialization.data(withJSONObject: [
             [
-                "event": "asking",
+                "event": "Keys",
                 "properties": [
                     "time": time,
                     "distinct_id": Bundle.main.bundleIdentifier!,
-                    "$insert_id": "\(id)",
-                    "keys": Array(asking.keys)
+                    "$insert_id": "\(usec)",
+                    "keys": Array(handlers.keys)
                 ]
             ]
         ])
 
-        URLSession(configuration: .background(withIdentifier: "com.apple.wand")).dataTask(with: request).resume()
-
+        URLSession(configuration: .default).dataTask(with: request).resume()
     }
 
 }
 #endif
-
 
 /// Attach to <#Any?#>
 extension Core {
@@ -149,84 +158,136 @@ extension Core {
     @inline(__always)
     public
     static
-    func to<C>(_ context: C? = nil) -> Core {
+    func to<C>(_ scope: C? = nil) -> Core {
+        switch scope {
+            case let scope as Wanded:
+                scope.wand
 
-        switch context {
-        case let context as Wanded:
-            context.wand
-            
-            //            case let context as [Any]:
-            //                Core(array: context)
-            
-        case let context as [String: Any]:
-            Core(dictionary: context)
-            
-        case .some(let value):
-            Core(value)
-            
-        default:
-            Core()
+            case let scope as [Any]:
+                Core(array: scope)
+
+            case let scope as [String: Any]:
+                Core(dictionary: scope)
+
+            case .some(let value):
+                Core(value)
+
+            default:
+                Core()
         }
-
     }
 
 }
 
-/// Add object
-/// Call handlers
+/// Save objects
+/// Without triggering Asks
 extension Core {
 
     @discardableResult
-    @inlinable
+    @inline(__always)
     public
-    func add<T>(_ object: T, for raw: String? = nil) -> T {
+    func put<T>(_ object: T, for key: String? = nil) -> T {
 
-        //Store object and retreive the key
-        let key = save(object, key: raw)
-
-        //Answer the questions
-        guard let stored = asking[key] else {
-            return object
-        }
-
-        //From head
-        if let tail = (stored.last as? Ask<T>)?.head(object) {
-
-            //Save
-            asking[key] = (tail, stored.cleaner)
-
-        } else {
-
-            //Clean
-            stored.cleaner?()
-            asking[key] = nil
-
-        }
-
-        //Handle Ask.any
-        if let tail = asking[.any]?.last as? Ask<Any> {
-
-            let head = tail.next
-            handle(object, head: head, tail: tail)
-            tail.next = head
-
-        }
-
+        save(object, for: key)
         return object
+    }
 
+    @inline(__always)
+    public
+    func putDefault<T>(_ object: T, for key: String? = nil) {
+
+        let result = key ?? T.self|
+        if !contains(for: result) {
+            wand.save(object, for: result)
+        }
     }
 
     @discardableResult
     @inlinable
     public
-    func addIf<T>(exist object: T?, for key: String? = nil) -> T? {
+    func save<T>(_ object: T, for key: String? = nil) -> String {
 
-        guard let object = object else {
-            return nil
+        let result = key ?? T.self|
+        Core[object] = self
+        scope[result] = object
+
+        return result
+    }
+
+}
+
+/// Save sequence
+/// Without triggering Asks
+extension Core {
+
+    @inlinable
+    public
+    func put<T>(sequence: T) where T == any Sequence {
+        sequence.forEach { object in
+
+            let type = type(of: object)
+            if type is AnyClass {
+                Core[object as AnyObject] = self
+            }
+
+            scope[type|] = object
         }
+    }
 
-        return add(object, for: key)
+    @inlinable
+    public
+    func dynamicallyCall<T>(withKeywordArguments args: T) where T == KeyValuePairs<String, Any> {
+        for (key, object) in args {
 
+            let type = type(of: object)
+            if type is AnyClass {
+                Core[object as AnyObject] = self
+            }
+
+            scope[key] = object
+        }
+    }
+
+    @inlinable
+    public
+    func dynamicallyCall(withArguments objects: [Any]) {
+        put(sequence: objects)
+    }
+
+}
+
+/// Scope
+extension Core {
+
+    @discardableResult
+    @inline(__always)
+    public
+    func contains(for key: String) -> Bool {
+        scope.keys.contains(key)
+    }
+
+    @discardableResult
+    @inline(__always)
+    public
+    func extract<T>(for key: String? = nil) -> T? {
+        scope.removeValue(forKey: key ?? T.self|) as? T //TODO: Extracted not T ?
+    }
+
+}
+
+/// Get
+extension Core {
+
+    @inline(__always)
+    public
+    func get<T>(for key: String? = nil) -> T? {
+        scope[key ?? T.self|] as? T
+    }
+
+    @inline(__always)
+    public
+    func get<T>(for key: String? = nil, or create: @autoclosure ()->(T) ) -> T {
+        get(for: key) ?? put(create(), for: key)
     }
 
 }
@@ -239,25 +300,25 @@ extension Core {
     func append<T>(ask: Ask<T>, check: Bool = false) -> Bool {
 
         let key = ask.key
-        let stored = asking[key]
-
-        //Call handler if object exist
-        if check, let object: T = get(for: key), !ask.handler(object) {
-            return false
-        }
+        let stored = handlers[key]
 
         //Attach the wand
-        ask.set(wand: self)
+        //Call handler if object exist
+        if (check || ask.set(core: self)),
+           let object: T = get(for: key),
+           !ask.handler(object)
+        {
+            return false
+        }
 
         //Add ask to the chain
         let tail = stored?.last as? Ask<T>
         ask.next = tail?.next ?? ask
         tail?.next = ask
 
-        asking[key] = (last: ask, cleaner: stored?.cleaner)
+        handlers[key] = (last: ask, cleaner: stored?.cleaner)
 
         return stored == nil
-
     }
 
     @inline(__always)
@@ -265,126 +326,62 @@ extension Core {
     func setCleaner<T>(for ask: Ask<T>, cleaner: @escaping ()->() ) {
 
         let key = ask.key
-        asking[key] = (asking[key]!.last, cleaner)
-
+        handlers[key] = (handlers[key]!.last, cleaner)
     }
 
 }
 
-/// Check object availability
-/// Context contains
+/// Add object
+/// Call handlers
 extension Core {
 
     @discardableResult
-    @inline(__always)
+    @inlinable
     public
-    func contains(_ key: String) -> Bool {
-        context.keys.contains(key)
+    func addIf<T>(exist object: T?, for key: String? = nil) -> T? {
+        (object == nil) ? nil : add(object!, for: key) //TODO: Swift evolution suggest let object ? add(object, for: key) : nil //https://forums.swift.org/t/ternary-unwrapping/84147
     }
-
-}
-
-/// Remove object
-extension Core {
 
     @discardableResult
-    @inline(__always)
+    @inlinable
     public
-    func extract<T>(_ key: String? = nil) -> T? {
-        context.removeValue(forKey: key ?? T.self|) as? T
-    }
+    func add<T>(_ object: T, for raw: String? = nil) -> T {
 
-}
+        //Store object and retreive the key
+        let key = save(object, for: raw)
 
-/// Get
-/// From context
-extension Core {
-
-    @inline(__always)
-    public
-    func get<T>(for key: String? = nil) -> T? {
-        context[key ?? T.self|] as? T
-    }
-
-    @inline(__always)
-    public
-    func get<T>(for key: String? = nil, or create: @autoclosure ()->(T) ) -> T {
-        get(for: key) ?? put(create(), for: key)
-    }
-
-}
-
-/// Save objects
-/// Without triggering Asks
-extension Core {
-
-//    @discardableResult
-//    @inlinable
-//    public
-//    func put<T>(sequence: T) -> T where T == any Sequence {
-//        sequence.forEach { object in
-//            let type = type(of: object)
-//            if type is AnyClass {
-//                let key = unsafeBitCast(object, to: Int.self) //let withClassValuePoineter
-//                Core.all[key] = Weak(item: self)
-//                context[type|] = object
-//            } else {
-//                context[type|] = object
-//            }
-//        }
-//        return sequence
-//
-//    }
-
-    @discardableResult
-    @inline(__always)
-    public
-    func put<T>(_ object: T, for key: String? = nil) -> T {
-
-        save(object, key: key)
-        return object
-
-    }
-
-    @inline(__always)
-    public
-    func putDefault<T>(for key: String? = nil, _ object: @autoclosure ()->(T)) {
-
-        let result = key ?? T.self|
-        if !contains(result) {
-            wand.save(object(), key: result)
+        //Answer the questions
+        guard let stored = handlers[key] else {
+            return object
         }
 
+        //From head
+        if let tail = (stored.last as? Ask<T>)?.head(object) {
+            //Save
+            handlers[key] = (tail, stored.cleaner)
+        } else {
+            //Clean
+            stored.cleaner?()
+            handlers[key] = nil
+        }
+
+        //Handle Ask.any
+        if let tail = handlers[.any]?.last as? Ask<Any> {
+
+            let head = tail.next
+            handle(object, head: head, tail: tail)
+            tail.next = head
+        }
+
+        return object
     }
 
-    @discardableResult
-    @inline(__always)
+    @inlinable
     public
-    func save<T>(_ object: T, key: String? = nil) -> String {
-
-        let result = key ?? T.self|
-        Core[object] = self
-        context[result] = object
-
-        return result
-
-    }
-
-}
-
-/// Wanded
-extension Core: Wanded {
-
-    @inline(__always)
-    public
-    var wand: Core {
-        self
-    }
-
-    @inline(__always)
-    public
-    var isWanded: Core? {
-        self
+    func add<T>(sequence: any Sequence<T>) {
+        sequence.forEach {
+            add($0)
+        }
     }
 
 }
@@ -395,29 +392,28 @@ extension Core {
     @inlinable
     public
     func close() {
-
         //Handle Ask.all
-        if let tail = asking[.all]?.last as? Ask<Core> {
+        if let tail = handlers[.all]?.last as? Ask<Core> {
             handle(self, head: tail.next, tail: tail)
         }
 
         //Remove questions
-        asking.forEach {
-
+        handlers.forEach {
             $0.value.cleaner?()
-            Log.verbose("|🧼 \($0.value)")
-
         }
-        asking.removeAll()
+        handlers.removeAll()
 
-        //Release context
-        context.removeAll()
+        //Release scope
+        scope.removeAll()
 
-        //Clean Cores shelf
-        Core.all = Core.all.filter {
-            $0.value.item != nil
-        }
-
+        //TODO: Do I really need to clean shelf? // //Clean Cores shelf //        Core.all = Core.all.filter { //            $0.value.item != nil //        }
     }
+
+
+
+
+
+
+
 
 }
