@@ -37,11 +37,11 @@ struct Describing {
     }
 
     /// Cast implicitly
-    @Test
-    func test_Data_to_String() {
-
-        let sample = Data([72, 101, 108, 108, 111, 44, 32, 119, 97, 110, 100, 33])
-        #expect("Hello, wand!" == sample|)
-    }
+//    @Test
+//    func test_Data_to_String() {
+//
+//        let sample = Data([72, 101, 108, 108, 111, 44, 32, 119, 97, 110, 100, 33])
+//        #expect("Hello, wand!" == sample|)
+//    }
 
 }

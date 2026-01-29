@@ -16,19 +16,19 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-public
-extension Core {
-    
-    enum State {
-        case ready, active
-    }
-
-    @inlinable
-    var state: State {
-        handlers.isEmpty ? .ready : .active
-    }
-    
-}
+//public
+//extension Core {
+//    
+//    enum State {
+//        case ready, active
+//    }
+//
+//    @inlinable
+//    var state: State {
+//        handlers.isEmpty ? .ready : .active
+//    }
+//    
+//}
 
 #if canImport(Foundation.NSData)
 import Foundation

@@ -16,20 +16,20 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-#if canImport(Foundation.NSData)
-import Foundation.NSData
-
-@inline(__always)
-postfix
-public
-func |(data: Data) -> String? {
-    data | .utf8
-}
-
-@inline(__always)
-public
-func |(data: Data, encoding: String.Encoding) -> String? {
-    String(data: data, encoding: encoding)
-}
-
-#endif
+//#if canImport(Foundation.NSData)
+//import Foundation.NSData
+//
+//@inline(__always)
+//postfix
+//public
+//func |(data: Data) -> String? {
+//    data | .utf8
+//}
+//
+//@inline(__always)
+//public
+//func |(data: Data, encoding: String.Encoding) -> String? {
+//    String(data: data, encoding: encoding)
+//}
+//
+//#endif
