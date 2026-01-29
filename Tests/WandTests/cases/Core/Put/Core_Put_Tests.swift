@@ -147,7 +147,7 @@ import Wand
 func putDefault_test()
 {
     let wand = Core(String.any)
-    wand.putDefault(object: Int.any.description)
+    wand.putDefault(Int.any.description)
 
     #expect(wand.get() == String.any)
 }
