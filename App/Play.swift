@@ -36,10 +36,22 @@ struct PlayApp: App {
 @available(iOS 14, macOS 12, tvOS 14, watchOS 7, *)
 struct ContentView: View {
 
+    let pickAxe = "https://deeprockgalactic.wiki.gg/images/thumb/GearGraphic_PickAxe.png/600px-GearGraphic_PickAxe.png?8d8b42"
+
     var body: some View {
-        VStack {
-            Image(systemName: "wand.and.stars")
-            Text("Hello, Wand|")
+        HStack {
+            if #available(iOS 15.0, watchOS 8.0, *) {
+                AsyncImage(
+                    url: URL(string: pickAxe),
+                    scale: 2
+                )
+                .ignoresSafeArea()
+//                .blur(radius: 2.0)
+            } else {
+                Text("Hello, Wand|")
+            }
+
+
 //            Button("Receive") {
 //                |.while { (connection: NWConnection) in
 //                    print("✅ \(connection)")
