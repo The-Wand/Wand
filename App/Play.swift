@@ -39,18 +39,17 @@ struct ContentView: View {
     let pickAxe = "https://deeprockgalactic.wiki.gg/images/thumb/GearGraphic_PickAxe.png/600px-GearGraphic_PickAxe.png?8d8b42"
 
     var body: some View {
-        HStack {
-            if #available(iOS 15.0, watchOS 8.0, *) {
-                AsyncImage(
-                    url: URL(string: pickAxe),
-                    scale: 2
-                )
-                .ignoresSafeArea()
-//                .blur(radius: 2.0)
+        VStack {
+            if #available(iOS 15.0, tvOS 15.0, watchOS 8.0, *) {
+                    AsyncImage(
+                        url: URL(string: pickAxe),
+                        scale: 2
+                    )
+                    .ignoresSafeArea()
             } else {
+                Image(systemName: "wand.and.stars")
                 Text("Hello, Wand|")
             }
-
 
 //            Button("Receive") {
 //                |.while { (connection: NWConnection) in
@@ -66,12 +65,47 @@ struct ContentView: View {
 //
 //            }
         }
-//        .onAppear() {
+        .onAppear() {
+            
 //            Wand.Log.level = .verbose
-//            Highload.highload_prod(of: 111_111_111)
-//        }
+            Highload.highload_prod(of: 11)//)1_111_111)
+
+//            let archive: Rar = nil
+//            print(archive)
+//
+//            DispatchQueue.main.async {
+//
+////                let archive: Rar = //"\u{00C237}"
+////                print(archive)
+//            }
+
+        }
     }
     
+}
+
+//extension Rar: Expressable {
+//
+//}
+struct Rar: Expecting, Wanded, ExpressibleByNilLiteral {
+
+    @inline(__always)
+    public
+    static
+    func ask<C, T>(with scope: C, ask: Ask<T>) -> Core {
+
+        let wand = Core.to(scope)
+        _ = wand.append(ask: ask)
+        return wand
+    }
+
+    init() {
+    }
+
+    init(nilLiteral: ()) {
+        self.init()
+    }
+
 }
 
 @available(iOS 14, macOS 12, tvOS 14, watchOS 7, *)

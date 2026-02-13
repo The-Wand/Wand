@@ -54,7 +54,7 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
-      allowLocationSimulation = "YES">
+      allowLocationSimulation = "NO">
       <PathRunnable
          runnableDebuggingMode = "0"
          BundleIdentifier = "com.apple.dt.Xcode"
@@ -71,7 +71,7 @@
       </MacroExpansion>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "/Users/al/Projects/Wand/Location/WandLocation.xcodeproj"
+            argument = "/Users/al/Projects/Wand/UI/WandUI.xcodeproj"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

@@ -21,10 +21,11 @@
 public
 protocol Obtainable: Wanded {
 
-    //TODO: postfix static func |(wand: Core?) -> Self
-    @inline(__always)
     static 
     func obtain(by wand: Core?) -> Self
+
+//    static
+//    func obtain<C>(with scope: C?, by wand: Core?) -> Self
 
 }
 
@@ -37,6 +38,7 @@ postfix
 public
 func |<T: Obtainable>(type: T.Type) -> T {
     T.obtain(by: nil)
+//    T.obtain(with: type, by: nil)
 }
 
 /// Obtain from wand
@@ -48,8 +50,9 @@ postfix
 public
 func |<T: Obtainable>(wand: Core?) -> T {
     wand?.get() ?? {
-        
+
         let object = T.obtain(by: wand)
+//        let object = T.obtain(with: wand, by: wand)
         return wand?.add(object) ?? object
     }()
 }
@@ -82,11 +85,17 @@ func |<T: Obtainable>(object: T?) -> T {
 /// let object: T = wand.get()
 ///
 extension Core {
-    
+
     @inline(__always)
     public
     func get<T: Obtainable>(for key: String? = nil) -> T {
         get(for: key, or: T.obtain(by: self))
     }
-    
+
+//    @inline(__always)
+//    public
+//    func get<T: Obtainable>(for key: String? = nil) -> T {
+//        get(for: key, or: T.obtain(with: key, by: self)
+//    }
+
 }

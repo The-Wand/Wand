@@ -112,7 +112,7 @@ class Core: CustomStringConvertible, Identifiable {
 
     deinit {
 
-        sendLogs()
+//        sendLogs()
         close()
         log("|✅ #bonsua")
     }
