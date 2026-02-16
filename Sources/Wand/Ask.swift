@@ -22,9 +22,8 @@ open
 class Ask<T> {
 
     //TODO: Test #37
-    //Change to let?
     public
-    var check: Bool
+    let check: Bool
 
     /// Handler of T
     /// - Parameter object: Answer for the question
