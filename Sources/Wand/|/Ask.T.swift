@@ -39,12 +39,12 @@ protocol AskT {
 ///
 /// }
 /// 
-//@inline(__always)
-//@discardableResult
-//public
-//func |<C, T: Ask.T>(scope: C, handler: @escaping (T)->() ) -> Core {
-//    scope | Ask.one(handler: handler)
-//}
+@inline(__always)
+@discardableResult
+public
+func |<C, T: Ask.T>(scope: C, handler: @escaping (T)->() ) -> Core {
+    scope | Ask.one(handler: handler)
+}
 
 /// Ask
 /// - `every`
@@ -94,12 +94,12 @@ extension Ask.T {
 ///
 extension Ask.T {
 
-//    @inline(__always)
-//    public
-//    static
-//    func every(handler: ( (Self)->() )? = nil) -> Ask<Self> {
-//        .every(handler: handler)
-//    }
+    @inline(__always)
+    public
+    static
+    func every(handler: ( (Self)->() )? = nil) -> Ask<Self> {
+        .every(handler: handler)
+    }
     
     @inline(__always)
     public
@@ -108,11 +108,11 @@ extension Ask.T {
         .one(handler: handler)
     }
     
-//    @inline(__always)
-//    public
-//    static
-//    func `while`(handler: @escaping (Self)->(Bool) ) -> Ask<Self> {
-//        .while(handler: handler)
-//    }
+    @inline(__always)
+    public
+    static
+    func `while`(handler: @escaping (Self)->(Bool) ) -> Ask<Self> {
+        .while(handler: handler)
+    }
     
 }
