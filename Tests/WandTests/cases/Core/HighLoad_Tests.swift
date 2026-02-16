@@ -19,8 +19,50 @@
 import Foundation
 import Testing
 import Wand
+import XCTest
 
 import CoreLocation
+
+class HighloadTests: XCTestCase {
+
+    /// Core 3.0.2
+    /// A2485 | M1 Pro 16 Gb | macOS 26.0.1
+    /// -logs ~380
+    ///
+    /// 🏎️ Closing Wand 150m objects:
+    ///
+    /// 🏎️ Closing Wand 111m objects:
+    func testClose()
+    {
+        let closeCount = 111_111_111
+
+        var wand: Core? = (1...closeCount).reduce(Core()) { wand, index in
+
+            let location = CLLocation(coordinate: .any,
+                                      altitude: .any,
+                                      horizontalAccuracy: .any,
+                                      verticalAccuracy: .any,
+                                      timestamp: .any)
+            wand.add(location, for: index|)
+
+            return wand
+        }
+
+        measure(metrics: .default) {
+            wand|
+        }
+
+        Performance(of: "Closing \(wand!) with \(wand!.scope.count) objects") {
+            _ = (wand!)|
+        }
+
+        wand = nil
+
+        //        XCTAssert(Wand.Core.all.count == 0)
+        XCTAssert(true)
+    }
+
+}
 
 struct Highload {
 
@@ -135,46 +177,6 @@ struct Highload {
             }
         }
 
-        #expect(true)
-    }
-
-    /// Core 3.0.2
-    /// A2485 | M1 Pro 16 Gb | macOS 26.0.1
-    /// -logs ~380
-    ///
-    /// 🏎️ Closing Wand 150m objects:
-    ///
-    /// 🏎️ Closing Wand 111m objects:
-    @Test
-    func testClose()
-    {
-        let closeCount = 3//_333_333
-
-        var wand: Core? = (1...closeCount).reduce(Core()) { wand, index in
-
-            let location = CLLocation(coordinate: .any,
-                                      altitude: .any,
-                                      horizontalAccuracy: .any,
-                                      verticalAccuracy: .any,
-                                      timestamp: .any)
-            wand.add(location, for: index|)
-
-            return wand
-        }
-
-        //TODO: Fix and enable
-        //Can you see any results?
-        //        measure {
-        //            wand|
-        //        }
-
-        Performance(of: "Closing \(wand!) with \(wand!.scope.count) objects") {
-            _ = (wand!)|
-        }
-
-        wand = nil
-
-        //        XCTAssert(Wand.Core.all.count == 0)
         #expect(true)
     }
 

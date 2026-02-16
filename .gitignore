@@ -52,3 +52,4 @@ Carthage/Build
 fastlane/report.xml
 fastlane/screenshots
 /.build
+/Wand.xcodeproj/xcshareddata/xcbaselines

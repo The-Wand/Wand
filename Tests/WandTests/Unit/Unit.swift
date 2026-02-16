@@ -32,17 +32,17 @@ extension TimeInterval {
 }
 
 ///Performance
-//extension [XCTMetric] {
-//
-//    static
-//    var `default`: Self = {[
-//        XCTCPUMetric(),
-//        XCTClockMetric(),
-//        XCTMemoryMetric(),
-//        XCTStorageMetric(),
-//    ]}()
-//
-//}
+extension [XCTMetric] {
+
+    static
+    var `default`: Self = {[
+        XCTCPUMetric(),
+        XCTClockMetric(),
+        XCTMemoryMetric(),
+        XCTStorageMetric(),
+    ]}()
+
+}
 
 //extension Ask {
 //
