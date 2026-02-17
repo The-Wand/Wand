@@ -71,42 +71,62 @@ struct ContentView: View {
 //            Highload.highload_prod(of: 11)//)1_111_111)
 
 //            let archive: Rar = nil
-//            print(archive)
-//
-//            DispatchQueue.main.async {
-//
-////                let archive: Rar = //"\u{00C237}"
-////                print(archive)
-//            }
-
+//            let archive2: Rar = "\u{00C237}"
         }
     }
     
 }
 
-//extension Rar: Expressable {
+//struct Rar: AskNil, Wanded, ExpressibleByT {
+//
+//    @inline(__always)
+//    public
+//    static
+//    func ask<C, T>(with scope: C, ask: Ask<T>) -> Core {
+//
+//        let wand = Core.to(scope)
+//        _ = wand.append(ask: ask)
+//
+//
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak wand] in
+//
+//            //from scope
+//            let archive = Rar()
+//            wand?.add(archive, for: ask.key)
+//        }
+//
+//        return wand
+//    }
+//
+//    init() {
+//    }
 //
 //}
-struct Rar: Expecting, Wanded, ExpressibleByNilLiteral {
-
-    @inline(__always)
-    public
-    static
-    func ask<C, T>(with scope: C, ask: Ask<T>) -> Core {
-
-        let wand = Core.to(scope)
-        _ = wand.append(ask: ask)
-        return wand
-    }
-
-    init() {
-    }
-
-    init(nilLiteral: ()) {
-        self.init()
-    }
-
-}
+//
+//protocol ExpressibleByT: ExpressibleByNilLiteral, ExpressibleByStringLiteral {
+//
+//    init()
+//
+//}
+//
+//extension ExpressibleByT {
+//
+//    init(nilLiteral: ()) {
+//        self.init()
+//    }
+//
+//    init(stringLiteral value: String) {
+//        let wand = Core.to(value)
+//        wand | .one { (archive: Rar) in
+//
+//            //update self
+//            print("#archived \(value)")
+//        }
+//
+//        self.init()
+//    }
+//
+//}
 
 @available(iOS 14, macOS 12, tvOS 14, watchOS 7, *)
 #Preview {
