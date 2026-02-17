@@ -16,6 +16,8 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
+import Foundation
+
 /// Wand.Core
 /// Bus for <#Any#> Factory + Cache
 @dynamicCallable
