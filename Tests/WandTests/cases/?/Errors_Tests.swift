@@ -27,7 +27,7 @@ class Errors_Tests: XCTestCase {
         let e2 = expectation()
 
         weak
-        var wand: Core!
+        var wand: Core! //one
         wand = |String.one { _ in
             e1.fulfill()
         } |? { (error: Error) in
@@ -50,8 +50,8 @@ class Errors_Tests: XCTestCase {
         let e2 = expectation()
 
         weak
-        var wand: Core!
-        wand = Point.every | String.one { _ in
+        var wand: Core! //every
+        wand = String.one | Point.every { _ in
             XCTAssert(false)
         } |? { (error: Error) in
             e1.fulfill()
@@ -76,8 +76,10 @@ class Errors_Tests: XCTestCase {
         e.expectedFulfillmentCount = range.upperBound
 
         weak
-        var wand: Core!
-        wand = Point.every | String.one { _ in
+        var wand: Core! //while
+        wand = Point.every | String.while { _ in
+            fatalError()
+        } | { (point: Point) in
             fatalError()
         } |? .every { (error: Error) in
             e.fulfill()
