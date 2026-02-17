@@ -31,7 +31,7 @@ class Ask_Dependencies_Tests: XCTestCase {
         var wand: Core!
         wand = |.one { (point: Point) in
             e.fulfill()
-        } |? { (string: String) in
+        } |? { (string: String) in //ask3
 
         }
 
@@ -121,7 +121,7 @@ class Ask_Dependencies_Tests: XCTestCase {
             e.fulfill()
         }
 
-        var wand: Core!
+        var wand: Core! //ask
         wand = point |? ask
 
         wand.add(String.any)
@@ -133,7 +133,7 @@ class Ask_Dependencies_Tests: XCTestCase {
         XCTAssertNil(wand)
     }
 
-    func test_Ask_Dependency()
+    func test_Dependency()
     {
         let e = expectation()
 
@@ -141,8 +141,10 @@ class Ask_Dependencies_Tests: XCTestCase {
             e.fulfill()
         }
 
-        var wand: Core!
-        wand = |?ask
+        var wand: Core! //ask4
+        wand = |?ask | ask.dependency { (point: Point) in
+            fatalError()
+        }
 
         wand.add(String.any)
 
@@ -152,5 +154,27 @@ class Ask_Dependencies_Tests: XCTestCase {
         wand = nil
         XCTAssertNil(wand)
     }
+
+//    func test_Ask_Dependency()
+//    {
+//        let e = expectation()
+//
+//        let ask = Ask.every { (string: String) in
+//            e.fulfill()
+//        }
+//
+//        var wand: Core! //ask4
+//        wand = |?ask | ask.dependency { (point: Point) in
+//            fatalError()
+//        }
+//
+//        wand.add(String.any)
+//
+//        waitForExpectations()
+//        XCTAssertNotNil(wand)
+//
+//        wand = nil
+//        XCTAssertNil(wand)
+//    }
 
 }

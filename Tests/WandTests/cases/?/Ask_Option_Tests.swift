@@ -27,7 +27,7 @@ class Ask_Option_Tests: XCTestCase {
 
         let point = Point.any
 
-        var wand: Core!
+        var wand: Core! //ask4
         wand = |?{ (point: Point) in
             e.fulfill()
         }
@@ -41,7 +41,7 @@ class Ask_Option_Tests: XCTestCase {
     func test_One_Optional_Weak() throws {
 
         weak
-        var wand: Core?
+        var wand: Core? //ask4
         wand = |?Point.one
 
         XCTAssertNil(wand)
@@ -53,7 +53,7 @@ class Ask_Option_Tests: XCTestCase {
 
         let point = Point.any
 
-        var wand: Core!
+        var wand: Core! //ask2
         wand = |?.every { (point: Point) in
             e.fulfill()
         }
@@ -67,7 +67,7 @@ class Ask_Option_Tests: XCTestCase {
     func test_Every_Optional_Weak() throws {
 
         weak
-        var wand: Core?
+        var wand: Core? //ask2
         wand = |?.every { (point: Point) in
             fatalError()
         }
@@ -81,7 +81,7 @@ class Ask_Option_Tests: XCTestCase {
 
         let point = Point.any
 
-        var wand: Core!
+        var wand: Core! //ask2
         wand = |?.while { (point: Point) in
 
             e.fulfill()
@@ -97,7 +97,7 @@ class Ask_Option_Tests: XCTestCase {
     func test_While_Optional_Weak() throws {
 
         weak
-        var wand: Core?
+        var wand: Core? //ask2
         wand = |?.while { (point: Point) in
             fatalError()
         }

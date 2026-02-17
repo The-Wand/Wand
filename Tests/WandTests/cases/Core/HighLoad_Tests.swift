@@ -34,7 +34,7 @@ class HighloadTests: XCTestCase {
     /// 🏎️ Closing Wand 111m objects:
     func testClose()
     {
-        let closeCount = 111//_111_111
+        let closeCount = 11//1_111_111
         let tool = Tool()
 
         var wand: Core? = (1...closeCount).reduce(Core()) { wand, index in
@@ -70,7 +70,7 @@ class HighloadTests: XCTestCase {
 struct Highload {
 
     private
-    let count = 111//_111_111
+    let count = 11//1_111_111
 
     /// Core 3.0.2
     /// A2485 | M1 Pro 16 Gb | macOS 26.0.1

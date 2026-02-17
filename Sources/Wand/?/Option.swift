@@ -43,8 +43,7 @@ extension Ask {
     func dependency<U>(for key: String? = nil,
                        check: Bool = false,
                        on handler: ( (U)->() )? = nil ) -> Ask<U>.Option {
-        Ask<U>.Option(once: self.once, check: check, for: key, handler: handler)
-
+        Ask<U>.Option(once: once, check: check, for: key, handler: handler)
     }
 
 }
