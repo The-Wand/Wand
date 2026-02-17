@@ -95,6 +95,12 @@ class Core: CustomStringConvertible, Identifiable {
     public
     var description = "Wand.Core \(name.remainder| as Character)\n\(version) by @alko"
 
+    @inlinable
+    public
+    var version: String {
+        Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+    }
+
     @inline(__always)
     public
     init() {
@@ -120,9 +126,6 @@ class Core: CustomStringConvertible, Identifiable {
     }
 
 }
-
-#if canImport(Foundation.NSDate)
-import Foundation
 
 extension Core {
 
@@ -152,7 +155,6 @@ extension Core {
     }
 
 }
-#endif
 
 /// Attach to <#Any?#>
 extension Core {
