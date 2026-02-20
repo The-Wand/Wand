@@ -40,9 +40,17 @@ extension Ask {
 
     @inline(__always)
     public
+    func depend<U>(for key: String? = nil,
+                   check: Bool = false,
+                   on handler: @escaping (U)->() ) -> Ask<U>.Option {
+        Ask<U>.Option(once: once, check: check, for: key, handler: handler)
+    }
+
+    @inline(__always)
+    public
     func dependency<U>(for key: String? = nil,
                        check: Bool = false,
-                       on handler: @escaping (U)->(Bool) ) -> Ask<U>.Option {
+                       while handler: @escaping (U)->(Bool) ) -> Ask<U>.Option {
         Ask<U>.Option(once: once, check: check, for: key, handler: handler)
     }
 
