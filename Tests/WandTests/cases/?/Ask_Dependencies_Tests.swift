@@ -127,13 +127,40 @@ class Ask_Dependencies_Tests: XCTestCase {
     func test_Ask_Dependency()
     {
         let e = expectation()
+        e.expectedFulfillmentCount = 2
 
         let ask = Ask.every { (string: String) in
             e.fulfill()
         }
 
-        var wand: Core! //ask4
+        var wand: Core!
         wand = ask | ask.dependency { (point: Point) in
+            e.fulfill()
+            return false
+        }
+
+        wand.add(String.any)
+        wand.add(Point.any)
+        
+        wand.add(Point.any)
+
+        waitForExpectations()
+        XCTAssertNotNil(wand)
+
+        wand = nil
+        XCTAssertNil(wand)
+    }
+
+    func test_Ask_Depend()
+    {
+        let e = expectation()
+
+        let ask = Ask.every { (string: String) in
+            e.fulfill()
+        }
+
+        var wand: Core!
+        wand = ask | ask.depend { (point: Point) in
             fatalError()
         }
 
