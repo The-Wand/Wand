@@ -16,4 +16,4 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-infix   operator |& : MultiplicationPrecedence
+infix   operator & : MultiplicationPrecedence

@@ -42,7 +42,7 @@ extension Ask {
     public
     func dependency<U>(for key: String? = nil,
                        check: Bool = false,
-                       on handler: ( (U)->() )? = nil ) -> Ask<U>.Option {
+                       on handler: @escaping (U)->(Bool) ) -> Ask<U>.Option {
         Ask<U>.Option(once: once, check: check, for: key, handler: handler)
     }
 

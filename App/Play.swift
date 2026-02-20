@@ -128,6 +128,25 @@ struct ContentView: View {
 //
 //}
 
+
+//func |?<T> (l: T?, r: (Any, Any)) {
+//
+//}
+//func :| (l: Any, r: Any) -> (Any, Any) {
+//
+//}
+//
+///// Add object
+///// Call handlers
+//extension Core {
+//
+//    @discardableResult
+//    @inlinable
+//    public  //https://forums.swift.org/t/ternary-unwrapping/84147
+//    func addIf<T>(exist object: T?, for key: String? = nil) -> T? {
+//        (object == nil) ? nil : add(object!, for: key) //let object ? add(object, for: key) : nil
+//    }
+
 @available(iOS 14, macOS 12, tvOS 14, watchOS 7, *)
 #Preview {
     ContentView()

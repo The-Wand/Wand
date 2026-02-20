@@ -45,6 +45,28 @@ extension String: @retroactive Expecting {
 
 }
 
+//Example of conforming to AskT
+//Can be at least Expecting
+//extension String: @retroactive AskT {}
+//extension String: @retroactive AskNil {
+//
+//    @inline(__always)
+//    public
+//    static
+//    func ask<C, T>(with scope: C, ask: Ask<T>) -> Core {
+//
+//        let wand = Core.to(scope)
+//        _ = wand.append(ask: ask)
+//
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak wand] in
+//            wand?.add("String.any")
+//        }
+//
+//        return wand
+//    }
+//
+//}
+
 struct Tool {
 
     @inlinable

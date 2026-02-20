@@ -61,35 +61,6 @@ class Ask_Dependencies_Tests: XCTestCase {
         XCTAssertNotNil(wand)
     }
 
-    //TODO: Fix and enable
-    //    func test_Dependency_While() throws {
-    //
-    //        let limit = (1...4).any
-    //
-    //        let e = expectation()
-    //        e.expectedFulfillmentCount = limit
-    //
-    //        let point = Vector.any
-    //
-    //        weak
-    //        var wand: Core!
-    //        wand = |.while { (point: Vector, count: Int) in
-    //            e.fulfill()
-    //            print(point)
-    //
-    //            return count < limit
-    //        } |/ { (string: String) in
-    //
-    //        }
-    //
-    //        (0..<limit).forEach { _ in
-    //            wand.add(point)
-    //        }
-    //
-    //        waitForExpectations()
-    //        XCTAssertNil(wand)
-    //    }
-
     func test_Scope_to_Dependency()
     {
         let e = expectation()
@@ -142,7 +113,27 @@ class Ask_Dependencies_Tests: XCTestCase {
         }
 
         var wand: Core! //ask4
-        wand = |?ask | ask.dependency { (point: Point) in
+        wand = |?ask
+
+        wand.add(String.any)
+
+        waitForExpectations()
+        XCTAssertNotNil(wand)
+
+        wand = nil
+        XCTAssertNil(wand)
+    }
+
+    func test_Ask_Dependency()
+    {
+        let e = expectation()
+
+        let ask = Ask.every { (string: String) in
+            e.fulfill()
+        }
+
+        var wand: Core! //ask4
+        wand = ask | ask.dependency { (point: Point) in
             fatalError()
         }
 
@@ -155,26 +146,88 @@ class Ask_Dependencies_Tests: XCTestCase {
         XCTAssertNil(wand)
     }
 
-//    func test_Ask_Dependency()
-//    {
-//        let e = expectation()
-//
-//        let ask = Ask.every { (string: String) in
-//            e.fulfill()
-//        }
-//
-//        var wand: Core! //ask4
-//        wand = |?ask | ask.dependency { (point: Point) in
-//            fatalError()
-//        }
-//
-//        wand.add(String.any)
-//
-//        waitForExpectations()
-//        XCTAssertNotNil(wand)
-//
-//        wand = nil
-//        XCTAssertNil(wand)
-//    }
+    func test_One_Optional_Strong() throws {
+
+        let e = expectation()
+
+        let point = Point.any
+
+        var wand: Core! //ask4
+        wand = |?{ (point: Point) in
+            e.fulfill()
+        }
+
+        wand.add(point)
+
+        waitForExpectations()
+        XCTAssertNotNil(wand)
+    }
+
+    func test_One_Optional_Weak() throws {
+
+        weak
+        var wand: Core? //ask4
+        wand = |?Point.one
+
+        XCTAssertNil(wand)
+    }
+
+    func test_Every_Optional_Strong() throws {
+
+        let e = expectation()
+
+        let point = Point.any
+
+        var wand: Core! //ask2
+        wand = |?.every { (point: Point) in
+            e.fulfill()
+        }
+
+        wand.add(point)
+
+        waitForExpectations()
+        XCTAssertNotNil(wand)
+    }
+
+    func test_Every_Optional_Weak() throws {
+
+        weak
+        var wand: Core? //ask2
+        wand = |?.every { (point: Point) in
+            fatalError()
+        }
+
+        XCTAssertNil(wand)
+    }
+
+    func test_While_Optional_Strong() throws {
+
+        let e = expectation()
+
+        let point = Point.any
+
+        var wand: Core! //ask2
+        wand = |?.while { (point: Point) in
+
+            e.fulfill()
+            return true
+        }
+
+        wand.add(point)
+
+        waitForExpectations()
+        XCTAssertNotNil(wand)
+    }
+
+    func test_While_Optional_Weak() throws {
+
+        weak
+        var wand: Core? //ask2
+        wand = |?.while { (point: Point) in
+            fatalError()
+        }
+
+        XCTAssertNil(wand)
+    }
 
 }

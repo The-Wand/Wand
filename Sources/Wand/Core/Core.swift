@@ -16,6 +16,7 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
+@_exported
 import Foundation
 
 /// Wand.Core
@@ -339,11 +340,12 @@ extension Core {
 /// Call handlers
 extension Core {
 
+    //https://forums.swift.org/t/ternary-unwrapping/84147
     @discardableResult
     @inlinable
     public
     func addIf<T>(exist object: T?, for key: String? = nil) -> T? {
-        (object == nil) ? nil : add(object!, for: key) //TODO: Swift evolution suggest let object ? add(object, for: key) : nil //https://forums.swift.org/t/ternary-unwrapping/84147
+        (object == nil) ? nil : add(object!, for: key) //let object ? add(object, for: key) : nil
     }
 
     @discardableResult
@@ -412,11 +414,6 @@ extension Core {
 
         //TODO: Do I really need to clean shelf? // //Clean Cores shelf //        Core.all = Core.all.filter { //            $0.value.item != nil //        }
     }
-
-
-
-
-
 
 
 

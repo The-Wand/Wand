@@ -40,7 +40,6 @@ func |?(wand: Core, handler: @escaping (Error)->() ) -> Core {
 public
 func |?(wand: Core, ask: Ask<Error>) -> Core {
 
-    //TODO: reword?
     if ask.once {
 
         let handler = ask.handler
@@ -53,7 +52,6 @@ func |?(wand: Core, ask: Ask<Error>) -> Core {
     }
 
     return wand.append(handler: ask.optional())
-
 }
 
 ///Error codes and reasons
