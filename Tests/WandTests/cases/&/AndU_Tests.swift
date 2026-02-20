@@ -22,8 +22,9 @@ import Wand
 
 class And_Tests: XCTestCase {
 
+    var wand: Core?
+
     func test_Handler_And_Handler()
-    throws
     {
         let e = expectation()
         e.expectedFulfillmentCount = 2
@@ -36,54 +37,31 @@ class And_Tests: XCTestCase {
         })
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            //Point
             wand.add(Point.any)
+            //And String
             wand.add(String.any)
         }
 
         waitForExpectations()
     }
 
-    func test_Ask_And_Handler()
-    {
-        let e = expectation()
-        e.expectedFulfillmentCount = 2
-
-        let ask = Ask.one { (point: Point) in
-            e.fulfill()
-        }
-
-        let wand: Core = nil
-        wand | ask & { (string: String) in
-            e.fulfill()
-        }
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            wand.add(Point.any)
-            wand.add(String.any)
-        }
-
-        waitForExpectations()
-    }
-
-    func test_Ask_And_Handler_While()
+    func test_Handler_And_Handler_While()
     {
         let count: Int = .any(in: 1...42)
 
         let e = expectation()
         e.expectedFulfillmentCount = 1 + count
 
-        let ask = Ask.one { (point: Point) in
-            e.fulfill()
-        }
-
         var i = 0
 
         let wand = Core()
-        wand | ask & { (string: String) in
+        wand | { (point: Point) in
+            e.fulfill()
+        } & { (string: String) in
             e.fulfill()
 
             i += 1
-            print(i)
             return i < count
         }
 
@@ -96,6 +74,83 @@ class And_Tests: XCTestCase {
         }
 
         waitForExpectations()
+    }
+
+    func test_Ask_And_Handler()
+    {
+        XCTAssertNil(wand)
+
+        let e = expectation()
+        e.expectedFulfillmentCount = 2
+
+        var ask: Ask! = Ask.one { (point: Point) in
+            e.fulfill()
+        }
+
+        self.wand = Core()
+
+        weak
+        var localWand: Core! =
+        wand | ask & { (string: String) in
+            e.fulfill()
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+
+            guard let localWand else {
+                return
+            }
+
+            localWand.add(Point.any)
+            localWand.add(String.any)
+        }
+
+        waitForExpectations()
+        ask = nil
+        self.wand = nil
+
+        XCTAssertNil(localWand)
+    }
+
+    func test_Ask_And_Handler_While()
+    {
+        let count: Int = .any(in: 1...42)
+
+        let e = expectation()
+        e.expectedFulfillmentCount = 1 + count
+
+        var ask: Ask! = Ask.one { (point: Point) in
+            e.fulfill()
+        }
+
+        var i = 0
+
+        weak
+        var wand =
+        Core() | ask & { (string: String) in
+            e.fulfill()
+
+            i += 1
+            return i < count
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+
+            guard let wand else {
+                return
+            }
+
+            wand.add(Point.any)
+
+            (0..<count).forEach { _ in
+                wand.add(String.any)
+            }
+        }
+
+        waitForExpectations()
+
+        ask = nil
+        XCTAssertNil(wand)
     }
 
 }

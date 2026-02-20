@@ -25,6 +25,13 @@ func &<T: Ask.T, U: Ask.T> (handler: @escaping (T)->(),
 
 @inline(__always)
 public
+func &<T: Ask.T, U: Ask.T> (handler: @escaping (T)->(),
+                            appending: @escaping (U)->(Bool) ) -> Ask<T> {
+    .one(handler: handler) & appending
+}
+
+@inline(__always)
+public
 func &<T: Ask.T, U: Ask.T> (ask: Ask<T>,
                             appending: @escaping (U)->() ) -> Ask<T> {
 
@@ -32,7 +39,7 @@ func &<T: Ask.T, U: Ask.T> (ask: Ask<T>,
     ask.handler = {
 
         let result = saved($0)
-        ask.core |? appending
+        ask.core | Ask(once: ask.once, handler: appending)
         ask.handler = saved
 
         return result
@@ -50,7 +57,7 @@ func &<T: Ask.T, U: Ask.T> (ask: Ask<T>,
     ask.handler = {
 
         let result = saved($0)
-        ask.core | ask.dependency(on: appending)
+        ask.core | Ask(once: false, handler: appending)
         ask.handler = saved
 
         return result
