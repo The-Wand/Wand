@@ -104,7 +104,7 @@ class Expect_T_Tests: XCTestCase {
         waitForExpectations()
         XCTAssertNil(wand)
     }
-    
+
     func test_One_Performance() throws {
 
         let e = expectation()
@@ -124,6 +124,24 @@ class Expect_T_Tests: XCTestCase {
 
         handling = Performance(of: "Nil answer")
         wand.add(point)
+
+        waitForExpectations()
+        XCTAssertNil(wand)
+    }
+
+    func test_Check() throws {
+
+        let e = expectation()
+
+        var ask: Ask? = Ask.one(check: true) { (point: Point) in
+            e.fulfill()
+        }
+
+        weak
+        var wand: Core?
+        wand = Point.any | ask!
+
+        ask = nil
 
         waitForExpectations()
         XCTAssertNil(wand)

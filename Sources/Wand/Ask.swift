@@ -21,7 +21,6 @@
 open
 class Ask<T> {
 
-    //TODO: Test #37
     public
     let check: Bool
 

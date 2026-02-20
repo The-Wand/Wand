@@ -302,16 +302,17 @@ extension Core {
 
     @inlinable
     public
-    func append<T>(ask: Ask<T>, check: Bool = false) -> Bool {
+    func append<T>(ask: Ask<T>) -> Bool {
 
         let key = ask.key
         let stored = handlers[key]
 
         //Attach the wand
         //Call handler if object exist
-        if (check || ask.set(core: self)),
-           let object: T = get(for: key),
-           !ask.handler(object)
+        if
+            ask.set(core: self),
+            let object: T = get(for: key),
+            !ask.handler(object)
         {
             return false
         }
@@ -414,7 +415,5 @@ extension Core {
 
         //TODO: Do I really need to clean shelf? // //Clean Cores shelf //        Core.all = Core.all.filter { //            $0.value.item != nil //        }
     }
-
-
 
 }
