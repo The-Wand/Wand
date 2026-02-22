@@ -126,10 +126,6 @@ class Core: CustomStringConvertible, Identifiable {
         log("|✅ #bonsua")
     }
 
-}
-
-extension Core {
-
     @inlinable
     func sendLogs() {
 
@@ -275,7 +271,15 @@ extension Core {
     @inline(__always)
     public
     func extract<T>(for key: String? = nil) -> T? {
-        scope.removeValue(forKey: key ?? T.self|) as? T //TODO: Extracted not T ?
+        switch scope.removeValue(forKey: key ?? T.self|) {
+            case nil:
+                return nil
+            case let object as T:
+                return object
+            default:
+                add(Error(reason: #function + "not T"))
+                return nil
+        }
     }
 
 }
@@ -341,12 +345,11 @@ extension Core {
 /// Call handlers
 extension Core {
 
-    //https://forums.swift.org/t/ternary-unwrapping/84147
     @discardableResult
     @inlinable
     public
     func addIf<T>(exist object: T?, for key: String? = nil) -> T? {
-        (object == nil) ? nil : add(object!, for: key) //let object ? add(object, for: key) : nil
+        (object == nil) ? nil : add(object!, for: key) //https://forums.swift.org/t/ternary-unwrapping/84147
     }
 
     @discardableResult
@@ -410,10 +413,7 @@ extension Core {
         }
         handlers.removeAll()
 
-        //Release scope
         scope.removeAll()
-
-        //TODO: Do I really need to clean shelf? // //Clean Cores shelf //        Core.all = Core.all.filter { //            $0.value.item != nil //        }
     }
 
 }

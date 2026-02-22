@@ -27,8 +27,15 @@ func extract_object()
 }
 
 @Test
-func extract_object_not()
+func extract_not()
 {
     let wand = Core()
     #expect(wand.extract() == String?.none)
 }
+
+//TODO: @Test
+//func extract_object_notT()
+//{
+//    let wand = Core()
+//    #expect(wand.extract() == String?.none)
+//}
