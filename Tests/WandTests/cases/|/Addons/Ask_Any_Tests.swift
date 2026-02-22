@@ -50,17 +50,17 @@ class Expect_Any_Tests: XCTestCase {
         waitForExpectations()
     }
 
-    //TODO: Fix on Release
     func test_Any_Performance() throws {
 
         let e = expectation()
 
-        let wand = Point.every | String.every
+        weak
+        var wand: Core! = Point.every | String.every
 
         var handlePerformance: Performance!
-        Performance(of: "Ask<Any> add") {
+        Performance(of: "Ask<Any> add") { [weak wand] in
 
-            wand | .any { _ in
+            wand! | .any { _ in
 
                 handlePerformance.measure()
                 e.fulfill()

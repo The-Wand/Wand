@@ -98,7 +98,7 @@ class Ask<T> {
         self.handler = handler
     }
 
-    //TODO: Move to `Option`
+    //propo: Move to `Option`
     //`instance methods declared in extensions cannot be overridden`
     @inline(__always)
     public
