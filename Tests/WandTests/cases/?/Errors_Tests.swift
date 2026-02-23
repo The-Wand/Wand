@@ -132,7 +132,7 @@ class Errors_Tests: XCTestCase {
         }
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak wand] in
-            wand?.add(Core.Error(reason: .any) as Error)
+            wand?.add(Core.Error.with(reason: .any))
         }
 
         wait(for: [e])

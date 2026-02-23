@@ -33,9 +33,17 @@ func extract_not()
     #expect(wand.extract() == String?.none)
 }
 
-//TODO: @Test
-//func extract_object_notT()
-//{
-//    let wand = Core()
-//    #expect(wand.extract() == String?.none)
-//}
+@Test
+func extract_object_notT()
+{
+    let wand = Core()
+    wand.add("Point", for: "Point")
+
+    wand |? { (error: Error) in
+        #expect(error.code == -1)
+    }
+
+    let point: Point? = wand.extract()
+
+    #expect(point == nil)
+}

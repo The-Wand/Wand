@@ -68,12 +68,26 @@ extension Core {
 
         @inline(__always)
         public
-        init(code: Int = .zero, reason: String, function: String = #function) {
-
-            self.code = code
-            self.reason = function + reason
+        static
+        func with(code: Int = .zero, reason: String, function: String = #function) -> Swift.Error {
+            Error(code: code, reason: function + reason)
         }
 
+        private
+        init(code: Int, reason: String) {
+            self.code = code
+            self.reason = reason
+        }
+
+    }
+
+}
+
+public
+extension Swift.Error {
+
+    var code: Int {
+        (self as? Core.Error)?.code ?? 0
     }
 
 }

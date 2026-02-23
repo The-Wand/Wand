@@ -277,7 +277,7 @@ extension Core {
             case let object as T:
                 return object
             default:
-                add(Error(reason: #function + "not T"))
+                add(Error.with(code: -1, reason: "not T"))
                 return nil
         }
     }
