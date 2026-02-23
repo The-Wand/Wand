@@ -24,6 +24,7 @@ struct ScreenBundle: WidgetBundle {
 
     var body: some Widget {
         Screen()
+        PickaxeWidget()
     }
 
 }

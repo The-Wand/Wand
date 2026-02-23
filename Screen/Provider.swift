@@ -19,21 +19,40 @@
 import SwiftUI
 import WidgetKit
 
+import Wand
+
+struct Pickaxe: Identifiable {
+
+    let id: Int
+
+}
+
 struct Provider: AppIntentTimelineProvider {
 
+    let pickaxes: [Pickaxe] = [Pickaxe(id: 0)]
+
+    let placeholderIntent = ConfigurationAppIntent(id: 0)
+
     func recommendations() -> [AppIntentRecommendation<ConfigurationAppIntent>] {
-        []
-    }
-    
-    func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationAppIntent())
+        var recommendations = [AppIntentRecommendation<ConfigurationAppIntent>]()
+
+        pickaxes | {
+            let intent = ConfigurationAppIntent(id: $0.id)
+            recommendations.append(AppIntentRecommendation(intent: intent, description: "Pickaxe"))
+        } as Void
+
+        return recommendations
     }
 
-    func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> SimpleEntry {
+    func placeholder(in context: Context) -> SimpleEntry {
+        SimpleEntry(date: Date(), configuration: placeholderIntent)
+    }
+
+    func snapshot(for configuration: ConfigurationAppIntent, in context: Context) -> SimpleEntry {
         SimpleEntry(date: Date(), configuration: configuration)
     }
     
-    func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<SimpleEntry> {
+    func timeline(for configuration: ConfigurationAppIntent, in context: Context) -> Timeline<SimpleEntry> {
         var entries: [SimpleEntry] = []
 
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
@@ -52,78 +71,16 @@ struct Provider: AppIntentTimelineProvider {
 //    }
 }
 
-struct SimpleEntry: TimelineEntry {
-    let date: Date
-    let configuration: ConfigurationAppIntent
-}
+extension Provider: TimelineProvider {
 
-struct ScreenEntryView : View {
-    var entry: Provider.Entry
-
-    let pickAxe = "https://deeprockgalactic.wiki.gg/images/thumb/GearGraphic_PickAxe.png/600px-GearGraphic_PickAxe.png?8d8b42"
-
-    var body: some View {
-        VStack {
-            Image(systemName: "wand.and.stars")
-            Text("Hello, Wand|")
-        }
+    func getSnapshot(in context: Context, completion: @escaping @Sendable (SimpleEntry) -> Void) {
+        let snapshot = snapshot(for: placeholderIntent, in: context)
+        completion(snapshot)
     }
 
-}
-
-struct Screen: Widget {
-
-    let kind: String = "Screen"
-
-    var body: some WidgetConfiguration {
-        AppIntentConfiguration(kind: kind,
-                               intent: ConfigurationAppIntent.self,
-                               provider: Provider()) { entry in
-            ScreenEntryView(entry: entry)
-                .containerBackground(.fill.tertiary, for: .widget)
-        }
+    func getTimeline(in context: Context, completion: @escaping @Sendable (Timeline<SimpleEntry>) -> Void) {
+        let timeline = timeline(for: placeholderIntent, in: context)
+        completion(timeline)
     }
 
-}
-
-struct CircularWidget: Widget {
-
-    let kind: String = "Screen"
-
-    var body: some WidgetConfiguration {
-        AppIntentConfiguration(kind: kind,
-                               intent: ConfigurationAppIntent.self,
-                               provider: Provider()) { entry in
-            ScreenEntryView(entry: entry)
-                .containerBackground(.fill.tertiary, for: .widget)
-        }
-    }
-
-}
-
-extension ConfigurationAppIntent {
-
-    fileprivate
-    static
-    var smiley: ConfigurationAppIntent {
-        let intent = ConfigurationAppIntent()
-        intent.favoriteEmoji = "😀"
-        return intent
-    }
-    
-    fileprivate
-    static
-    var starEyes: ConfigurationAppIntent {
-        let intent = ConfigurationAppIntent()
-        intent.favoriteEmoji = "🤩"
-        return intent
-    }
-
-}
-
-#Preview(as: .systemMedium) {
-    Screen()
-} timeline: {
-    SimpleEntry(date: .now, configuration: .smiley)
-    SimpleEntry(date: .now, configuration: .starEyes)
 }

@@ -19,8 +19,13 @@
 import AppIntents
 import WidgetKit
 
-struct ConfigurationAppIntent: WidgetConfigurationIntent {
+public
+struct ConfigurationAppIntent: Identifiable, WidgetConfigurationIntent {
 
+    public
+    let id: Int
+
+    public
     static
     var title: LocalizedStringResource {
         "Configuration"
@@ -35,4 +40,13 @@ struct ConfigurationAppIntent: WidgetConfigurationIntent {
     @Parameter(title: "Favorite Emoji", default: "😃")
     var favoriteEmoji: String
 
+    public
+    init(id: Int) {
+        self.id = id
+    }
+
+    public
+    init() {
+        id = -1
+    }
 }
