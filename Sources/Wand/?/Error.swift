@@ -87,7 +87,7 @@ public
 extension Swift.Error {
 
     var code: Int {
-        (self as? Core.Error)?.code ?? 0
+        (self as? Core.Error)?.code ?? -1
     }
 
 }

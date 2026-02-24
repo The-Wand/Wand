@@ -15,6 +15,7 @@
 		614B218F2C4489CF00EB9DEE /* Any_ in Frameworks */ = {isa = PBXBuildFile; productRef = 614B218E2C4489CF00EB9DEE /* Any_ */; };
 		615054912EBDD6CD00CF9E7B /* DefaultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615054902EBDD6CD00CF9E7B /* DefaultTests.swift */; };
 		615054922EBDD6CD00CF9E7B /* DefaultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615054902EBDD6CD00CF9E7B /* DefaultTests.swift */; };
+		615B58012F4D67F60078E0D6 /* HighLoad_Prod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6111213C2ECDCE9900F30B03 /* HighLoad_Prod.swift */; };
 		616223E92EFBE95C00D1B090 /* Performance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616692F22DB63A8E001ABFC1 /* Performance.swift */; };
 		6162625628BC8E2B00D63EA5 /* Play.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6162624628BC8E2A00D63EA5 /* Play.swift */; };
 		6162625828BC8E2B00D63EA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6162624728BC8E2B00D63EA5 /* Assets.xcassets */; };
@@ -775,6 +776,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				615B58012F4D67F60078E0D6 /* HighLoad_Prod.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

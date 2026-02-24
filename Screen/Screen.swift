@@ -17,6 +17,7 @@
 /// The Wand
 
 import SwiftUI
+import Wand
 import WidgetKit
 
 struct SimpleEntry: TimelineEntry {
@@ -33,6 +34,10 @@ struct ScreenEntryView : View {
         VStack {
             Image(systemName: "wand.and.stars")
             Text("Hello, Wand|")
+        }
+        .onAppear {
+//            Wand.Log.level = .verbose
+//            Highload.highload_prod(of: 111_111_111)
         }
     }
 

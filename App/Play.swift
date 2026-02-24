@@ -65,7 +65,7 @@ struct ContentView: View {
 //
 //            }
         }
-        .onAppear() {
+        .onAppear {
             
 //            Wand.Log.level = .verbose
 //            Highload.highload_prod(of: 11)//)1_111_111)
