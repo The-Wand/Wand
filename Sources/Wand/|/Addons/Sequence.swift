@@ -16,46 +16,46 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-///map
+///forEach
 @inline(__always)
 public
-func |<C: Sequence, T> (p: C, handler: @escaping (C.Element) throws -> T) -> [T] {
-    try! p.map(handler)
+func |<C: Sequence> (p: C?, handler: @escaping (C.Element) -> Void) {
+    p?.forEach(handler)
+}
+
+@inline(__always)
+public
+func |<C: Sequence> (p: C?, handler: @escaping () -> Void) {
+    p?.forEach { _ in
+        handler()
+    }
 }
 
 ///filter
 @inline(__always)
 public
-func |<C: Sequence> (p: C, handler: @escaping (C.Element) throws -> Bool) -> [C.Element] {
-    try! p.filter(handler)
+func |<C: Sequence> (p: C, handler: @escaping (C.Element) -> Bool) -> [C.Element] {
+    p.filter(handler)
 }
 
-///forEach
+///first
 @inline(__always)
 public
-func |<C: Sequence> (p: C?, handler: @escaping (C.Element) throws -> Void) {
-    try? p?.forEach(handler)
+func |<C: Sequence> (p: C?, handler: @escaping (C.Element) -> Bool) -> C.Element? {
+    p?.first(where: handler)
 }
 
+///map
 @inline(__always)
 public
-func |<C: Sequence> (p: C?, handler: @escaping () throws -> Void) {
-    p?.forEach { _ in
-        try? handler()
-    }
+func |<C: Sequence, T> (p: C, handler: @escaping (C.Element) -> T) -> [T] {
+    p.map(handler)
 }
 
-///First
-@inline(__always)
-public
-func |<C: Sequence> (p: C?, handler: @escaping (C.Element) throws -> Bool) -> C.Element? {
-    try? p?.first(where: handler)
-}
-
-///Reduce
+///reduce
 @inline(__always)
 public
 func |<C: Sequence, T> (p: C,
-                        to: (initial: T, next: (T, C.Element) throws -> T)) -> T {
-    try! p.reduce(to.initial, to.next)
+                        to: (initial: T, next: (T, C.Element) -> T)) -> T {
+    p.reduce(to.initial, to.next)
 }
