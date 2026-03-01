@@ -16,7 +16,7 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-#if false
+#if true
 
 import Wand
 
@@ -73,13 +73,14 @@ struct Highload {
 
 import CoreLocation.CLLocation
 
-extension CLLocation: @retroactive AskNil {}
-extension CLLocation: @retroactive AskT {}
-extension CLLocation: @retroactive Expecting {
+extension CLLocation: AskNil {}
+extension CLLocation: AskT {}
+extension CLLocation: Expecting {
 
 }
 
 
+public
 struct Point: Expecting, Equatable {
 
     let x, y, z, t: Int64

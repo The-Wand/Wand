@@ -16,46 +16,51 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-///forEach
-@inline(__always)
-public
-func |<C: Sequence> (p: C?, handler: @escaping (C.Element) -> Void) {
-    p?.forEach(handler)
+
+extension UnsafeCurrentTask: Wanded {
+
 }
 
-@inline(__always)
-public
-func |<C: Sequence> (p: C?, handler: @escaping () -> Void) {
-    p?.forEach { _ in
-        handler()
+extension Ask.Nil {
+
+    static
+    prefix
+    func | (type: Self.Type) async throws -> Self?  {
+        await withCheckedContinuation { continuation in
+
+            withUnsafeCurrentTask { task in
+                print(task| as Int)
+
+                //TODO: struct?
+                task.wand | { (retrieved: Self) in
+                    continuation.resume(returning: retrieved)
+                }
+
+            }
+
+
+        }
     }
+
 }
 
-///filter
-@inline(__always)
-public
-func |<C: Sequence> (p: C, handler: @escaping (C.Element) -> Bool) -> [C.Element] {
-    p.filter(handler)
-}
+extension Ask.T {
 
-///first
-@inline(__always)
-public
-func |<C: Sequence> (p: C?, handler: @escaping (C.Element) -> Bool) -> C.Element? {
-    p?.first(where: handler)
-}
+    static
+    func |<C>(scope: C, type: Self.Type) async throws -> Self?  {
+        await withCheckedContinuation { continuation in
 
-///map
-@inline(__always)
-public
-func |<C: Sequence, T> (p: C, handler: @escaping (C.Element) -> T) -> [T] {
-    p.map(handler)
-}
+            withUnsafeCurrentTask { task in
+                print(task| as Int)
 
-///reduce
-@inline(__always)
-public
-func |<C: Sequence, T> (p: C,
-                        to: (initial: T, next: (T, C.Element) -> T)) -> T {
-    p.reduce(to.initial, to.next)
+                //TODO: struct?
+                let wand = task.wand
+                wand.put(scope)
+                wand | { (retrieved: Self) in
+                    continuation.resume(returning: retrieved)
+                }
+            }
+        }
+    }
+
 }

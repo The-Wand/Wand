@@ -20,70 +20,77 @@ import Foundation
 import Testing
 import Wand
 
-struct Sequence {
+struct Task_Tests {
 
-    private
-    let sequence = 1...5
-
-    @Test
-    func test_forEach_Element() {
-
-        var sum = 0
-        sequence | {
-            sum += $0
-        } as Void
-
-        #expect(sum == sequence.reduce(0, +))
-    }
-
-    @Test
-    func test_forEach_Handler() {
-
-        var sum = 0
-        sequence | {
-            sum += 1
-        } as Void
-
-        #expect(sum == 5)
-    }
-
-    @Test
-    func test_filter() {
-
-        let filtered: [Int] = sequence | {
-            $0 % 2 == 0
-        }
-
-        #expect(filtered.reduce(0, +) == 6)
-    }
-
-    @Test
-    func test_first() {
-
-        let target = sequence.randomElement()
-
-        let first: Int? = sequence | {
-            $0 == target
-        }
-
-        #expect(first == target)
-    }
-
-    @Test
-    func test_map() {
-
-        let points: [CGPoint] = sequence | {
-            CGPoint(x: $0, y: $0)
-        }
-
-        #expect(points.count == sequence.count)
-    }
-
-    @Test
-    func test_reduce() {
-
-        let factorial = sequence | (1, *)
-        #expect(factorial == sequence.reduce(1, *))
-    }
+//    private
+//    let sequence = 1...5
+//
+//    @Test
+//    func test_forEach_Element() {
+//
+//
+//        Task {
+////            let point = try await |Point.self
+////            let string = try await |String.self
+//
+//
+//            withUnsafeCurrentTask { current in
+//                let wand = current.isWanded
+//                #expect(wand != nil)
+//            }
+//        }
+//
+////        #expect(true)
+//    }
+//
+//    @Test
+//    func test_forEach_Handler() {
+//
+//        var sum = 0
+//        sequence | {
+//            sum += 1
+//        } as Void
+//
+//        #expect(sum == 5)
+//    }
+//
+//    @Test
+//    func test_filter() {
+//
+//        let filtered: [Int] = sequence | {
+//            $0 % 2 == 0
+//        }
+//
+//        #expect(filtered.reduce(0, +) == 6)
+//    }
+//
+//    @Test
+//    func test_first() {
+//
+//        let target = sequence.randomElement()
+//
+//        let first: Int? = sequence | {
+//            $0 == target
+//        }
+//
+//        #expect(first == target)
+//    }
+//
+//    @Test
+//    func test_map() {
+//
+//        let points: [CGPoint] = sequence | {
+//            CGPoint(x: $0, y: $0)
+//        }
+//
+//        #expect(points.count == sequence.count)
+//    }
+//
+//    @Test
+//    func test_reduce() {
+//
+//        let factorial = sequence | (1, *)
+//        #expect(factorial == sequence.reduce(1, *))
+//    }
 
 }
