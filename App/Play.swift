@@ -147,6 +147,38 @@ struct ContentView: View {
 //        (object == nil) ? nil : add(object!, for: key) //let object ? add(object, for: key) : nil
 //    }
 
+
+extension Task: @retroactive Wanded {
+
+}
+
+extension Ask.Nil {
+
+    static
+    prefix
+    func | (type: Self.Type) async throws -> Self?  {
+        await withCheckedContinuation { continuation in
+            |{ (retrieved: Self) in
+                continuation.resume(returning: retrieved)
+            }
+        }
+    }
+
+}
+
+extension Ask.T {
+
+    static
+    func |<C>(scope: C, type: Self.Type) async throws -> Self?  {
+        await withCheckedContinuation { continuation in
+            scope | { (retrieved: Self) in
+                continuation.resume(returning: retrieved)
+            }
+        }
+    }
+
+}
+
 @available(iOS 14, macOS 12, tvOS 14, watchOS 7, *)
 #Preview {
     ContentView()
