@@ -52,6 +52,17 @@ func |<T: Obtainable>(wand: Core?) -> T {
     }()
 }
 
+/// Obtain from wand
+///
+/// let object: T = wand|
+///
+@inline(__always)
+postfix
+public
+func |<T: Obtainable>(wand: Core) -> T {
+    wand.get() ?? wand.put(T.obtain(with: wand, by: wand))
+}
+
 /// Obtain from scope
 ///
 /// let object: T = scope|
