@@ -48,7 +48,7 @@ func |<T: Obtainable>(wand: Core?) -> T {
     wand?.get() ?? {
 
         let object = T.obtain(with: wand, by: wand)
-        return wand?.add(object) ?? object
+        return wand?.put(object) ?? object
     }()
 }
 
@@ -60,7 +60,7 @@ func |<T: Obtainable>(wand: Core?) -> T {
 postfix
 public
 func |<C, T: Obtainable>(scope: C) -> T {
-    scope as? T ?? T.obtain(with: scope, by: nil)
+    scope as? T ?? T.obtain(with: scope, by: scope as? Core)
 }
 
 /// Obtainable unwrap
