@@ -195,24 +195,24 @@ extension Core {
 
     @inline(__always)
     public
-    func putDefault<T>(_ object: T, for key: String? = nil) {
+    func putDefault<T>(_ object: T, for raw: String? = nil) {
 
-        let result = key ?? T.self|
-        if !contains(for: result) {
-            wand.save(object, for: result)
+        let key = raw ?? T.self|
+        if !contains(for: key) {
+            save(object, for: key)
         }
     }
 
     @discardableResult
     @inlinable
     public
-    func save<T>(_ object: T, for key: String? = nil) -> String {
+    func save<T>(_ object: T, for raw: String? = nil) -> String {
 
-        let result = key ?? T.self|
+        let key = raw ?? T.self|
         Core[object] = self
-        scope[result] = object
+        scope[key] = object
 
-        return result
+        return key
     }
 
 }
