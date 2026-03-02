@@ -18,6 +18,8 @@
 	<string>3465</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.developer-tools</string>
+	<key>NSAppleEventsUsageDescription</key>
+	<string>2 open source code</string>
 	<key>UILaunchStoryboardName</key>
 	<string></string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
@@ -34,7 +36,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSAppleEventsUsageDescription</key>
-	<string>2 open source code</string>
 </dict>
 </plist>
