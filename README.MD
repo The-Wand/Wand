@@ -48,7 +48,7 @@ ingredients | .one { (t: T) in
 ```
 
 ### Packages
-[📦 |Package Collection](https://raw.githubusercontent.com/The-Wand/Wand/main/collection.json)         
+[📦 |Package Collection](https://swiftpackageindex.com/The-Wand)         
    
 [🏛️ |Foundation](https://github.com/The-Wand/Foundation)   
 [🔖 |Location](https://github.com/The-Wand/Location)   
