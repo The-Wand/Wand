@@ -195,11 +195,11 @@ extension Core {
 
     @inline(__always)
     public
-    func putDefault<T>(_ object: T, for raw: String? = nil) {
+    func putDefault<T>(_ object: @autoclosure ()->(T), for raw: String? = nil) {
 
         let key = raw ?? T.self|
         if !contains(for: key) {
-            save(object, for: key)
+            save(object(), for: key)
         }
     }
 
