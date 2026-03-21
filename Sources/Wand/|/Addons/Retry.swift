@@ -64,3 +64,27 @@ extension Core {
     }
 
 }
+
+extension Core {
+
+    public
+    static
+    func autoretry() -> (@escaping Retry, Int)->(Bool) {
+        { (retry: @escaping Retry, count: Int) in
+
+            DispatchTime.now() + 5 | {
+                retry()
+            }
+
+            print("✅ TRY")
+
+            return count < 1
+        }
+    }
+
+}
+
+public
+func | (after: DispatchTime, execute: @escaping ()->() ) {
+    DispatchQueue.main.asyncAfter(deadline: after, execute: execute)
+}
