@@ -25,9 +25,33 @@ typealias RetryHandler = (@escaping Retry)->(Bool)
 public
 typealias RetryCounting = (@escaping Retry, Int)->(Bool)
 
+public
+typealias RetryError = (Error, @escaping Retry)->(Bool)
+
+public
+typealias RetryErrorCounting = (Error, @escaping Retry, Int)->(Bool)
+
+//@discardableResult
+//public
+//func |? (wand: Core, retry: @escaping RetryError) -> Core {
+//
+//    let ask = Ask.while(handler: retry)
+//    _ = wand.append(ask: ask)
+//    return wand
+//}
+//
+//@discardableResult
+//public
+//func |? (wand: Core, retry: @escaping RetryErrorCounting) -> Core {
+//
+//    let ask = Ask.while(handler: retry)
+//    _ = wand.append(ask: ask)
+//    return wand
+//}
+
 @discardableResult
 public
-func | (wand: Core, retry: @escaping RetryHandler) -> Core {
+func |? (wand: Core, retry: @escaping RetryHandler) -> Core {
 
     let ask = Ask.while(handler: retry)
     _ = wand.append(ask: ask)
@@ -36,7 +60,7 @@ func | (wand: Core, retry: @escaping RetryHandler) -> Core {
 
 @discardableResult
 public
-func | (wand: Core, couinting: @escaping RetryCounting) -> Core {
+func |? (wand: Core, couinting: @escaping RetryCounting) -> Core {
 
     let ask = Ask.while(handler: couinting)
     _ = wand.append(ask: ask)
@@ -65,7 +89,7 @@ extension Core {
 
 }
 
-extension Core {
+extension Core.Error {
 
     public
     static
