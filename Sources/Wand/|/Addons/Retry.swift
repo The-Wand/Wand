@@ -16,42 +16,23 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
+
+extension Core.Error {
+
+}
+
 public
 typealias Retry = ()->()
 
 public
-typealias RetryHandler = (@escaping Retry)->(Bool)
+typealias ErrorRetry = (Error, @escaping Retry)->(Bool)
 
 public
-typealias RetryCounting = (@escaping Retry, Int)->(Bool)
-
-public
-typealias RetryError = (Error, @escaping Retry)->(Bool)
-
-public
-typealias RetryErrorCounting = (Error, @escaping Retry, Int)->(Bool)
-
-//@discardableResult
-//public
-//func |? (wand: Core, retry: @escaping RetryError) -> Core {
-//
-//    let ask = Ask.while(handler: retry)
-//    _ = wand.append(ask: ask)
-//    return wand
-//}
-//
-//@discardableResult
-//public
-//func |? (wand: Core, retry: @escaping RetryErrorCounting) -> Core {
-//
-//    let ask = Ask.while(handler: retry)
-//    _ = wand.append(ask: ask)
-//    return wand
-//}
+typealias ErrorRetryCounting = (Error, @escaping Retry, Int)->(Bool)
 
 @discardableResult
 public
-func |? (wand: Core, retry: @escaping RetryHandler) -> Core {
+func |? (wand: Core, retry: @escaping ErrorRetry) -> Core {
 
     let ask = Ask.while(handler: retry)
     _ = wand.append(ask: ask)
@@ -60,11 +41,28 @@ func |? (wand: Core, retry: @escaping RetryHandler) -> Core {
 
 @discardableResult
 public
-func |? (wand: Core, couinting: @escaping RetryCounting) -> Core {
+func |? (wand: Core, retry: @escaping ErrorRetryCounting) -> Core {
 
-    let ask = Ask.while(handler: couinting)
+    let ask = Ask.while(handler: retry)
     _ = wand.append(ask: ask)
     return wand
+}
+
+extension Core {
+
+    public
+    static
+    func autoretry() -> (Swift.Error, @escaping Retry, Int)->(Bool) {
+        { (error: Swift.Error, retry: @escaping Retry, count: Int) in
+
+            DispatchTime.now() + 5 | {
+                retry()
+            }
+
+            return count < 1
+        }
+    }
+
 }
 
 extension Core {
@@ -72,38 +70,17 @@ extension Core {
     @inlinable
     public
     func error(_ error: Core.Error,
-               for raw: String? = nil,
                retry: @escaping Retry) {
-        add(error, for: raw)
-        add(retry)
+        add((error, retry))
+        add(error)
     }
 
     @inlinable
     public
     func error(_ error: any Swift.Error,
-               for raw: String? = nil,
                retry: @escaping Retry) {
-        add(error, for: raw)
-        add(retry)
-    }
-
-}
-
-extension Core.Error {
-
-    public
-    static
-    func autoretry() -> (@escaping Retry, Int)->(Bool) {
-        { (retry: @escaping Retry, count: Int) in
-
-            DispatchTime.now() + 5 | {
-                retry()
-            }
-
-            print("✅ TRY")
-
-            return count < 1
-        }
+        add((error, retry))
+        add(error)
     }
 
 }
