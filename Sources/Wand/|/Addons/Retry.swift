@@ -16,11 +16,6 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-
-extension Core.Error {
-
-}
-
 public
 typealias Retry = ()->()
 
@@ -31,6 +26,7 @@ public
 typealias ErrorRetryCounting = (Error, @escaping Retry, Int)->(Bool)
 
 @discardableResult
+@inline(__always)
 public
 func |? (wand: Core, retry: @escaping ErrorRetry) -> Core {
 
@@ -40,6 +36,7 @@ func |? (wand: Core, retry: @escaping ErrorRetry) -> Core {
 }
 
 @discardableResult
+@inline(__always)
 public
 func |? (wand: Core, retry: @escaping ErrorRetryCounting) -> Core {
 
@@ -50,6 +47,7 @@ func |? (wand: Core, retry: @escaping ErrorRetryCounting) -> Core {
 
 extension Core {
 
+    @inline(__always)
     public
     static
     func autoretry() -> (Swift.Error, @escaping Retry, Int)->(Bool) {
@@ -85,6 +83,7 @@ extension Core {
 
 }
 
+@inline(__always)
 public
 func | (after: DispatchTime, execute: @escaping ()->() ) {
     DispatchQueue.main.asyncAfter(deadline: after, execute: execute)
