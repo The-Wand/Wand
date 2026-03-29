@@ -29,4 +29,3 @@ func | (after: Int, execute: @escaping ()->() ) {
         try? await Task.sleep(nanoseconds: UInt64(after) * NSEC_PER_SEC)
     }
 }
-

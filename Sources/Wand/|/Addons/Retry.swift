@@ -17,74 +17,48 @@
 /// The Wand
 
 public
-typealias Retry = ()->()
+struct Retry: Expecting {
 
-public
-typealias ErrorRetry = (Error, @escaping Retry)->(Bool)
-
-public
-typealias ErrorRetryCounting = (Error, @escaping Retry, Int)->(Bool)
-
-@discardableResult
-@inline(__always)
-public
-func |? (wand: Core, retry: @escaping ErrorRetry) -> Core {
-
-    let ask = Ask.while(handler: retry)
-    _ = wand.append(ask: ask)
-    return wand
-}
-
-@discardableResult
-@inline(__always)
-public
-func |? (wand: Core, retry: @escaping ErrorRetryCounting) -> Core {
-
-    let ask = Ask.while(handler: retry)
-    _ = wand.append(ask: ask)
-    return wand
-}
-
-extension Core {
+    let block: ()->()
+    let reason: Any?
 
     @inline(__always)
     public
-    static
-    func autoretry() -> (Swift.Error, @escaping Retry, Int)->(Bool) {
-        { (error: Swift.Error, retry: @escaping Retry, count: Int) in
+    func callAsFunction() {
+        block()
+    }
 
-            DispatchTime.now() + 5 | {
+}
+
+public
+extension Retry {
+
+    @inline(__always)
+    static
+    func after(_ timeout: Double, attempts: Int = 2) -> Ask<Retry> {
+        .while { (retry: Retry, count: Int) in
+
+            DispatchTime.now() + timeout | {
                 retry()
             }
-
-            return count < 1
+            return count < attempts - 1
         }
     }
 
+    @inline(__always)
+    static
+    func auto() -> Ask<Retry> {
+        after(5)
+    }
+
 }
 
+public
 extension Core {
 
-    @inlinable
-    public
-    func error(_ error: Core.Error,
-               retry: @escaping Retry) {
-        add((error, retry))
-        add(error)
+    @inline(__always)
+    func add(_ error: any Swift.Error, retry: @escaping ()->()) {
+        add(Retry(block: retry, reason: add(error)))
     }
 
-    @inlinable
-    public
-    func error(_ error: any Swift.Error,
-               retry: @escaping Retry) {
-        add((error, retry))
-        add(error)
-    }
-
-}
-
-@inline(__always)
-public
-func | (after: DispatchTime, execute: @escaping ()->() ) {
-    DispatchQueue.main.asyncAfter(deadline: after, execute: execute)
 }
