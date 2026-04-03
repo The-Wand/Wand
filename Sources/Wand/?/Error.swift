@@ -38,7 +38,7 @@ func |?(wand: Core, handler: @escaping (Error)->() ) -> Core {
 @discardableResult
 @inline(__always)
 public
-func |?(wand: Core, ask: Ask<Error>) -> Core {
+func |?(wand: Core, ask: Ask<Error>.Option) -> Core {
 
     if ask.once {
 
@@ -51,7 +51,7 @@ func |?(wand: Core, ask: Ask<Error>) -> Core {
         }
     }
 
-    return wand.append(handler: ask.optional())
+    return wand.append(handler: ask)
 }
 
 ///Error codes and reasons

@@ -26,7 +26,7 @@
 @inline(__always)
 public
 func |?(wand: Core, handler: @escaping (Error?)->() ) -> Core {
-    wand |? Ask.one(handler: handler)
+    wand |? .one(handler: handler)
 }
 
 /// Handle Error and Success
@@ -38,7 +38,7 @@ func |?(wand: Core, handler: @escaping (Error?)->() ) -> Core {
 @discardableResult
 @inline(__always)
 public
-func |?(wand: Core, ask: Ask<Error?>) -> Core {
+func |?(wand: Core, ask: Ask<Error?>.Option) -> Core {
 
     let error = Ask<Error>.Option(once: ask.once) {
         ask.handler($0)
