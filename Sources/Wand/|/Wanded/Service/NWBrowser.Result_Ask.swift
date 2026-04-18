@@ -22,27 +22,7 @@ import Network
 @_exported
 import Wand
 
-extension NWBrowser: Obtainable {
-
-    @inlinable
-    public
-    static
-    func obtain(by wand: Core?) -> Self {
-
-        let wand = wand ?? Core()
-
-        let parameters: NWParameters = wand.get() ?? .init()
-        parameters.includePeerToPeer = true
-
-        let source = NWBrowser(for: .bonjour(type: "_wand._tcp", domain: nil),
-                               using: parameters)
-
-        return source as! Self
-    }
-
-}
-
-extension NWBrowser.Result: Ask.Nil {
+extension NWBrowser.Result: Ask.Nil, Wanded {
 
     @inlinable
     public
@@ -71,32 +51,6 @@ extension NWBrowser.Result: Ask.Nil {
 
         source.browseResultsChangedHandler = { [weak wand] newResults, change in
             wand?.add(sequence: newResults)
-        }
-
-        let queue: DispatchQueue = wand.get() ?? .global()
-        source.start(queue: queue)
-
-        return wand
-    }
-
-}
-
-extension NWBrowser.State: Ask.Nil {
-
-    @inlinable
-    public
-    static
-    func ask<C, T>(with scope: C, ask: Ask<T>) -> Core {
-
-        let wand = Core.to(scope)
-        guard wand.append(ask: ask) else {
-            return true
-        }
-
-        let source: NWBrowser = wand.get()
-
-        source.stateUpdateHandler = { [weak wand] in
-            wand?.add($0)
         }
 
         let queue: DispatchQueue = wand.get() ?? .global()

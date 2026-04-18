@@ -16,151 +16,67 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
+#if canImport(Network)
+@_exported
 import Network
+@_exported
+import Wand
 
-extension NWBrowser: Obtainable {
-
-    @inlinable
-    public
-    static
-    func obtain(by wand: Core?) -> Self {
-
-        let wand = wand ?? Core()
-
-        let parameters: NWParameters = wand.get() ?? .init()
-        parameters.includePeerToPeer = true
-
-        let source = NWBrowser(for: .bonjour(type: "_wand._tcp", domain: nil),
-                               using: parameters)
-
-        return source as! Self
-    }
-
+protocol Browsable: Ask.T {
 
 }
 
-struct B {
+extension Browsable {
 
-    func start() {
-    }
-
-}
-
-extension NWBrowser.Result: Ask.Nil {
-
-    @inlinable
-    public
+    @inline(__always)
     static
+    public
     func ask<C, T>(with scope: C, ask: Ask<T>) -> Core {
 
         let wand = Core.to(scope)
         guard wand.append(ask: ask) else {
-            return true
+            return wand
         }
 
-        let source: NWBrowser = wand.get()
+        return wand | ask.depend { (result: NWBrowser.Result) in
 
-        source |? .while { [weak wand] (state: NWBrowser.State) in
-
-            switch state {
-                case .ready:
-
-                    wand?.add(sequence: source.browseResults)
-                    return false
-
-                default:
-                    return true
-            }
-        }
-
-        source.browseResultsChangedHandler = { [weak wand] newResults, change in
-            wand?.add(sequence: newResults)
-        }
-
-        let queue: DispatchQueue = wand.get() ?? .global()
-        source.start(queue: queue)
-
-        return wand
-    }
-
-}
-
-extension NWBrowser.State: Ask.Nil {
-
-    @inlinable
-    public
-    static
-    func ask<C, T>(with scope: C, ask: Ask<T>) -> Core {
-
-        let wand = Core.to(scope)
-        guard wand.append(ask: ask) else {
-            return true
-        }
-
-        let source: NWBrowser = wand.get()
-
-        source.stateUpdateHandler = { [weak wand] in
-            wand?.add($0)
-        }
-
-        let queue: DispatchQueue = wand.get() ?? .global()
-        source.start(queue: queue)
-
-        return wand
-    }
-
-}
-
-
-
-extension NWConnection: Ask.Nil {
-
-    @inlinable
-    public
-    static
-    func ask<C, T>(with scope: C, ask: Ask<T>) -> Core {
-
-        let wand = Core.to(scope)
-        guard wand.append(ask: ask) else {
-            return true
-        }
-
-        let parameters: NWParameters =
-        if #available(macOS 13.0, iOS 16.0, watchOS 9.0, *) {
-            wand.get() ?? NWParameters.applicationService
-        } else {
-            NWParameters()
-        }
-
-        let gameOptions = NWProtocolFramer.Options(definition: GameProtocol.definition)
-        parameters.defaultProtocolStack.applicationProtocols.insert(gameOptions, at: 0)
-
-        do {
-            let source = try NWListener(using: parameters)
-            source.service = NWListener.Service(name: ask.key,
-                                                type: "_wand._tcp")
-
-            source.newConnectionHandler = { [weak wand] in
-                wand?.add($0)
-
-//                if let delegate = self.delegate {
-//                    if sharedConnection == nil {
-//                        // Accept a new connection.
-//                        sharedConnection = PeerConnection(connection: newConnection, delegate: delegate)
-//                    } else {
-//                        // If a game is already in progress, reject it.
-//                        newConnection.cancel()
-//                    }
-//                }
-
+            guard
+                case let .service(name: name,
+                                  type: _,
+                                  domain: _,
+                                  interface: _) = result.endpoint,
+                name == ask.key
+            else {
+                return
             }
 
-            source.start(queue: .main)
-        } catch {
-            wand.add(error)
+            result.join()
         }
-
-        return wand
     }
 
 }
+
+extension NWBrowser.Result {
+
+//    @inlinable
+    fileprivate
+    func join() {
+
+        guard let wand = isWanded else {
+            return
+        }
+
+        var connection: NWConnection? = wand.extract()
+        if let connection {
+            connection.cancel()
+        }
+
+        let pass: String = wand.get()!
+        connection = NWConnection(to: endpoint,
+                                  using: NWParameters(passcode: pass))
+
+        wand.add(connection)
+    }
+}
+
+#endif

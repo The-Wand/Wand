@@ -23,7 +23,7 @@ import Network
 import Wand
 
 extension NWBrowser: Obtainable {
-    
+
     @inlinable
     public
     static

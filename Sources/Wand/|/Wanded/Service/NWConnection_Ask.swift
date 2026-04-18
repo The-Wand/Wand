@@ -16,32 +16,16 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
+#if canImport(Network)
+@_exported
 import Network
+@_exported
+import Wand
 
-extension NWBrowser: Obtainable {
+@available(iOS 16.0, *)
+extension NWConnection: Ask.Nil, Wanded {
 
-    @inlinable
-    public
-    static
-    func obtain(by wand: Core?) -> Self {
-
-        let wand = wand ?? Core()
-
-        let parameters: NWParameters = wand.get() ?? .init()
-        parameters.includePeerToPeer = true
-
-        let source = NWBrowser(for: .bonjour(type: "_wand._tcp", domain: nil),
-                               using: parameters)
-
-        return source as! Self
-    }
-
-
-}
-
-extension NWBrowser.Result: Ask.Nil {
-
-    @inlinable
+//    @inlinable
     public
     static
     func ask<C, T>(with scope: C, ask: Ask<T>) -> Core {
@@ -51,99 +35,23 @@ extension NWBrowser.Result: Ask.Nil {
             return true
         }
 
-        let source: NWBrowser = wand.get()
-
-        source |? .while { [weak wand] (state: NWBrowser.State) in
-
-            switch state {
-                case .ready:
-
-                    wand?.add(sequence: source.browseResults)
-                    return false
-
-                default:
-                    return true
-            }
-        }
-
-        source.browseResultsChangedHandler = { [weak wand] newResults, change in
-            wand?.add(sequence: newResults)
-        }
-
-        let queue: DispatchQueue = wand.get() ?? .global()
-        source.start(queue: queue)
-
-        return wand
-    }
-
-}
-
-extension NWBrowser.State: Ask.Nil {
-
-    @inlinable
-    public
-    static
-    func ask<C, T>(with scope: C, ask: Ask<T>) -> Core {
-
-        let wand = Core.to(scope)
-        guard wand.append(ask: ask) else {
-            return true
-        }
-
-        let source: NWBrowser = wand.get()
-
-        source.stateUpdateHandler = { [weak wand] in
-            wand?.add($0)
-        }
-
-        let queue: DispatchQueue = wand.get() ?? .global()
-        source.start(queue: queue)
-
-        return wand
-    }
-
-}
-
-extension NWConnection: Ask.Nil {
-
-    @inlinable
-    public
-    static
-    func ask<C, T>(with scope: C, ask: Ask<T>) -> Core {
-
-        let wand = Core.to(scope)
-        guard wand.append(ask: ask) else {
-            return true
-        }
-
-        let parameters: NWParameters =
-        if #available(macOS 13.0, iOS 16.0, watchOS 9.0, *) {
-            wand.get() ?? NWParameters.applicationService
-        } else {
-            NWParameters()
-        }
-
-        let gameOptions = NWProtocolFramer.Options(definition: GameProtocol.definition)
-        parameters.defaultProtocolStack.applicationProtocols.insert(gameOptions, at: 0)
+        let parameters: NWParameters = wand.get()!
+//        if #available(macOS 13.0, iOS 16.0, watchOS 9.0, *) {
+//            wand.get() ?? NWParameters.applicationService
+//        } else {
+//            NWParameters()
+//        }
+//
+//        let gameOptions = NWProtocolFramer.Options(definition: WandFramerProtocol.definition)
+//        parameters.defaultProtocolStack.applicationProtocols.insert(gameOptions, at: 0)
 
         do {
             let source = try NWListener(using: parameters)
-            source.service = NWListener.Service(name: ask.key,
-                                                type: "_wand._tcp")
+            source.service = .Service(name: ask.key, type: "_wand._tcp")
 
             source.newConnectionHandler = { [weak wand] in
                 wand?.add($0)
-
-//                if let delegate = self.delegate {
-//                    if sharedConnection == nil {
-//                        // Accept a new connection.
-//                        sharedConnection = PeerConnection(connection: newConnection, delegate: delegate)
-//                    } else {
-//                        // If a game is already in progress, reject it.
-//                        newConnection.cancel()
-//                    }
-//                }
-
+                $0.startConnection()
             }
 
             source.start(queue: .main)
@@ -154,4 +62,103 @@ extension NWConnection: Ask.Nil {
         return wand
     }
 
+//    @inlinable
+    private
+    func startConnection() {
+
+        guard let wand = isWanded else {
+            return
+        }
+
+        let delegate: Delegate = wand.put(Delegate())
+
+        stateUpdateHandler = { [weak self] in
+
+            guard let self else {
+                return
+            }
+
+            switch $0 {
+                case .ready:
+
+                    receiveMessages()
+
+                    // Notify the delegate that the connection is ready.
+                    delegate.connectionReady()
+
+                case .failed(let error):
+
+                    cancel()
+
+                    if
+                        wand.get(for: "initiatedConnection") == true,
+                        error == NWError.posix(.ECONNABORTED) {
+                        // Reconnect if the user suspends the app on the nearby device.
+                        let connection = NWConnection(to: endpoint, using: applicationServiceParameters())
+                        wand.add(connection)
+                    } else {
+                        delegate.connectionFailed()
+                    }
+                default:
+                    break
+            }
+        }
+
+        let q: DispatchQueue = wand.get() ?? .main
+        start(queue: q)
+    }
+
+    private
+    func applicationServiceParameters() -> NWParameters {
+        let parameters = NWParameters.applicationService
+
+        // Add your custom game protocol to support game messages.
+        let gameOptions = NWProtocolFramer.Options(definition: WandFramerProtocol.definition)
+        parameters.defaultProtocolStack.applicationProtocols.insert(gameOptions, at: 0)
+
+        return parameters
+    }
+
+    private
+    func receiveMessages() {
+
+        guard let wand = isWanded else {
+            return
+        }
+
+        let delegate: Delegate = wand.get()!
+
+        receiveMessage { (content, context, isComplete, error) in
+            // Extract your message type from the received context.
+            if let gameMessage = context?.protocolMetadata(definition: WandFramerProtocol.definition) as? NWProtocolFramer.Message {
+                delegate.receivedMessage(content: content, message: gameMessage)
+            }
+            if error == nil {
+                // Continue to receive more messages until you receive an error.
+                self.receiveMessages()
+            }
+        }
+    }
 }
+
+private
+struct Delegate {
+
+    func connectionReady() {
+
+    }
+
+    func connectionFailed() {
+
+    }
+
+    func receivedMessage(content: Data?, message: NWProtocolFramer.Message) {
+
+    }
+
+    func displayAdvertiseError(_ error: NWError) {
+
+    }
+}
+
+#endif

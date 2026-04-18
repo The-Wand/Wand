@@ -22,26 +22,6 @@ import Network
 @_exported
 import Wand
 
-extension NWBrowser: Obtainable {
-
-    @inlinable
-    public
-    static
-    func obtain(by wand: Core?) -> Self {
-
-        let wand = wand ?? Core()
-
-        let parameters: NWParameters = wand.get() ?? .init()
-        parameters.includePeerToPeer = true
-
-        let source = NWBrowser(for: .bonjour(type: "_wand._tcp", domain: nil),
-                               using: parameters)
-
-        return source as! Self
-    }
-
-}
-
 extension NWBrowser.State: Ask.Nil {
 
     @inlinable
