@@ -41,40 +41,40 @@ struct ContentView: View {
     var body: some View {
         VStack {
             if #available(iOS 15.0, tvOS 15.0, watchOS 8.0, *) {
-                    AsyncImage(
-                        url: URL(string: pickAxe),
-                        scale: 2
-                    )
-                    .ignoresSafeArea()
+                AsyncImage(
+                    url: URL(string: pickAxe),
+                    scale: 2
+                )
+                .ignoresSafeArea()
             } else {
                 Image(systemName: "wand.and.stars")
                 Text("Hello, Wand|")
             }
 
-//            Button("Receive") {
-//                |.while { (connection: NWConnection) in
-//                    print("✅ \(connection)")
-//                    return true
-//                }
-//            }
-//            Button("Transfer") {
-//                |.while { (result: NWBrowser.Result) in
-//                    print("✅ \(result)")
-//                    return true
-//                }
-//
-//            }
+            //            Button("Receive") {
+            //                |.while { (connection: NWConnection) in
+            //                    print("✅ \(connection)")
+            //                    return true
+            //                }
+            //            }
+            //            Button("Transfer") {
+            //                |.while { (result: NWBrowser.Result) in
+            //                    print("✅ \(result)")
+            //                    return true
+            //                }
+            //
+            //            }
         }
         .onAppear {
-            
-//            Wand.Log.level = .verbose
-//            Highload.highload_prod(of: 11)//)1_111_111)
 
-//            let archive: Rar = nil
-//            let archive2: Rar = "\u{00C237}"
+            //            Wand.Log.level = .verbose
+            //            Highload.highload_prod(of: 11)//)1_111_111)
+
+            //            let archive: Rar = nil
+            //            let archive2: Rar = "\u{00C237}"
         }
     }
-    
+
 }
 
 //struct Rar: AskNil, Wanded, ExpressibleByT {
@@ -146,6 +146,10 @@ struct ContentView: View {
 //    func addIf<T>(exist object: T?, for key: String? = nil) -> T? {
 //        (object == nil) ? nil : add(object!, for: key) //let object ? add(object, for: key) : nil
 //    }
+//
+//@freestanding(expression)
+//public
+//macro loca(_ value: String...) -> (String) = #externalMacro(module: "WandMacros", type: "LocaMacro")
 
 @available(iOS 14, macOS 12, tvOS 14, watchOS 7, *)
 #Preview {
