@@ -6,7 +6,6 @@
 [![Coverage](https://img.shields.io/badge/Coverage-99%25-|)](https://swiftpackageindex.com/The-Wand/Wand)
 [![Swift Package](https://img.shields.io/badge/Swift_Package-Compatible-|)](https://raw.githubusercontent.com/The-Wand/Wand/main/collection.json)
 [![Swift Forums](https://img.shields.io/badge/Swift_Forums-The_Wand-|)](https://forums.swift.org/t/the-wand/84343)
-
 ![GitHub Sponsors](https://img.shields.io/github/sponsors/The-Wand?logo=github)
 
 |wand created to support all platfroms   
