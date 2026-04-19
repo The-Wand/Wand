@@ -39,10 +39,14 @@ ingredients | { (result: Object) in
 ```bash
 ingredients | .one { (t: T) in
             
-} | .every { (u: U) in
+} & .every { (u: U) in
 
-} | .while { (v: V) in
+} ? .while { (v: V) in
   true
+} ? { (e: Error) in
+
+} ? { (r: Retry) in
+
 }
 ```
 
