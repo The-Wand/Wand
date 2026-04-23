@@ -16,9 +16,9 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-public
 extension Ask {
 
+    open
     class Operation: Ask {
     }
 
