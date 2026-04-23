@@ -180,83 +180,6 @@ extension Core {
 
 }
 
-/// Save objects
-/// Without triggering Asks
-extension Core {
-
-    @discardableResult
-    @inline(__always)
-    public
-    func put<T>(_ object: T, for key: String? = nil) -> T {
-
-        save(object, for: key)
-        return object
-    }
-
-    @inline(__always)
-    public
-    func putDefault<T>(_ object: @autoclosure ()->(T), for raw: String? = nil) {
-
-        let key = raw ?? T.self|
-        if !contains(for: key) {
-            save(object(), for: key)
-        }
-    }
-
-    @discardableResult
-    @inlinable
-    public
-    func save<T>(_ object: T, for raw: String? = nil) -> String {
-
-        let key = raw ?? T.self|
-        Core[object] = self
-        scope[key] = object
-
-        return key
-    }
-
-}
-
-/// Save sequence
-/// Without triggering Asks
-extension Core {
-
-    @inlinable
-    public
-    func put<T>(sequence: T) where T == any Sequence {
-        sequence.forEach { object in
-
-            let type = type(of: object)
-            if type is AnyClass {
-                Core[object as AnyObject] = self
-            }
-
-            scope[type|] = object
-        }
-    }
-
-    @inlinable
-    public
-    func dynamicallyCall<T>(withKeywordArguments args: T) where T == KeyValuePairs<String, Any> {
-        for (key, object) in args {
-
-            let type = type(of: object)
-            if type is AnyClass {
-                Core[object as AnyObject] = self
-            }
-
-            scope[key] = object
-        }
-    }
-
-    @inlinable
-    public
-    func dynamicallyCall(withArguments objects: [Any]) {
-        put(sequence: objects)
-    }
-
-}
-
 /// Scope
 extension Core {
 
@@ -273,12 +196,11 @@ extension Core {
     func extract<T>(for key: String? = nil) -> T? {
         switch scope.removeValue(forKey: key ?? T.self|) {
             case nil:
-                return nil
+                nil
             case let object as T:
-                return object
+                object
             default:
-                add(Error.with(code: -1, reason: "not T"))
-                return nil
+                add(Error.with(code: -1, reason: "not T")) as? T
         }
     }
 
@@ -296,113 +218,17 @@ extension Core {
     @inline(__always)
     public
     func get<T>(for key: String? = nil, or create: @autoclosure ()->(T) ) -> T {
-        get(for: key) ?? put(create(), for: key)
+        get(for: key) ?? self + (key ^ create())
     }
 
 }
 
-/// Store Asks
-extension Core {
-
-    @inlinable
-    public
-    func append<T>(ask: Ask<T>) -> Bool {
-
-        let key = ask.key
-        let stored = handlers[key]
-
-        //Attach the wand
-        //Call handler if object exist
-        if
-            ask.set(core: self),
-            let object: T = get(for: key),
-            !ask.handler(object)
-        {
-            return false
-        }
-
-        //Add ask to the chain
-        let tail = stored?.last as? Ask<T>
-        ask.next = tail?.next ?? ask
-        tail?.next = ask
-
-        handlers[key] = (last: ask, cleaner: stored?.cleaner)
-
-        return stored == nil
-    }
-
-    @inline(__always)
-    public
-    func setCleaner<T>(for ask: Ask<T>, cleaner: @escaping ()->() ) {
-
-        let key = ask.key
-        handlers[key] = (handlers[key]!.last, cleaner)
-    }
-
-}
-
-/// Add object
-/// Call handlers
-extension Core {
-
-    @discardableResult
-    @inlinable
-    public
-    func addIf<T>(exist object: T?, for key: String? = nil) -> T? {
-        (object == nil) ? nil : add(object!, for: key) //https://forums.swift.org/t/ternary-unwrapping/84147
-    }
-
-    @discardableResult
-    @inlinable
-    public
-    func add<T>(_ object: T, for raw: String? = nil) -> T {
-
-        //Store object and retreive the key
-        let key = save(object, for: raw)
-
-        //Answer the questions
-        guard let stored = handlers[key] else {
-            return object
-        }
-
-        //From head
-        if let tail = (stored.last as? Ask<T>)?.head(object) {
-            //Save
-            handlers[key] = (tail, stored.cleaner)
-        } else {
-            //Clean
-            stored.cleaner?()
-            handlers[key] = nil
-        }
-
-        //Handle Ask.any
-        if let tail = handlers[.any]?.last as? Ask<Any> {
-
-            let head = tail.next
-            handle(object, head: head, tail: tail)
-            tail.next = head
-        }
-
-        return object
-    }
-
-    @inlinable
-    public
-    func add<T>(sequence: any Sequence<T>) {
-        sequence.forEach {
-            add($0)
-        }
-    }
-
-}
-
-/// Close
 extension Core {
 
     @inlinable
     public
     func close() {
-        //Handle Ask.all
+        //Handle .all
         if let tail = handlers[.all]?.last as? Ask<Core> {
             handle(self, head: tail.next, tail: tail)
         }

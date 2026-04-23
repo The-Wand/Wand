@@ -55,7 +55,7 @@ extension Ask.T {
 
                 //TODO: struct?
                 let wand = task.wand
-                wand.put(scope)
+                wand + scope
                 wand | { (retrieved: Self) in
                     continuation.resume(returning: retrieved)
                 }

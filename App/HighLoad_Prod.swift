@@ -45,7 +45,7 @@ struct Highload {
                     tool.send(message: message, index: index)
                 }
 
-                nextCore?.put(Core.Weak(item: newWand), for: "Wand")
+                nextCore + Core.Weak(item: newWand) ^ "Wand"
                 nextCore = newWand
 
                 tool.send(index: index)
