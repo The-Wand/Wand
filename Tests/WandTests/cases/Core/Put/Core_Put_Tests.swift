@@ -32,19 +32,19 @@ class Core_Put_Tests: XCTestCase {
         self.wand = wand
 
         let `struct` = CLLocationCoordinate2D.any
-        wand.put(`struct`)
+        wand + `struct`
 
         let custom_struct = Custom(bar: .any)
-        wand.put(custom_struct)
+        wand + custom_struct
 
-        let `class` = wand.put(CLLocation.any)
+        let `class` = wand + CLLocation.any
 
         let custom_class = CustomClass()
         custom_class.bar = .any
-        wand.put(custom_class)
+        wand + custom_class
 
         // wanded equals original
-        let wanded_struct: CLLocationCoordinate2D = try XCTUnwrap(wand.get() )
+        let wanded_struct: CLLocationCoordinate2D = try XCTUnwrap(wand.get())
         XCTAssertTrue(`struct`.latitude == wanded_struct.latitude &&
                       `struct`.longitude == wanded_struct.longitude)
 
@@ -101,8 +101,8 @@ class Core_Put_Tests: XCTestCase {
         var wand: Core! = Core()
         self.wand = wand
         
-        let original: CLLocation = CLLocation.any
-        wand.put(original)
+        let original = CLLocation.any
+        wand + original
 
         // wanded equals original
         let wanded: CLLocation = try XCTUnwrap(wand.get())

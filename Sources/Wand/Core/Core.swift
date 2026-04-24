@@ -197,7 +197,7 @@ extension Core {
     func putDefault<T>(_ object: @autoclosure ()->(T), for raw: String? = nil) {
 
         let key = raw ?? T.self|
-        if !(self ~= key) {
+        if self !~= key {
             save(object(), for: key)
         }
     }

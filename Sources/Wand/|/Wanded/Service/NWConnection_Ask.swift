@@ -70,7 +70,7 @@ extension NWConnection: Ask.Nil, Wanded {
             return
         }
 
-        let delegate: Delegate = wand.put(Delegate())
+        let delegate = wand + Delegate()
 
         stateUpdateHandler = { [weak self] in
 
