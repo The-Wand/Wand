@@ -38,9 +38,9 @@ class And_Tests: XCTestCase {
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             //Point
-            wand.add(Point.any)
+            wand + Point.any
             //And String
-            wand.add(String.any)
+            wand + String.any
         }
 
         waitForExpectations()
@@ -66,10 +66,10 @@ class And_Tests: XCTestCase {
         }
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            wand.add(Point.any)
+            wand + Point.any
 
             (0..<count).forEach { _ in
-                wand.add(String.any)
+                wand + String.any
             }
         }
 
@@ -101,8 +101,8 @@ class And_Tests: XCTestCase {
                 return
             }
 
-            localWand.add(Point.any)
-            localWand.add(String.any)
+            localWand + Point.any
+            localWand + String.any
         }
 
         waitForExpectations()
@@ -140,10 +140,10 @@ class And_Tests: XCTestCase {
                 return
             }
 
-            wand.add(Point.any)
+            wand + Point.any
 
             (0..<count).forEach { _ in
-                wand.add(String.any)
+                wand + String.any
             }
         }
 

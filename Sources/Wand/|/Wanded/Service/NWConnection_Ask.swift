@@ -50,13 +50,13 @@ extension NWConnection: Ask.Nil, Wanded {
             source.service = .Service(name: ask.key, type: "_wand._tcp")
 
             source.newConnectionHandler = { [weak wand] in
-                wand?.add($0)
+                wand + $0
                 $0.startConnection()
             }
 
             source.start(queue: .main)
         } catch {
-            wand.add(error)
+            wand + error
         }
 
         return wand
@@ -95,7 +95,7 @@ extension NWConnection: Ask.Nil, Wanded {
                         error == NWError.posix(.ECONNABORTED) {
                         // Reconnect if the user suspends the app on the nearby device.
                         let connection = NWConnection(to: endpoint, using: applicationServiceParameters())
-                        wand.add(connection)
+                        wand + connection
                     } else {
                         delegate.connectionFailed()
                     }

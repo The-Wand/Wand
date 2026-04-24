@@ -33,7 +33,7 @@
 //        #expect(true)
 //    }
 //
-//    wand.add(point)
+//    wand + point
 //}
 //
 //@Test
@@ -58,7 +58,7 @@
 //    (1...count).forEach { _ in
 //
 //        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak wand] in
-//            wand?.add(point)
+//            wand + point
 //        }
 //    }
 //}

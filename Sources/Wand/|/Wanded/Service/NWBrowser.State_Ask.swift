@@ -37,7 +37,7 @@ extension NWBrowser.State: Ask.Nil {
         let source: NWBrowser = wand.get()
 
         source.stateUpdateHandler = { [weak wand] in
-            wand?.add($0)
+            wand + $0
         }
 
         let queue: DispatchQueue = wand.get() ?? .global()

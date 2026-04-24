@@ -39,9 +39,9 @@ class Expect_Any_Tests: XCTestCase {
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak wand] in
                 if .random() {
-                    wand?.add(Point.any)
+                    wand + Point.any
                 } else {
-                    wand?.add(String.any)
+                    wand + String.any
                 }
             }
 
@@ -73,9 +73,9 @@ class Expect_Any_Tests: XCTestCase {
             handlePerformance = Performance(of: "Ask<Any> handle")
 
             if .random() {
-                wand?.add(Point.any)
+                wand + Point.any
             } else {
-                wand?.add(String.any)
+                wand + String.any
             }
         }
 

@@ -38,7 +38,7 @@ class CountingTests: XCTestCase {
         }
 
         (0..<bound).forEach { _ in
-            wand.add(String.any)
+            wand + String.any
         }
 
         waitForExpectations()
@@ -64,7 +64,7 @@ class CountingTests: XCTestCase {
 
 
         (0..<bound).forEach { _ in
-            wand.add(String.any)
+            wand + String.any
         }
 
         waitForExpectations()

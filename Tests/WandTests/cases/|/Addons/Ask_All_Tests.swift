@@ -33,11 +33,11 @@ class All_Tests: XCTestCase {
         }
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak wand] in
-            wand?.add(Point.any)
+            wand + Point.any
         }
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak wand] in
-            wand?.add(String.any)
+            wand + String.any
         }
 
         waitForExpectations()

@@ -70,10 +70,10 @@ struct Highload {
 
         Performance(of: "Fulfilling \(count) handlers") {
 
-            nextCore?.add(Point.any)
+            nextCore + Point.any
 
             while let wand = (nextCore?.get(for: "Wand") as Core.Weak?)?.item {
-                wand.add(Point.any)
+                wand + Point.any
                 nextCore = wand
             }
 
@@ -123,7 +123,7 @@ struct Highload {
 
         Performance(of: "Fulfilling \(count) handlers") {
 
-            nextCore?.add(CLLocation.any)
+            nextCore + CLLocation.any
 
             while let wand = (nextCore?.get(for: "Wand") as Core.Weak?)?.item {
                 let lo🐱ation = CLLocation(coordinate: .any,
@@ -131,7 +131,7 @@ struct Highload {
                                           horizontalAccuracy: .any,
                                           verticalAccuracy: .any,
                                           timestamp: .any)
-                wand.add(lo🐱ation)
+                wand + lo🐱ation
                 nextCore = wand
             }
         }
@@ -204,7 +204,7 @@ class HighloadTests: XCTestCase {
                                       horizontalAccuracy: .any,
                                       verticalAccuracy: .any,
                                       timestamp: .any)
-            wand.add(location, for: index|)
+            wand + location ^ index|
 
             tool.send(index: index)
 

@@ -27,8 +27,7 @@ func add_object_if_exist()
     }
 
     let optional: String? = .any
-
-    wand.addIf(exist: optional)
+    wand +? optional
 
     #expect(wand.get() == optional)
 }
@@ -40,7 +39,7 @@ func add_object_if_exist_not()
 
     let optional: String? = nil
 
-    wand.addIf(exist: optional)
+    wand +? optional
 
     #expect(wand.get() == nil as String?)
 }

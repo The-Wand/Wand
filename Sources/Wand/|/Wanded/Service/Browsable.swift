@@ -75,7 +75,7 @@ extension NWBrowser.Result {
         connection = NWConnection(to: endpoint,
                                   using: NWParameters(passcode: pass))
 
-        wand.add(connection)
+        wand + connection
     }
 }
 

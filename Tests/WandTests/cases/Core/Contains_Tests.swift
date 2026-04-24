@@ -25,7 +25,7 @@ func contains_object()
     let wand = Core()
     wand(Key: String.any)
 
-    #expect(wand.contains(for: "Key"))
+    #expect(wand ~= "Key")
 }
 
 @Test
@@ -34,5 +34,5 @@ func contains_object_not()
     let wand = Core()
     wand(Key: String.any)
 
-    #expect(!wand.contains(for: "String"))
+    #expect(wand !~= "String")
 }

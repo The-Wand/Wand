@@ -57,11 +57,11 @@ struct Highload {
 
         Performance(of: "Fulfilling \(count) handlers") {
 
-            nextCore?.add(Point.any)
+            nextCore + Point.any
 
             while let wand = (nextCore?.get(for: "Wand") as Core.Weak?)?.item {
                 let lo🐱ation = Point.any
-                wand.add(lo🐱ation)
+                wand + lo🐱ation
                 nextCore = wand
             }
         }

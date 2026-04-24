@@ -23,27 +23,26 @@ import Wand
 func extract_object()
 {
     let wand = Core(String.any)
-    #expect(wand.extract() == String.any)
+    #expect(wand- == String.any)
 }
 
 @Test
 func extract_not()
 {
     let wand = Core()
-    #expect(wand.extract() == String?.none)
+    #expect(wand- == String?.none)
 }
 
 @Test
 func extract_object_notT()
 {
     let wand = Core()
-    wand.add("Point", for: "Point")
+    wand + "Point" ^ "Point"
 
     wand |? { (error: Error) in
         #expect(error.code == -1)
     }
 
-    let point: Point? = wand.extract()
-
+    let point: Point? = wand-
     #expect(point == nil)
 }

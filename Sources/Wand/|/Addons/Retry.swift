@@ -58,7 +58,7 @@ extension Core {
 
     @inline(__always)
     func add(_ error: any Swift.Error, retry: @escaping ()->()) {
-        add(Retry(block: retry, reason: add(error)))
+        self + Retry(block: retry, reason: self + error)
     }
 
 }

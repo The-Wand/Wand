@@ -34,7 +34,7 @@ extension Expecting {
     func ask<C, T>(with scope: C, ask: Ask<T>) -> Core {
 
         let wand = Core.to(scope)
-        _ = wand.append(ask: ask)
+        _ = wand + ask
         return wand
     }
 

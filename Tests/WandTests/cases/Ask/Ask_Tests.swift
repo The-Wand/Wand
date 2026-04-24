@@ -46,6 +46,6 @@ async
 
     ask.cancel()
 
-    wand.add(String.any)
+    wand + String.any
     #expect(true)
 }

@@ -31,7 +31,7 @@ async
         cleaned = true
     }
 
-    wand.add(String.any)
+    wand + String.any
 
     #expect(cleaned)
 }

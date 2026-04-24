@@ -59,7 +59,7 @@ extension String: @retroactive Expecting {
 //        _ = wand.append(ask: ask)
 //
 //        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak wand] in
-//            wand?.add("String.any")
+//            wand + "String.any"
 //        }
 //
 //        return wand

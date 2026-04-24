@@ -16,46 +16,42 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-/// Handle Error and Success
-///
-/// wand | { (error: Error?) in
-///
-/// }
-///
 @discardableResult
 @inline(__always)
 public
-func |?(wand: Core, handler: @escaping (Error?)->() ) -> Core {
-    wand |? .one(handler: handler)
+func ~=(wand: Core, key: String) -> Bool {
+    wand.scope.keys.contains(key)
 }
 
-/// Handle Error and Success
-///
-/// wand | .one { (error: Error?) in
-///
-/// }
-///
+infix   operator !~= : ComparisonPrecedence
+
 @discardableResult
 @inline(__always)
 public
-func |?(wand: Core, ask: Ask<Error?>.Option) -> Core {
+func !~=(wand: Core, key: String) -> Bool {
+    !(wand ~= key)
+}
 
-    let error = Ask<Error>.Option(once: ask.once) {
-        ask.handler($0)
+postfix operator -
+
+@discardableResult
+@inline(__always)
+postfix
+public
+func -<T>(wand: Core) -> T? {
+    wand - T.self|
+}
+
+@discardableResult
+@inline(__always)
+public
+func -<T>(wand: Core, key: String?) -> T? {
+    switch wand.scope.removeValue(forKey: key ?? T.self|) {
+        case nil:
+            nil
+        case let object as T:
+            object
+        default:
+            wand + Core.Error.with(code: -1, reason: "not T") as? T
     }
-
-    let success = if ask.once {
-        Ask<Error?>.Option(once: true) { [weak wand] in
-            defer {
-                wand?.close()
-            }
-            return ask.handler($0)
-        }
-    } else {
-        ask.optional()
-    }
-
-    _ = wand + success
-
-    return wand |? error
 }

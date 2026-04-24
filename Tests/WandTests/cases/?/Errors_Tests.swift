@@ -37,7 +37,7 @@ class Errors_Tests: XCTestCase {
         }
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak wand] in
-            wand?.add(String.any)
+            wand + String.any
         }
 
         wait(for: [e1, e2])
@@ -60,7 +60,7 @@ class Errors_Tests: XCTestCase {
         }
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak wand] in
-            wand?.add(NSError() as Error)
+            wand + (NSError() as Error)
         }
 
         wait(for: [e1, e2])
@@ -90,7 +90,7 @@ class Errors_Tests: XCTestCase {
         range.forEach { _ in
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak wand] in
-                wand?.add(NSError() as Error)
+                wand + (NSError() as Error)
             }
         }
 
@@ -111,7 +111,7 @@ class Errors_Tests: XCTestCase {
         }
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak wand] in
-            wand?.add(nil as Error?)
+            wand + (nil as Error?)
         }
 
         wait(for: [e])
@@ -132,7 +132,7 @@ class Errors_Tests: XCTestCase {
         }
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak wand] in
-            wand?.add(Core.Error.with(reason: .any))
+            wand + Core.Error.with(reason: .any)
         }
 
         wait(for: [e])
@@ -158,7 +158,7 @@ class Errors_Tests: XCTestCase {
         range.forEach { _ in
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak wand] in
-                wand?.add(nil as Error?)
+                wand + nil as Error?
             }
         }
 

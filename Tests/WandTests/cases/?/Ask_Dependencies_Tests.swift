@@ -35,7 +35,7 @@ class Ask_Dependencies_Tests: XCTestCase {
 
         }
 
-        wand.add(point)
+        wand + point
 
         waitForExpectations()
         XCTAssertNil(wand)
@@ -55,7 +55,7 @@ class Ask_Dependencies_Tests: XCTestCase {
 
         }
 
-        wand.add(point)
+        wand + point
 
         waitForExpectations()
         XCTAssertNotNil(wand)
@@ -72,7 +72,7 @@ class Ask_Dependencies_Tests: XCTestCase {
             e.fulfill()
         }
 
-        wand.add(String.any)
+        wand + String.any
 
         waitForExpectations()
         XCTAssertNotNil(wand)
@@ -95,7 +95,7 @@ class Ask_Dependencies_Tests: XCTestCase {
         var wand: Core! //ask
         wand = point |? ask
 
-        wand.add(String.any)
+        wand + String.any
 
         waitForExpectations()
         XCTAssertNotNil(wand)
@@ -115,7 +115,7 @@ class Ask_Dependencies_Tests: XCTestCase {
         var wand: Core! //ask4
         wand = |?ask
 
-        wand.add(String.any)
+        wand + String.any
 
         waitForExpectations()
         XCTAssertNotNil(wand)
@@ -139,10 +139,10 @@ class Ask_Dependencies_Tests: XCTestCase {
             return false
         }
 
-        wand.add(String.any)
-        wand.add(Point.any)
+        wand + String.any
+        wand + Point.any
         
-        wand.add(Point.any)
+        wand + Point.any
 
         waitForExpectations()
         XCTAssertNotNil(wand)
@@ -164,7 +164,7 @@ class Ask_Dependencies_Tests: XCTestCase {
             fatalError()
         }
 
-        wand.add(String.any)
+        wand + String.any
 
         waitForExpectations()
         XCTAssertNotNil(wand)
@@ -184,7 +184,7 @@ class Ask_Dependencies_Tests: XCTestCase {
             e.fulfill()
         }
 
-        wand.add(point)
+        wand + point
 
         waitForExpectations()
         XCTAssertNotNil(wand)
@@ -210,7 +210,7 @@ class Ask_Dependencies_Tests: XCTestCase {
             e.fulfill()
         }
 
-        wand.add(point)
+        wand + point
 
         waitForExpectations()
         XCTAssertNotNil(wand)
@@ -240,7 +240,7 @@ class Ask_Dependencies_Tests: XCTestCase {
             return true
         }
 
-        wand.add(point)
+        wand + point
 
         waitForExpectations()
         XCTAssertNotNil(wand)

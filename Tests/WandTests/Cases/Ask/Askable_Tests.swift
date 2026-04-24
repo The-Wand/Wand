@@ -47,7 +47,7 @@ class Expect_T_Tests: XCTestCase {
             let point = Point.any
             last = point
 
-            wand?.add(point)
+            wand + point
         }
 
         waitForExpectations(timeout: .default)
@@ -68,7 +68,7 @@ class Expect_T_Tests: XCTestCase {
             e.fulfill()
         }
 
-        wand.add(point)
+        wand + point
 
         waitForExpectations()
         XCTAssertNil(wand)
@@ -78,7 +78,7 @@ class Expect_T_Tests: XCTestCase {
 
         func put() {
             DispatchQueue.main.async {
-                wand.add(Point.any)
+                wand + Point.any
             }
         }
 
@@ -123,7 +123,7 @@ class Expect_T_Tests: XCTestCase {
         }
 
         handling = Performance(of: "Nil answer")
-        wand.add(point)
+        wand + point
 
         waitForExpectations()
         XCTAssertNil(wand)
