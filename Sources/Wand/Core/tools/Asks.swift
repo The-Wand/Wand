@@ -112,20 +112,20 @@ func +?<T>(wand: Core, object: T? ) -> T? {
         return nil
     }
 
-    return wand + (object ^ nil)
+    return wand + object & nil
 }
 
 @discardableResult
 @inline(__always)
 public
 func +?<T>(wand: Core, pair: (T?, String?) ) -> T? {
-    pair.0 == nil ? nil : wand + (pair.0! ^ pair.1)
+    pair.0 == nil ? nil : wand + pair.0! & pair.1
 }
 
 @discardableResult
 @inline(__always)
 public
-func ^<T>(object: T, key: String?) -> (T, String) {
+func &<T>(object: T, key: String?) -> (T, String) {
     (object, key ?? T.self|)
 }
 

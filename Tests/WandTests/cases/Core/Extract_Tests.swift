@@ -37,7 +37,7 @@ func extract_not()
 func extract_object_notT()
 {
     let wand = Core()
-    wand + "Point" ^ "Point"
+    wand + "Point" & "Point"
 
     wand |? { (error: Error) in
         #expect(error.code == -1)

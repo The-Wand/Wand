@@ -16,13 +16,6 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-@discardableResult
-@inline(__always)
-public
-func ~=(wand: Core, key: String) -> Bool {
-    wand.scope.keys.contains(key)
-}
-
 infix   operator !~= : ComparisonPrecedence
 
 @discardableResult
@@ -30,6 +23,13 @@ infix   operator !~= : ComparisonPrecedence
 public
 func !~=(wand: Core, key: String) -> Bool {
     !(wand ~= key)
+}
+
+@discardableResult
+@inline(__always)
+public
+func ~=(wand: Core, key: String) -> Bool {
+    wand.scope.keys.contains(key)
 }
 
 postfix operator -

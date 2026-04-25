@@ -57,7 +57,7 @@ struct Highload {
                     tool.send(message: message, to: point, index: index)
                 }
                 
-                nextCore + Core.Weak(item: newWand) ^ "Wand"
+                nextCore + Core.Weak(item: newWand) & "Wand"
                 nextCore = newWand
                 
                 tool.send(index: index)
@@ -111,7 +111,7 @@ struct Highload {
                     tool.send(message: message, index: index)
                 }
 
-                nextCore + Core.Weak(item: newWand) ^ "Wand"
+                nextCore + (Core.Weak(item: newWand) & "Wand")
                 nextCore = newWand
 
                 tool.send(index: index)
@@ -204,7 +204,7 @@ class HighloadTests: XCTestCase {
                                       horizontalAccuracy: .any,
                                       verticalAccuracy: .any,
                                       timestamp: .any)
-            wand + location ^ index|
+            wand + location & index|
 
             tool.send(index: index)
 
