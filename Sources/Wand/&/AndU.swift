@@ -65,3 +65,65 @@ func &<T: Ask.T, U: Ask.T> (ask: Ask<T>,
 
     return ask
 }
+
+/// Hard infix
+//@inline(__always)
+//public
+//func &<T: Ask.T, U: Ask.T> (handler: @escaping (T)->(),
+//                            appending: @escaping (U)->() ) -> Core {
+//    handler & .one(handler: appending)
+//
+//}
+//
+//@inline(__always)
+//public
+//func &<T: Ask.T, U: Ask.T> (handler: @escaping (T)->(),
+//                            appending: @escaping (U)->(Bool) ) -> Core {
+//    handler & .while(handler: appending)
+//}
+//
+//@inline(__always)
+//public
+//func &<T: Ask.T, U: Ask.T> (handler: @escaping (T)->(Bool),
+//                            appending: @escaping (U)->() ) -> Core {
+//    handler & .one(handler: appending)
+//}
+
+@inline(__always)
+public
+func &<T: Ask.T, U: Ask.T> (handler: @escaping (T)->(Bool),
+                            appending: @escaping (U)->(Bool) ) -> Core {
+    handler & .while(handler: appending)
+}
+
+@inline(__always)
+public
+func &<T: Ask.T, U: Ask.T> (handler: @escaping (T)->(),
+                            rhs: Ask<U> ) -> Core {
+    {
+        handler($0)
+        return false
+    } | rhs
+}
+
+@inline(__always)
+public
+func &<T: Ask.T, U: Ask.T> (lhs: @escaping (T)->(Bool),
+                            rhs: Ask<U> ) -> Core {
+
+    let wand = Core()
+
+    let ask = Ask.while(handler: lhs)
+
+    let saved = ask.handler
+    ask.handler = {
+
+        let result = saved($0)
+        wand | rhs
+        ask.handler = saved
+
+        return result
+    }
+
+    return wand
+}
