@@ -16,6 +16,7 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
+/// Contains
 infix   operator !~= : ComparisonPrecedence
 
 @discardableResult
@@ -32,6 +33,7 @@ func ~=(wand: Core, key: String) -> Bool {
     wand.scope.keys.contains(key)
 }
 
+/// Extract
 postfix operator -
 
 @discardableResult

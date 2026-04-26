@@ -29,12 +29,14 @@ class And_Tests: XCTestCase {
         let e = expectation()
         e.expectedFulfillmentCount = 2
 
-        let wand =
-        |({ (point: Point) in
+        let wand: Core =
+        { (point: Point) in
             e.fulfill()
+            return false
         } & { (string: String) in
             e.fulfill()
-        })
+            return false
+        }
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             //Point

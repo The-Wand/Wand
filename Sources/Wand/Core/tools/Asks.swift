@@ -129,14 +129,18 @@ func &<T>(object: T, key: String?) -> (T, String) {
     (object, key ?? T.self|)
 }
 
-extension Core {
-
-    @inlinable
-    public
-    func add<T>(sequence: any Sequence<T>) {
-        sequence.forEach {
-            self + $0
-        }
+/// Sequence
+@inline(__always)
+public
+func +<T>(wand: Core, raw: (sequence: T, Core.Key)) where T == any Sequence {
+    raw.sequence.forEach {
+        wand + $0
     }
+}
 
+@inline(__always)
+postfix
+public
+func ...<T>(sequence: T) -> (sequence: T, Core.Key) {
+    (sequence, .all)
 }
