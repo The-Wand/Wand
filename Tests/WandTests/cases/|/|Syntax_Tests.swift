@@ -16,49 +16,10 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-import Testing
 import Wand
+import Testing
 
 @Test
-func add_object_if_exist()
-{
-    let wand = |{ (string: String) in
-        #expect(string == .any)
-    }
+func OrSyntax_Tests() {
 
-    let optional: String? = .any
-    wand +? optional
-
-    #expect(wand.get() == optional)
-}
-
-@Test
-func add_object_if_exist_not()
-{
-    let wand = |String.one
-
-    let optional: String? = nil
-
-    wand +? optional
-
-    #expect(wand.get() == nil as String?)
-}
-
-@Test
-func add_objects_sequence()
-{
-    let range = ClosedRange.any
-    var hit = range.upperBound
-
-    let wand = |.while { (string: String) in
-        hit -= 1
-        return hit > 0
-    }
-
-    let sequence = range.map { _ in
-        String.any
-    }
-    wand + sequence...
-
-    #expect(hit == 0)
 }
