@@ -99,7 +99,7 @@ class Core: CustomStringConvertible, Identifiable {
     @inlinable
     public
     var version: String {
-        Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+        Bundle.main | "CFBundleShortVersionString" as! String
     }
 
     @inline(__always)
@@ -121,7 +121,7 @@ class Core: CustomStringConvertible, Identifiable {
 
     deinit {
 
-//        sendLogs()
+        sendLogs()
         close()
         log("|✅ #bonsua")
     }

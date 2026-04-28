@@ -16,6 +16,9 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
+#if canImport(Foundation)
+import Foundation
+
 /// Convert
 extension Bundle {
 
@@ -27,3 +30,5 @@ extension Bundle {
     }
 
 }
+
+#endif

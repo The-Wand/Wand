@@ -67,7 +67,7 @@ struct ContentView: View {
         }
         .onAppear {
 
-            Wand.Log.level = .verbose
+//            Wand.Log.level = .verbose
             //            Highload.highload_prod(of: 11)//)1_111_111)
 
             //            let archive: Rar = nil
