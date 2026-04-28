@@ -58,4 +58,14 @@ struct Strings {
         #expect(data! == sample)
     }
 
+//TODO: Test
+//    @inline(__always)
+//    postfix
+//    public
+//    func |(string: String) -> DispatchData? {
+//        (string | .utf8)?.withUnsafeBytes {
+//            DispatchData(bytes: $0)
+//        }
+//    }
+
 }

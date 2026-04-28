@@ -46,4 +46,13 @@ func |(string: String?, encoding: String.Encoding?) -> Data? {
     string?.data(using: encoding ?? .utf8)
 }
 
+@inline(__always)
+postfix
+public
+func |(string: String) -> DispatchData {
+    (string | .utf8)!.withUnsafeBytes {
+        DispatchData(bytes: $0)
+    }
+}
+
 #endif
