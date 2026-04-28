@@ -20,7 +20,7 @@ import Wand
 import Testing
 
 @Test
-func AndSyntax_Tests() {
+func And_Syntax_Tests() {
 
         //Core
         //        let _: Core =

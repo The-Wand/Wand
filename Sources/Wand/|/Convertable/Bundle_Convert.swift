@@ -16,10 +16,14 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-import Wand
-import Testing
+/// Convert
+extension Bundle {
 
-@Test
-func OrSyntax_Tests() {
+    @inline(__always)
+    public
+    static
+    func |(bundle: Bundle, key: String) -> Any? {
+        bundle.object(forInfoDictionaryKey: key)
+    }
 
 }

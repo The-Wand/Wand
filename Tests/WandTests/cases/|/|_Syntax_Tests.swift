@@ -20,6 +20,6 @@ import Wand
 import Testing
 
 @Test
-func QSyntax_Tests() {
+func Or_Syntax_Tests() {
 
 }
