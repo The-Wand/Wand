@@ -25,7 +25,6 @@
 		6168E5ED2CFDC00B00676432 /* Any_ in Frameworks */ = {isa = PBXBuildFile; productRef = 6168E5EC2CFDC00B00676432 /* Any_ */; };
 		6168E5EE2CFDC00E00676432 /* Wand.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "pipe::Pipe::Product" /* Wand.framework */; };
 		6168E5EF2CFDC00E00676432 /* Wand.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = "pipe::Pipe::Product" /* Wand.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6175F33C2F55A51200F0B79B /* ScreenExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 61B3962C2F3F2B0500682789 /* ScreenExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		6181C93B2D4BFCD0007EBDF6 /* T_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6181C9282D4BFC7D007EBDF6 /* T_Tests.swift */; };
 		6181C93D2D4BFCD0007EBDF6 /* XCTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6181C92B2D4BFC7D007EBDF6 /* XCTestCase.swift */; };
 		6181C93E2D4BFCD0007EBDF6 /* Objects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6181C92A2D4BFC7D007EBDF6 /* Objects.swift */; };
@@ -80,13 +79,6 @@
 			remoteGlobalIDString = "pipe::Pipe";
 			remoteInfo = wand;
 		};
-		6175F33D2F55A51200F0B79B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = OBJ_1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 61B3962B2F3F2B0500682789;
-			remoteInfo = ScreenExtension;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -121,17 +113,6 @@
 				6168E5EF2CFDC00E00676432 /* Wand.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		618D80712F1F97880060C7F9 /* Embed Foundation Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				6175F33C2F55A51200F0B79B /* ScreenExtension.appex in Embed Foundation Extensions */,
-			);
-			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		61B4DB392F1FB63300988A75 /* CopyFiles */ = {
@@ -223,6 +204,7 @@
 				Wanded/Service/NWBrowser.State_Ask.swift,
 				Wanded/Service/NWConnection_Ask.swift,
 				Wanded/Service/NWParameters_Obtain.swift,
+				Wanded/Service/NWProtocolTLS.Options_Obtain.swift,
 				Wanded/Service/Service.swift,
 				Wanded/Service/WandFramerProtocol.swift,
 			);
@@ -534,12 +516,10 @@
 				6162624928BC8E2B00D63EA5 /* Frameworks */,
 				6162624A28BC8E2B00D63EA5 /* Resources */,
 				6162626628BC944300D63EA5 /* Embed Frameworks */,
-				618D80712F1F97880060C7F9 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				6175F33E2F55A51200F0B79B /* PBXTargetDependency */,
 			);
 			name = Play;
 			productName = "Sandbox (iOS)";
@@ -883,11 +863,6 @@
 			target = "pipe::Pipe" /* Wand */;
 			targetProxy = 6168E5F02CFDC00E00676432 /* PBXContainerItemProxy */;
 		};
-		6175F33E2F55A51200F0B79B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 61B3962B2F3F2B0500682789 /* ScreenExtension */;
-			targetProxy = 6175F33D2F55A51200F0B79B /* PBXContainerItemProxy */;
-		};
 		OBJ_255 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "pipe::Pipe" /* Wand */;
@@ -912,7 +887,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3631;
+				CURRENT_PROJECT_VERSION = 3646;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -969,7 +944,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3631;
+				CURRENT_PROJECT_VERSION = 3646;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_PREVIEWS = YES;
@@ -1021,7 +996,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3631;
+				CURRENT_PROJECT_VERSION = 3646;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -1067,7 +1042,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3631;
+				CURRENT_PROJECT_VERSION = 3646;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -1132,7 +1107,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3631;
+				CURRENT_PROJECT_VERSION = 3646;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -1230,7 +1205,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3631;
+				CURRENT_PROJECT_VERSION = 3646;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1302,7 +1277,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3631;
+				CURRENT_PROJECT_VERSION = 3646;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1370,7 +1345,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3631;
+				CURRENT_PROJECT_VERSION = 3646;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1431,7 +1406,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3631;
+				CURRENT_PROJECT_VERSION = 3646;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
@@ -1496,7 +1471,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3631;
+				CURRENT_PROJECT_VERSION = 3646;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1554,7 +1529,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3631;
+				CURRENT_PROJECT_VERSION = 3646;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1622,7 +1597,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3631;
+				CURRENT_PROJECT_VERSION = 3646;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1677,7 +1652,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3631;
+				CURRENT_PROJECT_VERSION = 3646;
 				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
@@ -1728,7 +1703,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3631;
+				CURRENT_PROJECT_VERSION = 3646;
 				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
@@ -1776,7 +1751,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3631;
+				CURRENT_PROJECT_VERSION = 3646;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				DRIVERKIT_DEPLOYMENT_TARGET = 20.0;
@@ -1821,7 +1796,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3631;
+				CURRENT_PROJECT_VERSION = 3646;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				DRIVERKIT_DEPLOYMENT_TARGET = 20.0;

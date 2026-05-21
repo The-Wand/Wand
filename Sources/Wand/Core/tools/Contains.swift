@@ -15,38 +15,20 @@
 ///
 /// Created by Aleksander Kozin
 /// The Wand
-///
 
-/*
- Inspired by:
- 2012 Rasmus Andersson <http://rsms.me/>
- */
+/// Contains
+infix   operator !~= : ComparisonPrecedence
 
-#if canImport(Network)
-@_exported
-import NaturalLanguage
-
-@_exported
-import Wand
-
-extension NLTagger: Obtainable {
-
-    @inlinable
-    public
-    static
-    func obtain<C>(with scope: C?, by wand: Core?) -> Self {
-
-        let schemes = if let scope = scope as? [NLTagScheme] ?? wand?.get() {
-            scope
-        } else if let scope = scope as? NLTagScheme ?? wand?.get() {
-            [scope]
-        } else {
-            [NLTagScheme]()
-        }
-
-        return NLTagger(tagSchemes: schemes) as! Self
-    }
-
+@discardableResult
+@inline(__always)
+public
+func !~=(wand: Core, key: String) -> Bool {
+    !(wand ~= key)
 }
 
-#endif
+@discardableResult
+@inline(__always)
+public
+func ~=(wand: Core, key: String) -> Bool {
+    wand.scope.keys.contains(key)
+}

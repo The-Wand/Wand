@@ -61,7 +61,7 @@ func |<T: Ask.Nil>(ask: Ask<T>) -> Core {
     nil as Core | ask
 }
 
-/// Make the chain
+/// Chaining
 ///
 /// T.one | E.one | { (error: Error?) in
 ///

@@ -33,18 +33,26 @@ extension NLTag: Ask.Nil, Wanded {
             return true
         }
 
-        let schema:     NLTagScheme = wand.get() ?? .lemma
-        let string:     String = wand.get()!
+        let string  = scope as? String ?? wand.get()!
 
         let source = scope as? NLTagger ?? wand.get()
         source.string = string
 
-        let range: Range<String.Index> = wand.get() ?? string.startIndex..<string.endIndex
+        var stop = false
+        wand.setCleaner(for: ask) {
+            stop = true
+        }
 
-        source.enumerateTags(in: range, unit: .word, scheme: schema) { tag, tokenRange in
+        let range = scope as? Range<String.Index> ?? wand.get() ?? string.startIndex..<string.endIndex
+        let schema  = scope as? NLTagScheme ?? wand.get() ?? .lemma
+        let unit    = scope as? NLTokenUnit ?? wand.get() ?? .word
+
+        source.enumerateTags(in: range, unit: unit, scheme: schema) { tag, tokenRange in
 
             wand.put(tokenRange)
             wand + tag
+
+            return stop
         }
 
         return wand
