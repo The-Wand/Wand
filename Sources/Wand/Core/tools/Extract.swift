@@ -40,3 +40,12 @@ func -<T>(wand: Core, key: String?) -> T? {
             wand + Core.Error.with(code: -1, reason: "not T") as? T
     }
 }
+
+/// Extract Obtain
+@discardableResult
+@inline(__always)
+postfix
+public
+func -<T: Obtainable>(wand: Core) -> T {
+    T.obtain(with: wand, by: wand)
+}
