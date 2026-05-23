@@ -16,36 +16,31 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-/// Extract
-postfix operator -
-
-@discardableResult
-@inline(__always)
-postfix
 public
-func -<T>(wand: Core) -> T? {
-    wand - T.self|
-}
-
-@discardableResult
-@inline(__always)
-public
-func -<T>(wand: Core, key: String?) -> T? {
-    switch wand.scope.removeValue(forKey: key ?? T.self|) {
-        case nil:
-            nil
-        case let object as T:
-            object
-        default:
-            wand + Core.Error.with(code: -1, reason: "not T") as? T
+extension Ask {
+    
+    @inline(__always)
+    func breached() -> Self {
+        self.key = UUID().uuidString
+        return self
     }
+    
 }
 
-/// Extract Obtain
-@discardableResult
 @inline(__always)
 postfix
 public
-func -<T: Obtainable>(wand: Core) -> T {
-    T.obtain(with: wand, by: wand)
+func |<U, T: Obtainable>(ask: Ask<U>) -> T {
+    T.obtain(with: ask, by: ask.core)
+}
+
+public
+protocol Protocolable {
+    
+    var key: String {get}
+    
+}
+
+extension Ask: Protocolable {
+    
 }

@@ -1,5 +1,5 @@
 ///
-/// Copyright 2020 Aleksander Kozin
+/// Copyright 2569 Aleksander Kozin
 ///
 /// Licensed under the Apache License, Version 2.0 (the "License");
 /// you may not use this file except in compliance with the License.
@@ -55,10 +55,10 @@ extension Retry {
 
 public
 extension Core {
-
+    
     @inline(__always)
     func add(_ error: any Swift.Error, retry: @escaping ()->()) {
         self + Retry(block: retry, reason: self + error)
     }
-
+    
 }
