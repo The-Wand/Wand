@@ -16,9 +16,6 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-/// e|| ♟️
-postfix operator |
-
 @inlinable
 postfix
 public
