@@ -20,6 +20,18 @@ import Foundation
 
 protocol Fix {
     
+    var block: ()->() {get}
+    
     func callAsFunction()
+    
+}
+
+extension Fix {
+    
+    @inline(__always)
+    public
+    func callAsFunction() {
+        block()
+    }
     
 }

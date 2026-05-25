@@ -17,16 +17,10 @@
 /// The Wand
 
 public
-struct Retry: Expecting {
+struct Retry: Expecting, Fix {
 
     let block: ()->()
     let reason: Any?
-
-    @inline(__always)
-    public
-    func callAsFunction() {
-        block()
-    }
 
 }
 
@@ -53,12 +47,8 @@ extension Retry {
 
 }
 
+@inline(__always)
 public
-extension Core {
-    
-    @inline(__always)
-    func add(_ error: any Swift.Error, retry: @escaping ()->()) {
-        self + Retry(block: retry, reason: self + error)
-    }
-    
+func &(error: Error, retry: @escaping ()->()) -> Retry {
+    Retry(block: retry, reason: error)
 }
