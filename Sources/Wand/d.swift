@@ -17,30 +17,23 @@
 /// The Wand
 
 public
-extension Ask {
+protocol Safe {
+    
+}
+
+public
+protocol Breachable {
+    
+    var key: String {get}
+    
+}
+
+extension Ask: Breachable where T: Safe {
     
     @inline(__always)
     func breached() -> Self {
         self.key = UUID().uuidString
         return self
     }
-    
-}
-
-@inline(__always)
-postfix
-public
-func |<U, T: Obtainable>(ask: Ask<U>) -> T {
-    T.obtain(with: ask, by: ask.core)
-}
-
-public
-protocol Protocolable {
-    
-    var key: String {get}
-    
-}
-
-extension Ask: Protocolable {
     
 }

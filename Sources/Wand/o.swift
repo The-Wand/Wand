@@ -17,7 +17,7 @@
 /// The Wand
 
 /// Get object from Core
-/// or create in scope
+/// or create in <#scope#>
 public
 protocol Obtainable: Wanded {
 

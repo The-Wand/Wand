@@ -16,65 +16,58 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-/// Get object from Core
-/// or create in scope
+/// Get <#Ubiquitous#> object
+///
+/// let object = U.self|
+///
 public
-protocol Obtainable: Wanded {
-
+protocol Ubiquitous: Wanded {
+    
+    @inline(__always)
     static
-    func obtain<C>(with scope: C?, by wand: Core?) -> Self
-
+    func access() -> Self
+    
+    @inline(__always)
+    prefix
+    static
+    func | (the: Self) -> Self
+    
 }
 
-/// Obtain
+/// Ubiquitous object
 ///
 /// let object = T|
 ///
 @inline(__always)
 postfix
 public
-func |<T: Obtainable>(type: T.Type) -> T {
-    T.obtain(with: type, by: nil)
+func |<T: Ubiquitous>(type: T.Type) -> T {
+    T.access()
 }
 
-/// Obtain from wand
+/// Ubiquitous object from wand
 ///
 /// let object: T = wand|
 ///
 @inline(__always)
 postfix
 public
-func |<T: Obtainable>(wand: Core?) -> T {
-    wand?.get() ?? {
-
-        let object = T.obtain(with: wand, by: wand)
-        return wand + object ?? object
-    }()
+func |<T: Ubiquitous>(wand: Core?) -> T {
+    T.access()
 }
 
-/// Obtain from wand
-///
-/// let object: T = wand|
-///
-@inline(__always)
-postfix
-public
-func |<T: Obtainable>(wand: Core) -> T {
-    wand.get() ?? wand + T.obtain(with: wand, by: wand)
-}
-
-/// Obtain from scope
+/// Ubiquitous object from scope
 ///
 /// let object: T = scope|
 ///
 @inline(__always)
 postfix
 public
-func |<C, T: Obtainable>(scope: C) -> T {
-    scope as? T ?? T.obtain(with: scope, by: scope as? Core)
+func |<C, T: Ubiquitous>(scope: C) -> T {
+    scope as? T ?? T.access()
 }
 
-/// Obtainable unwrap
+/// Ubiquitous unwrap
 ///
 /// let option: T? = nil
 /// let object = option|
@@ -82,20 +75,38 @@ func |<C, T: Obtainable>(scope: C) -> T {
 @inline(__always)
 postfix
 public
-func |<T: Obtainable>(object: T?) -> T {
+func |<T: Ubiquitous>(object: T?) -> T {
     object ?? T.self|
 }
 
-/// Obtain from wand
+///
+/// Set <#Ubiquitous#>
+///
+/// |object
+///
+extension Ubiquitous {
+    
+    @inline(__always)
+    @discardableResult
+    prefix
+    public
+    static
+    func | (the: Self) -> Self {
+        the
+    }
+    
+}
+
+/// <#Ubiquitous#> from the Core
 ///
 /// let object: T = wand.get()
 ///
 extension Core {
-
+    
     @inline(__always)
     public
-    func get<T: Obtainable>(for key: String? = nil) -> T {
-        get(for: key, or: T.obtain(with: key, by: self))
+    func get<T: Ubiquitous>(for key: String? = nil) -> T {
+        T.access()
     }
-
+    
 }
