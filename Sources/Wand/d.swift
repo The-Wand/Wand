@@ -32,7 +32,7 @@ extension Ask: Breachable where T: Safe {
     
     @inline(__always)
     func breached() -> Self {
-        self.key = UUID().uuidString
+        self.key = ((0...(.max))| as Int)|
         return self
     }
     

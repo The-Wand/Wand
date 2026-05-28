@@ -78,6 +78,7 @@ class Core: CustomStringConvertible, Identifiable {
         }}
     }
 
+    //TODO: internal(set)
     public
     var scope = [String: Any]()
 
@@ -121,7 +122,7 @@ class Core: CustomStringConvertible, Identifiable {
 
     deinit {
 
-        sendLogs()
+//        sendLogs()
         close()
         log("|✅ #bonsua")
     }
@@ -219,9 +220,10 @@ extension Core {
 /// Put sequence
 extension Core {
 
+    @discardableResult
     @inlinable
     public
-    func put<T>(sequence: T) where T == any Sequence {
+    func put<T>(sequence: T) -> Self where T == any Sequence {
         sequence.forEach { object in
 
             let type = type(of: object)
@@ -231,11 +233,13 @@ extension Core {
 
             scope[type|] = object
         }
+        
+        return self
     }
 
     @inlinable
     public
-    func dynamicallyCall<T>(withKeywordArguments args: T) where T == KeyValuePairs<String, Any> {
+    func dynamicallyCall<T>(withKeywordArguments args: T) -> Self where T == KeyValuePairs<String, Any> {
         for (key, object) in args {
 
             let type = type(of: object)
@@ -245,6 +249,8 @@ extension Core {
 
             scope[key] = object
         }
+        
+        return self
     }
 
     @inlinable

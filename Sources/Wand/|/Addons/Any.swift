@@ -24,7 +24,7 @@ extension Ask<Any> {
     ///
     /// }
     ///
-    @inline(__always)
+    @inline(__always) //TODO: Add .any { o, k in <# #> }
     public
     static
     func any(handler: @escaping (Any)->() ) -> Ask<Any> {

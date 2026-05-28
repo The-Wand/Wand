@@ -64,6 +64,16 @@ func +<T>(wand: Core, raw: (T, String) ) -> T {
     let object = raw.0
     let key = wand.save(object, for: raw.1)
 
+    defer {
+        //Handle Ask.any
+        if let tail = wand.handlers[.any]?.last as? Ask<Any> {
+            
+            let head = tail.next
+            wand.handle(object, head: head, tail: tail)
+            tail.next = head
+        }
+    }
+    
     //Answer the questions
     guard let stored = wand.handlers[key] else {
         return object
@@ -77,14 +87,6 @@ func +<T>(wand: Core, raw: (T, String) ) -> T {
         //Clean
         stored.cleaner?()
         wand.handlers[key] = nil
-    }
-
-    //Handle Ask.any
-    if let tail = wand.handlers[.any]?.last as? Ask<Any> {
-
-        let head = tail.next
-        wand.handle(object, head: head, tail: tail)
-        tail.next = head
     }
 
     return object

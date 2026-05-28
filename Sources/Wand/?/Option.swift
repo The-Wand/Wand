@@ -32,7 +32,7 @@ extension Ask {
         @inline(__always)
         override
         public
-        func optional() -> Self {
+        func optional() -> Option {
             self
         }
 
