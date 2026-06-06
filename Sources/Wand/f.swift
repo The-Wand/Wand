@@ -18,15 +18,17 @@
 
 import Foundation
 
-protocol Fix {
+public
+class Fix {
+  
+    let block: ()->()
+    let reason: Any?
     
-    var block: ()->() {get}
-    
-    func callAsFunction()
-    
-}
-
-extension Fix {
+    public
+    init(_ reason: Any?, block: ( ()->() )? = nil) {
+        self.block = block ?? {}
+        self.reason = reason
+    }
     
     @inline(__always)
     public

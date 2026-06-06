@@ -17,15 +17,7 @@
 /// The Wand
 
 public
-struct Retry: Expecting, Fix {
-
-    let block: ()->()
-    let reason: Any?
-
-}
-
-public
-extension Retry {
+class Retry: Fix, Expecting {
 
     @inline(__always)
     static
@@ -50,5 +42,5 @@ extension Retry {
 @inline(__always)
 public
 func &(error: Error, retry: @escaping ()->()) -> Retry {
-    Retry(block: retry, reason: error)
+    Retry(error, block: retry)
 }
