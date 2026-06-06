@@ -44,7 +44,7 @@ struct Highload {
         let tool = Tool()
 
         var core: Core? = |{ (point: Point) in
-            tool.send(message: message, to: point, index: 0)
+            tool.send(object: Fix(message), to: point, index: 0)
         }
 
         var nextCore = core
@@ -54,7 +54,7 @@ struct Highload {
             (1...count).forEach { index in
                 
                 let newWand = |{ (point: Point) in
-                    tool.send(message: message, to: point, index: index)
+                    tool.send(object: Fix(message), to: point, index: index)
                 }
                 
                 nextCore + Core.Weak(item: newWand) & "Wand"
@@ -98,7 +98,7 @@ struct Highload {
         let tool = Tool()
 
         var core: Core? = |{ (location: CLLocation) in
-            tool.send(message: message, index: 0)
+            tool.send(object: Fix(message), index: 0)
         }
 
         var nextCore = core
@@ -108,7 +108,7 @@ struct Highload {
             (1...count).forEach { index in
 
                 let newWand = |{ (location: CLLocation) in
-                    tool.send(message: message, index: index)
+                    tool.send(object: Fix(message), index: index)
                 }
 
                 nextCore + Core.Weak(item: newWand) & "Wand"
