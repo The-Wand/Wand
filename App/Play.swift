@@ -73,7 +73,7 @@ struct ContentView: View {
 //                print(tag)
 //            }
 
-//            Wand.Log.level = .verbose
+//            Log.level = .verbose
             //            Highload.highload_prod(of: 11)//)1_111_111)
 
             //            let archive: Rar = nil

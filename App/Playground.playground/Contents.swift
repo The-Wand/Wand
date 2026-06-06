@@ -1,12 +1,7 @@
 //: Playground
 
-
-
-let t = 1
-let m = 1
-let b0 = 1
-
-let calm = t * 2 / 3 * m * 1 / 4 * 6
+let rlm: Character = "\u{200F}" // RIGHT-TO-LEFT MARK
+"The phrase is مرحبا بالعالم!\(rlm) in Arabic."
 
 //import MapKit
 //import PlaygroundSupport

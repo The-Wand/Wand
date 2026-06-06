@@ -55,4 +55,11 @@ func |(string: String) -> DispatchData {
     }
 }
 
+@inline(__always)
+public
+func |<T: StringProtocol>(string: T, applying: StringTransform) -> String? {
+    string.applyingTransform(applying, reverse: false)
+}
+
+
 #endif

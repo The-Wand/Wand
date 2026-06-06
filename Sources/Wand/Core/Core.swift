@@ -85,6 +85,7 @@ class Core: CustomStringConvertible, Identifiable {
     public
     var handlers = [String: (last: Any, cleaner: ( ()->() )? )]()
 
+    ///Debugger
     lazy
     public
     var id = arc4random()
@@ -92,7 +93,11 @@ class Core: CustomStringConvertible, Identifiable {
     lazy
     public
     var name = id.quotientAndRemainder(dividingBy: 50_000)
-
+    
+    lazy
+    public
+    var avatar = String(name.remainder| as Character) | .toUnicodeName
+    
     lazy
     public
     var description = "Wand.Core \(name.remainder| as Character)\n\(version) by @alko"
@@ -102,10 +107,12 @@ class Core: CustomStringConvertible, Identifiable {
     var version: String {
         Bundle.main | "CFBundleShortVersionString" as! String
     }
+    ///
 
     @inline(__always)
     public
     init() {
+        
         log("|🦾 #init")
     }
 
