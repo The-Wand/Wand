@@ -16,15 +16,14 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-import Foundation
-
 public
 class Fix {
-  
+    
     let block: ()->()
     let reason: Any?
     
     public
+    required
     init(_ reason: Any?, block: ( ()->() )? = nil) {
         self.block = block ?? {}
         self.reason = reason
@@ -36,4 +35,10 @@ class Fix {
         block()
     }
     
+}
+
+@inline(__always)
+public
+func &<T: Fix>(reason: Any, retry: @escaping ()->()) -> T {
+    T.init(reason, block: retry)
 }

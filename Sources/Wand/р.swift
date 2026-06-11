@@ -18,29 +18,23 @@
 
 public
 class Retry: Fix, Expecting {
-
+    
     @inline(__always)
     static
     func after(_ timeout: Double, attempts: Int = 2) -> Ask<Retry> {
         .while { (retry: Retry, count: Int) in
-
+            
             DispatchTime.now() + timeout | {
                 retry()
             }
             return count < attempts - 1
         }
     }
-
+    
     @inline(__always)
     static
     func auto() -> Ask<Retry> {
         after(5)
     }
-
-}
-
-@inline(__always)
-public
-func &(error: Error, retry: @escaping ()->()) -> Retry {
-    Retry(error, block: retry)
+    
 }
