@@ -59,13 +59,16 @@ struct Highload {
 
             nextCore + Point.any
 
-            while let wand = (nextCore?.get(for: "Wand") as Core.Weak?)?.item {
+            while
+                let wand = (nextCore?.get(for: "Wand")
+                            as Core.Weak?)?.item
+            {
                 let lo🐱ation = Point.any
                 wand + lo🐱ation
                 nextCore = wand
             }
         }
-
+        
         assert(Wand.Core.all.isEmpty)
     }
 

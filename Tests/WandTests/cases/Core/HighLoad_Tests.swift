@@ -43,7 +43,7 @@ struct Highload {
         let message = 0x1F408
         let tool = Tool()
 
-        var core: Core? = |{ (point: Point) in
+        var core: Core? = |{ (point: Point) in //TODO: Remove C-P
             tool.send(object: Fix(message), to: point, index: 0)
         }
 
@@ -53,7 +53,7 @@ struct Highload {
             
             (1...count).forEach { index in
                 
-                let newWand = |{ (point: Point) in
+                let newWand = |{ (point: Point) in //TODO: Remove C-P
                     tool.send(object: Fix(message), to: point, index: index)
                 }
                 
@@ -194,7 +194,7 @@ class HighloadTests: XCTestCase {
     /// 🏎️ Closing Wand 111m objects:
     func testClose()
     {
-        let closeCount = 11//1_111_111 🫵
+        let closeCount = 11//1_111_111 //🫵HM🫰
         let tool = Tool()
 
         var wand: Core? = (1...closeCount).reduce(Core()) { wand, index in
