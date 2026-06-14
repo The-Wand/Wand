@@ -16,6 +16,7 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
+final
 public
 class Retry: Fix, Expecting {
     
