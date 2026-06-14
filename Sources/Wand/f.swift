@@ -30,6 +30,13 @@ class Fix {
     }
     
     @inline(__always)
+    class
+    public
+    func auto<T: Fix>() -> Ask<T> {
+        .init()
+    }
+    
+    @inline(__always)
     public
     func callAsFunction() {
         block()
