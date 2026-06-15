@@ -111,7 +111,11 @@ class Core: CustomStringConvertible, Identifiable {
 
     @inline(__always)
     public
-    init() {
+    init(id: UInt32? = nil) {
+        
+        if let id {
+            self.id = id
+        }
         
         log("|🦾 #init")
     }

@@ -29,15 +29,15 @@ extension Core {
           
     @inline(__always)
     public //TODO: propogate core name to init func
-    func child(for name: String) -> Self {
+    func child(for id: UInt32 = .random(in: 0...(.max))) -> Self {
         
         let children = children()
         
-        if let stored = children[name] {
+        if let stored = children[id|] {
             return stored
         } else {
-            let child = Core() //Core(id: name|)
-            scope[name] = Core()
+            let child = Core(id: id)
+            scope[id|] = Core()
             return child
         }
     }
