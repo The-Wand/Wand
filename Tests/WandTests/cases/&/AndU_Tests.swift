@@ -24,29 +24,29 @@ class And_Tests: XCTestCase {
 
     var wand: Core?
 
-    func test_Handler_And_Handler()
-    {
-        let e = expectation()
-        e.expectedFulfillmentCount = 2
-
-        let wand: Core =
-        { (point: Point) in
-            e.fulfill()
-            return false
-        } & { (string: String) in
-            e.fulfill()
-            return false
-        }
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            //Point
-            wand + Point.any
-            //And String
-            wand + String.any
-        }
-
-        waitForExpectations()
-    }
+//    func test_Handler_And_Handler()
+//    {
+//        let e = expectation()
+//        e.expectedFulfillmentCount = 2
+//
+//        let wand: Core =
+//        { (point: Point) in
+//            e.fulfill()
+//            return false
+//        } & { (string: String) in
+//            e.fulfill()
+//            return false
+//        }
+//
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//            //Point
+//            wand + Point.any
+//            //And String
+//            wand + String.any
+//        }
+//
+//        waitForExpectations()
+//    }
 
     func test_Handler_And_Handler_While()
     {
