@@ -33,7 +33,10 @@ class Fix {
     class
     public
     func auto<T: Fix>() -> Ask<T> {
-        .init()
+        
+        let aks = Ask<T>.init() //TODO: Core() + Ask<T>.init()
+        aks.set(core: .init())  //Check preprocessor optimization
+        return aks              //swiftc -emit-ir 
     }
     
     @inline(__always)
