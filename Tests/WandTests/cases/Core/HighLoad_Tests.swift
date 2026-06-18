@@ -43,7 +43,8 @@ struct Highload {
         let message = 0x1F408
         let tool = Tool()
 
-        var core: Core? = |{ (point: Point) in //TODO: Remove C-P
+        var core: Core = 0x0999
+        core | { (point: Point) in //TODO: Remove C-P
             tool.send(object: Fix(message), to: point, index: 0)
         }
 
@@ -57,7 +58,7 @@ struct Highload {
                     tool.send(object: Fix(message), to: point, index: index)
                 }
                 
-                nextCore + Core.Weak(item: nextCore!.child()) & "Wand"
+                nextCore + Core.Weak(item: nextCore.child()) & "Wand"
                 nextCore = newWand
                 
                 tool.send(index: index)
@@ -72,7 +73,7 @@ struct Highload {
 
             nextCore + Point.any
 
-            while let wand = (nextCore?.get(for: "Wand") as Core.Weak?)?.item {
+            while let wand = (nextCore.get(for: "Wand") as Core.Weak?)?.item {
                 wand + Point.any
                 nextCore = wand
             }

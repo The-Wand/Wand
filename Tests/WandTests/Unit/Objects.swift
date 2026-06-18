@@ -78,7 +78,9 @@ struct Tool {
     @inlinable
     func send(index: Int) {
         if index % 1_000_000 == 0 {
-            print(index)
+            if #available(iOS 15.0, *) {
+                print(index.formatted())
+            }
         }
     }
 

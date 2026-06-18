@@ -19,45 +19,13 @@
 @inline(__always)
 postfix
 public
-func |<T: Numeric>(value: Bool) -> T {
-    value ? 1 : 0
+func |<T: BinaryFloatingPoint, U: FixedWidthInteger>(value: T) -> U {
+    U.init(value)
 }
 
 @inline(__always)
 postfix
 public
-func |(value: any BinaryFloatingPoint) -> Int {
-    Int(value)
-}
-
-@inline(__always)
-postfix
-public
-func |(value: any BinaryInteger) -> Double {
-    Double(value)
-}
-
-@inline(__always)
-postfix
-public
-func |(value: any BinaryInteger) -> Int {
-    Int(value)
-}
-
-@inline(__always)
-postfix
-public
-func |(value: Double) -> Float {
-    Float(value)
-}
-
-@inline(__always)
-postfix
-public
-func |(value: (any BinaryInteger)?) -> String? {
-    guard let value else {
-        return nil
-    }
-    
-    return String(describing: value)
+func |<T: FixedWidthInteger, U: FixedWidthInteger>(value: T) -> U {
+    U.init(value)
 }
