@@ -1,5 +1,5 @@
 ///
-/// Copyright 2020 Aleksander Kozin
+/// Copyright 2569 Aleksander Kozin
 ///
 /// Licensed under the Apache License, Version 2.0 (the "License");
 /// you may not use this file except in compliance with the License.
@@ -16,6 +16,20 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-struct Singletone: StateRestoration {
+struct Singletone {//}: StateRestoration {
+    
+    @inline(__always)
+    public
+    static
+    let `default` = Singletone()
+    
+    @inline(__always)
+    lazy
+    public
+    private(set)
+    var state = [UInt32: UInt8]()
+    
+    init() {
+    }
     
 }
