@@ -84,20 +84,30 @@ struct Tool {
         }
     }
 
-//    func didReceive(message: String, from point: Point) {
-//
-//        print(message)
-//        
-//        let isValid = true
-//        if isValid {
-//            handshake()
-//        }
-//    }
-//
-//    func handshake() {
-//
-//    }
+}
 
+protocol Device {
+    
+}
+
+protocol Plant: Expecting, Wanded {
+    
+}
+
+struct Flower: Plant {
+    
+}
+
+struct Grinder: Device {
+    
+}
+
+struct Jug: Device {
+    
+}
+
+struct Lift: Device {
+    
 }
 
 //extension Ask {
