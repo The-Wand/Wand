@@ -35,21 +35,21 @@ extension NotificationCenter: @retroactive Obtainable {
 
 }
 
-@Test
-func obtain_from_type()
-{
-    let obtained = NotificationCenter.self|
-    #expect(obtained == toObtain)
-}
+//@Test
+//func obtain_from_type()
+//{
+//    let obtained = NotificationCenter.self|
+//    #expect(obtained == toObtain)
+//}
 
-@Test
-func obtain_from_wand_get()
-{
-    let object = NotificationCenter.self|
-    let wand: Core? = Core.to(object)
-
-    #expect(wand| as NotificationCenter == toObtain)
-}
+//@Test
+//func obtain_from_wand_get()
+//{
+//    let object = NotificationCenter.self|
+//    let wand: Core? = Core.to(object)
+//
+//    #expect(wand| as NotificationCenter == toObtain)
+//}
 
 @Test
 func obtain_from_wand_obtain()

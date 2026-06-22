@@ -16,26 +16,38 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-import Testing
+import SwiftUI
 import Wand
 
-@Test
-func cleaner_set()
-async
-{
-    let ask = String.one
-    let wand = |ask
+@available(iOS 14, macOS 12, tvOS 14, watchOS 7, *)
+@main
+struct PlayApp: App {
 
-    var cleaned = false
-    wand.setCleaner(for: ask) {
-        cleaned = true
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
+    }
+
+}
+
+@available(iOS 14, macOS 12, tvOS 14, watchOS 7, *)
+struct ContentView: View {
+
+    var body: some View {
+        VStack {
+            Image(systemName: "wand.and.stars")
+            Text("Hello, Wand|")
+        }
+        .onAppear {
+//            Wand.Log.level = .verbose
+//            Highload.highload_prod(of: 11)//)1_111_111)
+        }
     }
     
-//    wand + (ask.key, {
-//        cleaned = true
-//    })
+}
 
-    wand.add(String.any)
-
-    #expect(cleaned)
+@available(iOS 14, macOS 12, tvOS 14, watchOS 7, *)
+#Preview {
+    ContentView()
 }

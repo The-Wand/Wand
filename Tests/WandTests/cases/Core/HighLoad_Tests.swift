@@ -34,7 +34,7 @@ class HighloadTests: XCTestCase {
     /// 🏎️ Closing Wand 111m objects:
     func testClose()
     {
-        let closeCount = 11//1_111_111
+        let closeCount = 111_111_111
         let tool = Tool()
 
         var wand: Core? = (1...closeCount).reduce(Core()) { wand, index in

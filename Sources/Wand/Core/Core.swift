@@ -331,14 +331,6 @@ extension Core {
         return stored == nil
     }
 
-    @inline(__always)
-    public
-    func setCleaner<T>(for ask: Ask<T>, cleaner: @escaping ()->() ) {
-
-        let key = ask.key
-        handlers[key] = (handlers[key]!.last, cleaner)
-    }
-
 }
 
 /// Add object

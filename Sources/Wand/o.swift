@@ -17,7 +17,7 @@
 /// The Wand
 
 /// Get object from Core
-/// or create in scope
+/// or create in <#scope#>
 public
 protocol Obtainable: Wanded {
 
@@ -48,7 +48,7 @@ func |<T: Obtainable>(wand: Core?) -> T {
     wand?.get() ?? {
 
         let object = T.obtain(with: wand, by: wand)
-        return wand?.put(object) ?? object
+        return wand + object ?? object
     }()
 }
 
@@ -60,7 +60,7 @@ func |<T: Obtainable>(wand: Core?) -> T {
 postfix
 public
 func |<T: Obtainable>(wand: Core) -> T {
-    wand.get() ?? wand.put(T.obtain(with: wand, by: wand))
+    wand.get() ?? wand + T.obtain(with: wand, by: wand)
 }
 
 /// Obtain from scope
@@ -84,6 +84,18 @@ postfix
 public
 func |<T: Obtainable>(object: T?) -> T {
     object ?? T.self|
+}
+
+/// Obtainable from ask
+///
+/// let option: T? = nil
+/// let object = option|
+///
+@inline(__always)
+postfix
+public
+func |<U, T: Obtainable>(ask: Ask<U>) -> T {
+    T.obtain(with: ask, by: ask.core)
 }
 
 /// Obtain from wand

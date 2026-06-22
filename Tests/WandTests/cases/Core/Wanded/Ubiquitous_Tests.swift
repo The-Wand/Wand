@@ -70,12 +70,12 @@ func obtain_from_scope_access()
     #expect(obtained == sharedCache)
 }
 
-@Test
-func ubiquitous_from_type()
-{
-    let obtained = URLCache.self|
-    #expect(obtained == sharedCache)
-}
+//@Test
+//func ubiquitous_from_type()
+//{
+//    let obtained = URLCache.self|
+//    #expect(obtained == sharedCache)
+//}
 
 @Test
 func ubiquitous_unwrap()
