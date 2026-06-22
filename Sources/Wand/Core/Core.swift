@@ -118,6 +118,11 @@ class Core: CustomStringConvertible, Identifiable {
         }
         
         log("|🦾 #init")
+        
+//        (0x0000...0x0042) | {
+//            print(String($0| as Character) | .toUnicodeName)
+//        }
+        
     }
 
     @inline(__always)
