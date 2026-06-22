@@ -52,7 +52,8 @@ extension Core: ExpressibleByIntegerLiteral {
     public
     init(integerLiteral value: Int) {
 
-        self.init(id: value|)
+        self.init()
+        scope[IntegerLiteralType.self|] = value
     }
 
 }

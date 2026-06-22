@@ -1,7 +1,6 @@
 //: Playground
 
-let rlm: Character = "\u{200F}" // RIGHT-TO-LEFT MARK
-"The phrase is مرحبا بالعالم!\(rlm) in Arabic."
+let rlm: Character = "\u{200F}"
 
 //import MapKit
 //import PlaygroundSupport

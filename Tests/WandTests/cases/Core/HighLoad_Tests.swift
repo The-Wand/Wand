@@ -40,42 +40,43 @@ struct Highload {
     @Test
     func struct_test()
     {
-        let message = 0x1F408
         let tool = Tool()
 
-        var core: Core = 0x0999
-        core | { (point: Point) in //TODO: Remove C-P
-            tool.send(object: Fix(message), to: point, index: 0)
+        var wand: Core = Core(id: 0x2715)
+        wand | { (point: Point) in
+            tool.send(object: Bot(), to: point, index: 0)
         }
 
-        var nextCore = core
+        var next = wand
 
         Performance(of: "Opening \(count) cores") {
             
             (1...count).forEach { index in
                 
-                let newWand = |{ (point: Point) in //TODO: Remove C-P
-                    tool.send(object: Fix(message), to: point, index: index)
+                let bot = Bot()
+                
+                let newWand = bot.wand | { (point: Point) in //TODO: Remove C-P
+                    tool.send(object: bot, to: point, index: index)
                 }
                 
-                nextCore + Core.Weak(item: nextCore.child()) & "Wand"
-                nextCore = newWand
+                next + Core.Weak(item: next.child()) & "Wand"
+                next = newWand
                 
                 tool.send(index: index)
             }
             
         }
 
-        nextCore = core
-        core = nil
+        next = wand
+        wand = nil
 
         Performance(of: "Fulfilling \(count) handlers") {
 
-            nextCore + Point.any
+            next + Point.any
 
-            while let wand = (nextCore.get(for: "Wand") as Core.Weak?)?.item {
+            while let wand = (next.get(for: "Wand") as Core.Weak?)?.item {
                 wand + Point.any
-                nextCore = wand
+                next = wand
             }
 
         }
@@ -99,7 +100,7 @@ struct Highload {
         let tool = Tool()
 
         var core: Core? = |{ (location: CLLocation) in
-            tool.send(object: Fix(message), index: 0)
+            tool.send(object: Bot(message), index: 0)
         }
 
         var nextCore = core
@@ -109,7 +110,7 @@ struct Highload {
             (1...count).forEach { index in
 
                 let newWand = |{ (location: CLLocation) in
-                    tool.send(object: Fix(message), index: index)
+                    tool.send(object: Bot(message), index: index)
                 }
 
                 nextCore + Core.Weak(item: newWand) & "Wand"

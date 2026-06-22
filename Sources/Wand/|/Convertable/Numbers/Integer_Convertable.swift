@@ -23,9 +23,37 @@ func |<T: BinaryFloatingPoint, U: FixedWidthInteger>(value: T) -> U {
     U.init(value)
 }
 
+//@inline(__always)
+//postfix
+//public
+//func |<T: FixedWidthInteger, U: FixedWidthInteger>(value: T) -> U {
+//    U.init(value)
+//}
+
 @inline(__always)
 postfix
 public
-func |<T: FixedWidthInteger, U: FixedWidthInteger>(value: T) -> U {
-    U.init(value)
+func |(value: any BinaryFloatingPoint) -> Int {
+    Int(value)
+}
+
+@inline(__always)
+postfix
+public
+func |<T: FixedWidthInteger>(value: T) -> Int {
+    Int(value)
+}
+
+@inline(__always)
+postfix
+public
+func |<T: FixedWidthInteger>(value: T) -> UInt32 {
+    UInt32(value)
+}
+
+@inline(__always)
+postfix
+public
+func |<T: FixedWidthInteger>(type: T.Type) -> T {
+    T.random(in: T.min...T.max)
 }
