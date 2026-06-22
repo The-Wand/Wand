@@ -56,6 +56,7 @@ class Ask<T> {
         }
     }
 
+    public
     private(set)
     var core: Core?
 
