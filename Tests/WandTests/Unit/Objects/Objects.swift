@@ -86,30 +86,6 @@ struct Tool {
 
 }
 
-protocol Device {
-    
-}
-
-protocol Plant: Expecting, Wanded {
-    
-}
-
-struct Flower: Plant {
-    
-}
-
-struct Grinder: Device {
-    
-}
-
-struct Jug: Device {
-    
-}
-
-struct Lift: Device {
-    
-}
-
 //extension Ask {
 //
 //    public

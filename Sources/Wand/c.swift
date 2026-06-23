@@ -16,6 +16,7 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
+
 extension Core {
     
     public
@@ -23,47 +24,73 @@ extension Core {
     
     @inline(__always)
     public
-    func children(key: String = #function) -> [Key: Self] {
-        get(for: key, or: .init())
+    func children() -> [UInt32: Self]? {
+        get(for: "children") //TODO: Remove C-P
     }
           
     @inline(__always)
-    public //TODO: propogate core name to init func
-    func child(for id: UInt32 = .random(in: 0...(.max))) -> Self {
+    public
+    func child(for id: UInt32? = nil) -> Self {
         
         let children = children()
         
-        if let stored = children[id|] {
+        if let id, let stored = children?[id] {
             return stored
         } else {
-            let child = Core(id: id)
-            scope[id|] = Core()
+            let child = if let id {
+                Core(id: id)
+            } else {
+                Core()
+            }
+            
+            child.scope["parent"] = self
+            
+            var mutable = children ?? [:]
+            mutable[child.id] = child
+            scope["children"] = mutable //TODO: Remove C-P
+            
             return child
         }
     }
     
-    @inline(__always)
-    public
-    func attach(_ child: Self) -> Self {
-        child.scope["parent"] = self
-        
-        let key = "children" // \.children()|
-        
-        var children = scope[key] as? [Key: Self] ?? .init()
-        children[child.name|] = child
-        scope[key] = Core()
-        
-        return child
-    }
+//    @discardableResult
+//    @inline(__always)
+//    public //TODO: Is it + syntax good here too?
+//    func attach(_ child: Self) -> Self {
+//        child.scope["parent"] = self
+//        
+//        let key = "children" //TODO: Remove C-P // \.children()|
+//        
+//        var children = scope[key] as? [UInt32: Self] ?? .init()
+//        children[child.id] = child
+//        scope[key] = children
+//        
+//        return child
+//    }
     
+}
+
+@discardableResult
+@inline(__always)
+public
+func +(wand: Core, child: Core) -> Core {
+    child.scope["parent"] = wand
+    
+    let key = "children" //TODO: Remove C-P // \.children()|
+    
+    var children = wand.scope[key] as? [UInt32: Core] ?? .init()
+    children[child.id] = child
+    wand.scope[key] = children
+    
+    return child
 }
 
 extension Core {
     
     @inline(__always)
     public
-    func parent(key: String = #function) -> Self? {
-        get(for: key)
+    func parent() -> Self? {
+        get(for: "parent")
     }
     
 }
