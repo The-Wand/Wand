@@ -42,20 +42,3 @@ struct Jug: Device {
 struct Lift: Device {
     
 }
-
-public
-struct F {
-    
-    init() {
-        let core1 = Core()
-        let core2 = core1.child()
-        let core3 = core2.child()
-        
-        core3 + core1
-        
-        print(core1)
-    }
-    
-}
-
-

@@ -29,6 +29,7 @@ class Fix {
         self.reason = reason
     }
     
+    @discardableResult
     @inline(__always)
     class
     public
@@ -51,4 +52,14 @@ class Fix {
 public
 func &<T: Fix>(reason: Any, retry: @escaping ()->()) -> T {
     T.init(reason, block: retry)
+}
+
+extension Core {
+    
+    @discardableResult
+    public
+    func f_Mode() -> Self {
+        (self++)++ ++ self
+    }
+    
 }

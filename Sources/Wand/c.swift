@@ -16,6 +16,7 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
+infix   operator ++ : AdditionPrecedence
 
 extension Core {
     
@@ -27,53 +28,38 @@ extension Core {
     func children() -> [UInt32: Self]? {
         get(for: "children") //TODO: Remove C-P
     }
-          
-    @inline(__always)
-    public
-    func child(for id: UInt32? = nil) -> Self {
-        
-        let children = children()
-        
-        if let id, let stored = children?[id] {
-            return stored
+    
+}
+
+@inline(__always)
+public
+func ++(wand: Core, id: UInt32? = nil) -> Core {
+    
+    let children = wand.children()
+    
+    if let id, let stored = children?[id] {
+        return stored
+    } else {
+        let child = if let id {
+            Core(id: id)
         } else {
-            let child = if let id {
-                Core(id: id)
-            } else {
-                Core()
-            }
-            
-            child.scope["parent"] = self
-            
-            var mutable = children ?? [:]
-            mutable[child.id] = child
-            scope["children"] = mutable //TODO: Remove C-P
-            
-            return child
+            Core()
         }
+        
+        child.scope["parent"] = wand
+        
+        var mutable = children ?? [:]
+        mutable[child.id] = child
+        wand.scope["children"] = mutable //TODO: Remove C-P
+        
+        return child
     }
-    
-//    @discardableResult
-//    @inline(__always)
-//    public //TODO: Is it + syntax good here too?
-//    func attach(_ child: Self) -> Self {
-//        child.scope["parent"] = self
-//        
-//        let key = "children" //TODO: Remove C-P // \.children()|
-//        
-//        var children = scope[key] as? [UInt32: Self] ?? .init()
-//        children[child.id] = child
-//        scope[key] = children
-//        
-//        return child
-//    }
-    
 }
 
 @discardableResult
 @inline(__always)
 public
-func +(wand: Core, child: Core) -> Core {
+func ++(wand: Core, child: Core) -> Core {
     child.scope["parent"] = wand
     
     let key = "children" //TODO: Remove C-P // \.children()|
@@ -82,8 +68,50 @@ func +(wand: Core, child: Core) -> Core {
     children[child.id] = child
     wand.scope[key] = children
     
+    return wand
+}
+
+@inline(__always)
+postfix
+public
+func ++(wand: Core) -> Core {
+    
+    let children = wand.children()
+    
+    let child = Core()
+    child.scope["parent"] = wand
+    
+    var mutable = children ?? [:]
+    mutable[child.id] = child
+    wand.scope["children"] = mutable //TODO: Remove C-P
+    
     return child
 }
+
+//@inline(__always)
+//public
+//func +(wand: Core, id: UInt32? = nil) -> Core {
+//    
+//    let children = wand.children()
+//    
+//    if let id, let stored = children?[id] {
+//        return stored
+//    } else {
+//        let child = if let id {
+//            Core(id: id)
+//        } else {
+//            Core()
+//        }
+//        
+//        child.scope["parent"] = wand
+//        
+//        var mutable = children ?? [:]
+//        mutable[child.id] = child
+//        wand.scope["children"] = mutable //TODO: Remove C-P
+//        
+//        return child
+//    }
+//}
 
 extension Core {
     

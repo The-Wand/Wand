@@ -16,7 +16,6 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-final
 public
 class Bot: Fix, Expecting, Wanded {
     
@@ -24,7 +23,7 @@ class Bot: Fix, Expecting, Wanded {
     public
     required
     init() {
-        self.init(Int.self| as Int)
+        self.init("")
     }
     
     public
@@ -32,5 +31,10 @@ class Bot: Fix, Expecting, Wanded {
     init(_ reason: Any?, block: (() -> ())? = nil) {
         super.init(reason, block: block)
     }
+    
+}
+
+final
+class Bender: Bot {
     
 }
