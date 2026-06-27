@@ -59,7 +59,7 @@ struct Highload {
                     tool.send(object: bot, to: point, index: index)
                 }
                 
-                next + Core.Weak(item: next.child()) & "Wand"
+                next + Core.Weak(item: next++) & "Wand"
                 next = newWand
                 
                 tool.send(index: index)

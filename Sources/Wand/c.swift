@@ -68,7 +68,7 @@ func ++(wand: Core, child: Core) -> Core {
     children[child.id] = child
     wand.scope[key] = children
     
-    return wand
+    return child
 }
 
 @inline(__always)

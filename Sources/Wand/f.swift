@@ -58,8 +58,34 @@ extension Core {
     
     @discardableResult
     public
-    func f_Mode() -> Self {
+    func f() -> Self {
         (self++)++ ++ self
+    }
+    
+    @discardableResult
+    public
+    func h(_ clockwise: Bool = true) -> Self {
+        
+        var wand = self
+        (0...4) | {
+            
+            wand = if clockwise {
+                wand ++ (wand.id + 1)
+            } else {
+                wand ++ (wand.id - 1)
+            }
+            
+        } as Void
+        
+        return wand ++ self
+    }
+    
+    @discardableResult
+    public
+    func h_true(_ next: Bool = true) -> Self {
+        (0...3).reduce(self ++ (next ? id + 1 : id - 1)) { part, _ in
+            part++
+        } ++ self
     }
     
 }
