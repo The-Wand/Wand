@@ -25,8 +25,14 @@ extension Core {
     
     @inline(__always)
     public
-    func children() -> [UInt32: Self]? {
-        get(for: "children") //TODO: Remove C-P
+    var children: [UInt32: Self]? {
+        `get`(for: "children")
+    }
+    
+    @inline(__always)
+    public
+    var parent: Self? {
+        `get`(for: "parent")
     }
     
 }
@@ -35,7 +41,7 @@ extension Core {
 public
 func ++(wand: Core, id: UInt32? = nil) -> Core {
     
-    let children = wand.children()
+    let children = wand.children
     
     if let id, let stored = children?[id] {
         return stored
@@ -46,11 +52,11 @@ func ++(wand: Core, id: UInt32? = nil) -> Core {
             Core()
         }
         
-        child.scope["parent"] = wand
+        child.scope[(\Core.parent)|] = wand
         
         var mutable = children ?? [:]
         mutable[child.id] = child
-        wand.scope["children"] = mutable //TODO: Remove C-P
+        wand.scope[(\Core.children)|] = mutable
         
         return child
     }
@@ -60,9 +66,9 @@ func ++(wand: Core, id: UInt32? = nil) -> Core {
 @inline(__always)
 public
 func ++(wand: Core, child: Core) -> Core {
-    child.scope["parent"] = wand
+    child.scope[(\Core.parent)|] = wand
     
-    let key = "children" //TODO: Remove C-P // \.children()|
+    let key: String = (\Core.children)|
     
     var children = wand.scope[key] as? [UInt32: Core] ?? .init()
     children[child.id] = child
@@ -71,54 +77,31 @@ func ++(wand: Core, child: Core) -> Core {
     return child
 }
 
+//TODO: Move to macros
+extension KeyPath {
+    
+    postfix
+    public
+    static
+    func |(path: KeyPath) -> String {
+        "\(path)".components(separatedBy: ".").last ?? ""
+    }
+    
+}
+
 @inline(__always)
 postfix
 public
 func ++(wand: Core) -> Core {
     
-    let children = wand.children()
+    let children = wand.children
     
     let child = Core()
-    child.scope["parent"] = wand
+    child.scope[(\Core.parent)|] = wand
     
     var mutable = children ?? [:]
     mutable[child.id] = child
-    wand.scope["children"] = mutable //TODO: Remove C-P
+    wand.scope[(\Core.children)|] = mutable
     
     return child
-}
-
-//@inline(__always)
-//public
-//func +(wand: Core, id: UInt32? = nil) -> Core {
-//    
-//    let children = wand.children()
-//    
-//    if let id, let stored = children?[id] {
-//        return stored
-//    } else {
-//        let child = if let id {
-//            Core(id: id)
-//        } else {
-//            Core()
-//        }
-//        
-//        child.scope["parent"] = wand
-//        
-//        var mutable = children ?? [:]
-//        mutable[child.id] = child
-//        wand.scope["children"] = mutable //TODO: Remove C-P
-//        
-//        return child
-//    }
-//}
-
-extension Core {
-    
-    @inline(__always)
-    public
-    func parent() -> Self? {
-        get(for: "parent")
-    }
-    
 }
