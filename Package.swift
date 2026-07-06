@@ -39,12 +39,15 @@ let package = Package(
     ],
 
     targets: [
-        .target(name: "Wand"),
-        .testTarget(name: "WandTests", dependencies:
+        .target(name: "Wand",
+                path: "Sources"),
+        .testTarget(name: "WandTests",
+                    dependencies:
                         [
                             "Wand",
                             .product(name: "Any_", package: "Any")
-                        ]
+                        ],
+                    path: "Tests"
                    )
     ]
 )

@@ -216,7 +216,7 @@ any | { (error: Error?) in
   Run   🔧 Extension > Mac   
   Editor > Extension > Jump (App Shortcuts -> +)   
   
-### [📑 Documentation](https://swiftpackageindex.com/The-Wand/Wand/3.0.5/documentation/)   
+### [📑 Documentation](https://swiftpackageindex.com/The-Wand/Wand/main/documentation/wand)   
   DocC, or Documentation Compiler, makes it easy to produce rich and engaging developer   
   documentation for your apps, frameworks, and packages:   
      

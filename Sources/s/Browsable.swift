@@ -19,8 +19,8 @@
 #if canImport(Network)
 @_exported
 import Network
-@_exported
-import Wand
+//@_exported
+//import Wand
 
 protocol Browsable: Ask.T {
 

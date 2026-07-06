@@ -26,8 +26,8 @@
 @_exported
 import NaturalLanguage
 
-@_exported
-import Wand
+//@_exported
+//import Wand
 
 extension NLTagger: Obtainable {
 
