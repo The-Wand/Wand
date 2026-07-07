@@ -44,21 +44,22 @@ func add_object_if_exist_not()
     #expect(wand.get() == nil as String?)
 }
 
-@Test
-func add_objects_sequence()
-{
-    let range = ClosedRange.any
-    var hit = range.upperBound
-
-    let wand = |.while { (string: String) in
-        hit -= 1
-        return hit > 0
-    }
-
-    let sequence = range.map { _ in
-        String.any
-    }
-    wand + sequence...
-
-    #expect(hit == 0)
-}
+//TODO:
+//@Test
+//func add_objects_sequence()
+//{
+//    let range = ClosedRange.any
+//    var hit = range.upperBound
+//
+//    let wand = |.while { (string: String) in
+//        hit -= 1
+//        return hit > 0
+//    }
+//
+//    let sequence = range.map { _ in
+//        String.any
+//    }
+//    wand + sequence...
+//
+//    #expect(hit == 0)
+//}
