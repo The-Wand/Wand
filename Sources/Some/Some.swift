@@ -13,31 +13,21 @@
 /// See the License for the specific language governing permissions and
 /// limitations under the License.
 ///
-/// Created by Alek Kozin
-/// El Machine 🤖
+/// Created by Aleksander Kozin
+/// .some
 
-import Wand
+/// Some object for Any purpose (almost)
+/// <#|า•|#><# #><#1#><#.#><#0#><#.#><#4#>
 
-protocol Device {
+public
+protocol Some {
     
-}
-
-protocol Plant: Expecting, Wanded {
+    typealias Bounded = BoundedSome
     
-}
-
-struct Flower: Plant {
+    static
+    var any: Self {get}
     
-}
+    static
+    var rand: Self {get}
 
-struct Grinder: Device {
-    
-}
-
-struct Jug: Device {
-    
-}
-
-struct Lift: Device {
-    
 }

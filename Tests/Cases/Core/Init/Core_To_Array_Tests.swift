@@ -18,8 +18,6 @@
 
 import CoreLocation.CLLocation
 
-import Any_
-
 import Wand
 import XCTest
 
@@ -62,8 +60,10 @@ class Core_Init_Array_Tests: XCTestCase {
 
     func test_to_Array() throws {
 
-        let bool = Bool.any
-        let int = Int.any
+        let bool = Bool.self|
+        
+        let int = Int.self|
+        
         let location = CLLocation.any
         let date = Date.any
 
@@ -76,6 +76,15 @@ class Core_Init_Array_Tests: XCTestCase {
         XCTAssertEqual(location, wand.get())
         XCTAssertEqual(date, wand.get())
         XCTAssertNotNil(wand)
+    }
+    
+}
+
+extension Core {
+    
+    static
+    var Bool: Bool {
+        true
     }
     
 }

@@ -73,18 +73,6 @@ struct ContentView: View {
             let f = Bot().wand.f()
             let h = Bot().wand.h()
             let ht = Bot().wand.h_true()
-
-//            let s = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent non gravida felis. Vivamus interdum massa nulla, eu egestas ipsum eleifend non. Ut vel augue et orci fermentum consequat eget nec est. Aenean eleifend tempor nibh, a posuere lacus pharetra non. Praesent elementum ac urna convallis porttitor."
-////
-//            s | { (tag: NLTag) in
-//                print(tag)
-//            }
-
-//            Log.level = .verbose
-            //            Highload.highload_prod(of: 11)//)1_111_111)
-
-            //            let archive: Rar = nil
-            //            let archive2: Rar = "\u{00C237}"
         }
     }
 

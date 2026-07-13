@@ -13,31 +13,37 @@
 /// See the License for the specific language governing permissions and
 /// limitations under the License.
 ///
-/// Created by Alek Kozin
-/// El Machine 🤖
+/// Created by Aleksander Kozin
+/// .some
 
-import Wand
+#if canImport(Swift)
 
-protocol Device {
+public
+protocol BoundedSome where Self: Comparable {
+
+    static
+    var min: Self { get }
+
+    static
+    var max: Self { get }
     
+    static
+    var rand: Self { get }
+    
+    static
+    func rand(in array: [Self]) -> Self
+
 }
 
-protocol Plant: Expecting, Wanded {
-    
+extension BoundedSome {
+
+    @inline(__always)
+    public
+    static
+    func rand(in array: [Self]) -> Self {
+        array.randomElement()!
+    }
+
 }
 
-struct Flower: Plant {
-    
-}
-
-struct Grinder: Device {
-    
-}
-
-struct Jug: Device {
-    
-}
-
-struct Lift: Device {
-    
-}
+#endif

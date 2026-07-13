@@ -13,31 +13,25 @@
 /// See the License for the specific language governing permissions and
 /// limitations under the License.
 ///
-/// Created by Alek Kozin
-/// El Machine 🤖
+/// Created by Aleksander Kozin
+/// .some
 
-import Wand
+#if canImport(Swift)
 
-protocol Device {
+extension FixedWidthInteger {
+
+    public
+    static
+    var any: Self {
+        1
+    }
     
+    public
+    static
+    var rand: Self {
+        .random(in: (.min)...(.max))
+    }
+
 }
 
-protocol Plant: Expecting, Wanded {
-    
-}
-
-struct Flower: Plant {
-    
-}
-
-struct Grinder: Device {
-    
-}
-
-struct Jug: Device {
-    
-}
-
-struct Lift: Device {
-    
-}
+#endif

@@ -14,43 +14,51 @@
 /// limitations under the License.
 ///
 /// Created by Aleksander Kozin
-/// The Wand
+/// .some
 
-import Wand
-import XCTest
+#if canImport(Foundation)
+import Foundation
 
-/// Test unit
-//struct Unit {
-//
-//}
+public
+extension ClosedRange where Bound: FixedWidthInteger {
 
-extension TimeInterval {
-
-    static var `default` = 4.2
+    @inline(__always)
+    var any: Bound {
+        .random(in: self)
+    }
 
 }
 
-///Performance
-extension [XCTMetric] {
+public
+extension Range where Bound: FixedWidthInteger {
 
+    @inline(__always)
+    var any: Bound {
+        .random(in: self)
+    }
+
+}
+
+public
+extension ClosedRange where Bound == Int {
+
+    @inline(__always)
     static
-    var `default`: Self = {[
-        XCTCPUMetric(),
-        XCTClockMetric(),
-        XCTMemoryMetric(),
-        XCTStorageMetric(),
-    ]}()
+    var any: Self {
+        1...(1...11)|
+    }
 
 }
 
-//extension Ask {
-//
-//    func fatal() -> Self {
-//        handler = { _ in
-//            fatalError()
-//        }
-//
-//        return self
-//    }
-//
-//}
+public
+extension Range where Bound == Int {
+
+    @inline(__always)
+    static
+    var any: Self {
+        Range(uncheckedBounds: (1, (1...11)|))
+    }
+
+}
+
+#endif
