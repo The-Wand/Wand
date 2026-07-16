@@ -16,6 +16,7 @@
 /// Created by Alek Kozin
 /// El Machine 🤖
 
+import Any_
 import Wand
 
 struct Point: Equatable {
@@ -28,7 +29,7 @@ extension Point: Expecting, Wanded {
 
 }
 
-extension Point: Some {
+extension Point: Any_ {
 
     public
     static

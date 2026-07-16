@@ -16,6 +16,7 @@
 /// Created by Alek Kozin
 /// El Machine 🤖
 
+import Any_
 import Wand
 
 protocol Device {

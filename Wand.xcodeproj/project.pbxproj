@@ -11,6 +11,7 @@
 		613966672BE0FB14004C18A3 /* play.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6162624628BC8E2A00D63EA5 /* play.swift */; };
 		613966692BE0FB2E004C18A3 /* Wand.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "pipe::Pipe::Product" /* Wand.framework */; };
 		6139666A2BE0FB2E004C18A3 /* Wand.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = "pipe::Pipe::Product" /* Wand.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		614B218F2C4489CF00EB9DEE /* Any_ in Frameworks */ = {isa = PBXBuildFile; productRef = 614B218E2C4489CF00EB9DEE /* Any_ */; };
 		6162625628BC8E2B00D63EA5 /* play.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6162624628BC8E2A00D63EA5 /* play.swift */; };
 		6162625828BC8E2B00D63EA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6162624728BC8E2B00D63EA5 /* Assets.xcassets */; };
 		6162626428BC944300D63EA5 /* Wand.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "pipe::Pipe::Product" /* Wand.framework */; platformFilters = (ios, maccatalyst, macos, tvos, xros, ); };
@@ -234,7 +235,6 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		613959D22FFD02F900BBBCAE /* Some */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Some; sourceTree = "<group>"; };
 		61B396312F3F2B0500682789 /* Screen */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (61B396402F3F2B0600682789 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Screen; sourceTree = "<group>"; };
 		61B4DB292F1FB61500988A75 /* XcodeXPC */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (617911512F1FB855000C3D75 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 61B4DB342F1FB61500988A75 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = XcodeXPC; sourceTree = "<group>"; };
 		61E823BB2F1F918700C54221 /* Extension */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (610909432F67DD6C00AB0B9E /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Extension; sourceTree = "<group>"; };
@@ -311,6 +311,7 @@
 			buildActionMask = 0;
 			files = (
 				OBJ_254 /* Wand.framework in Frameworks */,
+				614B218F2C4489CF00EB9DEE /* Any_ in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,17 +335,16 @@
 				61FB5C762FFBA98000C93C31 /* Core */,
 				61FB5C4A2FFBA98000C93C31 /* +.swift */,
 				61FB5C672FFBA98000C93C31 /* Ask.swift */,
-				613959D22FFD02F900BBBCAE /* Some */,
 				61FB5C662FFBA98000C93C31 /* | */,
 				61FB5C442FFBA98000C93C31 /* ? */,
 				61FB5C492FFBA98000C93C31 /* & */,
 				61FB5C682FFBA98000C93C31 /* b.swift */,
 				61FB5C692FFBA98000C93C31 /* c.swift */,
-				61FB5C7D2FFBA98000C93C31 /* d.swift */,
 				61FB5C772FFBA98000C93C31 /* f.swift */,
 				61FB5C782FFBA98000C93C31 /* m.swift */,
 				61FB5C7B2FFBA98000C93C31 /* ml */,
 				61FB5C7C2FFBA98000C93C31 /* o.swift */,
+				61FB5C7D2FFBA98000C93C31 /* d.swift */,
 				61FB5C7E2FFBA98000C93C31 /* p.swift */,
 				61FB5C882FFBA98000C93C31 /* s */,
 				61FB5C892FFBA98000C93C31 /* u.swift */,
@@ -560,7 +560,6 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				613959D22FFD02F900BBBCAE /* Some */,
 				61FB5C442FFBA98000C93C31 /* ? */,
 				61FB5C492FFBA98000C93C31 /* & */,
 				61FB5C662FFBA98000C93C31 /* | */,
@@ -592,6 +591,7 @@
 			);
 			name = WandTests;
 			packageProductDependencies = (
+				614B218E2C4489CF00EB9DEE /* Any_ */,
 			);
 			productName = PipeTests;
 			productReference = "pipe::PipeTests::Product" /* WandTests.xctest */;
@@ -650,6 +650,7 @@
 			);
 			mainGroup = OBJ_5;
 			packageReferences = (
+				612EA7862C007C4200F193DC /* XCRemoteSwiftPackageReference "Any" */,
 			);
 			productRefGroup = OBJ_138 /* Products */;
 			projectDirPath = "";
@@ -831,7 +832,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3617;
+				CURRENT_PROJECT_VERSION = 3599;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -888,7 +889,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3617;
+				CURRENT_PROJECT_VERSION = 3599;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_PREVIEWS = YES;
@@ -940,7 +941,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3617;
+				CURRENT_PROJECT_VERSION = 3599;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -986,7 +987,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3617;
+				CURRENT_PROJECT_VERSION = 3599;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -1051,7 +1052,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3617;
+				CURRENT_PROJECT_VERSION = 3599;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -1149,7 +1150,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3617;
+				CURRENT_PROJECT_VERSION = 3599;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1221,7 +1222,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3617;
+				CURRENT_PROJECT_VERSION = 3599;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1289,7 +1290,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3617;
+				CURRENT_PROJECT_VERSION = 3599;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1350,7 +1351,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3617;
+				CURRENT_PROJECT_VERSION = 3599;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
@@ -1415,7 +1416,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3617;
+				CURRENT_PROJECT_VERSION = 3599;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1473,7 +1474,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3617;
+				CURRENT_PROJECT_VERSION = 3599;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1541,7 +1542,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3617;
+				CURRENT_PROJECT_VERSION = 3599;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1596,7 +1597,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3617;
+				CURRENT_PROJECT_VERSION = 3599;
 				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
@@ -1647,7 +1648,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3617;
+				CURRENT_PROJECT_VERSION = 3599;
 				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
@@ -1695,7 +1696,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3617;
+				CURRENT_PROJECT_VERSION = 3599;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				DRIVERKIT_DEPLOYMENT_TARGET = 20.0;
@@ -1740,7 +1741,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3617;
+				CURRENT_PROJECT_VERSION = 3599;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				DRIVERKIT_DEPLOYMENT_TARGET = 20.0;
@@ -2011,6 +2012,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		614B218E2C4489CF00EB9DEE /* Any_ */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 612EA7862C007C4200F193DC /* XCRemoteSwiftPackageReference "Any" */;
+			productName = Any_;
+		};
 		6168E5EC2CFDC00B00676432 /* Any_ */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 612EA7862C007C4200F193DC /* XCRemoteSwiftPackageReference "Any" */;

@@ -16,35 +16,43 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-/// .some
-
-extension Optional {
-    
-    public
-    static
-    var type: String {
-        String(describing: Wrapped.self)
-    }
-    
-}
-
+///<#Any#> to String
 @inline(__always)
 postfix
 public
-func |<T: AnyObject>(object: T) -> String {
+func |<T>(object: T) -> String {
     String(describing: object)
 }
 
-@inline(__always)
-postfix
-public
-func |<T: BinaryInteger>(object: T) -> String {
-    String(describing: object)
-}
 
-@inline(__always)
-postfix
-public
-func |(object: Any.Type) -> String {
-    String(describing: object)
-}
+///// .some
+//extension Optional {
+//    
+//    public
+//    static
+//    var type: String {
+//        String(describing: Wrapped.self)
+//    }
+//    
+//}
+//
+//@inline(__always)
+//postfix
+//public
+//func |<T: AnyObject>(object: T) -> String {
+//    String(describing: object)
+//}
+//
+//@inline(__always)
+//postfix
+//public
+//func |<T: BinaryInteger>(object: T) -> String {
+//    String(describing: object)
+//}
+//
+//@inline(__always)
+//postfix
+//public
+//func |(object: Any.Type) -> String {
+//    String(describing: object)
+//}

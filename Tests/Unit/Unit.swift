@@ -16,6 +16,7 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
+import Any_
 import Wand
 import XCTest
 
