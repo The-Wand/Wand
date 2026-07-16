@@ -1,5 +1,5 @@
 ///
-/// Copyright 2020 Aleksander Kozin
+/// Copyright 2569 Aleksander Kozin
 ///
 /// Licensed under the Apache License, Version 2.0 (the "License");
 /// you may not use this file except in compliance with the License.
@@ -16,24 +16,26 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-import ImagePlayground
-import CoreGraphics
-
-extension Core {
+final
+public
+class Retry: Fix, Expecting {
     
-    @available(iOS 18.4, macOS 15.4, *)
-    func picture() async throws -> CGImage? {
-        
-        let creator = try await ImageCreator()
-        let stream = creator.images(for: [.text("🍕")],
-                                    style: .animation,
-                                    limit: 1)
-        
-        for try await image in stream {
-            return image.cgImage
+    @inline(__always)
+    static
+    func after(_ timeout: Double, attempts: Int = 2) -> Ask<Retry> {
+        .while { (retry: Retry, count: Int) in
+            
+            DispatchTime.now() + timeout | {
+                retry()
+            }
+            return count < attempts - 1
         }
-        
-        return nil
+    }
+    
+    @inline(__always)
+    static
+    func auto() -> Ask<Retry> {
+        after(5)
     }
     
 }
