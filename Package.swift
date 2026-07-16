@@ -35,11 +35,12 @@ let package = Package(
     ],
 
     dependencies: [
-        .package(url: "https://github.com/The-Wand/Any.git", exact: "1.0.3")
+        .package(url: "https://github.com/The-Wand/Any.git", exact: "1.0.3") //1.0.4
     ],
 
     targets: [
         .target(name: "Wand",
+//                dependencies: [.product(name: "Any_", package: "Any")],
                 path: "Sources"),
         .testTarget(name: "WandTests",
                     dependencies:

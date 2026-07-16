@@ -16,25 +16,24 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-public
-class Bot: Fix, Expecting, Wanded {
-    
-    convenience
-    public
-    required
-    init() {
-        self.init("")
-    }
-    
-    public
-    required
-    init(_ reason: Any?, block: (() -> ())? = nil) {
-        super.init(reason, block: block)
-    }
+///
+/// Input & Output
+/// <#||_|#><#^#>
+postfix
+operator ^ //: AdditionPrecedence
+
+protocol Input {
     
 }
 
-final
-class Bender: Bot {
+protocol Output {
     
+}
+
+@discardableResult
+@inline(__always)
+postfix
+public
+func ^<T>(wand: Core) -> T {
+    wand.get()!
 }

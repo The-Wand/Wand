@@ -1,5 +1,5 @@
 ///
-/// Copyright 2569 Aleksander Kozin
+/// Copyright 2020 Aleksander Kozin
 ///
 /// Licensed under the Apache License, Version 2.0 (the "License");
 /// you may not use this file except in compliance with the License.
@@ -16,14 +16,24 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-import Testing
+import ImagePlayground
+import CoreGraphics
 
-struct DefaultTests {
-
-    @Test
-    func launch()
-    {
-        #expect(true)
+extension Core {
+    
+    @available(iOS 18.4, macOS 15.4, *)
+    func picture() async throws -> CGImage? {
+        
+        let creator = try await ImageCreator()
+        let stream = creator.images(for: [.text("🍕")],
+                                    style: .animation,
+                                    limit: 1)
+        
+        for try await image in stream {
+            return image.cgImage
+        }
+        
+        return nil
     }
-
+    
 }
