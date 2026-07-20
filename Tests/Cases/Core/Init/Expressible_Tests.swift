@@ -21,7 +21,7 @@ import CoreLocation.CLLocation
 import Wand
 import XCTest
 
-class Core_Init_Tests: XCTestCase {
+class Expressible_Tests: XCTestCase {
 
     weak
     var wand: Core?
@@ -56,11 +56,23 @@ class Core_Init_Tests: XCTestCase {
 
         XCTAssertNotNil(wand)
     }
-
+    
     func test_init_StringLiteral() throws {
-
+        
         let wand: Wand.Core = "䷓"
-
+        
+        XCTAssertEqual(wand.get(), "䷓")
+        XCTAssertNotNil(wand)
+    }
+    
+    func test_String_to_Core() throws {
+        
+        let wand: Wand.Core = """
+            ䷓ | Coffee.one {
+                print("Damn fine $0!")
+            }
+        """
+        
         XCTAssertEqual(wand.get(), "䷓")
         XCTAssertNotNil(wand)
     }

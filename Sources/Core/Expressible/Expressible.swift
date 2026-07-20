@@ -80,6 +80,41 @@ extension Core: ExpressibleByStringLiteral {
 
         self.init()
         scope[StringLiteralType.self|] = value
+        
+        if #available(iOS 16.0, *) {
+//            let results: [NSTextCheckingResult] = value | #/'(.*)(|)(.*){(.*)}'/#
+            
+            
+//            let results: [NSTextCheckingResult] = value |
+            
+            
+            value.matches(of: /(.*)(|)(.*){(.|\n)*}/) | { i in
+                
+                print("Key: \(i.1)")
+                print("Value: \(i.2)")
+                
+                let wand = Core.to(i.1)
+                let ask: Ask<Any> = .init()//(results[i.3] + results[i.4])|
+                
+                return wand
+            }
+            
+//
+        } else {
+//            let results: [NSTextCheckingResult] = value | "(.*)(|)(.*){(.*)}"
+//            results | { i in
+//                
+//                print("Key: \(i.1)")
+//                print("Value: \(i.2)")
+//                
+//                let wand = Core.to(i.1)
+//                let ask: Ask<Any> = .init()//(results[i.3] + results[i.4])|
+//                
+//                return wand
+//            }
+            
+        }
+
     }
 
 }

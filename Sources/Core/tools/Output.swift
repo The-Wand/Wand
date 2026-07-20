@@ -37,3 +37,4 @@ public
 func ^<T>(wand: Core) -> T {
     wand.get()!
 }
+
