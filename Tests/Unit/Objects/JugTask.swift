@@ -19,26 +19,78 @@
 import Any_
 import Wand
 
-protocol Device {
+protocol Machine: Proxy { //Krыan
     
 }
 
-protocol Plant: Expecting, Wanded {
+class Countable: Expecting, Machine {
+    
+    var amount: Unit = UnitArea(symbol: "") //NSUnitDispersion
+    var state: Int = 0 //enum
     
 }
 
-struct Flower: Plant {
+class Device: Countable {
     
 }
 
-struct Grinder: Device {
+class Plant: Countable {
     
 }
 
-struct Jug: Device {
+protocol User: Machine {
     
 }
 
-struct Lift: Device {
+///1
+class Container: Device {
+
+}
+///2
+class Grinder: Device {
+    
+    @inline(__always)
+    public
+    func grind() {
+        
+    }
+    
+}
+///3
+class Lift: Device {
+    
+}
+///4
+class Jug: Device {
+    
+}
+///5
+class Flower: Plant {
+    
+}
+///6
+class Lighter: Device {
+    
+    @inline(__always)
+    public
+    func fire() {
+        
+    }
+    
+}
+///7
+struct Fire: Machine {
+    
+}
+///8
+struct Rod: Machine {
+    
+}
+///9
+struct Light: Machine {
+    
+}
+///10
+struct Warm: Machine {
     
 }

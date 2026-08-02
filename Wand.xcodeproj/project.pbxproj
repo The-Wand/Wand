@@ -19,6 +19,7 @@
 		6168E5ED2CFDC00B00676432 /* Any_ in Frameworks */ = {isa = PBXBuildFile; productRef = 6168E5EC2CFDC00B00676432 /* Any_ */; };
 		6168E5EE2CFDC00E00676432 /* Wand.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "pipe::Pipe::Product" /* Wand.framework */; };
 		6168E5EF2CFDC00E00676432 /* Wand.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = "pipe::Pipe::Product" /* Wand.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		617F1DFA301F41B70039297F /* ....swift in Sources */ = {isa = PBXBuildFile; fileRef = 617F1DF9301F41B70039297F /* ....swift */; };
 		61B3962E2F3F2B0500682789 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61B3962D2F3F2B0500682789 /* WidgetKit.framework */; };
 		61B396302F3F2B0500682789 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61B3962F2F3F2B0500682789 /* SwiftUI.framework */; };
 		61B4DB3A2F1FB63D00988A75 /* XcodeXPC.xpc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 61B4DB282F1FB61500988A75 /* XcodeXPC.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -30,7 +31,6 @@
 		61FB5C932FFBA98000C93C31 /* DataBreach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FB5C7D2FFBA98000C93C31 /* DataBreach.swift */; };
 		61FB5C9D2FFBA98000C93C31 /* Ubiquitous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FB5C892FFBA98000C93C31 /* Ubiquitous.swift */; };
 		61FB5CA22FFBA98000C93C31 /* Obtainable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FB5C7C2FFBA98000C93C31 /* Obtainable.swift */; };
-		61FB5CB72FFBA98000C93C31 /* +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FB5C4A2FFBA98000C93C31 /* +.swift */; };
 		61FB5CC02FFBA98000C93C31 /* Ask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FB5C672FFBA98000C93C31 /* Ask.swift */; };
 		61FB5D092FFBA9BD00C93C31 /* Package.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 61FB5CFE2FFBA9BD00C93C31 /* Package.xctestplan */; };
 		OBJ_254 /* Wand.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "pipe::Pipe::Product" /* Wand.framework */; };
@@ -151,6 +151,7 @@
 		6162624C28BC8E2B00D63EA5 /* WandPlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WandPlay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6172A0EA2C109D5500AF925F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6172A0EE2C109EB400AF925F /* INSPIRATION.TXT */ = {isa = PBXFileReference; lastKnownFileType = text; path = INSPIRATION.TXT; sourceTree = "<group>"; };
+		617F1DF9301F41B70039297F /* ....swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ....swift; sourceTree = "<group>"; };
 		61AA24C02D787669005550F4 /* NOTICE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = NOTICE.txt; sourceTree = "<group>"; };
 		61B3962C2F3F2B0500682789 /* ScreenExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ScreenExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		61B3962D2F3F2B0500682789 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = /System/Library/Frameworks/WidgetKit.framework; sourceTree = "<absolute>"; };
@@ -158,7 +159,6 @@
 		61B4DB282F1FB61500988A75 /* XcodeXPC.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; includeInIndex = 0; path = XcodeXPC.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
 		61E823B82F1F918600C54221 /* Wand.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Wand.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		61F35A642F25F8E0003C2638 /* .spi.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .spi.yml; sourceTree = "<group>"; };
-		61FB5C4A2FFBA98000C93C31 /* +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+.swift"; sourceTree = "<group>"; };
 		61FB5C672FFBA98000C93C31 /* Ask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ask.swift; sourceTree = "<group>"; };
 		61FB5C692FFBA98000C93C31 /* Children.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Children.swift; sourceTree = "<group>"; };
 		61FB5C782FFBA98000C93C31 /* Memory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
@@ -230,6 +230,7 @@
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		6157BEAD3008B4E20078D95C /* Fix */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Fix; sourceTree = "<group>"; };
+		617F1B82301F40B90039297F /* + */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "+"; sourceTree = "<group>"; };
 		61B396312F3F2B0500682789 /* Screen */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (61B396402F3F2B0600682789 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Screen; sourceTree = "<group>"; };
 		61B4DB292F1FB61500988A75 /* XcodeXPC */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (617911512F1FB855000C3D75 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 61B4DB342F1FB61500988A75 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = XcodeXPC; sourceTree = "<group>"; };
 		61E823BB2F1F918700C54221 /* Extension */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (610909432F67DD6C00AB0B9E /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Extension; sourceTree = "<group>"; };
@@ -328,7 +329,8 @@
 			isa = PBXGroup;
 			children = (
 				61FB5C762FFBA98000C93C31 /* Core */,
-				61FB5C4A2FFBA98000C93C31 /* +.swift */,
+				617F1B82301F40B90039297F /* + */,
+				617F1DF9301F41B70039297F /* ....swift */,
 				61FB5C672FFBA98000C93C31 /* Ask.swift */,
 				61FB5C662FFBA98000C93C31 /* | */,
 				61FB5C442FFBA98000C93C31 /* ? */,
@@ -554,6 +556,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				6157BEAD3008B4E20078D95C /* Fix */,
+				617F1B82301F40B90039297F /* + */,
 				61FB5C442FFBA98000C93C31 /* ? */,
 				61FB5C492FFBA98000C93C31 /* & */,
 				61FB5C662FFBA98000C93C31 /* | */,
@@ -762,9 +765,9 @@
 				61FB5C8B2FFBA98000C93C31 /* Children.swift in Sources */,
 				61FB5C8F2FFBA98000C93C31 /* Memory.swift in Sources */,
 				61FB5C932FFBA98000C93C31 /* DataBreach.swift in Sources */,
+				617F1DFA301F41B70039297F /* ....swift in Sources */,
 				61FB5C9D2FFBA98000C93C31 /* Ubiquitous.swift in Sources */,
 				61FB5CA22FFBA98000C93C31 /* Obtainable.swift in Sources */,
-				61FB5CB72FFBA98000C93C31 /* +.swift in Sources */,
 				61FB5CC02FFBA98000C93C31 /* Ask.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -823,7 +826,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3611;
+				CURRENT_PROJECT_VERSION = 3620;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -880,7 +883,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3611;
+				CURRENT_PROJECT_VERSION = 3620;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_PREVIEWS = YES;
@@ -932,7 +935,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3611;
+				CURRENT_PROJECT_VERSION = 3620;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -978,7 +981,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3611;
+				CURRENT_PROJECT_VERSION = 3620;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -1043,7 +1046,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3611;
+				CURRENT_PROJECT_VERSION = 3620;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -1141,7 +1144,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3611;
+				CURRENT_PROJECT_VERSION = 3620;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1213,7 +1216,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3611;
+				CURRENT_PROJECT_VERSION = 3620;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1281,7 +1284,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3611;
+				CURRENT_PROJECT_VERSION = 3620;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1342,7 +1345,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3611;
+				CURRENT_PROJECT_VERSION = 3620;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
@@ -1407,7 +1410,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3611;
+				CURRENT_PROJECT_VERSION = 3620;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1465,7 +1468,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3611;
+				CURRENT_PROJECT_VERSION = 3620;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1533,7 +1536,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3611;
+				CURRENT_PROJECT_VERSION = 3620;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1588,7 +1591,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3611;
+				CURRENT_PROJECT_VERSION = 3620;
 				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
@@ -1639,7 +1642,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3611;
+				CURRENT_PROJECT_VERSION = 3620;
 				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
@@ -1687,7 +1690,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3611;
+				CURRENT_PROJECT_VERSION = 3620;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				DRIVERKIT_DEPLOYMENT_TARGET = 20.0;
@@ -1718,8 +1721,8 @@
 				TARGETED_DEVICE_FAMILY = "1,2,3,5,6,7";
 				TARGET_NAME = PipeTests;
 				TEST_HOST = "";
-				"TEST_HOST[sdk=*]" = "$(BUILT_PRODUCTS_DIR)/Play.app/Play";
-				"TEST_HOST[sdk=macosx*]" = "$(BUILT_PRODUCTS_DIR)/Play.app/Contents/MacOS/Play";
+				"TEST_HOST[sdk=*]" = "$(BUILT_PRODUCTS_DIR)/WandPlay.app/WandPlay";
+				"TEST_HOST[sdk=macosx*]" = "$(BUILT_PRODUCTS_DIR)/WandPlay.app/Contents/MacOS/WandPlay";
 				"TEST_HOST[sdk=watchos*]" = "$(BUILT_PRODUCTS_DIR)/watchPlay.app/watchPlay";
 				TVOS_DEPLOYMENT_TARGET = 14.0;
 				WATCHOS_DEPLOYMENT_TARGET = 7.0;
@@ -1732,7 +1735,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3611;
+				CURRENT_PROJECT_VERSION = 3620;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				DRIVERKIT_DEPLOYMENT_TARGET = 20.0;
@@ -1764,8 +1767,8 @@
 				TARGETED_DEVICE_FAMILY = "1,2,3,5,6,7";
 				TARGET_NAME = PipeTests;
 				TEST_HOST = "";
-				"TEST_HOST[sdk=*]" = "$(BUILT_PRODUCTS_DIR)/Play.app/Play";
-				"TEST_HOST[sdk=macosx*]" = "$(BUILT_PRODUCTS_DIR)/Play.app/Contents/MacOS/Play";
+				"TEST_HOST[sdk=*]" = "$(BUILT_PRODUCTS_DIR)/WandPlay.app/WandPlay";
+				"TEST_HOST[sdk=macosx*]" = "$(BUILT_PRODUCTS_DIR)/WandPlay.app/Contents/MacOS/WandPlay";
 				"TEST_HOST[sdk=watchos*]" = "$(BUILT_PRODUCTS_DIR)/watchPlay.app/watchPlay";
 				TVOS_DEPLOYMENT_TARGET = 14.0;
 				WATCHOS_DEPLOYMENT_TARGET = 7.0;
