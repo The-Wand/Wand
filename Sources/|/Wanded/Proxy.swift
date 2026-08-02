@@ -35,3 +35,11 @@ public
 func +<T>(proxy: Proxy?, object: T) -> T {
     proxy.wand + object
 }
+
+//Children
+@discardableResult
+@inline(__always)
+public
+func ++(lhs: Proxy, rhs: Proxy) -> Core {
+    lhs.wand ++ rhs.wand
+}

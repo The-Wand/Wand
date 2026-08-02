@@ -81,6 +81,11 @@ class Lighter: Device {
 ///7
 struct Fire: Machine {
     
+    init() {
+        self.wand = Core(id: 0x1F525)
+//        self.wand = Core(name: "🔥")
+    }
+    
 }
 ///8
 struct Rod: Machine {

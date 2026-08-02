@@ -86,9 +86,11 @@ class Core: CustomStringConvertible, Identifiable {
     var handlers = [String: (last: Any, cleaner: ( ()->() )? )]()
 
     ///Debugger
-    lazy
+    @inline(__always)
     public
-    var id = arc4random()
+    private(set)
+    lazy
+    var id: UInt32 = arc4random()
 
     lazy
     public
@@ -110,30 +112,31 @@ class Core: CustomStringConvertible, Identifiable {
     ///
 
     @inline(__always)
+    convenience
+    public
+    init<T>(_ object: T) {
+        
+        self.init()
+        
+        Core[object] = self
+        scope[T.self|] = object
+    }
+    
+    @inline(__always)
+    convenience
+    public
+    init(name: Character) {
+        self.init(id: name|) //TODO: fix name
+    }
+    
+    @inline(__always)
     public
     init(id: UInt32? = nil) {
         
         if let id {
             self.id = id
         }
-        
         log("|🦾 #init")
-        
-//        (0x0000...0x0042) | {
-//            print(String($0| as Character) | .toUnicodeName)
-//        }
-        
-    }
-
-    @inline(__always)
-    convenience
-    public
-    init<T>(_ object: T) {
-
-        self.init()
-
-        Core[object] = self
-        scope[T.self|] = object
     }
 
     deinit {

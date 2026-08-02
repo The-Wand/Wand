@@ -76,6 +76,10 @@ struct ContentView: View {
             print(h)
             let ht = Bot().wand.h_true()
             print(ht)
+            
+            //        (0x0000...0x0042) | {
+            //            print(String($0| as Character) | .toUnicodeName)
+            //        }
 
 //            let s = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent non gravida felis. Vivamus interdum massa nulla, eu egestas ipsum eleifend non. Ut vel augue et orci fermentum consequat eget nec est. Aenean eleifend tempor nibh, a posuere lacus pharetra non. Praesent elementum ac urna convallis porttitor."
 ////
