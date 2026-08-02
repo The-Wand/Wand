@@ -21,46 +21,46 @@ extension UnsafeCurrentTask: Wanded {
 
 }
 
-extension Ask.Nil {
+//extension Ask.Nil {
+//
+//    static
+//    prefix
+//    func | (type: Self.Type) async throws -> Self?  {
+//        await withCheckedContinuation { continuation in
+//
+//            withUnsafeCurrentTask { task in
+//                print(task| as Int)
+//
+//                //TODO: struct?
+//                task.wand | { (retrieved: Self) in
+//                    continuation.resume(returning: retrieved)
+//                }
+//
+//            }
+//
+//
+//        }
+//    }
+//
+//}
 
-    static
-    prefix
-    func | (type: Self.Type) async throws -> Self?  {
-        await withCheckedContinuation { continuation in
-
-            withUnsafeCurrentTask { task in
-                print(task| as Int)
-
-                //TODO: struct?
-                task.wand | { (retrieved: Self) in
-                    continuation.resume(returning: retrieved)
-                }
-
-            }
-
-
-        }
-    }
-
-}
-
-extension Ask.T {
-
-    static
-    func |<C>(scope: C, type: Self.Type) async throws -> Self?  {
-        await withCheckedContinuation { continuation in
-
-            withUnsafeCurrentTask { task in
-                print(task| as Int)
-
-                //TODO: struct?
-                let wand = task.wand
-                wand + scope
-                wand | { (retrieved: Self) in
-                    continuation.resume(returning: retrieved)
-                }
-            }
-        }
-    }
-
-}
+//extension Ask.T {
+//
+//    static
+//    func |<C>(scope: C, type: Self.Type) async throws -> Self?  {
+//        await withCheckedContinuation { continuation in
+//
+//            withUnsafeCurrentTask { task in
+//                print(task| as Int)
+//
+//                //TODO: struct?
+//                let wand = task.wand
+//                wand + scope
+//                wand | { (retrieved: Self) in
+//                    continuation.resume(returning: retrieved)
+//                }
+//            }
+//        }
+//    }
+//
+//}

@@ -31,7 +31,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6162624B28BC8E2B00D63EA5"
-               BuildableName = "Play.app"
+               BuildableName = "WandPlay.app"
                BlueprintName = "Play"
                ReferencedContainer = "container:Wand.xcodeproj">
             </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6162624B28BC8E2B00D63EA5"
-            BuildableName = "Play.app"
+            BuildableName = "WandPlay.app"
             BlueprintName = "Play"
             ReferencedContainer = "container:Wand.xcodeproj">
          </BuildableReference>
@@ -89,7 +89,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6162624B28BC8E2B00D63EA5"
-            BuildableName = "Play.app"
+            BuildableName = "WandPlay.app"
             BlueprintName = "Play"
             ReferencedContainer = "container:Wand.xcodeproj">
          </BuildableReference>
