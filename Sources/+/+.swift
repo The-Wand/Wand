@@ -16,45 +16,6 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-@inlinable
-public
-func +<T>(wand: Core, ask: Ask<T>) -> Bool {
-
-    let key = ask.key
-    let stored = wand.handlers[key]
-
-    //Attach the wand
-    //Call handler if object exist
-    if
-        ask.set(core: wand),
-        let object: T = wand.get(for: key),
-        !ask.handler(object)
-    {
-        return false
-    }
-
-    //Add ask to the chain
-    let tail = stored?.last as? Ask<T>
-    ask.next = tail?.next ?? ask
-    tail?.next = ask
-
-    wand.handlers[key] = (last: ask, cleaner: stored?.cleaner)
-
-    return stored == nil
-}
-
-extension Core {
-
-    @inline(__always)
-    public
-    func setCleaner<T>(for ask: Ask<T>, cleaner: @escaping ()->() ) {
-
-        let key = ask.key
-        handlers[key] = (handlers[key]!.last, cleaner)
-    }
-
-}
-
 /// Objects
 @discardableResult
 @inlinable
@@ -103,27 +64,6 @@ func +<T>(wand: Core?, object: T) -> T {
     return wand + (object, T.self|)
 }
 
-infix   operator +? : AdditionPrecedence
-
-@discardableResult
-@inline(__always)
-public
-func +?<T>(wand: Core, object: T? ) -> T? {
-
-    guard let object else {
-        return nil
-    }
-
-    return wand + object & nil
-}
-
-@discardableResult
-@inline(__always)
-public
-func +?<T>(wand: Core, pair: (T?, String?) ) -> T? {
-    pair.0 == nil ? nil : wand + pair.0! & pair.1
-}
-
 @discardableResult
 @inline(__always)
 public
@@ -138,11 +78,4 @@ func +<T>(wand: Core, raw: (sequence: T, Core.Key)) where T == any Sequence {
     raw.sequence.forEach {
         wand + $0
     }
-}
-
-@inline(__always)
-postfix
-public
-func ...<T>(sequence: T) -> (sequence: T, Core.Key) {
-    (sequence, .all)
 }
