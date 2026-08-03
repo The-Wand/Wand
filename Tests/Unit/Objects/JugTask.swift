@@ -25,7 +25,11 @@ protocol Machine: Proxy { //Krыan
 
 class Countable: Expecting, Machine {
     
-    var amount: Unit = UnitArea(symbol: "") //NSUnitDispersion
+    var amount: [any Comparable]? = [Measurement(value: 1,
+                                           unit: UnitMass.grams),
+                                     Measurement(value: 25,
+                                                 unit: UnitDispersion.partsPerMillion)
+    ]
     var state: Int = 0 //enum
     
 }
