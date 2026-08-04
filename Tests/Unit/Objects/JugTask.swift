@@ -92,6 +92,18 @@ class Grinder: Device { //TODO: 3_000_000 - 25
 ///3
 class Lift: Device {
     
+    
+    @inline(__always)
+    public
+    func smoke()-> Smoke? {
+        
+        if let flower: Flower = wand.get() {
+            return wand + Smoke()//flower.amount)
+        }
+        
+        return nil
+    }
+    
 }
 ///4
 class Jug: Device {
@@ -132,5 +144,33 @@ struct Light: Machine {
 }
 ///10
 struct Warm: Machine {
+    
+}
+
+struct Smoke: Expecting, Machine {
+    
+}
+
+func main() {
+    
+    let jug = Jug() | { (smoke: Smoke) in
+        
+    }
+    
+    let container: Container = Container()
+    
+    let flower: Flower? = container|
+    
+    let grinded = Grinder().grind(raw: flower)
+    
+    let lift = Lift()
+
+    lift + grinded
+    
+    lift + Lighter().fire()
+    
+    let user = User()
+    
+    jug + user.rod()
     
 }

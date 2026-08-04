@@ -17,8 +17,6 @@
 /// The Wand
 
 /// Contains
-infix   operator ~ : ComparisonPrecedence
-
 infix   operator !~= : ComparisonPrecedence
 
 @discardableResult
@@ -35,19 +33,18 @@ func ~=(wand: Core, key: String) -> Bool {
     wand.scope.keys.contains(key)
 }
 
-postfix operator ~
-
+///Get
 @discardableResult
 @inline(__always)
 postfix
 public
-func ~<T>(wand: Core) -> T? {
-    wand.get()
+func |<T: Wanded, U: Wanded>(object: T?) -> U? {
+    object?.isWanded?.get()
 }
 
 @discardableResult
 @inline(__always)
 public
-func ~<T>(wand: Core, object: @autoclosure ()->(T)) -> T {
-    wand.get(or: object())
+func |<T: Wanded, U: Wanded>(object: T, create: @autoclosure ()->(U)) -> U {
+    object.wand.get(or: create())
 }
