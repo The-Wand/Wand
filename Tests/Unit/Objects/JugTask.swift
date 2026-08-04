@@ -13,8 +13,8 @@
 /// See the License for the specific language governing permissions and
 /// limitations under the License.
 ///
-/// Created by Alek Kozin
-/// El Machine 🤖
+/// Created by Aleksandr Kozin
+/// The Wand
 
 import Any_
 import Wand
@@ -25,10 +25,8 @@ protocol Machine: Proxy { //Krыan
 
 class Countable: Expecting, Machine {
     
-    var amount: [any Comparable]? = [Measurement(value: 1,
-                                           unit: UnitMass.grams),
-                                     Measurement(value: 25,
-                                                 unit: UnitDispersion.partsPerMillion)
+    var dimensions: [any Comparable]? = [Measurement(value: 1,
+                                                     unit: UnitMass.grams),
     ]
     var state: Int = 0 //enum
     
@@ -42,7 +40,13 @@ class Plant: Countable {
     
 }
 
-protocol User: Machine {
+class User: Machine {
+    
+    @inline(__always)
+    public
+    func rod()-> Rod {
+        wand + Rod()
+    }
     
 }
 
@@ -51,15 +55,40 @@ class Container: Device {
 
 }
 ///2
-class Grinder: Device {
+class Grinder: Device { //TODO: 3_000_000 - 25
     
     @inline(__always)
     public
-    func grind() {
+    func grind<T: Flower>(raw: T? = nil) -> T? {
         
+        guard let flower = raw ?? isWanded?.get() else {
+            return nil
+        }
+        
+        var dimensions = flower.dimensions ?? []
+        
+        let dispersionIndex = dimensions.firstIndex {
+            $0 is Measurement<UnitDispersion>
+        }
+        
+        var dispersion: Measurement<UnitDispersion>
+        if let dispersionIndex {
+            dispersion = dimensions.remove(at: dispersionIndex) as! Measurement<UnitDispersion>
+            dispersion.value = 25
+        } else {
+            dispersion = Measurement(value: 25,
+                                     unit: UnitDispersion.partsPerMillion)
+        }
+        
+        dimensions.append(dispersion)
+        flower.dimensions = dimensions
+        
+        return flower
     }
     
 }
+    
+
 ///3
 class Lift: Device {
     
@@ -77,8 +106,8 @@ class Lighter: Device {
     
     @inline(__always)
     public
-    func fire() {
-        
+    func fire()-> Fire {
+        wand + Fire()
     }
     
 }
@@ -86,8 +115,10 @@ class Lighter: Device {
 struct Fire: Machine {
     
     init() {
-        self.wand = Core(id: 0x1F525)
+        wand = Core(id: 0x1F525)
 //        self.wand = Core(name: "🔥")
+        
+        wand + Light() + Warm() + Rod()
     }
     
 }

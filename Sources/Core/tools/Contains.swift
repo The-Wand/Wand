@@ -17,6 +17,8 @@
 /// The Wand
 
 /// Contains
+infix   operator ~ : ComparisonPrecedence
+
 infix   operator !~= : ComparisonPrecedence
 
 @discardableResult
@@ -31,4 +33,21 @@ func !~=(wand: Core, key: String) -> Bool {
 public
 func ~=(wand: Core, key: String) -> Bool {
     wand.scope.keys.contains(key)
+}
+
+postfix operator ~
+
+@discardableResult
+@inline(__always)
+postfix
+public
+func ~<T>(wand: Core) -> T? {
+    wand.get()
+}
+
+@discardableResult
+@inline(__always)
+public
+func ~<T>(wand: Core, object: @autoclosure ()->(T)) -> T {
+    wand.get(or: object())
 }

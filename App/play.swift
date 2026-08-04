@@ -19,9 +19,13 @@
 import SwiftUI
 import Wand
 
+
+
+import AVFoundation
+
 //import Network
 
-@available(iOS 14, macOS 12, tvOS 14, watchOS 7, *)
+@available(iOS 18, macOS 12, tvOS 14, watchOS 7, *)
 @main
 struct PlayApp: App {
 
@@ -33,11 +37,11 @@ struct PlayApp: App {
 
 }
 
-@available(iOS 14, macOS 12, tvOS 14, watchOS 7, *)
+@available(iOS 18, macOS 12, tvOS 14, watchOS 7, *)
 struct ContentView: View {
-
+    
     let pickAxe = "https://deeprockgalactic.wiki.gg/images/thumb/GearGraphic_PickAxe.png/600px-GearGraphic_PickAxe.png?8d8b42"
-
+    
     var body: some View {
         VStack {
             if #available(iOS 15.0, tvOS 15.0, watchOS 8.0, *) {
@@ -50,7 +54,7 @@ struct ContentView: View {
                 Image(systemName: "wand.and.stars")
                 Text("Hello, Wand|")
             }
-
+            
             //            Button("Receive") {
             //                |.while { (connection: NWConnection) in
             //                    print("✅ \(connection)")
@@ -67,7 +71,7 @@ struct ContentView: View {
         }
         .onAppear {
             
-//            Wand.Log.level = .verbose
+            //            Wand.Log.level = .verbose
             
             Bot.auto()
             let f = Bot().wand.f()
@@ -80,21 +84,24 @@ struct ContentView: View {
             //        (0x0000...0x0042) | {
             //            print(String($0| as Character) | .toUnicodeName)
             //        }
-
-//            let s = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent non gravida felis. Vivamus interdum massa nulla, eu egestas ipsum eleifend non. Ut vel augue et orci fermentum consequat eget nec est. Aenean eleifend tempor nibh, a posuere lacus pharetra non. Praesent elementum ac urna convallis porttitor."
-////
-//            s | { (tag: NLTag) in
-//                print(tag)
-//            }
-
-//            Log.level = .verbose
+            
+            //            let s = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent non gravida felis. Vivamus interdum massa nulla, eu egestas ipsum eleifend non. Ut vel augue et orci fermentum consequat eget nec est. Aenean eleifend tempor nibh, a posuere lacus pharetra non. Praesent elementum ac urna convallis porttitor."
+            ////
+            //            s | { (tag: NLTag) in
+            //                print(tag)
+            //            }
+            
+            //            Log.level = .verbose
             //            Highload.highload_prod(of: 11)//)1_111_111)
-
+            
             //            let archive: Rar = nil
             //            let archive2: Rar = "\u{00C237}"
+            
+            
+            CameraControl().configureControls()
         }
     }
-
+    
 }
 
 //struct Rar: AskNil, Wanded, ExpressibleByT {
@@ -171,7 +178,7 @@ struct ContentView: View {
 //public
 //macro loca(_ value: String...) -> (String) = #externalMacro(module: "WandMacros", type: "LocaMacro")
 
-@available(iOS 14, macOS 12, tvOS 14, watchOS 7, *)
+@available(iOS 18, macOS 12, tvOS 14, watchOS 7, *)
 #Preview {
     ContentView()
 }
