@@ -32,19 +32,3 @@ public
 func ~=(wand: Core, key: String) -> Bool {
     wand.scope.keys.contains(key)
 }
-
-///Get
-@discardableResult
-@inline(__always)
-postfix
-public
-func |<T: Wanded, U: Wanded>(object: T?) -> U? {
-    object?.isWanded?.get()
-}
-
-@discardableResult
-@inline(__always)
-public
-func |<T: Wanded, U: Wanded>(object: T, create: @autoclosure ()->(U)) -> U {
-    object.wand.get(or: create())
-}

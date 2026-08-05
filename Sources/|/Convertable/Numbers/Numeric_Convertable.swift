@@ -19,24 +19,23 @@
 @inline(__always)
 postfix
 public
-func |(value: any BinaryInteger) -> Double {
+func |<T: Numeric>(value: Bool) -> T {
+    value ? 1 : 0
+}
+
+@inline(__always)
+postfix
+public
+func |<T: BinaryInteger>(value: T) -> Double {
     Double(value)
 }
 
-@inline(__always)
-postfix
-public
-func |(value: Double) -> Float {
-    Float(value)
-}
+//@inline(__always)
+//postfix
+//public
+//func |<T: Float>(value: T) -> Double {
+//    Double
+//}
 
-@inline(__always)
-postfix
-public
-func |(value: (any BinaryInteger)?) -> String? {
-    guard let value else {
-        return nil
-    }
-    
-    return String(describing: value)
-}
+
+

@@ -33,7 +33,7 @@ extension Core: Wanded {
 
 }
 
-/// Close Wand
+/// Close
 @discardableResult
 @inline(__always)
 postfix

@@ -19,6 +19,37 @@
 public
 protocol Proxy: Wanded {
     
+    init()
+    init<T>(_ object: T)
+    
+}
+
+extension Proxy {
+    
+    @inline(__always)
+    public
+    init<T>(_ object: T) {
+        self.init()
+        wand = Core(object)
+    }
+    
+}
+
+
+/// Get
+@discardableResult
+@inline(__always)
+postfix
+public
+func |<T: Wanded, U: Wanded>(object: T?) -> U? {
+    object?.isWanded?.get()
+}
+
+@discardableResult
+@inline(__always)
+public
+func |<T: Wanded, U: Wanded>(object: T, create: @autoclosure ()->(U)) -> U {
+    object.wand.get(or: create())
 }
 
 /// Object

@@ -19,16 +19,35 @@
 import Any_
 import Wand
 
-protocol Machine: Proxy { //Krыan
+public
+class Machine: Proxy { //Krыan
+    
+    public
+    required
+    init() {
+    }
     
 }
 
-class Countable: Expecting, Machine {
+class Countable: Machine, Expecting {
     
-    var dimensions: [any Comparable]? = [Measurement(value: 1,
-                                                     unit: UnitMass.grams),
-    ]
+    var dimensions: [any Comparable]?
     var state: Int = 0 //enum
+    
+    convenience
+    init(_ value: any BinaryInteger) {
+        self.init()
+        
+        dimensions = [Measurement(value: Double(value),
+                                  unit: UnitMass.grams),
+        ]
+    }
+    
+    public
+    required
+    init() {
+        super.init()
+    }
     
 }
 
@@ -97,7 +116,7 @@ class Lift: Device {
     public
     func smoke()-> Smoke? {
         
-        if let flower: Flower = wand.get() {
+        if let flower: Flower = wand| {
             return wand + Smoke()//flower.amount)
         }
         
@@ -124,10 +143,13 @@ class Lighter: Device {
     
 }
 ///7
-struct Fire: Machine {
+class Fire: Machine {
     
+    required
     init() {
-        wand = Core(id: 0x1F525)
+        super.init()
+        
+//        self.wand = Core(id: 0x1F525)
 //        self.wand = Core(name: "🔥")
         
         wand + Light() + Warm() + Rod()
@@ -135,42 +157,19 @@ struct Fire: Machine {
     
 }
 ///8
-struct Rod: Machine {
+class Rod: Machine {
     
 }
 ///9
-struct Light: Machine {
+class Light: Machine {
     
 }
 ///10
-struct Warm: Machine {
+class Warm: Machine {
     
 }
 
-struct Smoke: Expecting, Machine {
-    
-}
-
-func main() {
-    
-    let jug = Jug() | { (smoke: Smoke) in
-        
-    }
-    
-    let container: Container = Container()
-    
-    let flower: Flower? = container|
-    
-    let grinded = Grinder().grind(raw: flower)
-    
-    let lift = Lift()
-
-    lift + grinded
-    
-    lift + Lighter().fire()
-    
-    let user = User()
-    
-    jug + user.rod()
+public
+class Smoke: Machine, Expecting {
     
 }
