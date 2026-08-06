@@ -43,11 +43,14 @@ struct Highload {
         let tool = Tool()
 
         var wand: Core = Core(id: 0x2715)
-        wand | { (point: Point) in
-            tool.send(object: Bot(), to: point, index: 0)
+        
+        func test(wand: Core, index: Int) -> Core {
+            wand | { (point: Point) in
+                tool.send(object: Bot(), to: point, index: index)
+            }
         }
 
-        var next = wand
+        var next = test(wand: wand, index: 0)
 
         Performance(of: "Opening \(count) cores") {
             
@@ -55,9 +58,7 @@ struct Highload {
                 
                 let bot = Bot()
                 
-                let newWand = bot.wand | { (point: Point) in //TODO: Remove C-P
-                    tool.send(object: bot, to: point, index: index)
-                }
+                let newWand = test(wand: bot.wand, index: index)
                 
                 next + Core.Weak(item: next++) & "Wand"
                 next = newWand
