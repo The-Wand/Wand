@@ -60,14 +60,14 @@ extension Core: ExpressibleByIntegerLiteral {
 
 /// Init from nothing
 extension Core: ExpressibleByNilLiteral {
-
+    
     @inline(__always)
     convenience
     public
     init(nilLiteral: ()) {
         self.init()
     }
-
+    
 }
 
 /// Init with String
@@ -77,44 +77,67 @@ extension Core: ExpressibleByStringLiteral {
     convenience
     public
     init(stringLiteral value: String) {
-
-        self.init()
-        scope[StringLiteralType.self|] = value
         
-        if #available(iOS 16.0, *) {
-//            let results: [NSTextCheckingResult] = value | #/'(.*)(|)(.*){(.*)}'/#
+        let id: UInt32?
+        
+        if value.count == 1 {
+            id = value.first!|
+        } else {
             
-            
-//            let results: [NSTextCheckingResult] = value |
-            
-            
-            value.matches(of: /(.*)(|)(.*){(.|\n)*}/) | { i in
+            if #available(iOS 16.0, *) {
                 
-                print("Key: \(i.1)")
-                print("Value: \(i.2)")
+                //            3 | .every { (coffee: Coffee) in
+                //
+                //            }
                 
-                let wand = Core.to(i.1)
-                let ask: Ask<Any> = .init()//(results[i.3] + results[i.4])|
+                value | /(.*)(\|)(.*){(.|\n)*}/ | { i in
+                    
+                    
+                    let input = i.1
+                    let `operator` = i.2
+                    
+                    let label = i.3
+                    
+                    let scope = i.4
+                    
+                    print("Key: \(i.1)")
+                    print("Value: \(i.2)")
+                    
+                    let wand = Core.to(input)
+                    let ask: Ask<Any> = .init()//(results[i.3] + results[i.4])|
+                    
+                    print(wand)
+                } as Void
                 
-                return wand
+            } else {
+                
+                let regex = "(.*)(\\|)(.*){(.|\n)*}"
+                
+//                value | regex {
+                
             }
             
-//
-        } else {
-//            let results: [NSTextCheckingResult] = value | "(.*)(|)(.*){(.*)}"
-//            results | { i in
-//                
-//                print("Key: \(i.1)")
-//                print("Value: \(i.2)")
-//                
-//                let wand = Core.to(i.1)
-//                let ask: Ask<Any> = .init()//(results[i.3] + results[i.4])|
-//                
-//                return wand
-//            }
-            
+            id = nil //TODO: ?
         }
-
+        
+        self.init(id: id)
+        scope[StringLiteralType.self|] = value
     }
 
+}
+
+//typealias RegexResult =
+
+@available(iOS 16.0, *)
+@inline(__always)
+private
+func |<T>(value: String, regex: Regex<T>) -> [Regex<T>.Match] {
+    value.matches(of: regex)
+}
+
+@inline(__always)
+private
+func |(string: String, pattern: String) -> [NSTextCheckingResult] {
+    try! NSRegularExpression(pattern: pattern, options: [])
+        .matches(in: string, options: [], range: NSRange(location: 0, length: string.count))
 }

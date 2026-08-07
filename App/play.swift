@@ -81,6 +81,9 @@ struct ContentView: View {
             let ht = Bot().wand.h_true()
             print(ht)
             
+            let wand: Core = "😀"
+            let wand2: Core = "abc"
+            
             //        (0x0000...0x0042) | {
             //            print(String($0| as Character) | .toUnicodeName)
             //        }

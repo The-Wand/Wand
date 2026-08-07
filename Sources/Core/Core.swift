@@ -125,8 +125,19 @@ class Core: CustomStringConvertible, Identifiable {
     @inline(__always)
     convenience
     public
+    init(name: (UInt32, UInt32)) {
+        
+        let id = name.0 * 50_000 + name.1
+        self.init(id: id)
+    }
+    
+    @inline(__always)
+    convenience
+    public
     init(name: Character) {
-        self.init(id: name|) //TODO: fix name
+        
+        let id: UInt32 = (name|)! * 50_000 + arc4random_uniform(50_000)
+        self.init(id: id)
     }
     
     @inline(__always)
@@ -141,7 +152,7 @@ class Core: CustomStringConvertible, Identifiable {
 
     deinit {
 
-        sendLogs()
+//        sendLogs()
         close()
         log("|✅ #bonsua")
     }

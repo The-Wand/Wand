@@ -149,8 +149,13 @@ class Fire: Machine {
     init() {
         super.init()
         
+        
+        let 🔥: UInt32? = "🔥"|
+        let wand = Core(id: 🔥)
+        
+        
 //        self.wand = Core(id: 0x1F525)
-//        self.wand = Core(name: "🔥")
+//        self.wand = Core(name: 🔥)
         
         wand + Light() + Warm() + Rod()
     }
