@@ -16,37 +16,9 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-import SwiftUI
-import Wand
-
-@available(iOS 18, macOS 12, tvOS 14, watchOS 7, *)
-@main
-struct PlayApp: App {
-
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
-    }
-
-}
-
-@available(iOS 18, macOS 12, tvOS 14, watchOS 7, *)
-struct ContentView: View {
-    
-    var body: some View {
-        VStack {
-                Image(systemName: "wand.and.stars")
-                Text("Hello, Wand|")
-        }
-        .onAppear {
-//            Wand.Log.level = .verbose
-        }
-    }
-    
-}
-
-@available(iOS 18, macOS 12, tvOS 14, watchOS 7, *)
-#Preview {
-    ContentView()
+@discardableResult
+@inline(__always)
+public
+func &<T>(object: T, key: String?) -> (T, String) {
+    (object, key ?? T.self|)
 }

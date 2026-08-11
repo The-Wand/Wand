@@ -43,8 +43,19 @@ func +<T>(wand: Core, ask: Ask<T>) -> Bool {
     return stored == nil
 }
 
+
+@inline(__always)
+public
+func &<T>(ask: Ask<T>, cleaner: @escaping ()->()) {
+    
+    let wand = ask.core!
+    let key = ask.key
+    wand.handlers[key] = (wand.handlers[key]!.last, cleaner)
+}
+
 extension Core {
 
+    @available(*, deprecated, renamed: "&")
     @inline(__always)
     public
     func setCleaner<T>(for ask: Ask<T>, cleaner: @escaping ()->() ) {

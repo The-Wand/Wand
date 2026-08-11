@@ -64,13 +64,6 @@ func +<T>(wand: Core?, object: T) -> T {
     return wand + (object, T.self|)
 }
 
-@discardableResult
-@inline(__always)
-public
-func &<T>(object: T, key: String?) -> (T, String) {
-    (object, key ?? T.self|)
-}
-
 /// Sequence
 @inline(__always)
 public

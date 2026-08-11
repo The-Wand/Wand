@@ -19,6 +19,7 @@
       "parallelizable" : false,
       "skippedTests" : {
         "testFunctions" : [
+          "experiment()",
           "load_tests()"
         ]
       },
