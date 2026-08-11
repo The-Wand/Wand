@@ -77,18 +77,6 @@ func ++(wand: Core, child: Core) -> Core {
     return child
 }
 
-//TODO: Move to macros
-extension KeyPath {
-    
-    postfix
-    public
-    static
-    func |(path: KeyPath) -> String {
-        "\(path)".components(separatedBy: ".").last ?? ""
-    }
-    
-}
-
 @inline(__always)
 postfix
 public

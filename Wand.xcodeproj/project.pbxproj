@@ -34,7 +34,6 @@
 		61FB5C9D2FFBA98000C93C31 /* Ubiquitous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FB5C892FFBA98000C93C31 /* Ubiquitous.swift */; };
 		61FB5CA22FFBA98000C93C31 /* Obtainable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FB5C7C2FFBA98000C93C31 /* Obtainable.swift */; };
 		61FB5CC02FFBA98000C93C31 /* Ask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FB5C672FFBA98000C93C31 /* Ask.swift */; };
-		61FB5D092FFBA9BD00C93C31 /* Package.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 61FB5CFE2FFBA9BD00C93C31 /* Package.xctestplan */; };
 		OBJ_254 /* Wand.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "pipe::Pipe::Product" /* Wand.framework */; };
 /* End PBXBuildFile section */
 
@@ -230,43 +229,43 @@
 			);
 			target = "pipe::Pipe" /* Wand */;
 		};
-		61FC7E09302B0D8C002EA183 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Control.swift,
-				DeviceLookup.swift,
-			);
-			target = 6162624B28BC8E2B00D63EA5 /* Play */;
-		};
-		61FC7E0B302B0D8C002EA183 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Control.swift,
-				DeviceLookup.swift,
-			);
-			target = 613966142BE0F4EF004C18A3 /* WatchPlay */;
-		};
 		61FC7E11302B0F2A002EA183 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Bot.swift,
+				Drive.swift,
 				ImageCreator.swift,
 				Output.swift,
+				Singletone.swift,
+				Task.swift,
 			);
 			target = "pipe::Pipe" /* Wand */;
 		};
 		61FC7E12302B0F2A002EA183 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Bot.swift,
+				Control.swift,
+				DeviceLookup.swift,
+				Drive.swift,
 				ImageCreator.swift,
 				Output.swift,
+				Singletone.swift,
+				Task.swift,
 			);
 			target = "pipe::PipeTests" /* WandTests */;
 		};
 		61FC7E13302B0F2A002EA183 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Bot.swift,
+				Control.swift,
+				DeviceLookup.swift,
+				Drive.swift,
 				ImageCreator.swift,
 				Output.swift,
+				Singletone.swift,
+				Task.swift,
 			);
 			target = 613966472BE0F87A004C18A3 /* WatchPlayTests */;
 		};
@@ -284,9 +283,15 @@
 		61FB5C762FFBA98000C93C31 /* Core */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Core; sourceTree = "<group>"; };
 		61FB5C7B2FFBA98000C93C31 /* ML */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (61FB5E8B2FFBA9FB00C93C31 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = ML; sourceTree = "<group>"; };
 		61FB5C882FFBA98000C93C31 /* Service */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (61FB5CC82FFBA99500C93C31 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Service; sourceTree = "<group>"; };
-		61FB5CFD2FFBA9BD00C93C31 /* Cases */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Cases; sourceTree = "<group>"; };
 		61FB5D082FFBA9BD00C93C31 /* Unit */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Unit; sourceTree = "<group>"; };
-		61FC7E08302B0D8B002EA183 /* Lab */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (61FC7E11302B0F2A002EA183 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 61FC7E09302B0D8C002EA183 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 61FC7E12302B0F2A002EA183 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 61FC7E0B302B0D8C002EA183 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 61FC7E13302B0F2A002EA183 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Lab; sourceTree = "<group>"; };
+		61FC7E08302B0D8B002EA183 /* Lab */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (61FC7E11302B0F2A002EA183 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 61FC7E12302B0F2A002EA183 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 61FC7E13302B0F2A002EA183 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Lab; sourceTree = "<group>"; };
+		61FC8BF8302B1832002EA183 /* ? */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "?"; sourceTree = "<group>"; };
+		61FC8BFC302B1832002EA183 /* & */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "&"; sourceTree = "<group>"; };
+		61FC8C0A302B1832002EA183 /* | */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "|"; sourceTree = "<group>"; };
+		61FC8C0C302B1832002EA183 /* Ask */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Ask; sourceTree = "<group>"; };
+		61FC8C0E302B1832002EA183 /* Children */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Children; sourceTree = "<group>"; };
+		61FC8C25302B1832002EA183 /* Core */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Core; sourceTree = "<group>"; };
+		61FC8C27302B1832002EA183 /* e */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = e; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -413,12 +418,26 @@
 		618056362BCB90D60013EC56 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				61FB5CFD2FFBA9BD00C93C31 /* Cases */,
+				61FC8BAD302B1821002EA183 /* Cases */,
 				61FC7E08302B0D8B002EA183 /* Lab */,
 				61FB5D082FFBA9BD00C93C31 /* Unit */,
 				61FB5CFE2FFBA9BD00C93C31 /* Package.xctestplan */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		61FC8BAD302B1821002EA183 /* Cases */ = {
+			isa = PBXGroup;
+			children = (
+				61FC8C25302B1832002EA183 /* Core */,
+				61FC8C0C302B1832002EA183 /* Ask */,
+				61FC8C0A302B1832002EA183 /* | */,
+				61FC8BF8302B1832002EA183 /* ? */,
+				61FC8BFC302B1832002EA183 /* & */,
+				61FC8C27302B1832002EA183 /* e */,
+				61FC8C0E302B1832002EA183 /* Children */,
+			);
+			path = Cases;
 			sourceTree = "<group>";
 		};
 		OBJ_138 /* Products */ = {
@@ -497,9 +516,15 @@
 				6168E5F12CFDC00E00676432 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				61FB5CFD2FFBA9BD00C93C31 /* Cases */,
 				61FB5D082FFBA9BD00C93C31 /* Unit */,
 				61FC7E08302B0D8B002EA183 /* Lab */,
+				61FC8BF8302B1832002EA183 /* ? */,
+				61FC8BFC302B1832002EA183 /* & */,
+				61FC8C0A302B1832002EA183 /* | */,
+				61FC8C0C302B1832002EA183 /* Ask */,
+				61FC8C0E302B1832002EA183 /* Children */,
+				61FC8C25302B1832002EA183 /* Core */,
+				61FC8C27302B1832002EA183 /* e */,
 			);
 			name = WatchPlayTests;
 			productName = WatchPlayTests;
@@ -632,9 +657,15 @@
 				6162626328BC929D00D63EA5 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				61FB5CFD2FFBA9BD00C93C31 /* Cases */,
 				61FB5D082FFBA9BD00C93C31 /* Unit */,
 				61FC7E08302B0D8B002EA183 /* Lab */,
+				61FC8BF8302B1832002EA183 /* ? */,
+				61FC8BFC302B1832002EA183 /* & */,
+				61FC8C0A302B1832002EA183 /* | */,
+				61FC8C0C302B1832002EA183 /* Ask */,
+				61FC8C0E302B1832002EA183 /* Children */,
+				61FC8C25302B1832002EA183 /* Core */,
+				61FC8C27302B1832002EA183 /* e */,
 			);
 			name = WandTests;
 			packageProductDependencies = (
@@ -728,7 +759,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				61FB5D092FFBA9BD00C93C31 /* Package.xctestplan in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -878,7 +908,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3699;
+				CURRENT_PROJECT_VERSION = 3703;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -935,7 +965,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3699;
+				CURRENT_PROJECT_VERSION = 3703;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_PREVIEWS = YES;
@@ -987,7 +1017,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3699;
+				CURRENT_PROJECT_VERSION = 3703;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -1033,7 +1063,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3699;
+				CURRENT_PROJECT_VERSION = 3703;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -1098,7 +1128,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3699;
+				CURRENT_PROJECT_VERSION = 3703;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -1196,7 +1226,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3699;
+				CURRENT_PROJECT_VERSION = 3703;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1268,7 +1298,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3699;
+				CURRENT_PROJECT_VERSION = 3703;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1336,7 +1366,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3699;
+				CURRENT_PROJECT_VERSION = 3703;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1397,7 +1427,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3699;
+				CURRENT_PROJECT_VERSION = 3703;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
@@ -1462,7 +1492,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3699;
+				CURRENT_PROJECT_VERSION = 3703;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1520,7 +1550,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3699;
+				CURRENT_PROJECT_VERSION = 3703;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1588,7 +1618,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3699;
+				CURRENT_PROJECT_VERSION = 3703;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1642,8 +1672,9 @@
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3699;
+				CURRENT_PROJECT_VERSION = 3703;
 				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
@@ -1693,8 +1724,9 @@
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3699;
+				CURRENT_PROJECT_VERSION = 3703;
 				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
@@ -1742,7 +1774,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3699;
+				CURRENT_PROJECT_VERSION = 3703;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				DRIVERKIT_DEPLOYMENT_TARGET = 20.0;
@@ -1787,7 +1819,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3699;
+				CURRENT_PROJECT_VERSION = 3703;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				DRIVERKIT_DEPLOYMENT_TARGET = 20.0;

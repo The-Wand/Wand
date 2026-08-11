@@ -9,7 +9,7 @@ import AVFoundation
 import Combine
 
 /// An object that retrieves camera and microphone devices.
-@available(iOS 17.0, *)
+@available(iOS 17.0, macOS 14.0, *)
 final class DeviceLookup {
     
     // Discovery sessions to find the front and back cameras, and external cameras in iPadOS.

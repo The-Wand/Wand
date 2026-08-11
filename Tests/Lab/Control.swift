@@ -19,7 +19,7 @@
 import Wand
 import AVFoundation
 
-@available(iOS 18, macOS 12, tvOS 14, watchOS 7, *)
+@available(iOS 18, macOS 15, tvOS 14, watchOS 7, *)
 class CameraControl {
     
     private var controlsMap: [String: [AVCaptureControl]] = [:]
@@ -67,7 +67,7 @@ class CameraControl {
         captureSession.commitConfiguration()
     }
     
-    @available(iOS 18.0, *)
+    @available(iOS 18.0, macOS 15.0, *)
     func createControls(for device: AVCaptureDevice) -> [AVCaptureControl] {
         
         if let controls = controlsMap[device.uniqueID] {

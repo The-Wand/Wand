@@ -84,7 +84,7 @@ extension Core: ExpressibleByStringLiteral {
             id = value.first!|
         } else {
             
-            if #available(iOS 16.0, *) {
+            if #available(iOS 16.0, macOS 13.0, *) {
                 
                 //            3 | .every { (coffee: Coffee) in
                 //
@@ -128,7 +128,7 @@ extension Core: ExpressibleByStringLiteral {
 
 //typealias RegexResult =
 
-@available(iOS 16.0, *)
+@available(iOS 16.0, macOS 13.0, *)
 @inline(__always)
 private
 func |<T>(value: String, regex: Regex<T>) -> [Regex<T>.Match] {
