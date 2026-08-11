@@ -17,3 +17,10 @@
 /// The Wand
 
 infix   operator & : MultiplicationPrecedence
+
+@discardableResult
+@inline(__always)
+public
+func &<T>(cleaner: @escaping ()->(), ask: Ask<T>) -> (()->(), String) {
+    (cleaner, ask.key)
+}

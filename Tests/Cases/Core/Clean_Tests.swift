@@ -27,7 +27,7 @@ async
     let wand = |ask
 
     var cleaned = false
-    wand.setCleaner(for: ask) {
+    ask & {
         cleaned = true
     }
 
