@@ -53,9 +53,9 @@ extension String: @retroactive Expecting {
 //    @inline(__always)
 //    public
 //    static
-//    func ask<C, T>(with scope: C, ask: Ask<T>) -> Core {
+//    func ask<C, T>(with context: C, ask: Ask<T>) -> Core {
 //
-//        let wand = Core.to(scope)
+//        let wand = Core.to(context)
 //        _ = wand.append(ask: ask)
 //
 //        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak wand] in
@@ -107,9 +107,9 @@ struct Tool {
 //
 //    public
 //    static
-//    func ask<C, T>(with scope: C, ask: Wand.Ask<T>) -> Core {
+//    func ask<C, T>(with context: C, ask: Wand.Ask<T>) -> Core {
 //
-//        let wand = Core.to(scope)
+//        let wand = Core.to(context)
 //
 //        guard wand.append(ask: ask, check: true) else {
 //            return wand
@@ -130,7 +130,7 @@ struct Tool {
 //
 //    public
 //    static
-//    func `try`<C>(with scope: C, wand: Core) {
+//    func `try`<C>(with context: C, wand: Core) {
 //
 //
 //    }

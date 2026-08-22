@@ -24,7 +24,7 @@ extension Ask {
 
 }
 
-//propo: func |(scope: C, asks: Ask<Self>)
+//propo: func |(context: C, asks: Ask<Self>)
 public
 protocol AskNil: Ask.T {
 

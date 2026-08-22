@@ -34,12 +34,12 @@ extension NLTagger: Obtainable {
     @inlinable
     public
     static
-    func obtain<C>(with scope: C?, by wand: Core?) -> Self {
+    func obtain<C>(with context: C?, by wand: Core?) -> Self {
 
-        let schemes = if let scope = scope as? [NLTagScheme] ?? wand?.get() {
-            scope
-        } else if let scope = scope as? NLTagScheme ?? wand?.get() {
-            [scope]
+        let schemes = if let context = context as? [NLTagScheme] ?? wand?.get() {
+            context
+        } else if let context = context as? NLTagScheme ?? wand?.get() {
+            [context]
         } else {
             [NLTagScheme]()
         }

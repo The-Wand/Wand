@@ -33,13 +33,13 @@ class Core_To_Tests: XCTestCase {
         XCTAssertNotNil(wand)
     }
 
-    func test_to_Scope()
+    func test_to_context()
     {
-        let scope = "🫵"
+        let context = "🫵"
 
-        let wand = Core.to(scope)
+        let wand = Core.to(context)
 
-        XCTAssertEqual(wand.get(), scope as String)
+        XCTAssertEqual(wand.get(), context as String)
         XCTAssertNotNil(wand)
     }
 
@@ -48,9 +48,9 @@ class Core_To_Tests: XCTestCase {
         let request = URLRequest(url: .any)
         let key = "Request"
 
-        let scope = [key: request]
+        let context = [key: request]
 
-        let wand = Core.to(scope)
+        let wand = Core.to(context)
 
         XCTAssertEqual(wand.get(for: key), request)
         XCTAssertNotNil(wand)

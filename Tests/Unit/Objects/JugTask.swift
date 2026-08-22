@@ -178,3 +178,8 @@ public
 class Smoke: Machine, Expecting {
     
 }
+
+public
+class Gear: Machine, Expecting {
+    
+}

@@ -26,16 +26,16 @@ extension NLTag: Ask.Nil, Wanded {
     @inlinable
     public
     static
-    func ask<C, T>(with scope: C, ask: Ask<T>) -> Core {
+    func ask<C, T>(with context: C, ask: Ask<T>) -> Core {
 
-        let wand = Core.to(scope)
+        let wand = Core.to(context)
         guard wand + ask else {
             return true
         }
 
-        let string  = scope as? String ?? wand.get()!
+        let string  = context as? String ?? wand.get()!
 
-        let source = scope as? NLTagger ?? wand.get()
+        let source = context as? NLTagger ?? wand.get()
         source.string = string
 
         var stop = false
@@ -43,9 +43,9 @@ extension NLTag: Ask.Nil, Wanded {
             stop = true
         }
 
-        let range = scope as? Range<String.Index> ?? wand.get() ?? string.startIndex..<string.endIndex
-        let schema  = scope as? NLTagScheme ?? wand.get() ?? .lemma
-        let unit    = scope as? NLTokenUnit ?? wand.get() ?? .word
+        let range = context as? Range<String.Index> ?? wand.get() ?? string.startIndex..<string.endIndex
+        let schema  = context as? NLTagScheme ?? wand.get() ?? .lemma
+        let unit    = context as? NLTokenUnit ?? wand.get() ?? .word
 
         source.enumerateTags(in: range, unit: unit, scheme: schema) { tag, tokenRange in
 

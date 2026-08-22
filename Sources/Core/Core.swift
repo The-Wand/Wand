@@ -190,16 +190,16 @@ extension Core {
     @inline(__always)
     public
     static
-    func to<C>(_ scope: C? = nil) -> Core {
-        switch scope {
-            case let scope as Wanded:
-                scope.wand
+    func to<C>(_ context: C? = nil) -> Core {
+        switch context {
+            case let context as Wanded:
+                context.wand
 
-            case let scope as [Any]:
-                Core(array: scope)
+            case let context as [Any]:
+                Core(array: context)
 
-            case let scope as [String: Any]:
-                Core(dictionary: scope)
+            case let context as [String: Any]:
+                Core(dictionary: context)
 
             case .some(let value):
                 Core(value)

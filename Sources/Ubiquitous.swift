@@ -56,15 +56,15 @@ func |<T: Ubiquitous>(wand: Core?) -> T {
     T.access()
 }
 
-/// Ubiquitous object from scope
+/// Ubiquitous object from context
 ///
-/// let object: T = scope|
+/// let object: T = context|
 ///
 @inline(__always)
 postfix
 public
-func |<C, T: Ubiquitous>(scope: C) -> T {
-    scope as? T ?? T.access()
+func |<C, T: Ubiquitous>(context: C) -> T {
+    context as? T ?? T.access()
 }
 
 /// Ubiquitous unwrap

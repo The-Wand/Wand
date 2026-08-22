@@ -17,12 +17,12 @@
 /// The Wand
 
 /// Get object from Core
-/// or create in <#scope#>
+/// or create with <#context#>
 public
 protocol Obtainable: Wanded {
 
     static
-    func obtain<C>(with scope: C?, by wand: Core?) -> Self
+    func obtain<C>(with context: C?, by wand: Core?) -> Self
 
 }
 
@@ -63,15 +63,15 @@ func |<T: Obtainable>(wand: Core) -> T {
     wand.get() ?? wand + T.obtain(with: wand, by: wand)
 }
 
-/// Obtain from scope
+/// Obtain from context
 ///
-/// let object: T = scope|
+/// let object: T = context|
 ///
 @inline(__always)
 postfix
 public
-func |<C, T: Obtainable>(scope: C) -> T {
-    scope as? T ?? T.obtain(with: scope, by: scope as? Core)
+func |<C, T: Obtainable>(context: C) -> T {
+    context as? T ?? T.obtain(with: context, by: context as? Core)
 }
 
 /// Obtainable unwrap

@@ -31,9 +31,9 @@ extension Browsable {
     @inline(__always)
     static
     public
-    func ask<C, T>(with scope: C, ask: Ask<T>) -> Core {
+    func ask<C, T>(with context: C, ask: Ask<T>) -> Core {
 
-        let wand = Core.to(scope)
+        let wand = Core.to(context)
         guard wand.append(ask: ask) else {
             return wand
         }
