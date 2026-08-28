@@ -18,6 +18,7 @@
 
 infix   operator ++ : AdditionPrecedence
 
+//TODO: #54 Rewrite to return Proxy as Child
 extension Core {
     
     public

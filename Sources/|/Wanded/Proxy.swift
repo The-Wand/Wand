@@ -63,7 +63,7 @@ func +<T>(proxy: Proxy, raw: (T, String) ) -> T {
 @discardableResult
 @inline(__always)
 public
-func +<T>(proxy: Proxy?, object: T) -> T {
+func +<T>(proxy: Proxy?, object: T) -> T? {
     proxy.wand + object
 }
 

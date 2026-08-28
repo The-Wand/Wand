@@ -161,6 +161,7 @@ class Fire: Machine {
     }
     
 }
+
 ///8
 class Rod: Machine {
     
@@ -171,15 +172,5 @@ class Light: Machine {
 }
 ///10
 class Warm: Machine {
-    
-}
-
-public
-class Smoke: Machine, Expecting {
-    
-}
-
-public
-class Gear: Machine, Expecting {
     
 }
