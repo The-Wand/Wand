@@ -21,7 +21,18 @@ import Wand
 public
 class Reaper: Machine {
     
-    let formula: [Int] = [2, 3]
+    let trees: [Tree] = [Tree(), Tree()]
+    
+    let formula: [Int] = [1]
+    
+}
+
+public
+class Reaper2: Machine {
+    
+    let trees: [Tree] = [Tree(), Tree()]
+    
+    let formula: [Int] = [1, 1]
     
 }
 

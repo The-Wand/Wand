@@ -48,3 +48,8 @@ class JetBoots: Machine, Expecting {
     
 }
 
+public
+class Tree: Machine, Expecting {
+    
+}
+

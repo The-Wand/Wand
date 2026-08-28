@@ -4,7 +4,20 @@
       "id" : "7E1EF4E5-10CC-4EB2-BA49-647A0C6D8443",
       "name" : "Test Scheme Action",
       "options" : {
-
+        "checkedAllocations" : {
+          "enabled" : true,
+          "requiresHardwareAcceleration" : true
+        },
+        "distributor" : "com.apple.TestFlight",
+        "mallocGuardEdgesEnabled" : false,
+        "mallocScribbleEnabled" : false,
+        "mallocStackLoggingOptions" : {
+          "loggingType" : "liveAllocations"
+        },
+        "nsZombieEnabled" : true,
+        "testTimeoutsEnabled" : false,
+        "threadSanitizerEnabled" : false,
+        "uiTestingScreenshotsLifetime" : "keepNever"
       }
     }
   ],
