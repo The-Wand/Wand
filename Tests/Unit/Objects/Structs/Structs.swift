@@ -41,6 +41,11 @@ class Stone: Expecting {
 }
 
 public
+class Suite: Expecting {
+    
+}
+
+public
 class Habit: Expecting {
     
 }

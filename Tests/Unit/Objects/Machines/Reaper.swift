@@ -36,3 +36,10 @@ class Reaper2: Machine {
     
 }
 
+public
+class Car: Machine {
+    
+    let formula: [Int] = [2, 3]
+    
+}
+
