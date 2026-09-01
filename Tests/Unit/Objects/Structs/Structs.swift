@@ -20,18 +20,12 @@ import Any_
 import Wand
 
 public
-class Distillate: Expecting {
+class Distillate: Liquid {
     
 }
-
 
 public
 class Rock: Expecting {
-    
-}
-
-public
-class Skill: Expecting {
     
 }
 
@@ -49,3 +43,5 @@ public
 class Habit: Expecting {
     
 }
+
+

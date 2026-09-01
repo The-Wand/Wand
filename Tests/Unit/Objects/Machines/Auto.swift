@@ -18,15 +18,10 @@
 
 import Wand
 
-class Reaper: Vulture {
+public
+class Car: Machine {
+    
+    let formula: [Int] = [2, 3]
     
 }
 
-class Reaper2: Reaper {
-    
-    override
-    var formula: [Int] {
-        [1, 1]
-    }
-    
-}
