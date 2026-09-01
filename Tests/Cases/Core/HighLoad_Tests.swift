@@ -41,8 +41,6 @@ struct Highload {
     @Test(.timeLimit(.minutes(30)))
     func struct_test()
     {
-        
-        
         let tool = Tool()
 
         var wand: Core = Core(id: 0x2715)
@@ -97,7 +95,8 @@ struct Highload {
     ///
     /// 🏎️ Launching   111m cores: ~300s
     /// 🏎️ Fulfilling  111m handlers: ~600s
-    @Test
+    @available(iOS 16.0, *)
+    @Test(.timeLimit(.minutes(30)))
     func class_test()
     {
         let message = 0x1F408

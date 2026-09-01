@@ -16,17 +16,15 @@
 /// Created by Aleksandr Kozin
 /// The Wand
 
+import Any_
 import Wand
 
-class Reaper: Vulture {
+public
+class Skill {
     
 }
 
-class Reaper2: Reaper {
-    
-    override
-    var formula: [Int] {
-        [1, 1]
-    }
+public
+class Driving: Skill {
     
 }

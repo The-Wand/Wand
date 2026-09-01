@@ -18,15 +18,7 @@
 
 import Wand
 
-class Reaper: Vulture {
-    
-}
-
-class Reaper2: Reaper {
-    
-    override
-    var formula: [Int] {
-        [1, 1]
-    }
+public
+class Button: Machine {
     
 }

@@ -34,22 +34,12 @@ class Plasm: Machine, Expecting {
 }
 
 public
-class Water: Machine, Expecting {
-    
-}
-
-public
 class GrapplingHook: Machine, Expecting {
     
 }
 
 public
 class JetBoots: Machine, Expecting {
-    
-}
-
-public
-class Tree: Machine, Expecting {
     
 }
 
