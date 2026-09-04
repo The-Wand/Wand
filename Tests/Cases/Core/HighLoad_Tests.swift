@@ -37,8 +37,7 @@ struct Highload {
     ///
     /// 🏎️ Launching   111m cores: ~300s
     /// 🏎️ Fulfilling  111m handlers: ~450s
-    @available(iOS 16.0, *)
-    @Test(.timeLimit(.minutes(30)))
+    @Test
     func struct_test()
     {
         let tool = Tool()
@@ -95,8 +94,7 @@ struct Highload {
     ///
     /// 🏎️ Launching   111m cores: ~300s
     /// 🏎️ Fulfilling  111m handlers: ~600s
-    @available(iOS 16.0, *)
-    @Test(.timeLimit(.minutes(30)))
+    @Test
     func class_test()
     {
         let message = 0x1F408

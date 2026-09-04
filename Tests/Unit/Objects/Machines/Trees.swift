@@ -18,12 +18,19 @@
 
 import Wand
 
-public
 class Tree: Machine, Expecting {
     
 }
 
-public
 class Yeast: Tree {
     
 }
+
+class Cane: Tree {
+    
+}
+
+class Сane: Tree {
+    
+}
+

@@ -17,36 +17,99 @@
 /// The Wand
 
 import SwiftUI
+
 import Wand
 
-@available(iOS 18, macOS 12, tvOS 14, watchOS 7, *)
+@available(iOS 18, macOS 15, tvOS 14, watchOS 7, *)
 @main
 struct PlayApp: App {
-
+    
+#if canImport(UIKit)
+//    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+#else
+    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+#endif
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            BotView()
         }
+#if os(macOS)
+        .restorationBehavior(.automatic)
+        .windowResizability(.contentSize)
+#endif
     }
-
+    
 }
 
-@available(iOS 18, macOS 12, tvOS 14, watchOS 7, *)
-struct ContentView: View {
+@available(iOS 18, macOS 15, tvOS 14, watchOS 7, *)
+struct BotView: View {
+    
+    private
+    let width: CGFloat = 78
+    private
+    let height: CGFloat = 78 - 17
+    
+    private
+    let size = CGSize(width: 78, height: 78 - 17)
+    
+    private
+    let expanding = CGSize(width: 200, height: 300)
+    
+    
+    private
+    let bot = Core()
     
     var body: some View {
-        VStack {
-                Image(systemName: "wand.and.stars")
-                Text("Hello, Wand|")
+        HStack(alignment: .top) {
+            VStack {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 20, style: .continuous)
+                    //                .blur(radius: 12)
+                        .frame(width: size.width,
+                               height: size.height)
+                        .foregroundColor(.accentColor)
+                    
+                    VStack {
+                        Image(systemName: "wand.and.stars")
+                        Text((bot.wand.name.remainder| as Character)|)
+                    }
+                }
+                
+                Spacer()
+            }
+            
+            Spacer()
         }
         .onAppear {
-//            Wand.Log.level = .verbose
+            //Wand.Log.level = .verbose
+            
         }
+        .frame(minWidth: size.width,
+               maxWidth: expanding.width,
+               minHeight: size.height,
+               maxHeight: expanding.height
+        )
+#if os(macOS)
+        .allowsWindowActivationEvents(true)
+        .gesture(WindowDragGesture())
+        .toolbarBackgroundVisibility(.hidden, for: .windowToolbar)
+        .toolbar(removing: .title)
+        
+        .onReceive(NotificationCenter.default.publisher(for: NSApplication.didBecomeActiveNotification), perform: { _ in
+            
+            guard let window = NSApp.mainWindow else {
+                return
+            }
+            
+            window.standardWindowButton(.miniaturizeButton)?.isHidden = true
+        })
+#endif
     }
     
 }
 
-@available(iOS 18, macOS 12, tvOS 14, watchOS 7, *)
+@available(iOS 18, macOS 15, tvOS 14, watchOS 7, *)
 #Preview {
-    ContentView()
+    BotView()
 }

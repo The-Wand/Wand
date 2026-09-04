@@ -84,38 +84,38 @@ extension Core: ExpressibleByStringLiteral {
             id = value.first!|
         } else {
             
-            if #available(iOS 16.0, macOS 13.0, *) {
-                
-                //            3 | .every { (coffee: Coffee) in
-                //
-                //            }
-                
-                value | /(.*)(\|)(.*){(.|\n)*}/ | { i in
-                    
-                    
-                    let input = i.1
-                    let `operator` = i.2
-                    
-                    let label = i.3
-                    
-                    let scope = i.4
-                    
-                    print("Key: \(i.1)")
-                    print("Value: \(i.2)")
-                    
-                    let wand = Core.to(input)
-                    let ask: Ask<Any> = .init()//(results[i.3] + results[i.4])|
-                    
-                    print(wand)
-                } as Void
-                
-            } else {
-                
-                let regex = "(.*)(\\|)(.*){(.|\n)*}"
-                
-//                value | regex {
-                
-            }
+//            if #available(iOS 16.0, macOS 13.0, *) {
+//                
+//                //            3 | .every { (coffee: Coffee) in
+//                //
+//                //            }
+//                
+//                value | /(.*)(\|)(.*){(.|\n)*}/ | { i in
+//                    
+//                    
+//                    let input = i.1
+//                    let `operator` = i.2
+//                    
+//                    let label = i.3
+//                    
+//                    let scope = i.4
+//                    
+//                    print("Key: \(i.1)")
+//                    print("Value: \(i.2)")
+//                    
+//                    let wand = Core.to(input)
+//                    let ask: Ask<Any> = .init()//(results[i.3] + results[i.4])|
+//                    
+//                    print(wand)
+//                } as Void
+//                
+//            } else {
+//                
+//                let regex = "(.*)(\\|)(.*){(.|\n)*}"
+//                
+////                value | regex {
+//                
+//            }
             
             id = nil //TODO: ?
         }

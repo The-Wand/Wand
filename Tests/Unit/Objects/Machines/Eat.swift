@@ -18,32 +18,14 @@
 
 import Wand
 
-public
-class Smoke: Machine, Expecting {
+class Bread: Eat, Expecting {
     
 }
 
-public
-class Steam: Machine, Expecting {
+class Oil: Eat, Expecting {
     
 }
 
-class Plasm: Machine, Expecting {
+class Sugar: Eat, Expecting {
     
 }
-
-
-class GrapplingHook: Machine, Expecting {
-    
-}
-
-
-class JetBoots: Machine, Expecting {
-    
-}
-
-class Bracer: Machine, Expecting {
-    
-}
-
-

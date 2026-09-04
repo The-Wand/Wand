@@ -33,8 +33,3 @@ class Bot: Fix, Expecting, Wanded {
     }
     
 }
-
-final
-class Bender: Bot {
-    
-}

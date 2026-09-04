@@ -20,7 +20,7 @@ import Wand
 
 class Vulture: Machine {
     
-    let trees: [Tree] = [Tree(), Tree(), Yeast()]
+    let trees: [Tree] = [Tree(), Tree(), Cane(), Yeast()]
     
     var formula: [Int] {
         [1]
@@ -42,6 +42,7 @@ class Vulture: Machine {
         Alcohol(),
         Bread(),
         Electricity(),
+        Oil(),
         Sugar(),
         Water(),
     ]
@@ -68,20 +69,11 @@ class Air: Machine, Expecting, Resource {
     
 }
 
-
 class Alcohol: Water {
     
 }
 
 class Electricity: Machine, Expecting, Generatable {
-    
-}
-
-class Bread: Eat, Expecting {
-    
-}
-
-class Sugar: Eat, Expecting {
     
 }
 
@@ -112,14 +104,17 @@ protocol Enablable: Machine {
 
 extension Enablable {
     
+    @inlinable
     func on() -> Self {
         self
     }
     
+    @inlinable
     func off() -> Self {
         self
     }
     
+    @inlinable
     func `switch`() -> Self {
         self
     }
