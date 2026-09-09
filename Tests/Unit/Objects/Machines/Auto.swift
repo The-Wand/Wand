@@ -25,3 +25,92 @@ class Car: Machine {
     
 }
 
+public
+class EB: Machine {
+    
+    let formula: [Int] = [1]
+    
+    let battery = Accumulator()
+    
+    let motors: [Motor] = [MotorWheel(), MotorWheel()]
+    
+    let remote: [Remote] = [Remote()]
+    
+    let accessories: [Accessory] = []// = [Light(), FacePanel(), Camera(), CupHolder(), LuggageStorage()]
+    
+    let skills: [Skill] = [
+        .ollie,
+        .Spin.360,
+    ]
+    
+}
+
+
+class Accumulator: Machine {
+    
+    func charge() {
+        
+    }
+    
+}
+
+class Remote: Machine {
+    
+    func control() {
+        
+    }
+    
+    func pair() {
+        
+    }
+    
+    func forget() {
+        
+    }
+    
+}
+
+
+class MotorWheel: Machine, Motor, Wheel {
+    
+}
+
+protocol Accessory {
+    
+}
+
+protocol Motor {
+    
+}
+
+protocol Wheel {
+    
+}
+
+extension Skill {
+    
+    class Spin: Skill {
+        
+        static
+        var `180`: Self {
+            Skill() as! Self
+        }
+        
+        static
+        var `360`: Self {
+            Skill() as! Self
+        }
+        
+        static
+        var `720`: Self {
+            Skill() as! Self
+        }
+        
+    }
+    
+    static
+    var ollie: Self {
+        Skill() as! Self
+    }
+    
+}

@@ -13,35 +13,41 @@
 /// See the License for the specific language governing permissions and
 /// limitations under the License.
 ///
-/// Created by Aleksandr Kozin
+/// Created by Aleksander Kozin
 /// The Wand
 
-import Wand
+#if canImport(Network)
+@_exported
+import Network
+//@_exported
+//import Wand
 
-public
-class Smoke: Machine, Expecting {
-    
+protocol MicroService: Ask.T {
+
 }
 
-public
-class Steam: Machine, Expecting {
-    
+/// Ask
+///
+/// |<T: Service>{ (_: T) in
+///
+/// }
+extension MicroService {
+
+    @inline(__always)
+    static
+    public
+    func ask<C, T>(with scope: C, ask: Ask<T>) -> Core {
+
+        let wand = Core.to(scope)
+        guard wand + ask else {
+            return wand
+        }
+
+        return wand |? ask.depend { (connection: NWConnection) in
+
+        }
+    }
+
 }
 
-class Plasm: Machine, Expecting {
-    
-}
-
-
-class GrapplingHook: Machine, Expecting {
-    
-}
-
-
-class JetBoots: Machine, Expecting {
-    
-}
-
-class Bracer: Machine, Expecting {
-    
-}
+#endif
