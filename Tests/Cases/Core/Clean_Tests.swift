@@ -30,6 +30,10 @@ async
     ask & {
         cleaned = true
     }
+    
+//    wand + (ask.key, {
+//        cleaned = true
+//    })
 
     wand + String.any
 

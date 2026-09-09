@@ -29,19 +29,8 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         }
 
         let buffer = invocation.buffer
-//
-////        buffer.selections.forEach {
-////        }
-//
         let lines = buffer.lines
-
-//        // Reverse the order of the lines in a copy.
-//        let updatedText = Array(lines.reversed())
-//        lines.removeAllObjects()
-//        lines.addObjects(from: updatedText)
-
-//        var error: Error? = nil
-
+        
         let selection = buffer.selections.firstObject as! XCSourceTextRange
 
         let start = selection.start
@@ -53,11 +42,6 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         }
 
         let line = lines[start.line] as! String
-
-//        let symbols = String(line.unicodeScalars.filter(CharacterSet.whitespacesAndNewlines.contains))
-//
-//        let selected = line.substring(from: start.column, to: end.column)
-
 
         let trimmed = line.trimmingCharacters(in: .whitespacesAndNewlines)
 
@@ -130,8 +114,6 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             semaphore.signal()
         }
         _ = semaphore.wait(timeout: .now() + 10)
-
-//        completionHandler(error)
     }
     
 }
