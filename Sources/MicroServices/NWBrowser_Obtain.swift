@@ -13,35 +13,37 @@
 /// See the License for the specific language governing permissions and
 /// limitations under the License.
 ///
-/// Created by Aleksandr Kozin
+/// Created by Aleksander Kozin
 /// The Wand
 
-import Wand
+#if canImport(Network)
+@_exported
+import Network
+//@_exported
+//import Wand
 
-public
-class Smoke: Machine, Expecting {
-    
+extension NWBrowser: Obtainable {
+
+    @inlinable
+    public
+    static
+    func obtain<C>(with scope: C?, by wand: Core?) -> Self {
+
+        let wand = wand ?? Core()
+
+        let parameters: NWParameters = wand.get() ?? .init()
+        parameters.includePeerToPeer = true
+        
+        
+//        _spotify-connect._tcp
+        //_wand._tcp
+
+        let source = NWBrowser(for: .bonjour(type: "_spotify-connect._tcp", domain: nil),
+                               using: parameters)
+
+        return source as! Self
+    }
+
 }
 
-public
-class Steam: Machine, Expecting {
-    
-}
-
-class Plasm: Machine, Expecting {
-    
-}
-
-
-class GrapplingHook: Machine, Expecting {
-    
-}
-
-
-class JetBoots: Machine, Expecting {
-    
-}
-
-class Bracer: Machine, Expecting {
-    
-}
+#endif

@@ -36,7 +36,6 @@ struct ScreenEntryView : View {
             Text("Hello, Wand|")
         }
         .onAppear {
-//            Wand.Log.level = .verbose
 //            Highload.highload_prod(of: 111_111_111)
         }
     }

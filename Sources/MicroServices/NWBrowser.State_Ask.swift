@@ -13,35 +13,39 @@
 /// See the License for the specific language governing permissions and
 /// limitations under the License.
 ///
-/// Created by Aleksandr Kozin
+/// Created by Aleksander Kozin
 /// The Wand
 
-import Wand
+#if canImport(Network)
+@_exported
+import Network
+//@_exported
+//import Wand
 
-public
-class Smoke: Machine, Expecting {
-    
+extension NWBrowser.State: Ask.Nil {
+
+    @inlinable
+    public
+    static
+    func ask<C, T>(with context: C, ask: Ask<T>) -> Core {
+
+        let wand = Core.to(context)
+        guard wand + ask else {
+            return true
+        }
+
+        let source: NWBrowser = wand.get()
+
+        source.stateUpdateHandler = { [weak wand] in
+            wand + $0
+        }
+
+        let queue: DispatchQueue = wand.get() ?? .global()
+        source.start(queue: queue)
+
+        return wand
+    }
+
 }
 
-public
-class Steam: Machine, Expecting {
-    
-}
-
-class Plasm: Machine, Expecting {
-    
-}
-
-
-class GrapplingHook: Machine, Expecting {
-    
-}
-
-
-class JetBoots: Machine, Expecting {
-    
-}
-
-class Bracer: Machine, Expecting {
-    
-}
+#endif

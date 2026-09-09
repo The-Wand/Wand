@@ -24,7 +24,7 @@ import Foundation
 @dynamicCallable
 final
 public
-class Core: CustomStringConvertible, Identifiable {
+class Core: CustomStringConvertible, Identifiable { //TODO: ~Copyable
 
     /// References for cores of objects
     /// object <-> Core

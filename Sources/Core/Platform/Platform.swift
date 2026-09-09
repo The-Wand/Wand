@@ -37,6 +37,7 @@ import AppKit
 public
 extension Core {
     
+    public
     typealias ApplicationDelegate = NSObject & NSApplicationDelegate
     
     typealias Application = NSApplication
