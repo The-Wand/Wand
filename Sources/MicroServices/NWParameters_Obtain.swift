@@ -54,7 +54,7 @@ extension NWParameters: Obtainable {
             return options
         }
 
-        let parameters = NWParameters.applicationService
+        let parameters = NWParameters()//.applicationService
 
         let options = NWProtocolFramer.Options(definition: WandFramerProtocol.definition)
         parameters.defaultProtocolStack.applicationProtocols.insert(options, at: 0)

@@ -16,7 +16,7 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-public
+open
 class Fix {
     
     let block: ()->()

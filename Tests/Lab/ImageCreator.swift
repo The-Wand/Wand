@@ -16,24 +16,24 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-import ImagePlayground
-import CoreGraphics
-
-extension Core {
-    
-    @available(iOS 18.4, macOS 15.4, *)
-    func picture() async throws -> CGImage? {
-        
-        let creator = try await ImageCreator()
-        let stream = creator.images(for: [.text("🍕")],
-                                    style: .animation,
-                                    limit: 1)
-        
-        for try await image in stream {
-            return image.cgImage
-        }
-        
-        return nil
-    }
-    
-}
+//import ImagePlayground
+//import CoreGraphics
+//
+//extension Core {
+//    
+//    @available(iOS 18.4, macOS 15.4, *)
+//    func picture() async throws -> CGImage? {
+//        
+//        let creator = try await ImageCreator()
+//        let stream = creator.images(for: [.text("🍕")],
+//                                    style: .animation,
+//                                    limit: 1)
+//        
+//        for try await image in stream {
+//            return image.cgImage
+//        }
+//        
+//        return nil
+//    }
+//    
+//}

@@ -83,7 +83,6 @@ struct BotView: View {
         }
         .onAppear {
             //Wand.Log.level = .verbose
-            
         }
         .frame(minWidth: size.width,
                maxWidth: expanding.width,

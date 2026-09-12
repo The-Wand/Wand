@@ -17,11 +17,7 @@
 /// The Wand
 
 /// Get object from Core
-<<<<<<<< HEAD:Sources/Obtainable.swift
 /// or create with <#context#>
-========
-/// or create in <#scope#>
->>>>>>>> main:Sources/o.swift
 public
 protocol Obtainable: Wanded {
 

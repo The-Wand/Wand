@@ -16,6 +16,8 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
+import Wand
+
 public
 class Bot: Fix, Expecting, Wanded {
     
