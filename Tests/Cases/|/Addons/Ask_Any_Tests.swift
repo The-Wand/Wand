@@ -31,7 +31,9 @@ class Expect_Any_Tests: XCTestCase {
 
         var wand: Wand.Core!
         
-        wand = Point.every | String.every | .any { _ in
+//        let a =  Point... | String.self
+        
+        wand = Point... | String.self | .any { _ in
             e.fulfill()
         }
 
@@ -55,7 +57,7 @@ class Expect_Any_Tests: XCTestCase {
         let e = expectation()
 
         weak
-        var wand: Core! = Point.every | String.every
+        var wand: Core! = Point... | String...
 
         var handlePerformance: Performance!
         Performance(of: "Ask<Any> add") { [weak wand] in

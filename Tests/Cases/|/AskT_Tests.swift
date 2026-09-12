@@ -34,12 +34,12 @@ class Expect_T_Tests: XCTestCase {
         //Wait for 'count' Points
         weak
         var wand: Core!
-        wand = |.every { (point: Point) in
+        wand = { (point: Point) in
 
             if point == last {
                 e.fulfill()
             }
-        }
+        }...
 
         //Put for 'count' Vector
         (0..<count).forEach { [weak wand] _ in

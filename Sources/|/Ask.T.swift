@@ -70,12 +70,12 @@ func |<C, T: Ask.T>(context: C, ask: Ask<T>) -> Core {
 ///
 extension Ask.T {
 
-    @inline(__always)
-    public
-    static
-    var every: Ask<Self> {
-        .every()
-    }
+//    @inline(__always)
+//    public
+//    static
+//    var every: Ask<Self> {
+//        .every()
+//    }
 
     @inline(__always)
     public
@@ -94,12 +94,12 @@ extension Ask.T {
 ///
 extension Ask.T {
 
-    @inline(__always)
-    public
-    static
-    func every(handler: ( (Self)->() )? = nil) -> Ask<Self> {
-        .every(handler: handler)
-    }
+//    @inline(__always)
+//    public
+//    static
+//    func every(handler: ( (Self)->() )? = nil) -> Ask<Self> {
+//        .every(handler: handler)
+//    }
     
     @inline(__always)
     public

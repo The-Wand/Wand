@@ -49,11 +49,11 @@ class Ask_Dependencies_Tests: XCTestCase {
 
         weak
         var wand: Core!
-        wand = |.every { (point: Point) in
+        wand = { (point: Point) in
             e.fulfill()
-        } |? .every { (string: String) in
+        }... |? { (string: String) in
 
-        }
+        }...
 
         wand + point
 
@@ -68,9 +68,9 @@ class Ask_Dependencies_Tests: XCTestCase {
         let point = Point.any
 
         var wand: Core!
-        wand = point |? .every { (string: String) in
+        wand = point |? { (string: String) in
             e.fulfill()
-        }
+        }...
 
         wand + String.any
 

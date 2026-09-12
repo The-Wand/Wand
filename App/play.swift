@@ -27,7 +27,7 @@ struct PlayApp: App {
 #if canImport(UIKit)
 //    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 #else
-    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+//    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 #endif
     
     var body: some Scene {
