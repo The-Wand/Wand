@@ -67,8 +67,8 @@ func +<T>(wand: Core?, object: T) -> T {
 /// Sequence
 @inline(__always)
 public
-func +<T>(wand: Core, raw: (sequence: T, Core.Key)) where T == any Sequence {
-    raw.sequence.forEach {
+func +<T>(wand: Core, sequenced: Core.Sequenced<T>) where T == any Sequence {
+    sequenced.obj.forEach {
         wand + $0
     }
 }

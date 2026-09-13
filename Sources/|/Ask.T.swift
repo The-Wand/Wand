@@ -70,12 +70,12 @@ func |<C, T: Ask.T>(context: C, ask: Ask<T>) -> Core {
 ///
 extension Ask.T {
 
-//    @inline(__always)
-//    public
-//    static
-//    var every: Ask<Self> {
-//        .every()
-//    }
+    @inline(__always)
+    public
+    static
+    var every: Ask<Self> {
+        .every()
+    }
 
     @inline(__always)
     public
@@ -94,12 +94,16 @@ extension Ask.T {
 ///
 extension Ask.T {
 
-//    @inline(__always)
-//    public
-//    static
-//    func every(handler: ( (Self)->() )? = nil) -> Ask<Self> {
-//        .every(handler: handler)
-//    }
+    @inline(__always)
+    public
+    static
+    func every(handler: ( (Self)->() )? = nil) -> Ask<Self> {
+        .init(once: false) {
+            
+            handler?($0)
+            return true
+        }
+    }
     
     @inline(__always)
     public
@@ -115,4 +119,11 @@ extension Ask.T {
         .while(handler: handler)
     }
     
+}
+
+@inline(__always)
+@discardableResult
+public
+func |<C, T: Ask.T>(context: C, type: T.Type) -> Core {
+    T.ask(with: context, ask: Ask<T>.one())
 }
