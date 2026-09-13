@@ -47,7 +47,7 @@ extension NWBrowser.Result: Ask.Nil, Wanded {
                     
                     source.browseResults | {
                         wand + $0
-                    }
+                    } as Void
                     
                     return false
 
@@ -62,7 +62,7 @@ extension NWBrowser.Result: Ask.Nil, Wanded {
             
             newResults | {
                 wand + $0
-            }
+            } as Void
             
         }
 

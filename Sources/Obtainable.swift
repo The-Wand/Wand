@@ -48,7 +48,7 @@ func |<T: Obtainable>(wand: Core?) -> T {
     wand?.get() ?? {
 
         let object = T.obtain(with: wand, by: wand)
-        return wand + object ?? object
+        return wand + object
     }()
 }
 
