@@ -33,15 +33,22 @@ extension Core {
 
     @inlinable
     public
-    subscript <T: Wanded>(child: UInt32) -> T? {
+    func children<T: Wanded>(for id: UInt32) -> T? {
+        children?[id] as? T
+    }
+    
+    @discardableResult
+    @inlinable
+    public
+    func set<T: Wanded>(child: T?, for id: UInt32) -> T? {
         
-        get {
-            children?[child] as? T
-        }
+        child.wand.scope[(\Core.parent)|] = self
         
-        set {
-            self ++ child
-        }
+        var children = children ?? .init()
+        children[id] = child
+        scope[(\Core.children)|] = children
+        
+        return child
     }
     
     @inline(__always)
@@ -80,12 +87,7 @@ func ++(wand: Core, id: UInt32? = nil) -> Core {
             Core()
         }
         
-        child.scope[(\Core.parent)|] = wand
-        
-        var mutable = children ?? [:]
-        mutable[child.id] = child
-        wand.scope[(\Core.children)|] = mutable
-        
+        wand.set(child: child, for: child.id)
         return child
     }
 }
@@ -93,19 +95,8 @@ func ++(wand: Core, id: UInt32? = nil) -> Core {
 @discardableResult
 @inline(__always)
 public
-func ++<T: Wanded>(wand: Core, child: T) -> Core {
-    
-    let rhs = child.wand
-    
-    rhs.scope[(\Core.parent)|] = wand
-    
-    let key: String = (\Core.children)|
-    
-    var children = wand.children ?? .init()
-    children[rhs.id] = child
-    wand.scope[key] = children
-    
-    return rhs
+func ++<T: Wanded>(wand: Core, child: T) -> T {
+    wand.set(child: child, for: child.wand.id)!
 }
 
 @inline(__always)
