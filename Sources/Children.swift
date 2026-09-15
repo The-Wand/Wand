@@ -19,6 +19,7 @@
 infix   operator ++ : AdditionPrecedence
 
 //TODO: #54 Rewrite to return Proxy as Child
+//Test
 extension Core {
     
     public
@@ -26,14 +27,27 @@ extension Core {
     
     @inline(__always)
     public
-    var children: [UInt32: Self]? {
-        `get`(for: "children")
+    var children: [UInt32: any Wanded]? {
+        `get`(for: (\Core.children)|)
+    }
+
+    @inlinable
+    public
+    subscript <T: Wanded>(child: UInt32) -> T? {
+        
+        get {
+            children?[child] as? T
+        }
+        
+        set {
+            self ++ child
+        }
     }
     
     @inline(__always)
     public
     var parent: Self? {
-        `get`(for: "parent") ?? root
+        `get`(for: (\Core.parent)|) ?? root
     }
     
     //TODO: add Shedinger's parent tests
@@ -58,7 +72,7 @@ func ++(wand: Core, id: UInt32? = nil) -> Core {
     let children = wand.children
     
     if let id, let stored = children?[id] {
-        return stored
+        return stored as! Core
     } else {
         let child = if let id {
             Core(id: id)
@@ -79,16 +93,19 @@ func ++(wand: Core, id: UInt32? = nil) -> Core {
 @discardableResult
 @inline(__always)
 public
-func ++(wand: Core, child: Core) -> Core {
-    child.scope[(\Core.parent)|] = wand
+func ++<T: Wanded>(wand: Core, child: T) -> Core {
+    
+    let rhs = child.wand
+    
+    rhs.scope[(\Core.parent)|] = wand
     
     let key: String = (\Core.children)|
     
-    var children = wand.scope[key] as? [UInt32: Core] ?? .init()
-    children[child.id] = child
+    var children = wand.children ?? .init()
+    children[rhs.id] = child
     wand.scope[key] = children
     
-    return child
+    return rhs
 }
 
 @inline(__always)
