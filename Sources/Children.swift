@@ -33,7 +33,20 @@ extension Core {
     @inline(__always)
     public
     var parent: Self? {
-        `get`(for: "parent")
+        `get`(for: "parent") ?? root
+    }
+    
+    //TODO: add Shedinger's parent tests
+    @inlinable
+    public
+    var root: Self {
+        if let wand = Core.all[-1]?.item {
+            return wand
+        }
+        
+        let wand = Core()
+        Core.all[-1] = Weak(item: wand)
+        return wand
     }
     
 }
@@ -94,3 +107,5 @@ func ++(wand: Core) -> Core {
     
     return child
 }
+
+//TODO: --
