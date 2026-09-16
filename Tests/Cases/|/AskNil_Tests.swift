@@ -11,7 +11,7 @@
 /// distributed under the License is distributed on an "AS IS" BASIS,
 /// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 /// See the License for the specific language governing permissions and
-/// limitations under the License.
+/// limitations under the Lice nse.
 ///
 /// Created by Aleksander Kozin
 /// The Wand
@@ -34,7 +34,7 @@ class Expect_T_Tests: XCTestCase {
         //Wait for 'count' Points
         weak
         var wand: Core!
-        wand = { (point: Point) in
+        wand = |{ (point: Point) in
 
             if point == last {
                 e.fulfill()
@@ -64,7 +64,7 @@ class Expect_T_Tests: XCTestCase {
 
         weak
         var wand: Core!
-        wand = |.one { (point: Point) in
+        wand = |{ (point: Point) in
             e.fulfill()
         }
 
@@ -86,7 +86,7 @@ class Expect_T_Tests: XCTestCase {
 
         weak
         var wand: Core!
-        wand = |.while { (point: Point) in
+        wand = |{ (point: Point) in
 
             if point.t > 111_111 {
 
@@ -97,7 +97,7 @@ class Expect_T_Tests: XCTestCase {
                 put()
                 return true
             }
-        }
+        }..+
 
         put()
 

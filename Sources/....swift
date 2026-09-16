@@ -23,93 +23,35 @@ extension Core {
     
 }
 
-@inline(__always)
-postfix
-public
-func ...<T>(sequenced: T) -> Core.Sequenced<T> {
-    (sequenced, .all)
-}
-
-//Every
-@inline(__always)
-postfix
-public
-func ...<T>(handler: @escaping (T)->()) -> Core {
-    Core().append(handler: Ask<T>(once: false) {
-        handler($0)
-        return true
-    })
-}
-
 //@inline(__always)
 //postfix
 //public
-//func ...<T: Ask.Nil>(sequenced: T.Type) -> Ask<T> {
-//    Ask<T>(once: false)
+//func ...<T>(sequenced: T) -> Core.Sequenced<T> {
+//    (sequenced, .all)
 //}
 
+///Every
 //@inline(__always)
-//postfix
-//public
-//func ...<T: Ask.Nil>(sequenced: Core.Sequenced<T>) -> Ask<T> {
-//    Ask<T>(once: false)
-//}
-//
-//
-//@inline(__always)
-//public
-//static
-//var every: Ask<Self> {
-//    .every()
-//}
-
-///One
-//@inline(__always)
-//public
-//static
-//func one(check: Bool = false,
-//         _ key: String? = nil,
-//         handler: ( (T)->() )? = nil ) -> Self
-//{
-//    .init(once: true, check: check, for: key) {
-//        
-//        handler?($0)
-//        return false
-//    }
-//}
-
-
-@inline(__always)
+postfix
 public
-func |<T: Ask.Nil>(wand: Core, type: T) -> Ask<T> {
-    Ask<T>(once: true)
+func ...<T>(handler: @escaping (T)->()) -> Ask<T> {
+    .init(once: false, handler: handler)
 }
 
-@inline(__always)
-public
-func |<T: Ask.Nil>(type: T, wand: Core) -> Ask<T> {
-    Ask<T>(once: true)
-}
 
 ///While
+postfix operator ..+
+
 //@inline(__always)
-//postfix
-//public
-//func ...<T>(handler: @escaping (T)->(Bool)) -> Ask<T> {
-//    Ask.while(handler: handler)
-//}
+postfix
+public
+func ..+<T>(handler: @escaping (T)->(Bool)) -> Ask<T> {
+    .init(once: false, handler: handler)
+}
 
-
-/// Request object
-/// - `every`
-/// - `one`
-/// - `while`
 extension Ask {
     
-    /// Ask.every { T in
-    ///
-    /// }
-    ///
+    @available(*, deprecated, renamed: "...")
     @inline(__always)
     public
     static
@@ -124,10 +66,7 @@ extension Ask {
         }
     }
     
-    /// Ask.one { T in
-    ///
-    /// }
-    ///
+    @available(*, deprecated, renamed: "One", message: "Use `()->()` instead")
     @inline(__always)
     public
     static
@@ -142,10 +81,7 @@ extension Ask {
         }
     }
     
-    /// Ask.while { T in
-    ///     true
-    /// }
-    ///
+    @available(*, deprecated, renamed: "..+")
     @inline(__always)
     public
     static

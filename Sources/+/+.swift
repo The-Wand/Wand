@@ -65,10 +65,19 @@ func +<T>(wand: Core?, object: T) -> T {
 }
 
 /// Sequence
-@inline(__always)
-public
-func +<T>(wand: Core, sequenced: Core.Sequenced<T>) where T == any Sequence {
-    sequenced.obj.forEach {
-        wand + $0
-    }
-}
+//infix   operator ...+
+//
+//extension Core {
+//    
+//    public
+//    typealias Sequenced<T> = (obj: T, Core.Key)
+//    
+//}
+//
+//@inline(__always)
+//public
+//func ...+<T>(wand: Core, sequenced: Core.Sequenced<T>) where T == any Sequence {
+//    sequenced.obj.forEach {
+//        wand + $0
+//    }
+//}
