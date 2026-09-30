@@ -22,6 +22,7 @@ import Foundation
 /// Wand.Core
 /// Bus for <#Any#> Factory + Cache
 @dynamicCallable
+@dynamicMemberLookup
 final
 public
 class Core: CustomStringConvertible, Identifiable { //TODO: ~Copyable
@@ -92,6 +93,7 @@ class Core: CustomStringConvertible, Identifiable { //TODO: ~Copyable
     lazy
     var id: UInt32 = arc4random()
 
+    ///Extensions must not contain stored properties
     lazy
     public
     var name = id.quotientAndRemainder(dividingBy: 50_000)
@@ -103,12 +105,10 @@ class Core: CustomStringConvertible, Identifiable { //TODO: ~Copyable
     lazy
     public
     var description = "Wand.Core \(name.remainder| as Character)\n\(version) by @alko"
-
-    @inlinable
+    
+    lazy
     public
-    var version: String {
-        Bundle.main | "CFBundleShortVersionString" as! String
-    }
+    var version = Bundle.main | "CFBundleShortVersionString" as! String
     ///
 
     @inline(__always)
@@ -152,7 +152,7 @@ class Core: CustomStringConvertible, Identifiable { //TODO: ~Copyable
 
     deinit {
 
-        sendLogs()
+//        sendLogs()
         close()
         log("|✅ #bonsua")
     }

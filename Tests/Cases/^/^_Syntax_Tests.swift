@@ -1,5 +1,5 @@
 ///
-/// Copyright 2569 Aleksander Kozin
+/// Copyright 2020 Aleksander Kozin
 ///
 /// Licensed under the Apache License, Version 2.0 (the "License");
 /// you may not use this file except in compliance with the License.
@@ -17,26 +17,9 @@
 /// The Wand
 
 import Wand
+import Testing
 
-///
-/// Input & Output
-/// <#||_|#><#^#>
-postfix
-operator ^ //: AdditionPrecedence
+@Test
+func Get_Syntax_Tests() {
 
-protocol Input {
-    
 }
-
-protocol Output {
-    
-}
-
-@discardableResult
-@inline(__always)
-postfix
-public
-func ^<T>(wand: Core) -> T {
-    wand.get()!
-}
-

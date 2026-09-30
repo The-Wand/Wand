@@ -26,7 +26,7 @@ import CoreLocation
 struct Highload {
 
     private
-    let count = 11//1_111_111
+    let count = 111_111_111
 
     /// Core 3.0.2
     /// A2485 | M1 Pro 16 Gb | macOS 26.0.1
@@ -60,6 +60,7 @@ struct Highload {
                 
                 let newWand = test(wand: bot.wand, index: index)
                 
+//                next++
                 next + Core.Weak(item: next++) & "Wand"
                 next = newWand
                 
@@ -75,6 +76,7 @@ struct Highload {
 
             next + Point.any
 
+//            while let wand = next.children?.values.first as? Core {
             while let wand = (next.get(for: "Wand") as Core.Weak?)?.item {
                 wand + Point.any
                 next = wand

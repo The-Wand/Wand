@@ -36,7 +36,7 @@ extension NWBrowser.Result: Ask.Nil, Wanded {
 
         let source: NWBrowser = wand.get()
 
-        source |? .while { [weak wand] (state: NWBrowser.State) in
+        source |? ask.dependency { [weak wand] (state: NWBrowser.State) in
 
             switch state {
                 case .ready:

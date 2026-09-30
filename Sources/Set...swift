@@ -23,15 +23,15 @@ extension Core {
     
 }
 
-//@inline(__always)
-//postfix
-//public
-//func ...<T>(sequenced: T) -> Core.Sequenced<T> {
-//    (sequenced, .all)
-//}
+@inline(__always)
+postfix
+public
+func ...<T>(sequenced: T) -> Core.Sequenced<T> {
+    (sequenced, .all)
+}
 
 ///Every
-//@inline(__always)
+@inline(__always)
 postfix
 public
 func ...<T>(handler: @escaping (T)->()) -> Ask<T> {
@@ -42,7 +42,7 @@ func ...<T>(handler: @escaping (T)->()) -> Ask<T> {
 ///While
 postfix operator ..+
 
-//@inline(__always)
+@inline(__always)
 postfix
 public
 func ..+<T>(handler: @escaping (T)->(Bool)) -> Ask<T> {

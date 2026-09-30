@@ -16,41 +16,50 @@ struct Platform {
 import UIKit
 
 public
-extension Core {
-    
-    typealias ApplicationDelegate = UIResponder & UIApplicationDelegate
-    
-    typealias Application = UIApplication
-    typealias Button = UIButton
-    typealias Label = UILabel
-        
-    typealias View = UIView
-    typealias ViewController = UIViewController
-    
-    typealias Window = UIWindow
-    
-}
+typealias ApplicationDelegate = UIResponder & UIApplicationDelegate
+
+public
+typealias Application = UIApplication
+public
+typealias UserActivityRestoring = UIUserActivityRestoring
+
+public
+typealias Button = UIButton
+public
+typealias Label = UILabel
+
+public
+typealias View = UIView
+public
+typealias ViewController = UIViewController
+
+public
+typealias Window = UIWindow
 
 #else
 import AppKit
 
 public
-extension Core {
-    
-    public
-    typealias ApplicationDelegate = NSObject & NSApplicationDelegate
-    
-    typealias Application = NSApplication
-    typealias Button = NSButton
-    typealias Label = NSTextField
-    
-    typealias View = NSView
-    typealias ViewController = NSViewController
-    
-    typealias Window = NSWindow
-    
-}
+typealias ApplicationDelegate = NSObject & NSApplicationDelegate
 
+public
+typealias Application = NSApplication
+public
+typealias UserActivityRestoring = NSUserActivityRestoring
+
+public
+typealias Button = NSButton
+public
+typealias Label = NSTextField
+
+public
+typealias View = NSView
+public
+typealias ViewController = NSViewController
+
+public
+typealias Window = NSWindow
+    
 public
 extension NSTextField {
     

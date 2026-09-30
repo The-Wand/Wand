@@ -28,7 +28,7 @@ extension Core {
     @inline(__always)
     public
     var children: [UInt32: any Wanded]? {
-        `get`(for: (\Core.children)|)
+        `get`(for: (\Core.children)|) //#function
     }
 
     @inlinable
@@ -54,7 +54,7 @@ extension Core {
     @inline(__always)
     public
     var parent: Self? {
-        `get`(for: (\Core.parent)|) ?? root
+        `get`(for: (\Core.parent)|) ?? root //#function
     }
     
     //TODO: add Shedinger's parent tests
@@ -99,21 +99,14 @@ func ++<T: Wanded>(wand: Core, child: T) -> T {
     wand.set(child: child, for: child.wand.id)!
 }
 
+@discardableResult
 @inline(__always)
 postfix
 public
 func ++(wand: Core) -> Core {
     
-    let children = wand.children
-    
-    let child = Core()
-    child.scope[(\Core.parent)|] = wand
-    
-    var mutable = children ?? [:]
-    mutable[child.id] = child
-    wand.scope[(\Core.children)|] = mutable
-    
-    return child
+    let children = Core()
+    return wand.set(child: children, for: children.id)!
 }
 
 //TODO: --
