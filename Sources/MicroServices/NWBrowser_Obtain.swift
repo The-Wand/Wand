@@ -33,12 +33,8 @@ extension NWBrowser: Obtainable {
 
         let parameters: NWParameters = wand.get() ?? .init()
         parameters.includePeerToPeer = true
-        
-        
-//        _spotify-connect._tcp
-        //_wand._tcp
 
-        let source = NWBrowser(for: .bonjour(type: "_spotify-connect._tcp", domain: nil),
+        let source = NWBrowser(for: .bonjour(type: "_wand._tcp", domain: nil),
                                using: parameters)
 
         return source as! Self

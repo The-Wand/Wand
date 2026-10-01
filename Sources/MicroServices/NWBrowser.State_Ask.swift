@@ -27,20 +27,24 @@ extension NWBrowser.State: Ask.Nil {
     @inlinable
     public
     static
-    func ask<C, T>(with context: C, ask: Ask<T>) -> Core {
+    func ask<C, T>(with scope: C, ask: Ask<T>) -> Core {
 
-        let wand = Core.to(context)
+        let wand = Core.to(scope)
         guard wand + ask else {
             return true
         }
 
-        let source: NWBrowser = wand.get()
+        let source = scope as? NWBrowser ?? wand.get()
 
+        print("###✅ 1")
         source.stateUpdateHandler = { [weak wand] in
             wand + $0
+            print("###✅ 2")
         }
+        print("###✅ 3")
 
-        let queue: DispatchQueue = wand.get() ?? .global()
+        //TODO: nw_browser_start [B1] The browser has already been started, ignoring nw_browser_start().
+        let queue: DispatchQueue = wand.get() ?? .main
         source.start(queue: queue)
 
         return wand

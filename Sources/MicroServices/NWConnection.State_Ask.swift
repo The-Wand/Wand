@@ -22,49 +22,25 @@ import Network
 //@_exported
 //import Wand
 
-extension NWBrowser.Result: Ask.Nil, Wanded {
+extension NWConnection.State: Ask.Nil {
 
     @inlinable
     public
     static
-    func ask<C, T>(with scope: C, ask: Ask<T>) -> Core {
+    func ask<C, T>(with context: C, ask: Ask<T>) -> Core {
 
-        let wand = Core.to(scope)
+        let wand = Core.to(context)
         guard wand + ask else {
             return true
         }
 
-        let source: NWBrowser = wand.get()
+        let source = context as? NWConnection ?? wand.get()
 
-        source |? ask.dependency { [weak wand] (state: NWBrowser.State) in
-
-            switch state {
-                case .ready:
-//TODO
-//                    wand?.add(sequence: source.browseResults)
-                    
-//                    wand + source.browseResults...
-                    
-                    source.browseResults | {
-                        wand + $0
-                    } as Void
-                    
-                    return false
-
-                default:
-                    return true
-            }
+        source.stateUpdateHandler = { [weak wand] in
+            wand + $0
+            print   ("###✅ 2")
         }
-
-        source.browseResultsChangedHandler = { [weak wand] newResults, change in
-            //TODO
-            //                   wand?.add(sequence: newResults)
-            
-            newResults | {
-                wand + $0
-            } as Void
-            
-        }
+        print("###✅ 3")
 
         //TODO: nw_browser_start [B1] The browser has already been started, ignoring nw_browser_start().
         let queue: DispatchQueue = wand.get() ?? .main

@@ -36,19 +36,11 @@ extension NWConnection: Ask.Nil, Wanded {
             return true
         }
 
-        let parameters: NWParameters = wand.get()!
-//        if #available(macOS 13.0, iOS 16.0, watchOS 9.0, *) {
-//            wand.get() ?? NWParameters.applicationService
-//        } else {
-//            NWParameters()
-//        }
-//
-//        let gameOptions = NWProtocolFramer.Options(definition: WandFramerProtocol.definition)
-//        parameters.defaultProtocolStack.applicationProtocols.insert(gameOptions, at: 0)
+        let parameters = scope as? NWParameters ?? wand.get()
 
         do {
             let source = try NWListener(using: parameters)
-//            source.service = .Service(name: ask.key, type: "_wand._tcp")
+            source.service = .init(name: ask.key, type: "_wand._tcp")
 
             source.newConnectionHandler = { [weak wand] in
                 wand + $0
@@ -110,17 +102,6 @@ extension NWConnection: Ask.Nil, Wanded {
     }
 
     private
-    func applicationServiceParameters() -> NWParameters {
-        let parameters = NWParameters.applicationService
-
-        // Add your custom game protocol to support game messages.
-        let gameOptions = NWProtocolFramer.Options(definition: WandFramerProtocol.definition)
-        parameters.defaultProtocolStack.applicationProtocols.insert(gameOptions, at: 0)
-
-        return parameters
-    }
-
-    private
     func receiveMessages() {
 
         guard let wand = isWanded else {
@@ -160,6 +141,20 @@ struct Delegate {
     func displayAdvertiseError(_ error: NWError) {
 
     }
+}
+
+extension NWConnection: Obtainable {
+    
+    @inline(__always)
+    public
+    static
+    func obtain<C>(with context: C?, by wand: Core?) -> Self {
+        
+        let endpoint: NWEndpoint = context as? NWEndpoint ?? wand!.get()!
+        let params: NWParameters = context as? NWParameters ?? wand!.get()
+        return NWConnection(to: endpoint, using: params) as! Self
+    }
+    
 }
 
 #endif

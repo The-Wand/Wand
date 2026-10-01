@@ -29,7 +29,7 @@ import Network
 //@_exported
 //import Wand
 
-@available(macOS 13.0, *)
+@available(macOS 13.0, iOS 16.0, *)
 extension NWParameters: Obtainable {
 
     @inlinable
@@ -38,28 +38,17 @@ extension NWParameters: Obtainable {
     func obtain<C>(with scope: C?, by wand: Core?) -> Self {
 
         let wand = wand ?? Core.to(scope)
-
-        if let code: String = wand.get() {
-            let tcpOptions = NWProtocolTCP.Options()
-            tcpOptions.enableKeepalive = true
-            tcpOptions.keepaliveIdle = 2
-
-            let options = self.init(tls: wand.get(), tcp: tcpOptions)
-            options.includePeerToPeer = true
-
-            let gameOptions = NWProtocolFramer.Options(definition: WandFramerProtocol.definition)
-            //TODO
-            //self.defaultProtocolStack.applicationProtocols.insert(gameOptions, at: 0)
-
-            return options
-        }
-
-        let parameters = NWParameters()//.applicationService
-
+        
+        let code: String = wand.get() ?? "p11d"
+        
+        let parameters = self.init(tls: wand.get(),
+                                   tcp: wand.get())
+        parameters.includePeerToPeer = true
+        
         let options = NWProtocolFramer.Options(definition: WandFramerProtocol.definition)
         parameters.defaultProtocolStack.applicationProtocols.insert(options, at: 0)
-
-        return parameters as! Self
+        
+        return parameters
     }
 
 }
