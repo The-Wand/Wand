@@ -44,7 +44,7 @@ extension NWConnection: Ask.Nil, Wanded {
 
             source.newConnectionHandler = { [weak wand] in
                 wand + $0
-                $0.startConnection()
+//                $0.startConnection()
             }
 
             source.start(queue: .main)
@@ -56,7 +56,7 @@ extension NWConnection: Ask.Nil, Wanded {
     }
 
 //    @inlinable
-    private
+    public
     func startConnection() {
 
         guard let wand = isWanded else {
@@ -83,15 +83,15 @@ extension NWConnection: Ask.Nil, Wanded {
 
                     cancel()
 
-                    if
-                        wand.get(for: "initiatedConnection") == true,
-                        error == NWError.posix(.ECONNABORTED) {
-                        // Reconnect if the user suspends the app on the nearby device.
-                        let connection = NWConnection(to: endpoint, using: applicationServiceParameters())
-                        wand + connection
-                    } else {
-                        delegate.connectionFailed()
-                    }
+//                    if
+//                        wand.get(for: "initiatedConnection") == true,
+//                        error == NWError.posix(.ECONNABORTED) {
+//                        // Reconnect if the user suspends the app on the nearby device.
+//                        let connection = NWConnection(to: endpoint, using: applicationServiceParameters())
+//                        wand + connection
+//                    } else {
+//                        delegate.connectionFailed()
+//                    }
                 default:
                     break
             }

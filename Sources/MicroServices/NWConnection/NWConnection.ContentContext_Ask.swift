@@ -16,58 +16,42 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-#if DEBUG
-public
-enum Log: Int {
+#if canImport(Network)
+@_exported
+import Network
+//@_exported
+//import Wand
 
-    case none
-    case info
-    case warning
-    case verbose
-
-    public
-    static
-    let `default` = Log.info
-
-    public
-    static
-    var level = Log.verbose
-
-}
-
-extension Log: Comparable {
+extension NWConnection.ContentContext: Ask.T {
 
     @inlinable
     public
     static
-    func < (lhs: Log, rhs: Log) -> Bool {
-        lhs.rawValue < rhs.rawValue
-    }
+    func ask<C, T>(with context: C, ask: Ask<T>) -> Core {
 
-}
-
-extension Core {
-
-    @inlinable
-    public
-    func log(_ message: String, to level: Log = .verbose) {
-        if Log.level > .none && Log.level >= level {
-            print(message + "\n" + description + "\n")
+        let wand = Core.to(context)
+        guard wand + ask else {
+            return true
         }
-    }
+        
+        wand | ask.depend { (connection: NWConnection) in
+            
+        }
 
-}
+        let source = context as? NWConnection ?? wand.get()
+        source.receiveMessage { [weak wand] (content, context, isComplete, error) in
+            
+            guard let wand else {
+                return
+            }
+            
+            wand +? context
+            wand +? error
+        }
 
-#else
-
-extension Core {
-
-    @inline(__always)
-    internal
-    func log(_ message: String) {
+        return wand
     }
 
 }
 
 #endif
-
