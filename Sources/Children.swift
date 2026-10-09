@@ -109,4 +109,30 @@ func ++(wand: Core) -> Core {
     return wand.set(child: children, for: children.id)!
 }
 
-//TODO: --
+//Remove childs
+infix   operator -- : AdditionPrecedence
+
+@inline(__always)
+public
+func --<T: Wanded>(wand: Core, id: UInt32) -> T? {
+    
+    guard var children = wand.children, let child = children[id] as? T else {
+        return nil
+    }
+    
+    child.wand.scope[(\Core.parent)|] = nil
+    
+    child.wand + (nil & \Core.parent)
+    
+    children[id] = nil
+    wand.scope[(\Core.children)|] = children
+    
+    return child
+}
+
+@discardableResult
+@inline(__always)
+public
+func --<T: Wanded>(wand: Core, child: T) -> T {
+    wand.set(child: nil, for: child.wand.id)!
+}
