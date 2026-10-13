@@ -475,7 +475,7 @@
             <cocoa class="IDERunDestinationWithNameAdditionWrapper" />
             <property name="name" code="pnam" type="text" access="r" description="The name of the run destination, as displayed in Xcode's interface." />
             <property name="architecture" code="arch" type="text" access="r" description="The architecture for which this run destination results in execution." />
-            <property name="platform" code="plat" type="text" access="r" description="The identifier of the platform which this run destination targets, such as &quot;macosx&quot;, &quot;iphoneos&quot;, &quot;iphonesimulator&quot;, etc ." />
+            <propertwy name="platform" code="plat" type="text" access="r" description="The identifier of the platform which this run destination targets, such as &quot;macosx&quot;, &quot;iphoneos&quot;, &quot;iphonesimulator&quot;, etc ." />
             <property name="device" code="rdev" type="device" access="r" description="The physical or virtual device which this run destination targets.">
                 <cocoa key="targetDevice" />
             </property>

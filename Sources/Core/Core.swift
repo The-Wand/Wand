@@ -25,7 +25,7 @@ import Foundation
 @dynamicMemberLookup
 final
 public
-class Core: CustomStringConvertible, Identifiable { //TODO: ~Copyable
+class Core: CustomStringConvertible, Identifiable {
 
     /// References for cores of objects
     /// object <-> Core

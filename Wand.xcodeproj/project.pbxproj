@@ -237,7 +237,6 @@
 				Bot.swift,
 				Drive.swift,
 				ImageCreator.swift,
-				Singletone.swift,
 				Task.swift,
 			);
 			target = "pipe::Pipe" /* Wand */;
@@ -250,7 +249,6 @@
 				DeviceLookup.swift,
 				Drive.swift,
 				ImageCreator.swift,
-				Singletone.swift,
 				Task.swift,
 			);
 			target = "pipe::PipeTests" /* WandTests */;
@@ -263,7 +261,6 @@
 				DeviceLookup.swift,
 				Drive.swift,
 				ImageCreator.swift,
-				Singletone.swift,
 				Task.swift,
 			);
 			target = 613966472BE0F87A004C18A3 /* WatchPlayTests */;
