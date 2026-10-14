@@ -60,6 +60,8 @@ struct Highload {
                 
                 let newWand = test(wand: bot.wand, index: index)
                 
+                //TODO: Add child<->parent relation without proxy
+                //Rewrite to child cores
 //                next++
                 next + Core.Weak(item: next++) & "Wand"
                 next = newWand

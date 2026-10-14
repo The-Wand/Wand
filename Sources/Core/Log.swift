@@ -31,7 +31,7 @@ enum Log: Int {
 
     public
     static
-    var level = Log.verbose
+    var level = Log.default
 
 }
 

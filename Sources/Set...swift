@@ -24,7 +24,7 @@ extension Core {
 }
 
 @inline(__always)
-prefix
+postfix
 public
 func ...<T>(sequenced: T) -> Core.Sequenced<T> {
     (sequenced, .all)
@@ -32,7 +32,7 @@ func ...<T>(sequenced: T) -> Core.Sequenced<T> {
 
 ///Every
 @inline(__always)
-prefix
+postfix
 public
 func ...<T>(handler: @escaping (T)->()) -> Ask<T> {
     .init(once: false, handler: handler)
