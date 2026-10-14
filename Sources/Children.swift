@@ -122,7 +122,7 @@ func --<T: Wanded>(wand: Core, id: UInt32) -> T? {
     
     child.wand.scope[(\Core.parent)|] = nil
     
-    child.wand + (nil & \Core.parent)
+//    child.wand + (nil & \Core.parent)
     
     children[id] = nil
     wand.scope[(\Core.children)|] = children

@@ -26,6 +26,7 @@
 		61E823B92F1F918700C54221 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6131C7652F1F8221007A8718 /* Cocoa.framework */; platformFilters = (macos, ); };
 		61E824AB2F1F929C00C54221 /* XcodeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6131C7672F1F8222007A8718 /* XcodeKit.framework */; };
 		61E824AC2F1F929C00C54221 /* XcodeKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6131C7672F1F8222007A8718 /* XcodeKit.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		61F5A1AE307F7F3B0017593E /* Set...swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F5A1AD307F7F3B0017593E /* Set...swift */; };
 		61FB5C8B2FFBA98000C93C31 /* Children.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FB5C692FFBA98000C93C31 /* Children.swift */; };
 		61FB5C8F2FFBA98000C93C31 /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FB5C782FFBA98000C93C31 /* Memory.swift */; };
 		61FB5C932FFBA98000C93C31 /* DataBreach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FB5C7D2FFBA98000C93C31 /* DataBreach.swift */; };
@@ -158,6 +159,7 @@
 		61B4DB282F1FB61500988A75 /* XcodeXPC.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; includeInIndex = 0; path = XcodeXPC.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
 		61E823B82F1F918600C54221 /* Wand.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Wand.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		61F35A642F25F8E0003C2638 /* .spi.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .spi.yml; sourceTree = "<group>"; };
+		61F5A1AD307F7F3B0017593E /* Set...swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Set...swift; sourceTree = "<group>"; };
 		61FB5C672FFBA98000C93C31 /* Ask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ask.swift; sourceTree = "<group>"; };
 		61FB5C692FFBA98000C93C31 /* Children.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Children.swift; sourceTree = "<group>"; };
 		61FB5C782FFBA98000C93C31 /* Memory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
@@ -200,13 +202,6 @@
 				XcodeXPCProtocol.swift,
 			);
 			target = 61E823B72F1F918600C54221 /* Extension */;
-		};
-		61A0904530555899007CF18B /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				NWParameters_Obtain.swift,
-			);
-			target = "pipe::Pipe" /* Wand */;
 		};
 		61B396402F3F2B0600682789 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
@@ -270,7 +265,7 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		6157BEAD3008B4E20078D95C /* Fix */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Fix; sourceTree = "<group>"; };
 		617F1B82301F40B90039297F /* + */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "+"; sourceTree = "<group>"; };
-		61A0903B3055583D007CF18B /* MicroServices */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (61A0904530555899007CF18B /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = MicroServices; sourceTree = "<group>"; };
+		61A0903B3055583D007CF18B /* MicroServices */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = MicroServices; sourceTree = "<group>"; };
 		61A503B2306121A7001068DE /* - */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "-"; sourceTree = "<group>"; };
 		61A503B4306121A7001068DE /* ^ */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "^"; sourceTree = "<group>"; };
 		61B396312F3F2B0500682789 /* Screen */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (61B396402F3F2B0600682789 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Screen; sourceTree = "<group>"; };
@@ -391,6 +386,7 @@
 				61FB5C782FFBA98000C93C31 /* Memory.swift */,
 				61FB5C7B2FFBA98000C93C31 /* ML */,
 				61FB5C7C2FFBA98000C93C31 /* Obtainable.swift */,
+				61F5A1AD307F7F3B0017593E /* Set...swift */,
 				61A0903B3055583D007CF18B /* MicroServices */,
 				61FB5C892FFBA98000C93C31 /* Ubiquitous.swift */,
 				61FB5C8A2FFBA98000C93C31 /* Wand.md */,
@@ -845,6 +841,7 @@
 				61FB5C8B2FFBA98000C93C31 /* Children.swift in Sources */,
 				61FB5C8F2FFBA98000C93C31 /* Memory.swift in Sources */,
 				61FB5C932FFBA98000C93C31 /* DataBreach.swift in Sources */,
+				61F5A1AE307F7F3B0017593E /* Set...swift in Sources */,
 				61FB5C9D2FFBA98000C93C31 /* Ubiquitous.swift in Sources */,
 				61A88BB2302353A400227BC6 /* !~=.swift in Sources */,
 				61FB5CA22FFBA98000C93C31 /* Obtainable.swift in Sources */,
@@ -906,7 +903,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3945;
+				CURRENT_PROJECT_VERSION = 3952;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -962,7 +959,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3945;
+				CURRENT_PROJECT_VERSION = 3952;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -1013,7 +1010,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3945;
+				CURRENT_PROJECT_VERSION = 3952;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1058,7 +1055,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3945;
+				CURRENT_PROJECT_VERSION = 3952;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -1122,7 +1119,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3945;
+				CURRENT_PROJECT_VERSION = 3952;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
@@ -1219,7 +1216,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3945;
+				CURRENT_PROJECT_VERSION = 3952;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_PREVIEWS = YES;
@@ -1290,7 +1287,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3945;
+				CURRENT_PROJECT_VERSION = 3952;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -1357,7 +1354,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3945;
+				CURRENT_PROJECT_VERSION = 3952;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1417,7 +1414,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3945;
+				CURRENT_PROJECT_VERSION = 3952;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
 				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
@@ -1481,7 +1478,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3945;
+				CURRENT_PROJECT_VERSION = 3952;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
@@ -1538,7 +1535,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3945;
+				CURRENT_PROJECT_VERSION = 3952;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
@@ -1605,7 +1602,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3945;
+				CURRENT_PROJECT_VERSION = 3952;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1659,7 +1656,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3945;
+				CURRENT_PROJECT_VERSION = 3952;
 				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DRIVERKIT_DEPLOYMENT_TARGET = 20.4;
@@ -1708,7 +1705,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3945;
+				CURRENT_PROJECT_VERSION = 3952;
 				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DRIVERKIT_DEPLOYMENT_TARGET = 20.4;
@@ -1754,7 +1751,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3945;
+				CURRENT_PROJECT_VERSION = 3952;
 				DEAD_CODE_STRIPPING = YES;
 				DRIVERKIT_DEPLOYMENT_TARGET = 20.0;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -1797,7 +1794,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3945;
+				CURRENT_PROJECT_VERSION = 3952;
 				DEAD_CODE_STRIPPING = YES;
 				DRIVERKIT_DEPLOYMENT_TARGET = 20.0;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;

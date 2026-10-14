@@ -28,3 +28,23 @@ extension KeyPath {
     }
     
 }
+
+extension KeyPath {
+    
+    @discardableResult
+    @inline(__always)
+    public
+    static
+    func &(object: Core?, key: KeyPath) -> (Core?, KeyPath) {
+        (object, key)
+    }
+    
+    @discardableResult
+    @inline(__always)
+    public
+    static
+    func &<T>(object: T?, key: KeyPath) -> (T?, KeyPath) {
+        (object, key)
+    }
+    
+}

@@ -22,93 +22,36 @@ import Wand
 
 @available(iOS 18, macOS 15, tvOS 14, watchOS 7, *)
 @main
-struct PlayApp: App {
-    
-#if canImport(UIKit)
-//    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-#else
-//    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-#endif
-    
+struct playApp: App {
+
     var body: some Scene {
         WindowGroup {
-            BotView()
+            ContentView()
         }
-#if os(macOS)
-        .restorationBehavior(.automatic)
-        .windowResizability(.contentSize)
-#endif
     }
-    
+
 }
 
-@available(iOS 18, macOS 15, tvOS 14, watchOS 7, *)
-struct BotView: View {
-    
-    private
-    let width: CGFloat = 78
-    private
-    let height: CGFloat = 78 - 17
-    
-    private
-    let size = CGSize(width: 78, height: 78 - 17)
-    
-    private
-    let expanding = CGSize(width: 200, height: 300)
-    
-    
-    private
-    let bot = Core()
+@available(iOS 14, macOS 12, tvOS 14, watchOS 7, *)
+struct ContentView: View {
     
     var body: some View {
-        HStack(alignment: .top) {
-            VStack {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 20, style: .continuous)
-                    //                .blur(radius: 12)
-                        .frame(width: size.width,
-                               height: size.height)
-                        .foregroundColor(.accentColor)
-                    
-                    VStack {
-                        Image(systemName: "wand.and.stars")
-                        Text((bot.wand.name.remainder| as Character)|)
-                    }
-                }
-                
-                Spacer()
-            }
-            
-            Spacer()
+
+        VStack {
+            Image(systemName: "wand.and.stars")
+            Text("Hello, world!")
         }
-        .onAppear {
-            //Wand.Log.level = .verbose
+        .padding()
+        .onAppear() {
+//            let a =  (nil & \Core.parent)
+////            a
+            
+            Core() + (nil & \Core.parent)
         }
-        .frame(minWidth: size.width,
-               maxWidth: expanding.width,
-               minHeight: size.height,
-               maxHeight: expanding.height
-        )
-#if os(macOS)
-        .allowsWindowActivationEvents(true)
-        .gesture(WindowDragGesture())
-        .toolbarBackgroundVisibility(.hidden, for: .windowToolbar)
-        .toolbar(removing: .title)
-        
-        .onReceive(NotificationCenter.default.publisher(for: NSApplication.didBecomeActiveNotification), perform: { _ in
-            
-            guard let window = NSApp.mainWindow else {
-                return
-            }
-            
-            window.standardWindowButton(.miniaturizeButton)?.isHidden = true
-        })
-#endif
     }
-    
 }
 
-@available(iOS 18, macOS 15, tvOS 14, watchOS 7, *)
+@available(iOS 14, macOS 12, tvOS 14, watchOS 7, *)
 #Preview {
-    BotView()
+    ContentView()
 }

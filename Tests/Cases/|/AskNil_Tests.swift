@@ -86,7 +86,7 @@ class Expect_T_Tests: XCTestCase {
 
         weak
         var wand: Core!
-        wand = |{ (point: Point) in
+        wand = |.while { (point: Point) in
 
             if point.t > 111_111 {
 
@@ -97,7 +97,7 @@ class Expect_T_Tests: XCTestCase {
                 put()
                 return true
             }
-        }..+
+        }
 
         put()
 

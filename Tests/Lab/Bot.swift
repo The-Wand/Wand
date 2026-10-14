@@ -23,7 +23,7 @@ class Bot: Fix, Expecting, Wanded {
     public
     required
     init() {
-        self.init("")
+        self.init("reason")
     }
     
     public

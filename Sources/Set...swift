@@ -38,20 +38,8 @@ func ...<T>(handler: @escaping (T)->()) -> Ask<T> {
     .init(once: false, handler: handler)
 }
 
-
-///While
-prefix operator ..+
-
-@inline(__always)
-prefix
-public
-func ..+<T>(handler: @escaping (T)->(Bool)) -> Ask<T> {
-    .init(once: false, handler: handler)
-}
-
 extension Ask {
     
-    @available(*, deprecated, renamed: "...")
     @inline(__always)
     public
     static
@@ -66,7 +54,6 @@ extension Ask {
         }
     }
     
-    @available(*, deprecated, renamed: "One", message: "Use `()->()` instead")
     @inline(__always)
     public
     static
@@ -81,7 +68,6 @@ extension Ask {
         }
     }
     
-    @available(*, deprecated, renamed: "..+")
     @inline(__always)
     public
     static

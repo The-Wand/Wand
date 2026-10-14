@@ -22,16 +22,3 @@ public
 func &<T>(object: T, key: String?) -> (T, String) {
     (object, key ?? T.self|)
 }
-
-
-extension KeyPath {
-        
-    @discardableResult
-    @inline(__always)
-    public
-    static
-    func &(object: Core?, key: KeyPath) -> (Core?, KeyPath) {
-        (object, key)
-    }
-    
-}

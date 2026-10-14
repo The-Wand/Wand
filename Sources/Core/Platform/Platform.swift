@@ -29,7 +29,7 @@ public
 typealias Label = UILabel
 
 public
-typealias View = UIView
+typealias WView = UIView
 public
 typealias ViewController = UIViewController
 
