@@ -13,6 +13,7 @@ struct Platform {
 }
 
 #if canImport(UIKit)
+@_exported
 import UIKit
 
 public
@@ -26,6 +27,9 @@ typealias UserActivityRestoring = UIUserActivityRestoring
 public
 typealias Button = UIButton
 public
+typealias Event = UIEvent
+
+public
 typealias Label = UILabel
 
 public
@@ -37,6 +41,7 @@ public
 typealias Window = UIWindow
 
 #else
+@_exported
 import AppKit
 
 public
@@ -49,6 +54,8 @@ typealias UserActivityRestoring = NSUserActivityRestoring
 
 public
 typealias Button = NSButton
+public
+typealias Event = NSEvent
 public
 typealias Label = NSTextField
 
