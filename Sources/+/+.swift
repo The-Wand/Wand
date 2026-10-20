@@ -46,7 +46,7 @@ func +<T>(wand: Core, raw: (T, String) ) -> T {
         wand.handlers[key] = (tail, stored.cleaner)
     } else {
         //Clean
-        stored.cleaner?()
+        stored.cleaner?() //TODO:name: deinit?
         wand.handlers[key] = nil
     }
 

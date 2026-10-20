@@ -20,6 +20,7 @@ infix   operator ++ : AdditionPrecedence
 
 //TODO: #54 Rewrite to return Proxy as Child
 //Test
+//---According to Highload test its can be necessary to store Cores `Weak`ly. But how much it cost?
 extension Core {
     
     public
