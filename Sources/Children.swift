@@ -81,12 +81,8 @@ func ++(wand: Core, id: UInt32? = nil) -> Core {
     if let id, let stored = children?[id] {
         return stored as! Core
     } else {
-        let child = if let id {
-            Core(id: id)
-        } else {
-            Core()
-        }
         
+        let child = Core(id: id)
         wand.set(child: child, for: child.id)
         return child
     }
