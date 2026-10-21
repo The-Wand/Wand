@@ -34,21 +34,21 @@ func |<C: Sequence> (p: C?, handler: @escaping () -> Void) {
 ///filter
 @inline(__always)
 public
-func |<C: Sequence> (p: C, handler: @escaping (C.Element) -> Bool) -> [C.Element] {
+func |<C: Sequence> (p: C, handler: (C.Element) -> Bool) -> [C.Element] {
     p.filter(handler)
 }
 
 ///first
 @inline(__always)
 public
-func |<C: Sequence> (p: C?, handler: @escaping (C.Element) -> Bool) -> C.Element? {
+func |<C: Sequence> (p: C?, handler: (C.Element) -> Bool) -> C.Element? {
     p?.first(where: handler)
 }
 
 ///map
 @inline(__always)
 public
-func |<C: Sequence, T> (p: C, handler: @escaping (C.Element) -> T) -> [T] {
+func |<C: Sequence, T> (p: C, handler: (C.Element) -> T) -> [T] {
     p.map(handler)
 }
 
