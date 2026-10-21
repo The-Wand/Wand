@@ -30,6 +30,8 @@ public
 typealias Event = UIEvent
 
 public
+typealias Image = UIImage
+public
 typealias Label = UILabel
 
 public
@@ -56,6 +58,9 @@ public
 typealias Button = NSButton
 public
 typealias Event = NSEvent
+
+public
+typealias Image = NSImage
 public
 typealias Label = NSTextField
 
