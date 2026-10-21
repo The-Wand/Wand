@@ -16,15 +16,20 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
+internal
+import WMacro
+
 //TODO: Move to macros
+//+Partially updated
 extension KeyPath {
     
-    @inlinable
+    @inline(__always)
     postfix
     public
     static
     func |(path: KeyPath) -> String {
-        "\(path)".components(separatedBy: ".").last ?? ""
+        #ot(path)
+//        "\(path)".components(separatedBy: ".").last ?? ""
     }
     
 }
