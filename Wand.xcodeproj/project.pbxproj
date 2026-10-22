@@ -12,8 +12,8 @@
 		613966692BE0FB2E004C18A3 /* Wand.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "pipe::Pipe::Product" /* Wand.framework */; };
 		6139666A2BE0FB2E004C18A3 /* Wand.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = "pipe::Pipe::Product" /* Wand.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		614B218F2C4489CF00EB9DEE /* Any_ in Frameworks */ = {isa = PBXBuildFile; productRef = 614B218E2C4489CF00EB9DEE /* Any_ */; };
-		61605BC73088D26F000EF004 /* WMacroClient in Frameworks */ = {isa = PBXBuildFile; productRef = 61605BC63088D26F000EF004 /* WMacroClient */; };
-		616067813088D670000EF004 /* WMacro in Frameworks */ = {isa = PBXBuildFile; productRef = 616067803088D670000EF004 /* WMacro */; };
+		61605BC73088D26F000EF004 /* OrMacroClient in Frameworks */ = {isa = PBXBuildFile; productRef = 61605BC63088D26F000EF004 /* OrMacroClient */; };
+		616067813088D670000EF004 /* OrMacro in Frameworks */ = {isa = PBXBuildFile; productRef = 616067803088D670000EF004 /* OrMacro */; };
 		6162625628BC8E2B00D63EA5 /* play.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6162624628BC8E2A00D63EA5 /* play.swift */; };
 		6162625828BC8E2B00D63EA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6162624728BC8E2B00D63EA5 /* Assets.xcassets */; };
 		6162626428BC944300D63EA5 /* Wand.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "pipe::Pipe::Product" /* Wand.framework */; };
@@ -311,7 +311,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				61605BC73088D26F000EF004 /* WMacroClient in Frameworks */,
+				61605BC73088D26F000EF004 /* OrMacroClient in Frameworks */,
 				6162626428BC944300D63EA5 /* Wand.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,7 +345,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				616067813088D670000EF004 /* WMacro in Frameworks */,
+				616067813088D670000EF004 /* OrMacro in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,7 +544,7 @@
 			);
 			name = Play;
 			packageProductDependencies = (
-				61605BC63088D26F000EF004 /* WMacroClient */,
+				61605BC63088D26F000EF004 /* OrMacroClient */,
 			);
 			productName = "Sandbox (iOS)";
 			productReference = 6162624C28BC8E2B00D63EA5 /* WandPlay.app */;
@@ -643,7 +643,7 @@
 			);
 			name = Wand;
 			packageProductDependencies = (
-				616067803088D670000EF004 /* WMacro */,
+				616067803088D670000EF004 /* OrMacro */,
 			);
 			productName = Pipe;
 			productReference = "pipe::Pipe::Product" /* Wand.framework */;
@@ -735,7 +735,7 @@
 			mainGroup = OBJ_5;
 			packageReferences = (
 				612EA7862C007C4200F193DC /* XCRemoteSwiftPackageReference "Any" */,
-				61605BC53088D26F000EF004 /* XCLocalSwiftPackageReference "../Macro/WMacro" */,
+				61605BC53088D26F000EF004 /* XCLocalSwiftPackageReference "../Macro/OrMacro" */,
 			);
 			productRefGroup = OBJ_138 /* Products */;
 			projectDirPath = "";
@@ -914,7 +914,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3969;
+				CURRENT_PROJECT_VERSION = 3971;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -970,7 +970,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3969;
+				CURRENT_PROJECT_VERSION = 3971;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -1021,7 +1021,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3969;
+				CURRENT_PROJECT_VERSION = 3971;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1066,7 +1066,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3969;
+				CURRENT_PROJECT_VERSION = 3971;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -1130,7 +1130,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3969;
+				CURRENT_PROJECT_VERSION = 3971;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
@@ -1227,7 +1227,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3969;
+				CURRENT_PROJECT_VERSION = 3971;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_PREVIEWS = YES;
@@ -1298,7 +1298,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3969;
+				CURRENT_PROJECT_VERSION = 3971;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -1365,7 +1365,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3969;
+				CURRENT_PROJECT_VERSION = 3971;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1425,7 +1425,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3969;
+				CURRENT_PROJECT_VERSION = 3971;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
 				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
@@ -1489,7 +1489,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3969;
+				CURRENT_PROJECT_VERSION = 3971;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
@@ -1546,7 +1546,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3969;
+				CURRENT_PROJECT_VERSION = 3971;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
@@ -1613,7 +1613,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3969;
+				CURRENT_PROJECT_VERSION = 3971;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1667,7 +1667,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3969;
+				CURRENT_PROJECT_VERSION = 3971;
 				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DRIVERKIT_DEPLOYMENT_TARGET = 20.4;
@@ -1716,7 +1716,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3969;
+				CURRENT_PROJECT_VERSION = 3971;
 				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DRIVERKIT_DEPLOYMENT_TARGET = 20.4;
@@ -1762,7 +1762,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3969;
+				CURRENT_PROJECT_VERSION = 3971;
 				DEAD_CODE_STRIPPING = YES;
 				DRIVERKIT_DEPLOYMENT_TARGET = 20.0;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -1805,7 +1805,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3969;
+				CURRENT_PROJECT_VERSION = 3971;
 				DEAD_CODE_STRIPPING = YES;
 				DRIVERKIT_DEPLOYMENT_TARGET = 20.0;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -2063,9 +2063,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		61605BC53088D26F000EF004 /* XCLocalSwiftPackageReference "../Macro/WMacro" */ = {
+		61605BC53088D26F000EF004 /* XCLocalSwiftPackageReference "../Macro/OrMacro" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = ../Macro/WMacro;
+			relativePath = ../Macro/OrMacro;
 		};
 /* End XCLocalSwiftPackageReference section */
 
@@ -2086,14 +2086,14 @@
 			package = 612EA7862C007C4200F193DC /* XCRemoteSwiftPackageReference "Any" */;
 			productName = Any_;
 		};
-		61605BC63088D26F000EF004 /* WMacroClient */ = {
+		61605BC63088D26F000EF004 /* OrMacroClient */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = WMacroClient;
+			productName = OrMacroClient;
 		};
-		616067803088D670000EF004 /* WMacro */ = {
+		616067803088D670000EF004 /* OrMacro */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 61605BC53088D26F000EF004 /* XCLocalSwiftPackageReference "../Macro/WMacro" */;
-			productName = WMacro;
+			package = 61605BC53088D26F000EF004 /* XCLocalSwiftPackageReference "../Macro/OrMacro" */;
+			productName = OrMacro;
 		};
 		6168E5EC2CFDC00B00676432 /* Any_ */ = {
 			isa = XCSwiftPackageProductDependency;

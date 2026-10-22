@@ -19,7 +19,7 @@
 import SwiftUI
 
 import Wand
-import WMacro
+import OrMacro
 
 @available(iOS 18, macOS 15, tvOS 14, watchOS 7, *)
 @main
@@ -49,7 +49,7 @@ struct ContentView: View {
             
             Core() + (nil & \Core.parent)
             
-            let string: String = #ot(\Core.parent)
+            let string: String = #om(\Core.parent)
             print(string)
         }
     }

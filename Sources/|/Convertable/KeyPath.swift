@@ -17,7 +17,7 @@
 /// The Wand
 
 internal
-import WMacro
+import OrMacro
 
 //TODO: Move to macros
 //+Partially updated
@@ -28,7 +28,7 @@ extension KeyPath {
     public
     static
     func |(path: KeyPath) -> String {
-        #ot(path)
+        #om(path)
 //        "\(path)".components(separatedBy: ".").last ?? ""
     }
     
