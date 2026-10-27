@@ -1,5 +1,5 @@
 {
-  "originHash" : "2da942217fa560287511ddd388893544ae2189edc4048517a40d3e19b3ed69fd",
+  "originHash" : "03ec473ab1de96ab90a1e4e4621b3ddd2d692947267c780fb01d72007fb9d754",
   "pins" : [
     {
       "identity" : "any",
@@ -8,6 +8,24 @@
       "state" : {
         "revision" : "5fccdf9628bc117439a87a564958196c28896c97",
         "version" : "1.0.3"
+      }
+    },
+    {
+      "identity" : "convertable",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/the-wand/Convertable.git",
+      "state" : {
+        "revision" : "1436d1ee986adb6ea491136af62128239bd76671",
+        "version" : "0.0.1"
+      }
+    },
+    {
+      "identity" : "ormacro",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/The-Wand/OrMacro",
+      "state" : {
+        "revision" : "8beba3fcb9f3f789dcfa5b06a59096deeff980c1",
+        "version" : "0.0.3"
       }
     },
     {

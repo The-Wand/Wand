@@ -16,6 +16,8 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
+import OrMacro
+
 infix   operator ++ : AdditionPrecedence
 
 //TODO: #54 Rewrite to return Proxy as Child

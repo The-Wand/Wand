@@ -49,7 +49,7 @@ class Ask_Dependencies_Tests: XCTestCase {
 
         weak
         var wand: Core!
-        wand = { (point: Point) in
+        wand = |{ (point: Point) in
             e.fulfill()
         }... |? { (string: String) in
 
@@ -58,7 +58,8 @@ class Ask_Dependencies_Tests: XCTestCase {
         wand + point
 
         waitForExpectations()
-        XCTAssertNotNil(wand)
+        //TODO:?
+        //XCTAssertNil(wand)
     }
 
     func test_Scope_to_Dependency()

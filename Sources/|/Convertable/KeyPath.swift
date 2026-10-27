@@ -16,23 +16,23 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-internal
-import OrMacro
+//internal
+//import OrMacro
 
 //TODO: Move to macros
 //+Partially updated
-extension KeyPath {
-    
-    @inline(__always)
-    postfix
-    public
-    static
-    func |(path: KeyPath) -> String {
-        #om(path)
+//extension KeyPath {
+//    
+//    @inline(__always)
+//    postfix
+//    public
+//    static
+//    func |(path: KeyPath) -> String {
+////        #om(path)
 //        "\(path)".components(separatedBy: ".").last ?? ""
-    }
-    
-}
+//    }
+//    
+//}
 
 extension KeyPath {
     
