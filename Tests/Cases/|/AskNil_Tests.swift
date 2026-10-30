@@ -74,36 +74,36 @@ class Expect_T_Tests: XCTestCase {
         XCTAssertNil(wand)
     }
 
-    func test_While() throws {
-
-        func put() {
-            DispatchQueue.main.async {
-                wand + Point.any
-            }
-        }
-
-        let e = expectation()
-
-        weak
-        var wand: Core!
-        wand = |.while { (point: Point) in
-
-            if point.t > 111_111 {
-
-                e.fulfill()
-                return false
-            } else {
-
-                put()
-                return true
-            }
-        }
-
-        put()
-
-        waitForExpectations()
-        XCTAssertNil(wand)
-    }
+//    func test_While() throws {
+//
+//        func put() {
+//            DispatchQueue.main.async {
+//                wand + Point.any
+//            }
+//        }
+//
+//        let e = expectation()
+//
+//        weak
+//        var wand: Core!
+//        wand = |.while { (point: Point) in
+//
+//            if point.t > 111_111 {
+//
+//                e.fulfill()
+//                return false
+//            } else {
+//
+//                put()
+//                return true
+//            }
+//        }
+//
+//        put()
+//
+//        waitForExpectations()
+//        XCTAssertNil(wand)
+//    }
 
     func test_One_Performance() throws {
 

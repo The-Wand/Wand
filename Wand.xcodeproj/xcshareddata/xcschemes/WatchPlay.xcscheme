@@ -64,6 +64,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "613966142BE0F4EF004C18A3"
             BuildableName = "WatchPlay.app"
+            BlueprintName = "WatchPlay"
             ReferencedContainer = "container:Wand.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -80,6 +81,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "613966142BE0F4EF004C18A3"
             BuildableName = "WatchPlay.app"
+            BlueprintName = "WatchPlay"
             ReferencedContainer = "container:Wand.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

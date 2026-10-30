@@ -1,4 +1,4 @@
-// swift-tools-version: 5.6
+// swift-tools-version: 5.9
 ///
 /// Copyright 2020 Aleksander Kozin
 ///
@@ -35,8 +35,8 @@ let package = Package(
     ],
 
     dependencies: [
-        .package(url: "https://github.com/The-Wand/Any.git", exact: "1.0.3"),
-        .package(url: "https://github.com/The-Wand/OrMacro.git", exact: "0.0.3")
+        .package(url: "https://github.com/The-Wand/Any.git", exact: "1.0.4"),
+        .package(url: "https://github.com/The-Wand/OrMacro.git", exact: "0.0.4")
     ],
 
     targets: [
@@ -53,6 +53,8 @@ let package = Package(
                         ],
                     path: "Tests"
                    )
-    ]
+    ],
+    
+    swiftLanguageVersions: [.v5]
 )
 
