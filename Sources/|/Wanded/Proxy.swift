@@ -35,6 +35,10 @@ extension Proxy {
     
 }
 
+protocol Controller: Proxy {
+    
+}
+
 
 /// Get
 @discardableResult

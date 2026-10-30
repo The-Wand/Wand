@@ -16,36 +16,11 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-#if canImport(Network)
-@_exported
-import Network
-//@_exported
-//import Wand
+import Wand
+import Testing
 
-extension NWBrowser.State: Ask.Nil {
-
-    @inlinable
-    public
-    static
-    func ask<C, T>(with context: C, ask: Ask<T>) -> Core {
-
-        let wand = Core.to(context)
-        guard wand + ask else {
-            return true
-        }
-
-        let source: NWBrowser = wand.get()
-
-        source.stateUpdateHandler = { [weak wand] in
-            wand + $0
-        }
-
-        let queue: DispatchQueue = wand.get() ?? .global()
-        source.start(queue: queue)
-
-        return wand
-    }
+//TODO: Add dynamic member lookup tests
+@Test
+func Type_Tests() {
 
 }
-
-#endif

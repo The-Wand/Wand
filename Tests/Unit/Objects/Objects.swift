@@ -33,7 +33,7 @@ extension Point: Any_ {
 
     public
     static
-    var any: Self {
+    var rand: Self {
         .init(x: .any, y: .any, z: .any, t: .any)
     }
 

@@ -1,5 +1,5 @@
 ///
-/// Copyright 2020 Aleksander Kozin
+/// Copyright 2569 Aleksander Kozin
 ///
 /// Licensed under the Apache License, Version 2.0 (the "License");
 /// you may not use this file except in compliance with the License.
@@ -16,9 +16,47 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
+import Wand
+
+///
+/// Input & Output
+/// <#||_|#><#^#>
+postfix
+operator ^ //: AdditionPrecedence
+
+protocol Input {
+    
+}
+
+protocol Output {
+    
+}
+
+@discardableResult
 @inline(__always)
 postfix
 public
-func ...<T>(sequence: T) -> (sequence: T, Core.Key) {
-    (sequence, .all)
+func ^<T>(wand: Core) -> T? {
+    wand.get()
+}
+
+@discardableResult
+@inline(__always)
+public
+func ^<T>(wand: Core, key: String) -> T? {
+    wand.get(for: key)
+}
+
+extension Core {
+    
+    public
+    subscript<T>(dynamicMember dynamicMember: String) -> T? {
+        get {
+            get(for: dynamicMember)
+        }
+        set {
+            self + (newValue, dynamicMember)
+        }
+    }
+    
 }

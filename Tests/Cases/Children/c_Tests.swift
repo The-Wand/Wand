@@ -19,39 +19,39 @@
 import Testing
 import Wand
 
-//@Test
-//func c_Tests()
-//{
-//    
-//    let wand = Core()
-//    
-//    let a = wand.children()
-//    let i = wand.children()
-//    let b = wand.children()
-//    
-//    wand | .any {
-//        
-//        guard let object = $0 as? String else {
-//            return
-//        }
-//    
-//        let child = switch object {
-//            case "a":
-//                a
-//            case "i":
-//                i
-//            case "b":
-//                b
-//            default:
-//                a
-//        }
-//        
-//        child + object
-//    }
-//    
-//    wand + "a"
-//    wand + "b"
-//    wand + "c"
-//    
-//    #expect(true)
-//}
+@Test
+func c_Tests()
+{
+    
+    let wand = Core()
+    
+    let a = wand++
+    let i = wand++
+    let b = wand++
+    
+    wand | .any {
+        
+        guard let object = $0 as? String else {
+            return
+        }
+    
+        let child = switch object {
+            case "a":
+                a
+            case "i":
+                i
+            case "b":
+                b
+            default:
+                a
+        }
+        
+        child + object
+    }
+    
+    wand + "a"
+    wand + "b"
+    wand + "c"
+    
+    #expect(true)
+}

@@ -21,41 +21,41 @@
 //2012 Rasmus Andersson <http://rsms.me/>
 //*/
 //
-//#if canImport(Network)
-//import CryptoKit
-//@_exported
-//import Network
-//
+#if canImport(Network)
+import CryptoKit
+@_exported
+import Network
+
 //@_exported
 //import Wand
-//
-//extension NWProtocolTLS.Options: Obtainable {
-//
-//    @inlinable
-//    public
-//    static
-//    func obtain<C>(with scope: C?, by wand: Core?) -> Self {
-//
-//        let code: String = scope as? String ?? (wand?.get())!
-//
-//        let tlsOptions = NWProtocolTLS.Options()
-//
-//        let authenticationKey = SymmetricKey(data: (code | .utf8)!)
-//        let authenticationCode = HMAC<SHA256>.authenticationCode(for: "Wand".data(using: .utf8)!, using: authenticationKey)
-//
-//        let authenticationDispatchData = authenticationCode.withUnsafeBytes {
-//            DispatchData(bytes: $0)
-//        }
-//
-//        sec_protocol_options_add_pre_shared_key(tlsOptions.securityProtocolOptions,
-//                                                authenticationDispatchData as __DispatchData,
-//                                                "Wand"| as __DispatchData)
-//        sec_protocol_options_append_tls_ciphersuite(tlsOptions.securityProtocolOptions,
-//                                                    tls_ciphersuite_t(rawValue: TLS_PSK_WITH_AES_128_GCM_SHA256)!)
-//
-//        return tlsOptions as! Self
-//    }
-//
-//}
-//
-//#endif
+
+extension NWProtocolTLS.Options: Obtainable {
+
+    @inlinable
+    public
+    static
+    func obtain<C>(with scope: C?, by wand: Core?) -> Self {
+
+        let code: String = scope as? String ?? (wand?.get())!
+
+        let tlsOptions = NWProtocolTLS.Options()
+
+        let authenticationKey = SymmetricKey(data: (code | .utf8)!)
+        let authenticationCode = HMAC<SHA256>.authenticationCode(for: "Wand".data(using: .utf8)!, using: authenticationKey)
+
+        let authenticationDispatchData = authenticationCode.withUnsafeBytes {
+            DispatchData(bytes: $0)
+        }
+
+        sec_protocol_options_add_pre_shared_key(tlsOptions.securityProtocolOptions,
+                                                authenticationDispatchData as __DispatchData,
+                                                "Wand"| as __DispatchData)
+        sec_protocol_options_append_tls_ciphersuite(tlsOptions.securityProtocolOptions,
+                                                    tls_ciphersuite_t(rawValue: TLS_PSK_WITH_AES_128_GCM_SHA256)!)
+
+        return tlsOptions as! Self
+    }
+
+}
+
+#endif

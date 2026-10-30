@@ -22,26 +22,34 @@ import Network
 //@_exported
 //import Wand
 
-extension NWBrowser: Obtainable {
+extension NWConnection.ContentContext: Ask.T {
 
     @inlinable
     public
     static
-    func obtain<C>(with scope: C?, by wand: Core?) -> Self {
+    func ask<C, T>(with context: C, ask: Ask<T>) -> Core {
 
-        let wand = wand ?? Core()
-
-        let parameters: NWParameters = wand.get() ?? .init()
-        parameters.includePeerToPeer = true
+        let wand = Core.to(context)
+        guard wand + ask else {
+            return true
+        }
         
-        
-//        _spotify-connect._tcp
-        //_wand._tcp
+        wand | ask.depend { (connection: NWConnection) in
+            
+        }
 
-        let source = NWBrowser(for: .bonjour(type: "_spotify-connect._tcp", domain: nil),
-                               using: parameters)
+        let source = context as? NWConnection ?? wand.get()
+        source.receiveMessage { [weak wand] (content, context, isComplete, error) in
+            
+            guard let wand else {
+                return
+            }
+            
+            wand +? context
+            wand +? error
+        }
 
-        return source as! Self
+        return wand
     }
 
 }

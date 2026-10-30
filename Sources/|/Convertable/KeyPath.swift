@@ -16,15 +16,40 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
+//internal
+//import OrMacro
+
 //TODO: Move to macros
+//+Partially updated
+//extension KeyPath {
+//    
+//    @inline(__always)
+//    postfix
+//    public
+//    static
+//    func |(path: KeyPath) -> String {
+////        #om(path)
+//        "\(path)".components(separatedBy: ".").last ?? ""
+//    }
+//    
+//}
+
 extension KeyPath {
     
-    @inlinable
-    postfix
+    @discardableResult
+    @inline(__always)
     public
     static
-    func |(path: KeyPath) -> String {
-        "\(path)".components(separatedBy: ".").last ?? ""
+    func &(object: Core?, key: KeyPath) -> (Core?, KeyPath) {
+        (object, key)
+    }
+    
+    @discardableResult
+    @inline(__always)
+    public
+    static
+    func &<T>(object: T?, key: KeyPath) -> (T?, KeyPath) {
+        (object, key)
     }
     
 }

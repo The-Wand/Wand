@@ -21,6 +21,14 @@
         "testFunctions" : [
           "experiment()",
           "load_tests()"
+        ],
+        "xctestClasses" : [
+          {
+            "name" : "Expect_Any_Tests"
+          },
+          {
+            "name" : "Expect_T_Tests"
+          }
         ]
       },
       "target" : {

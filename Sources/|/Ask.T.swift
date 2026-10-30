@@ -98,7 +98,11 @@ extension Ask.T {
     public
     static
     func every(handler: ( (Self)->() )? = nil) -> Ask<Self> {
-        .every(handler: handler)
+        .init(once: false) {
+            
+            handler?($0)
+            return true
+        }
     }
     
     @inline(__always)
@@ -115,4 +119,11 @@ extension Ask.T {
         .while(handler: handler)
     }
     
+}
+
+@inline(__always)
+@discardableResult
+public
+func |<C, T: Ask.T>(context: C, type: T.Type) -> Core {
+    T.ask(with: context, ask: Ask<T>.one())
 }

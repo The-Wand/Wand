@@ -1,5 +1,5 @@
 ///
-/// Copyright 2569 Aleksander Kozin
+/// Copyright 2020 Aleksander Kozin
 ///
 /// Licensed under the Apache License, Version 2.0 (the "License");
 /// you may not use this file except in compliance with the License.
@@ -16,27 +16,30 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-import Wand
+#if canImport(Network)
+@_exported
+import Network
+//@_exported
+//import Wand
 
-///
-/// Input & Output
-/// <#||_|#><#^#>
-postfix
-operator ^ //: AdditionPrecedence
+extension NWBrowser: Obtainable {
 
-protocol Input {
-    
+    @inlinable
+    public
+    static
+    func obtain<C>(with scope: C?, by wand: Core?) -> Self {
+
+        let wand = wand ?? Core()
+
+        let parameters: NWParameters = wand.get() ?? .init()
+        parameters.includePeerToPeer = true
+
+        let source = NWBrowser(for: .bonjour(type: "_wand._tcp", domain: nil),
+                               using: parameters)
+
+        return source as! Self
+    }
+
 }
 
-protocol Output {
-    
-}
-
-@discardableResult
-@inline(__always)
-postfix
-public
-func ^<T>(wand: Core) -> T {
-    wand.get()!
-}
-
+#endif

@@ -109,64 +109,6 @@ class Ask<T> {
 
 }
 
-/// Request object
-/// - `every`
-/// - `one`
-/// - `while`
-extension Ask {
-
-    /// Ask.every { T in
-    ///
-    /// }
-    ///
-    @inline(__always)
-    public
-    static
-    func every(check: Bool = false,
-               _ key: String? = nil,
-               handler: ( (T)->() )? = nil ) -> Self
-    {
-        .init(once: false, check: check, for: key) {
-
-            handler?($0)
-            return true
-        }
-    }
-
-    /// Ask.one { T in
-    ///
-    /// }
-    ///
-    @inline(__always)
-    public
-    static
-    func one(check: Bool = false,
-             _ key: String? = nil,
-             handler: ( (T)->() )? = nil ) -> Self
-    {
-        .init(once: true, check: check, for: key) {
-
-            handler?($0)
-            return false
-        }
-    }
-
-    /// Ask.while { T in
-    ///     true
-    /// }
-    ///
-    @inline(__always)
-    public
-    static
-    func `while`(check: Bool = false,
-                 _ key: String? = nil,
-                 handler: @escaping (T)->(Bool) ) -> Self
-    {
-        .init(once: false, for: key, handler: handler)
-    }
-
-}
-
 /// Handle answer
 extension Ask {
 

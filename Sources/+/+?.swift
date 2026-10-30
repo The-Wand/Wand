@@ -21,6 +21,13 @@ infix   operator +? : AdditionPrecedence
 @discardableResult
 @inline(__always)
 public
+func +?<T>(wand: Core, pair: (T?, String?) ) -> T? {
+    pair.0 == nil ? nil : wand + pair.0! & pair.1
+}
+
+@discardableResult
+@inline(__always)
+public
 func +?<T>(wand: Core, object: T? ) -> T? {
     
     guard let object else {
@@ -28,11 +35,4 @@ func +?<T>(wand: Core, object: T? ) -> T? {
     }
     
     return wand + object & nil
-}
-
-@discardableResult
-@inline(__always)
-public
-func +?<T>(wand: Core, pair: (T?, String?) ) -> T? {
-    pair.0 == nil ? nil : wand + pair.0! & pair.1
 }

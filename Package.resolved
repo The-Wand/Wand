@@ -5,8 +5,35 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/The-Wand/Any.git",
       "state" : {
-        "revision" : "5fccdf9628bc117439a87a564958196c28896c97",
-        "version" : "1.0.3"
+        "revision" : "88d1f6d054c0d14ad810b49b5c10fb51f206909b",
+        "version" : "1.0.4"
+      }
+    },
+    {
+      "identity" : "convertable",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/the-wand/Convertable.git",
+      "state" : {
+        "revision" : "21d3424542c99cc08d6b5e5079c43c885f74ebfb",
+        "version" : "0.0.3"
+      }
+    },
+    {
+      "identity" : "ormacro",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/The-Wand/OrMacro.git",
+      "state" : {
+        "revision" : "18a2616ac3bbdbf4fed3dab51f6da7cf149d1de2",
+        "version" : "0.0.4"
+      }
+    },
+    {
+      "identity" : "swift-syntax",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftlang/swift-syntax.git",
+      "state" : {
+        "revision" : "79e4b74a295b6eb74a8b585e3a39d29e70c1dbd1",
+        "version" : "603.0.2"
       }
     }
   ],

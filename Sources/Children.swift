@@ -16,9 +16,13 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
+import OrMacro
+
 infix   operator ++ : AdditionPrecedence
 
 //TODO: #54 Rewrite to return Proxy as Child
+//Test
+//---According to Highload test its can be necessary to store Cores `Weak`ly. But how much it cost?
 extension Core {
     
     public
@@ -26,14 +30,47 @@ extension Core {
     
     @inline(__always)
     public
-    var children: [UInt32: Self]? {
-        `get`(for: "children")
+    var children: [UInt32: any Wanded]? {
+        `get`(for: (\Core.children)|) //#function
+    }
+
+    @inlinable
+    public
+    func children<T: Wanded>(for id: UInt32) -> T? {
+        children?[id] as? T
+    }
+    
+    @discardableResult
+    @inlinable
+    public
+    func set<T: Wanded>(child: T?, for id: UInt32) -> T? {
+        
+        child.wand.scope[(\Core.parent)|] = self
+        
+        var children = children ?? .init()
+        children[id] = child
+        scope[(\Core.children)|] = children
+        
+        return child
     }
     
     @inline(__always)
     public
     var parent: Self? {
-        `get`(for: "parent")
+        `get`(for: (\Core.parent)|) ?? root //#function
+    }
+    
+    //TODO: add Shedinger's parent tests
+    @inlinable
+    public
+    var root: Self {
+        if let wand = Core.all[-1]?.item {
+            return wand
+        }
+        
+        let wand = Core()
+        Core.all[-1] = Weak(item: wand)
+        return wand
     }
     
 }
@@ -45,20 +82,11 @@ func ++(wand: Core, id: UInt32? = nil) -> Core {
     let children = wand.children
     
     if let id, let stored = children?[id] {
-        return stored
+        return stored as! Core
     } else {
-        let child = if let id {
-            Core(id: id)
-        } else {
-            Core()
-        }
         
-        child.scope[(\Core.parent)|] = wand
-        
-        var mutable = children ?? [:]
-        mutable[child.id] = child
-        wand.scope[(\Core.children)|] = mutable
-        
+        let child = Core(id: id)
+        wand.set(child: child, for: child.id)
         return child
     }
 }
@@ -66,31 +94,44 @@ func ++(wand: Core, id: UInt32? = nil) -> Core {
 @discardableResult
 @inline(__always)
 public
-func ++(wand: Core, child: Core) -> Core {
-    child.scope[(\Core.parent)|] = wand
-    
-    let key: String = (\Core.children)|
-    
-    var children = wand.scope[key] as? [UInt32: Core] ?? .init()
-    children[child.id] = child
-    wand.scope[key] = children
-    
-    return child
+func ++<T: Wanded>(wand: Core, child: T) -> T {
+    wand.set(child: child, for: child.wand.id)!
 }
 
+@discardableResult
 @inline(__always)
 postfix
 public
 func ++(wand: Core) -> Core {
     
-    let children = wand.children
+    let children = Core()
+    return wand.set(child: children, for: children.id)!
+}
+
+//Remove childs
+infix   operator -- : AdditionPrecedence
+
+@inline(__always)
+public
+func --<T: Wanded>(wand: Core, id: UInt32) -> T? {
     
-    let child = Core()
-    child.scope[(\Core.parent)|] = wand
+    guard var children = wand.children, let child = children[id] as? T else {
+        return nil
+    }
     
-    var mutable = children ?? [:]
-    mutable[child.id] = child
-    wand.scope[(\Core.children)|] = mutable
+    child.wand.scope[(\Core.parent)|] = nil
+    
+//    child.wand + (nil & \Core.parent)
+    
+    children[id] = nil
+    wand.scope[(\Core.children)|] = children
     
     return child
+}
+
+@discardableResult
+@inline(__always)
+public
+func --<T: Wanded>(wand: Core, child: T) -> T {
+    wand.set(child: nil, for: child.wand.id)!
 }
